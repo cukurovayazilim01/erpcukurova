@@ -22,9 +22,9 @@
         <div class="top-navbar-right ms-3 ms-auto">
           <ul class="navbar-nav align-items-center ">
           <li class="nav-item dropdown dropdown-large">
-            <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">
+            <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown" style="border: 1px solid lightgray; padding:1px; border-radius:5px">
               <div class="user-setting d-flex align-items-center gap-1">
-                <img src="{{asset('resim/1725460898-BEKİR-ÜNAL-KAYMAKÇI.jpeg')}}" class="user-img" alt="">
+                <img src="{{asset('resim/1725460898-BEKİR-ÜNAL-KAYMAKÇI.jpeg')}}" class="user-img" alt="" style="border-radius: 10px">
                 @if(Auth::check())
 
 
