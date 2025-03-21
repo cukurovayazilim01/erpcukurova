@@ -7,7 +7,10 @@ use App\Models\Toplumail;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\ToplugonderMail;
+use Illuminate\Support\Facades\Mail;
 
 class ToplumailController extends Controller
 {
@@ -38,27 +41,14 @@ class ToplumailController extends Controller
         $toplumail->islem_yapan = Auth::user()->id;
         $toplumail->islem_tarihi = Carbon::now();
         $toplumail->konu = $request->konu;
+        $toplumail->firma_sektor = $request->firma_sektor;
         $toplumail->mesaj = $request->mesaj;
         $toplumail->save();
 
-
-        $cariler = Cariler::whereNotNull('eposta')->pluck('eposta')->toArray();
-
-        $count = 0;
-        $hours = 0;
-
-        foreach ($cariler as $user) {
-
-            if ($count % 100 === 0) {
-                $hours++;
-            }
-
-            Mail::to($user)->later(now()->addHours($hours), new MyEmail($user));
-            $count++;
-        }
+        Artisan::call('toplumail:gonder');
 
 
-        return redirect('toplumail')->with('success', 'Toplu Mail Gönderimi Başarılı');
+        return redirect('toplumail')->with('success', 'Toplu Mail Gönderimi Başlatıldı.');
     }
 
     /**
