@@ -125,7 +125,7 @@
                                           {{ request()->is('resmievraklarr') || request()->is('resmievraklarr/*') ? 'active' : '' }}" data-bs-toggle="pill" data-bs-target="#pills-dashboards" type="button"><i class="bi bi-house-door-fill"></i></button>
             </li>
             <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="ÖN MUHASEBE">
-              <button class="nav-link {{ request()->is('satislar') || request()->is('satislar/*') ? 'active' : '' }} {{ request()->is('tahsilatplan') || request()->is('tahsilatplan/*') ? 'active' : '' }}
+              <button class="nav-link {{ request()->is('satislar') || request()->is('satislar/*') ? 'active' : '' }} {{ request()->is('tahsilatplan') || request()->is('tahsilatplan/*') ? 'active' : '' }} {{ request()->is('odemeplanlari') || request()->is('odemeplanlari/*') ? 'active' : '' }}
                                       {{ request()->is('alislar') || request()->is('alislar/*') ? 'active' : '' }} {{ request()->is('gidenefaturalar') || request()->is('gidenefaturalar/*') ? 'active' : '' }}
                                       {{ request()->is('tahsilat') || request()->is('tahsilat/*') ? 'active' : '' }} {{ request()->is('gelenfaturayialisaktar') || request()->is('gelenfaturayialisaktar/*') ? 'active' : '' }}
                                       {{ request()->is('odemeler') || request()->is('odemeler/*') ? 'active' : '' }} {{ request()->is('gelenefaturalar') || request()->is('gelenefaturalar/*') ? 'active' : '' }}
@@ -224,6 +224,7 @@
                                       {{ request()->is('odemeler') || request()->is('odemeler/*') ? 'show active' : '' }}
                                       {{ request()->is('bankalar') || request()->is('bankalar/*') ? 'show active' : '' }}
                                       {{ request()->is('virman') || request()->is('virman/*') ? 'show active' : '' }}
+                                       {{ request()->is('odemeplanlari') || request()->is('odemeplanlari/*') ? 'show active' : '' }}
                                        {{ request()->is('tahsilatplan') || request()->is('tahsilatplan/*') ? 'show active' : '' }}
                                        {{ request()->is('gelenefaturalar') || request()->is('gelenefaturalar/*') ? 'show active' : '' }}
                                         {{ request()->is('gelenfaturayialisaktar') || request()->is('gelenfaturayialisaktar/*') ? 'show active' : '' }}
@@ -247,7 +248,7 @@
                 <a href="{{route('bankalar.index')}}" class="list-group-item {{ request()->is('bankalar') || request()->is('bankalar/*') ? 'active' : '' }}"><i class="bi bi-receipt"></i>Bankalar</a>
 
                 <a href="{{route('virman.index')}}" class="list-group-item {{ request()->is('virman') || request()->is('virman/*') ? 'active' : '' }}"><i class="bi bi-receipt"></i>Virman</a>
-                <a href="{{route('tahsilatplan.index')}}" class="list-group-item {{ request()->is('tahsilatplan') || request()->is('tahsilatplan/*') ? 'active' : '' }}"><i class="bi bi-receipt"></i>Tahsilat Plan</a>
+                <a href="{{route('odemeplanlari.index')}}" class="list-group-item {{ request()->is('odemeplanlari') || request()->is('odemeplanlari/*') ? 'active' : '' }}"><i class="bi bi-receipt"></i>Ödeme Plan</a>
 
                 <a href="{{route('tahsilatplan.index')}}" class="list-group-item {{ request()->is('tahsilatplan') || request()->is('tahsilatplan/*') ? 'active' : '' }}"><i class="bi bi-receipt"></i>Tahsilat Plan</a>
                 <a href="{{route('gelenefaturalar.index')}}" class="list-group-item {{ request()->is('gelenefaturalar') || request()->is('gelenefaturalar/*') ? 'active' : '' }}  {{ request()->is('gelenfaturayialisaktar') || request()->is('gelenfaturayialisaktar/*') ? 'show active' : '' }}"><i class="bi bi-check2-square"></i>Gelen E-Faturalar</a>
