@@ -17,6 +17,8 @@ return new class extends Migration
             $table->foreign('islem_yapan')->references('id')->on('users')->onDelete('cascade');
             $table->date('islem_tarihi')->nullable();
             $table->longText('mesaj')->nullable();
+            $table->longText('firma_sektor')->nullable();
+
             $table->softDeletes();
             $table->timestamps();
         });

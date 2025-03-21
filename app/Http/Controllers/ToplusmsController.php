@@ -39,10 +39,12 @@ class ToplusmsController extends Controller
         $toplusms->islem_yapan = Auth::user()->id;
         $toplusms->islem_tarihi = Carbon::now();
         $toplusms->mesaj = $request->mesaj;
+        $toplusms->firma_sektor = $request->firma_sektor;
         $toplusms->save();
 
         $smsapi = Smsapi::first();
-        $cariler = Cariler::whereNotNull('yetkili_kisi_tel')->pluck('yetkili_kisi_tel')->toArray(); // Telefon numaralarını al
+        $cariler = Cariler::whereNotNull('yetkili_kisi_tel')
+        ->where('firma_sektor', $toplusms->firma_sektor)->pluck('yetkili_kisi_tel')->toArray(); // Telefon numaralarını al
 
         if (!empty($smsapi->kullanici_no)) {
             header('Content-Type: text/html; charset=utf-8');
