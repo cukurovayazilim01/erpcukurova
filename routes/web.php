@@ -41,6 +41,8 @@ use App\Http\Controllers\TahsilatController;
 use App\Http\Controllers\TahsilatPlanController;
 use App\Http\Controllers\TekliflerController;
 use App\Http\Controllers\TescilnoksanController;
+use App\Http\Controllers\ToplumailController;
+use App\Http\Controllers\ToplusmsController;
 use App\Http\Controllers\VirmanController;
 use App\Http\Controllers\YillikizinController;
 use App\Http\Controllers\YillikizinhakkiController;
@@ -270,7 +272,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/efaturaapi',[EntegrasyonController::class,'efaturaapi'])->name('efaturaapi');
     Route::put('/efaturaapiPUT/{id}',[EntegrasyonController::class,'efaturaapiPUT'])->name('efaturaapiPUT');
 
-
+    //TOPLU SMS
+    Route::resource('toplusms',ToplusmsController::class);
+    Route::resource('toplumail',ToplumailController::class);
 
     Route::resource('aktiflog', AktifLogController::class);
     Route::get('/aktiflogsearch',[AktifLogController::class,'aktiflogsearch'])->name('aktiflogsearch');

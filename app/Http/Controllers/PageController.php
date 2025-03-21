@@ -32,4 +32,6 @@ class PageController extends Controller
         return view('anasayfa',compact('user','markatakip','itiraztakip','aramalar','tescilnoksan'));
     }
 
+
+
 }

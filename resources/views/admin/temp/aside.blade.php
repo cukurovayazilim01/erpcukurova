@@ -65,13 +65,21 @@
                    </a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="index2.html">
+                  <a class="dropdown-item" href="{{route('toplusms.index')}}">
                      <div class="d-flex align-items-center">
                        <div class="setting-icon"><i class="bi bi-speedometer"></i></div>
-                       <div class="setting-text ms-3"><span>Dashboard</span></div>
+                       <div class="setting-text ms-3"><span>Toplu SMS</span></div>
                      </div>
                    </a>
                 </li>
+                <li>
+                    <a class="dropdown-item" href="{{route('toplumail.index')}}">
+                       <div class="d-flex align-items-center">
+                         <div class="setting-icon"><i class="bi bi-speedometer"></i></div>
+                         <div class="setting-text ms-3"><span>Toplu Mail</span></div>
+                       </div>
+                     </a>
+                  </li>
                 <li>
                   <a class="dropdown-item" href="{{route('aktiflog.index')}}">
                      <div class="d-flex align-items-center">
@@ -114,7 +122,7 @@
           </div>
           <ul class="nav nav-pills flex-column">
             <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="CRM" >
-              <button class="nav-link  {{ request()->is('anasayfa') || request()->is('anasayfa/*') ? 'active' : '' }} {{ request()->is('muhasebemenu') || request()->is('muhasebemenu/*') ? 'show active' : '' }} {{ request()->is('idariislermenu') || request()->is('idariislermenu/*') ? 'show active' : '' }} {{ request()->is('anamenu') || request()->is('anamenu/*') ? 'show active' : '' }}
+              <button class="nav-link  {{ request()->is('anasayfa') || request()->is('anasayfa/*') ? 'active' : '' }} {{ request()->is('toplusms') || request()->is('toplusms/*') ? 'active' : '' }} {{ request()->is('toplumail') || request()->is('toplumail/*') ? 'active' : '' }} {{ request()->is('muhasebemenu') || request()->is('muhasebemenu/*') ? 'show active' : '' }} {{ request()->is('idariislermenu') || request()->is('idariislermenu/*') ? 'show active' : '' }} {{ request()->is('anamenu') || request()->is('anamenu/*') ? 'show active' : '' }}
                                         {{ request()->is('entegrasyonmenu') || request()->is('entegrasyonmenu/*') ? 'active' : '' }} {{ request()->is('ikmenu') || request()->is('ikmenu/*') ? 'show active' : '' }} {{ request()->is('makinemenu') || request()->is('makinemenu/*') ? 'show active' : '' }}
                                         {{ request()->is('cariler') || request()->is('cariler/*') ? 'active' : '' }} {{ request()->is('tedarikciler') || request()->is('tedarikciler/*') ? 'active' : '' }}
                                          {{ request()->is('kontaklistesi') || request()->is('kontaklistesi/*') ? 'active' : '' }}
@@ -194,7 +202,7 @@
           </div>
           <div class="tab-content">
             <div class="tab-pane fade {{ request()->is('teklifler') || request()->is('onaylananteklifler') || request()->is('onaylanmayanteklifler') || request()->is('bekleyenteklifler') || request()->is('teklifler/*') ? 'show active' : '' }} {{ request()->is('muhasebemenu') || request()->is('muhasebemenu/*') ? 'show active' : '' }} {{ request()->is('makinemenu') || request()->is('makinemenu/*') ? 'show active' : '' }} {{ request()->is('ikmenu') || request()->is('ikmenu/*') ? 'show active' : '' }}
-                {{ request()->is('cariler') || request()->is('cariler/*') ? 'show active' : '' }} {{ request()->is('anasayfa') || request()->is('anasayfa/*') ? 'show active' : '' }} {{ request()->is('entegrasyonmenu') || request()->is('entegrasyonmenu/*') ? 'show active' : '' }} {{ request()->is('register') || request()->is('register/*') ? 'show active' : '' }} {{ request()->is('idariislermenu') || request()->is('idariislermenu/*') ? 'show active' : '' }} {{ request()->is('tedarikciler') || request()->is('tedarikciler/*') ? 'show active' : '' }}
+                {{ request()->is('cariler') || request()->is('cariler/*') ? 'show active' : '' }} {{ request()->is('toplusms') || request()->is('toplusms/*') ? 'show active' : '' }} {{ request()->is('toplumail') || request()->is('toplumail/*') ? 'show active' : '' }} {{ request()->is('anasayfa') || request()->is('anasayfa/*') ? 'show active' : '' }} {{ request()->is('entegrasyonmenu') || request()->is('entegrasyonmenu/*') ? 'show active' : '' }} {{ request()->is('register') || request()->is('register/*') ? 'show active' : '' }} {{ request()->is('idariislermenu') || request()->is('idariislermenu/*') ? 'show active' : '' }} {{ request()->is('tedarikciler') || request()->is('tedarikciler/*') ? 'show active' : '' }}
                  {{ request()->is('kontaklistesi') || request()->is('kontaklistesi/*') ? 'show active' : '' }} {{ request()->is('gorusmelistesi') || request()->is('gorusmelistesi/*') ? 'show active' : '' }} {{ request()->is('aktiflog') || request()->is('aktiflog/*') ? 'show active' : '' }} {{ request()->is('smsapi') || request()->is('smsapi/*') ? 'show active' : '' }} {{ request()->is('smtp') || request()->is('smtp/*') ? 'show active' : '' }} {{ request()->is('efaturaapi') || request()->is('efaturaapi/*') ? 'show active' : '' }}
                   {{ request()->is('satisfisineaktar') || request()->is('satisfisineaktar/*') ? 'show active' : '' }} {{ request()->is('resmievraklarr') || request()->is('resmievraklarr/*') ? 'show active' : '' }} " id="pills-dashboards">
               <div class="list-group list-group-flush">
