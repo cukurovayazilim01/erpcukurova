@@ -17,7 +17,7 @@ class TahsilatPlanController extends Controller
     {
         $perPage = $request->input('entries', 20);
 
-        $tahsilatplan = Tahsilatplan::orderBy('created_at', 'desc')->paginate($perPage);
+        $tahsilatplan = Tahsilatplan::orderBy('vade_tarih', 'asc')->paginate($perPage);
         $page = $tahsilatplan->currentPage();
         $startNumber = $tahsilatplan->total() - (($page - 1) * $perPage);
         $user = User::all();
