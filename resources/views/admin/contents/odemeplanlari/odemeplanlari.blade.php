@@ -12,7 +12,7 @@
             <div class="col">
                 <div class="d-flex align-items-center justify-content-between gap-3">
                     <div class="col-lg-1 col-1 col-md-1 text-start">
-                        <form method="GET" action="{{ route('tahsilatplan.index') }}" id="entriesForm">
+                        <form method="GET" action="{{ route('odemeplanlari.index') }}" id="entriesForm">
                             <select class="form-select form-select-sm" name="entries"
                                 onchange="document.getElementById('entriesForm').submit();">
                                 <option value="10" {{ $perPage == 10 ? 'selected' : '' }}>10</option>
@@ -23,7 +23,7 @@
                         </form>
                     </div>
                     <div class="ms-auto">
-                        <button type="button" class="btn btn-sm btn-outline-primary px-5" data-bs-toggle="modal" data-bs-target="#tahsilatplaneklemodal">
+                        <button type="button" class="btn btn-sm btn-outline-primary px-5" data-bs-toggle="modal" data-bs-target="#odemeplanlarieklemodal">
                             <i class="fa-solid fa-plus"></i> Yeni Ekle
                         </button>
                     </div>
@@ -33,14 +33,14 @@
         </div>
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="tahsilatplaneklemodal" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="odemeplanlarieklemodal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog ">
-            <form id="add-form" action="{{ route('tahsilatplan.store') }}" method="POST" enctype="multipart/form-data" id="add-form">
+            <form id="add-form" action="{{ route('odemeplanlari.store') }}" method="POST" enctype="multipart/form-data" id="add-form">
                 @csrf
                 <div class="modal-content">
                     <!-- Modal Header -->
                     <div class="modal-header bg-primary text-white">
-                        <h5 class="modal-title">Tahsilat Planı Kayıt Ekranı</h5>
+                        <h5 class="modal-title">Ödeme Planı Kayıt Ekranı</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
@@ -78,12 +78,12 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="tahsilat_tutar">Tahsilat Tutar</label>
+                                    <label for="odeme_tutar">Ödeme Tutar</label>
                                     <div class="form-group input-with-icon">
                                         <span class="icon">
                                             <i class="fa-solid fa-inbox"></i>
                                         </span>
-                                        <input type="text" name="tahsilat_tutar" id="tahsilat_tutar"
+                                        <input type="text" name="odeme_tutar" id="odeme_tutar"
                                             class="form-control form-control-sm" required>
                                     </div>
                                 </div>
@@ -96,8 +96,8 @@
                                         <select name="durum" id="durum"
                                             class="form-select form-select-sm" required>
                                             <option value="">Lütfen Seçim Yapınız...</option>
-                                            <option value="Edildi">Tahsil Edildi</option>
-                                            <option value="Edilmedi">Tahsil Edilmedi</option>
+                                            <option value="Yapıldı">Ödeme Yapıldı</option>
+                                            <option value="Yapılmadı">Ödeme Yapılmadı</option>
                                         </select>
                                     </div>
                                 </div>
@@ -134,42 +134,42 @@
                             <th>Tarih</th>
                             <th>Firma Adı</th>
                             <th>Vade Tarihi</th>
-                            <th>Tahsilat Tutar</th>
+                            <th>Ödeme Tutar</th>
                             <th>Durum</th>
                             <th>Açıklama</th>
                             <th>Aksiyon</th>
                         </tr>
                     </thead>
                     <tbody>
-                         @foreach ($tahsilatplan as $sn => $tahsilatplanitem)
+                         @foreach ($odemeplanlari as $sn => $odemeplanlariitem)
                             <tr>
                                 <th scope="row">{{ $startNumber - $loop->index }}</th>
-                                <td>{{ $tahsilatplanitem->tarih }}</td>
+                                <td>{{ $odemeplanlariitem->tarih }}</td>
 
-                                <td>{{ $tahsilatplanitem->firmaadi->firma_unvan }}</td>
-                                <td>{{ $tahsilatplanitem->vade_tarih }}</td>
-                                <td>{{ number_format($tahsilatplanitem->tahsilat_tutar , 2, ',', '.')}} ₺</td>
+                                <td>{{ $odemeplanlariitem->firmaadi->firma_unvan }}</td>
+                                <td>{{ $odemeplanlariitem->vade_tarih }}</td>
+                                <td>{{ number_format($odemeplanlariitem->odeme_tutar , 2, ',', '.')}} ₺</td>
 
                                 <td>
-                                    @if ($tahsilatplanitem->durum == 'Edildi')
-                                    <span class="badge bg-success">Tahsil Edildi</span>
+                                    @if ($odemeplanlariitem->durum == 'Yapıldı')
+                                    <span class="badge bg-success">Ödeme Yapıldı</span>
 
                                     @else
-                                    <span class="badge bg-danger">Tahsil Edilmedi</span>
+                                    <span class="badge bg-danger">Ödeme Yapılmadı</span>
 
                                     @endif
                                 </td>
 
-                                <td>{{ $tahsilatplanitem->aciklama }}</td>
+                                <td>{{ $odemeplanlariitem->aciklama }}</td>
 
                                 <td class="text-right">
                                     <div class="databutton">
                                         <div class="d-flex align-items-center fs-6">
                                             <button class="text-warning" data-bs-toggle="modal"
-                                            data-bs-target="#tahsilatplanupdateModal-{{ $tahsilatplanitem->id }}"><i
+                                            data-bs-target="#odemeplanlariupdateModal-{{ $odemeplanlariitem->id }}"><i
                                                 class="bi bi-pencil-fill"></i></button>
-                                        @include('admin.contents.tahsilatplan.tahsilatplan-update')
-                                            <form action="{{ route('tahsilatplan.destroy', ['tahsilatplan' => $tahsilatplanitem->id]) }}"
+                                        {{-- @include('admin.contents.odemeplanlari.odemeplanlari-update') --}}
+                                            <form action="{{ route('odemeplanlari.destroy', ['odemeplanlari' => $odemeplanlariitem->id]) }}"
                                                 method="POST" style="display: inline;">
                                                 @csrf
                                                 @method('DELETE')
@@ -189,7 +189,7 @@
         </div>
 
         <div class="col-sm-4 col-md-5 " style=" float: right; margin-top: 20px; ">
-            {{ $tahsilatplan->appends(['entries' => $perPage])->links() }}
+            {{ $odemeplanlari->appends(['entries' => $perPage])->links() }}
         </div>
     </div>
 </div>
@@ -230,7 +230,7 @@
           },
           cache: true
         },
-        dropdownParent: $('#tahsilatplaneklemodal'), // Modal ID'sini burada belirtin
+        dropdownParent: $('#odemeplanlarieklemodal'), // Modal ID'sini burada belirtin
         language: {
           inputTooShort: function() { return "Lütfen en az 3 karakter girin."; },
           noResults: function() { return "Sonuç bulunamadı."; }
