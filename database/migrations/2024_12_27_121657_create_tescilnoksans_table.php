@@ -1,0 +1,46 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('tescilnoksans', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('islem_yapan')->nullable();
+            $table->foreign('islem_yapan')->references('id')->on('users')->onDelete('cascade');
+            $table->date('islem_tarihi')->nullable();
+
+            $table->unsignedBigInteger('markatakip_id')->nullable();
+            $table->foreign('markatakip_id')->references('id')->on('markatakips')->onDelete('cascade');
+            $table->string('marka_adi')->nullable();
+            $table->string('firma_adi')->nullable();
+            $table->string('referans_no')->nullable();
+            $table->string('musteri_temsilcisi')->nullable();
+            $table->string('satis_temsilcisi')->nullable();
+            $table->date('teblig_tarihi')->nullable();
+            $table->date('teblig_bitis_tarihi')->nullable();
+            $table->string('tn_durum')->nullable();
+
+            $table->longText('tn_dosya')->nullable();
+            $table->longText('tn_aciklama')->nullable();
+
+            $table->softDeletes();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('tescilnoksans');
+    }
+};
