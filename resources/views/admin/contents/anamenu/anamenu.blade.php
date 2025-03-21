@@ -111,7 +111,7 @@
         <div class="card-header py-3">
             <div class="row g-3 d-flex align-items-center">
                 <div class="col-12 col-lg-4 col-md-6 me-auto">
-                    <h5 class="mb-1">Modüller</h5>
+                    <h5 class="mb-1">Modüller 2</h5>
                 </div>
                 <div class="col-12 col-lg-3 col-6 col-md-3 d-flex">
 
