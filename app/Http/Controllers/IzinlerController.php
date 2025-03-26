@@ -16,6 +16,34 @@ class IzinlerController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function izinlersearch(Request $request)
+    {
+        $izinlersearch = $request->input('izinlersearch');
+
+        // Eğer arama yapılmışsa filtre uygula, yoksa tüm verileri çek
+        $izinler = Izinler::orderByDesc('id')
+        ->when(!empty($izinlersearch), function ($query) use ($izinlersearch) {
+            $query->whereHas('personel', function ($subQuery) use ($izinlersearch) {
+                $subQuery->where('ad_soyad', 'like', '%' . $izinlersearch . '%')->orwhere('izin_turu', 'like', '%' . $izinlersearch . '%');
+            });
+        })
+        ->paginate(50);
+
+
+        // Sayfa numarasını hesapla
+        $page = $request->query('page', 1);
+        $perPage = 50;
+        $startNumber = $izinler->total() - (($page - 1) * $perPage);
+
+
+        // AJAX isteği ise sadece arama sonuçlarını döndür
+        if ($request->ajax()) {
+            return view('admin.contents.izinler.izinler-search', compact('izinler', 'startNumber'));
+        }
+
+        // Normal sayfa için tüm veriyi döndür
+        return view('admin.contents.izinler.izinler', compact('izinler', 'startNumber'));
+    }
 
     public function index()
     {

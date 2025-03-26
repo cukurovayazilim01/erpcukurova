@@ -211,21 +211,25 @@ $groupedByTip = $group->groupBy('arama_tipi');
                             <div class="col-md-6">
                                 @php
                                     // Veriyi arama_tipi'ye göre gruplama ve her grup için islem_yapan sayısını hesaplama
-$groupedData = $aramarapor->groupBy('arama_tipi');
-// Personel bazında toplam arama sayısını hesaplamak için bir dizi oluşturuyoruz
-$personelToplam = [];
-foreach ($groupedData as $aramaTipi => $aramaGrubu) {
-    foreach ($aramaGrubu->groupBy('islem_yapan') as $personelId => $grouped) {
-        // Personel bilgilerini ilişkili modelden alıyoruz
-        $personel = \App\Models\User::find($personelId);
-        $personelToplam[$personelId]['ad_soyad'] = $personel
-            ? $personel->ad_soyad
-            : 'Bilinmiyor';
-        $personelToplam[$personelId]['arama_tipi'][$aramaTipi] = $grouped->count();
-        if (!isset($personelToplam[$personelId]['toplam_arama'])) {
-            $personelToplam[$personelId]['toplam_arama'] = 0;
-        }
-        $personelToplam[$personelId]['toplam_arama'] += $grouped->count();
+                                    $groupedData = $aramarapor->groupBy('arama_tipi');
+
+                                    // Personel bazında toplam arama sayısını hesaplamak için bir dizi oluşturuyoruz
+                                    $personelToplam = [];
+                                    $anaToplam = 0; // Ana toplam değişkeni
+
+                                    foreach ($groupedData as $aramaTipi => $aramaGrubu) {
+                                        foreach ($aramaGrubu->groupBy('islem_yapan') as $personelId => $grouped) {
+                                            // Personel bilgilerini ilişkili modelden alıyoruz
+                                            $personel = \App\Models\User::find($personelId);
+                                            $personelToplam[$personelId]['ad_soyad'] = $personel ? $personel->ad_soyad : 'Bilinmiyor';
+                                            $personelToplam[$personelId]['arama_tipi'][$aramaTipi] = $grouped->count();
+
+                                            if (!isset($personelToplam[$personelId]['toplam_arama'])) {
+                                                $personelToplam[$personelId]['toplam_arama'] = 0;
+                                            }
+
+                                            $personelToplam[$personelId]['toplam_arama'] += $grouped->count();
+                                            $anaToplam += $grouped->count(); // Ana toplamı hesapla
                                         }
                                     }
                                 @endphp
@@ -247,7 +251,8 @@ foreach ($groupedData as $aramaTipi => $aramaGrubu) {
                                                     @if ($loop->first)
                                                         <!-- Personel adı sadece ilk satırda yazdırılacak -->
                                                         <td rowspan="{{ count($personelData['arama_tipi']) }}">
-                                                            {{ $personelData['ad_soyad'] }}</td>
+                                                            {{ $personelData['ad_soyad'] }}
+                                                        </td>
                                                     @endif
                                                     <td>{{ $aramaTipi }}</td>
                                                     <td>{{ $aramaSayisi }}</td>
@@ -260,9 +265,16 @@ foreach ($groupedData as $aramaTipi => $aramaGrubu) {
                                                 <td><strong>{{ $personelData['toplam_arama'] }}</strong></td>
                                             </tr>
                                         @endforeach
+                                        <!-- Ana toplam satırı -->
+                                        <tr>
+                                            <td></td>
+                                            <td><strong>Ana Toplam:</strong></td>
+                                            <td><strong>{{ $anaToplam }}</strong></td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
+
                             <div class="col-md-6">
                                 @php
                                     // Veriyi hizmet_turu'na göre gruplama ve her grup için toplam arama sayısını hesaplama

@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('egitim_yeri')->nullable();
             $table->longText('egitim_dosya')->nullable();
             $table->longText('egitim_sonucu')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

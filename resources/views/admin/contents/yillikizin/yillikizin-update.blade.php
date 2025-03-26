@@ -1,7 +1,7 @@
    <!-- Modal -->
    <div class="modal fade" id="yillikizinupdateModal-{{ $yillikizinitem->id }}" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg">
-        <form action="{{ route('personell.update', ['personell' => $yillikizinitem->id]) }}" method="POST"
+        <form action="{{ route('yillikizin.update',['yillikizin' => $yillikizinitem->id]) }}" method="POST"
             enctype="multipart/form-data">
             @csrf
             @method('put')
@@ -80,7 +80,7 @@
                                     </span>
                                     <input type="text" name="izin_gun" id="izin_gun" value="{{$yillikizinitem->izin_gun}}"
                                         class="form-control form-control-sm" style="pointer-events: none; cursor: not-allowed"
-                                        onkeydown="return false;" readonly required required>
+                                        onkeydown="return false;" readonly required >
                                 </div>
                             </div>
 

@@ -8,7 +8,7 @@ use App\Models\Kasahrkt;
 use App\Models\Kasalar;
 use App\Models\User;
 use App\Models\Virman;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 

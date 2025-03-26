@@ -666,7 +666,7 @@
                                                                     <i class="fa-solid fa-user"></i>
                                                                 </span>
                                                                 <input type="text" name="yetkili_isim"
-                                                                    id="yetkili_isim"
+                                                                    id="yetkili_isim" oninput="this.value = this.value.toUpperCase()"
                                                                     class="form-control form-control-sm" required>
                                                             </div>
                                                         </div>

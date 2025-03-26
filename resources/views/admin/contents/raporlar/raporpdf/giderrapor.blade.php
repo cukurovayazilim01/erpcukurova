@@ -110,7 +110,7 @@ Invoice Area
                                     <h1 class="big-title">Gider Rapor</h1>
                                     <p class="invoice-number"><b>Rapor Tarihi: </b>{{ $islem_tarihi }}</p>
                                     {{-- <p class="invoice-number"><b>satis No: </b>#935648</p> --}}
-                                    <p class="invoice-number"><b>Fatura Tarihi: </b></p>
+                                    <p class="invoice-number"><b>Rapor No: </b></p>
                                 </div>
                             </div>
                         </header>
@@ -149,6 +149,32 @@ Invoice Area
                             </div>
                         </div>
                         <hr class="style1">
+
+
+                        <p class="table-title text-center"><b>En Çok Alış Yapılan 5 Firma:</b></p>
+                        <table class="invoice-table table-stripe4 theme-color">
+                            <thead>
+                                <tr>
+                                    <th style="width: 15px;  text-align: center;">#</th>
+                                    <th>Firma Adı</th>
+                                    <th>Toplam Alış Tutar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($enCokAlisFirmalari as $sn => $enCokAlisFirmalariitem)
+                                    <tr>
+                                        <td style=" text-align: center;"><strong>{{ $sn + 1 }}</strong></td>
+                                        <td style=" text-align: center;"><a
+                                                href="{{ url('cariler/' . $enCokAlisFirmalariitem->cari_id) }}" target="_blank">{{ $enCokAlisFirmalariitem->firma_unvan }}</a>
+                                        </td>
+                                        <td style=" text-align: center;">
+                                            {{ number_format($enCokAlisFirmalariitem->toplam_alis, 2, ',', '.') }} ₺
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+
                         <p class="table-title text-center"><b>Rapor:</b></p>
                         @php
                             $odeme_toplam = 0;
@@ -226,45 +252,7 @@ Invoice Area
                             </div>
                         </div>
 
-                        <p class="table-title text-center mt-35"><b>En Çok Alış Yapılan 5 Firma:</b></p>
-                        <table class="invoice-table table-stripe4 theme-color">
-                            <thead>
-                                <tr>
-                                    <th style="width: 15px;  text-align: center;">#</th>
-                                    <th>Firma Adı</th>
-                                    <th>Toplam Alış Tutar</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($enCokAlisFirmalari as $sn => $enCokAlisFirmalariitem)
-                                    <tr>
-                                        <td style=" text-align: center;"><strong>{{ $sn + 1 }}</strong></td>
-                                        <td style=" text-align: center;"><a
-                                                href="{{ url('cariler/' . $enCokAlisFirmalariitem->cari_id) }}" target="_blank">{{ $enCokAlisFirmalariitem->firma_unvan }}</a>
-                                        </td>
-                                        <td style=" text-align: center;">
-                                            {{ number_format($enCokAlisFirmalariitem->toplam_alis, 2, ',', '.') }} ₺
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
 
-                        <div class="row pt-15">
-                            <div class="col-md-12">
-                                <p style="text-align: center">Adres: Sümer Mahallesi Bülent Angın Bulvarı 69051 Sokak
-                                    Hatice Hatun Apartmanı No:1 (Denizbank Üstü) 0322 225 8233 <br> Adres: Kavaslı
-                                    Mahallesi Atatürk Bulvarı Ahmet Gürses Apt. No:81/9 Tel: 444 8 148
-                                    Antakya/Hatay/Türkiye
-                                    <br> Adres: İstanbul Cad. No:5 Pelin İş Merkezi Kat:4 No:121 ( Nimet Abla Gişesi
-                                    Üstü ) Tel: 444 8 148 Bakırköy - İstanbul Banka Hesap No: Adana Barajyolu İşbank
-                                    Şubesi: TR030006400000160130862216 İş Bankası Esenler
-                                    Şubesi:TR700006400000110980696588
-                                    <br> Web: www.cukurovapatent.com / info@cukurovapatent.com /
-                                    adana@cukurovapatent.com / istanbul@cukurovapatent.com
-                                </p>
-                            </div>
-                        </div>
 
 
                         <div class="body-shape1">

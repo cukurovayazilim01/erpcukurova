@@ -990,7 +990,7 @@
                                         <span class="icon">
                                             <i class="fa-solid fa-city"></i>
                                         </span>
-                                        <select name="il" id="il" class="form-select form-select-sm"
+                                        <select name="il" id="firma_il" class="form-select form-select-sm"
                                              onchange="firma_ilceListele()">
                                             <option value="">İl Seçin</option>
 

@@ -102,6 +102,7 @@
                         data-url="{{ route('yillikizin.show', ['yillikizin' => 1]) }}">
                         Yıllık İzin Planı
                      </a>
+
                         {{-- <button type="button" class="btn btn-sm btn-outline-primary px-5 ms-2"
                             style="margin-left: 10px" data-bs-toggle="modal" data-bs-target="#yillikizinPlani">
                             <i class="fa-solid fa-plus"></i> Yıllık İzin Planı
@@ -123,8 +124,12 @@
                     </div>
                     <!-- Yeni Ekle and Action Buttons -->
                     <div class="col-md-8 text-end" style="display: flex; justify-content: flex-end  ">
-
-
+                        {{-- <form id="searchForm" action="{{ route('yillikizinsearch') }}"  method="GET">
+                            <div class="ms-auto position-relative">
+                                <div class="position-absolute top-50 translate-middle-y search-icon fs-5 px-3"><i class="bi bi-search"></i></div>
+                                <input class="form-control ps-5" id="searchInput" type="text" placeholder="Genel Arama">
+                              </div>
+                            </form> --}}
                         <div class="table-buttons">
                             <button class="btn btn-primary" id="copyBtn"><i class="fa fa-copy"></i> </button>
                             <button class="btn btn-success" id="excelBtn"><i class="fa fa-file-excel"></i> </button>
@@ -426,7 +431,7 @@
                     <div id="example_wrapper" class="dataTables_wrapper dt-bootstrap5">
                         <div class="row">
 
-                            {{--
+
                             <form id="searchForm" action="{{ route('yillikizinsearch') }}" method="GET">
                                 @csrf
                                 <div class="ms-auto position-relative" style="margin-bottom: 10px">
@@ -440,7 +445,7 @@
                                         style="border: 1px solid blue; height: 38px;"
                                         placeholder="Lütfen Arama Terimi Giriniz">
                                 </div>
-                            </form> --}}
+                            </form>
 
 
                         </div>
@@ -539,6 +544,47 @@
 
 {{-- SEARCHHHH  --}}
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('searchForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('#searchInput').on('input', function(event) {
+            var searchValue = $(this).val();
+
+            if (searchValue.trim() === '') {
+                // Eğer input boşsa, tüm veriyi yükle
+                $.ajax({
+                    url: '{{ route('yillikizinsearch') }}',
+                    method: 'GET',
+                    data: {
+                        yillikizinsearch: ''
+                    }, // Arama değeri boş olduğunda tüm veriyi yükle
+                    success: function(response) {
+                        // Tüm veriyi (tbody) güncelle
+                        $('#example2 tbody').html(response);
+                    }
+                });
+            } else {
+                $.ajax({
+                    url: '{{ route('yillikizinsearch') }}',
+                    method: 'GET',
+                    data: {
+                        yillikizinsearch: searchValue
+                    }, // Arama değeri
+                    success: function(response) {
+                        // Sadece tbody kısmını güncelle
+                        $('#example2 tbody').html(response);
+                    }
+                });
+            }
+        });
+    });
+</script>
 <script>
     $(document).ready(function () {
     $('.personel_id, .yili').change(function () {

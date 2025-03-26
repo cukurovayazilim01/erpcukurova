@@ -13,9 +13,7 @@ return new class extends Migration
     {
         Schema::create('satislardatas', function (Blueprint $table) {
             $table->id();
-            $table->longText('islem_tarihi')->nullable();
-            $table->unsignedBigInteger('islem_yapan')->nullable();
-            $table->foreign('islem_yapan')->references('id')->on('users')->onDelete('cascade');
+
 
             $table->unsignedBigInteger('satis_id')->nullable();
             $table->foreign('satis_id')->references('id')->on('satislars')->onDelete('cascade');
