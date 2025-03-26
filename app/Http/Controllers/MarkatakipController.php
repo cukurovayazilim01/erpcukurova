@@ -9,7 +9,7 @@ use App\Models\Itiraztakip;
 use App\Models\Markatakip;
 use App\Models\Tescilnoksan;
 use App\Models\User;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Http\Request;

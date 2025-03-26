@@ -135,33 +135,36 @@ class StarterSeeder extends Seeder
 
 
         $faker = Faker::create();
+        $numaralar = ['5436854151', '5302896162', '5530572633'];
 
-        DB::table('carilers')->insert([
-            'islem_yapan' => 1, // Varsayılan kullanıcı ID'si
-            'islem_tarihi' => now(),
-            'son_guncelleyen' => 1, // Varsayılan güncelleyen kullanıcı ID'si
-            'firma_unvan' => 'Örnek Şirket A.Ş.',
-            'ticari_unvan' => 'Örnek Ticaret',
-            'firma_sektor' => 'Bilişim',
-            'is_tel' => $faker->phoneNumber,
-            'yetkili_kisi' => $faker->name,
-            'yetkili_kisi_tel' => $faker->phoneNumber,
-            'eposta' => $faker->email,
-            'web_adres' => $faker->url,
-            'firma_turu' => 'Limited Şirket',
-            'il' => $faker->city,
-            'ilce' => $faker->citySuffix,
-            'vergi_no' => $faker->randomNumber(9, true),
-            'vergi_dairesi' => 'Örnek Vergi Dairesi',
-            'tc_kimlik' => $faker->randomNumber(9, true),
-            'adres' => $faker->address,
-            'aciklama' => 'Örnek açıklama metni',
-            'musteri_temsilcisi' => $faker->name,
-            'firma_tipi' => 'Müşteri',
-            'firma_durumu' => 'Aktif',
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
+        for ($i = 0; $i < 3; $i++) {
+            DB::table('carilers')->insert([
+                'islem_yapan' => 1,
+                'islem_tarihi' => now(),
+                'son_guncelleyen' => 1,
+                'firma_unvan' => $faker->company,
+                'ticari_unvan' => $faker->companySuffix,
+                'firma_sektor' => 'Bilişim',
+                'is_tel' => $faker->phoneNumber,
+                'yetkili_kisi' => $faker->name,
+                'yetkili_kisi_tel' => ($i % 3 === 0) ? $numaralar[($i / 3) % 3] : $faker->phoneNumber, // Her 3 kayıtta bir özel numaraları atar
+                'eposta' => $faker->email,
+                'web_adres' => $faker->url,
+                'firma_turu' => 'Limited Şirket',
+                'il' => $faker->city,
+                'ilce' => $faker->citySuffix,
+                'vergi_no' => $faker->randomNumber(9, true),
+                'vergi_dairesi' => 'Örnek Vergi Dairesi',
+                'tc_kimlik' => $faker->randomNumber(9, true),
+                'adres' => $faker->address,
+                'aciklama' => 'Örnek açıklama metni',
+                'musteri_temsilcisi' => $faker->name,
+                'firma_tipi' => 'Müşteri',
+                'firma_durumu' => 'Aktif',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+        }
 
 
 

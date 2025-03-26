@@ -9,7 +9,7 @@ use App\Models\Poegitim;
 use App\Models\User;
 use App\Models\Zimmet;
 use App\Models\Zimmetdata;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -87,6 +87,61 @@ class PersonelController extends Controller
     //     return redirect('personell')->with('success', 'Silme Başarılı');
 
     // }
+    public function personelozluksearch(Request $request)
+    {
+        $personelozluksearch = $request->input('personelozluksearch');
+
+        // Eğer arama yapılmışsa filtre uygula, yoksa tüm verileri çek
+        $personel = Personel::orderByDesc('id')
+            ->when(!empty($personelozluksearch), function ($query) use ($personelozluksearch) {
+                $query->where('ad_soyad', 'like', '%' . $personelozluksearch . '%')->orwhere('meslegi', 'like', '%' . $personelozluksearch . '%')->orwhere('ev_adresi', 'like', '%' . $personelozluksearch . '%')
+                ->orwhere('beden', 'like', '%' . $personelozluksearch . '%')->orwhere('ayak_no', 'like', '%' . $personelozluksearch . '%')->orwhere('kan_grubu', 'like', '%' . $personelozluksearch . '%')->orwhere('gorevi', 'like', '%' . $personelozluksearch . '%')
+                ->orwhere('mezuniyet', 'like', '%' . $personelozluksearch . '%');
+            })
+            ->paginate(50);
+
+        // Sayfa numarasını hesapla
+        $page = $request->query('page', 1);
+        $perPage = 50;
+        $startNumber = $personel->total() - (($page - 1) * $perPage);
+
+
+        // AJAX isteği ise sadece arama sonuçlarını döndür
+        if ($request->ajax()) {
+            return view('admin.contents.personel.personel-search', compact('personel', 'startNumber'));
+        }
+
+        // Normal sayfa için tüm veriyi döndür
+        return view('admin.contents.personel.personel', compact('personel', 'startNumber'));
+    }
+
+    public function personelsearch(Request $request)
+    {
+        $personelsearch = $request->input('personelsearch');
+
+        // Eğer arama yapılmışsa filtre uygula, yoksa tüm verileri çek
+        $personel = Personel::orderByDesc('id')
+            ->when(!empty($personelsearch), function ($query) use ($personelsearch) {
+                $query->where('ad_soyad', 'like', '%' . $personelsearch . '%')->orwhere('meslegi', 'like', '%' . $personelsearch . '%')->orwhere('ev_adresi', 'like', '%' . $personelsearch . '%')
+                ->orwhere('beden', 'like', '%' . $personelsearch . '%')->orwhere('ayak_no', 'like', '%' . $personelsearch . '%')->orwhere('kan_grubu', 'like', '%' . $personelsearch . '%')->orwhere('gorevi', 'like', '%' . $personelsearch . '%')
+                ->orwhere('mezuniyet', 'like', '%' . $personelsearch . '%');
+            })
+            ->paginate(50);
+
+        // Sayfa numarasını hesapla
+        $page = $request->query('page', 1);
+        $perPage = 50;
+        $startNumber = $personel->total() - (($page - 1) * $perPage);
+
+
+        // AJAX isteği ise sadece arama sonuçlarını döndür
+        if ($request->ajax()) {
+            return view('admin.contents.personel.personellistesi-search', compact('personel', 'startNumber'));
+        }
+
+        // Normal sayfa için tüm veriyi döndür
+        return view('admin.contents.personel.personellistesi', compact('personel', 'startNumber'));
+    }
     public function personellistesi()
     {
         $personel = Personel::all();

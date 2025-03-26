@@ -32,28 +32,15 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
-            $table->unsignedBigInteger('hizmetlerkategori_id')->nullable();
-            $table->foreign('hizmetlerkategori_id')->references('id')->on('hizmetlerkategoris')->onDelete('cascade');
 
-            $table->unsignedBigInteger('hizmet_id')->nullable();
-            $table->foreign('hizmet_id')->references('id')->on('hizmetlers')->onDelete('cascade');
 
             $table->longText('satis_konu')->nullable();
             $table->longText('satis_aciklama')->nullable();
             $table->longText('aciklama')->nullable();
-            $table->longText('satis_hizmet_miktar')->nullable();
-            $table->double('satis_fiyat', 15, 2)->nullable();
-            $table->longText('satis_hizmet_birim')->nullable();
-            $table->double('hizmet_maliyet', 15, 2)->nullable();
-            $table->double('maliyet_toplam_fiyat', 15, 2)->nullable();
-            $table->double('satis_kdv_tutar', 15, 2)->nullable();
 
 
 
-            $table->double('satis_kdv_oran', 15, 2)->nullable();
-            $table->double('satis_kdvsiz_fiyat', 15, 2)->nullable();
-            $table->double('satis_iskonto', 15, 2)->nullable();
-            $table->double('satis_toplam_fiyat', 15, 2)->nullable();
+
 
             $table->double('satis_iskonto_toplam', 15, 2)->nullable();
             $table->double('satis_kdv_toplam', 15, 2)->nullable();

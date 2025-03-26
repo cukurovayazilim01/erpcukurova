@@ -10,9 +10,9 @@ use App\Models\Firmahrkt;
 use App\Models\Gider;
 use App\Models\Giderkategori;
 use App\Models\User;
-use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AlislarController extends Controller
 {

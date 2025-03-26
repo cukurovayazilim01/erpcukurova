@@ -44,6 +44,12 @@
 
             <!-- Yeni Ekle and Action Buttons -->
             <div class="col-md-12 text-end" style="display: flex; justify-content: flex-end  ">
+                <form id="searchForm" action="{{ route('izinlersearch') }}"  method="GET">
+                    <div class="ms-auto position-relative">
+                        <div class="position-absolute top-50 translate-middle-y search-icon fs-5 px-3"><i class="bi bi-search"></i></div>
+                        <input class="form-control ps-5" id="searchInput" type="text" placeholder="Genel Arama">
+                      </div>
+                    </form>
                 <div class="table-buttons">
                     <button class="btn btn-primary" id="copyBtn"><i class="fa fa-copy"></i> </button>
                     <button class="btn btn-success" id="excelBtn"><i class="fa fa-file-excel"></i> </button>
@@ -274,6 +280,48 @@
 
 {{-- SEARCHHHH  --}}
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('searchForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('#searchInput').on('input', function(event) {
+            var searchValue = $(this).val();
+
+            if (searchValue.trim() === '') {
+                // Eğer input boşsa, tüm veriyi yükle
+                $.ajax({
+                    url: '{{ route('izinlersearch') }}',
+                    method: 'GET',
+                    data: {
+                        izinlersearch: ''
+                    }, // Arama değeri boş olduğunda tüm veriyi yükle
+                    success: function(response) {
+                        // Tüm veriyi (tbody) güncelle
+                        $('#example2 tbody').html(response);
+                    }
+                });
+            } else {
+                $.ajax({
+                    url: '{{ route('izinlersearch') }}',
+                    method: 'GET',
+                    data: {
+                        izinlersearch: searchValue
+                    }, // Arama değeri
+                    success: function(response) {
+                        // Sadece tbody kısmını güncelle
+                        $('#example2 tbody').html(response);
+                    }
+                });
+            }
+        });
+    });
+</script>
 <!-- JavaScript: DataTable Yapılandırma -->
 <script>
     $(document).ready(function() {
@@ -345,40 +393,7 @@
     });
 </script>
 
-{{-- <script>
-    $(document).ready(function() {
-        $('#searchInput').on('input', function(event) {
-            var searchValue = $(this).val();
 
-            if (searchValue.trim() === '') {
-                // Eğer input boşsa, tüm veriyi yükle
-                $.ajax({
-                    url: '{{ route('izinlersearch') }}',
-                    method: 'GET',
-                    data: {
-                        izinlersearch: ''
-                    }, // Arama değeri boş olduğunda tüm veriyi yükle
-                    success: function(response) {
-                        // Tüm veriyi (tbody) güncelle
-                        $('#example2 tbody').html(response);
-                    }
-                });
-            } else {
-                $.ajax({
-                    url: '{{ route('izinlersearch') }}',
-                    method: 'GET',
-                    data: {
-                        izinlersearch: searchValue
-                    }, // Arama değeri
-                    success: function(response) {
-                        // Sadece tbody kısmını güncelle
-                        $('#example2 tbody').html(response);
-                    }
-                });
-            }
-        });
-    });
-</script> --}}
 <script>
     $(document).ready(function() {
         $('#cari_id_3_3').on('change', function() {

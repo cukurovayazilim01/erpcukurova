@@ -168,7 +168,11 @@
                                             <button class="text-warning" data-bs-toggle="modal"
                                             data-bs-target="#odemeplanlariupdateModal-{{ $odemeplanlariitem->id }}"><i
                                                 class="bi bi-pencil-fill"></i></button>
-                                        {{-- @include('admin.contents.odemeplanlari.odemeplanlari-update') --}}
+
+                                      
+
+                                        @include('admin.contents.odemeplanlari.odemeplanlari-update')
+
                                             <form action="{{ route('odemeplanlari.destroy', ['odemeplanlari' => $odemeplanlariitem->id]) }}"
                                                 method="POST" style="display: inline;">
                                                 @csrf

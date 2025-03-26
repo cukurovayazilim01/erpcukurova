@@ -17,7 +17,7 @@ class OdemeplanlariController extends Controller
     {
         $perPage = $request->input('entries', 20);
 
-        $odemeplanlari = Odemeplanlari::orderBy('created_at', 'desc')->paginate($perPage);
+        $odemeplanlari = Odemeplanlari::orderBy('vade_tarih', 'asc')->paginate($perPage);
         $page = $odemeplanlari->currentPage();
         $startNumber = $odemeplanlari->total() - (($page - 1) * $perPage);
         $user = User::all();

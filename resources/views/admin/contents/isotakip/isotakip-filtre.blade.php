@@ -183,90 +183,222 @@
     </div>
 
 
-    <!--FİLTRELEME Modal -->
-    <div class="modal fade" id="isotakipfilmodal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
-        <form id="add-form" action="#" method="GET">
-            @csrf
-            <div class="modal-content">
-                <!-- Modal Header -->
-                <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title">ISO Filtreleme Ekranı</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
+     <!--FİLTRELEME Modal -->
+     <div class="modal fade" id="isotakipfilmodal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <form id="add-form" action="{{ route('isotakipfiltre.index') }}" method="GET">
+                @csrf
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header bg-primary text-white">
+                        <h5 class="modal-title">ISO Filtreleme Ekranı</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
 
-                <!-- Modal Body -->
-                <div class="modal-body" style="display: flex">
-                    <!-- Left Side -->
-                    <div class="col-md-12" style=" padding: 3%; ">
-                        <div class="row">
-                            <div class="col-md-12 select2-sm">
-                                <label for="cari_id_3">Firma</label>
-                                <select name="cari_id_3" id="cari_id_3_1"
-                                    style="border: none; width: 100%; height: 10px; outline: none; appearance: none; background-color: transparent; padding: 2px 0;">
-                                    <!-- Dinamik veriler buraya yüklenecek -->
-                                </select>
-                            </div>
-                            <div class="col-md-12">
-                                <label for="satis_temsilcisi">Satış Temsilcisi</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
-                                        <i class="fa fa-user"></i>
-                                    </span>
-                                    <select name="satis_temsilcisi" id="satis_temsilcisi" class="form-select form-select-sm" >
-                                        <option value="">Lütfen Seçim Yapınız</option>
-                                        @foreach ($user as $useritem)
-                                            <option value="{{ $useritem->id }}">{{ $useritem->ad_soyad }}
-                                            </option>
-                                        @endforeach
+                    <!-- Modal Body -->
+                    <div class="modal-body" style="display: flex">
+                        <!-- Left Side -->
+                        <div class="col-md-12" style=" padding: 3%; ">
+                            <div class="row">
+                                <div class="col-md-12 select2-sm">
+                                    <label for="cari_id_3">Firma</label>
+                                    <select name="cari_id_3" id="cari_id_3_1"
+                                        style="border: none; width: 100%; height: 10px; outline: none; appearance: none; background-color: transparent; padding: 2px 0;">
+                                        <!-- Dinamik veriler buraya yüklenecek -->
                                     </select>
                                 </div>
-                            </div>
-                            <div class="col-md-12">
-                                <label for="sehir">Şehir</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
-                                        <i class="fa fa-city"></i>
-                                    </span>
-                                    <input type="text" name="sehir" id=""
-                                        class="form-control form-control-sm">
+                                <div class="col-md-12">
+                                    <label for="satis_temsilcisi">Satış Temsilcisi</label>
+                                    <div class="form-group input-with-icon">
+                                        <span class="icon">
+                                            <i class="fa fa-user"></i>
+                                        </span>
+                                        <select name="satis_temsilcisi" id="satis_temsilcisi"
+                                            class="form-select form-select-sm">
+                                            <option value="">Lütfen Seçim Yapınız</option>
+                                            @foreach ($user as $useritem)
+                                                <option value="{{ $useritem->id }}">{{ $useritem->ad_soyad }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
+                                {{-- <div class="col-md-12">
+                                    <label for="sehir">Şehir</label>
+                                    <div class="form-group input-with-icon">
+                                        <span class="icon">
+                                            <i class="fa fa-city"></i>
+                                        </span>
+                                        <input type="text" name="sehir" id=""
+                                            class="form-control form-control-sm">
+                                    </div>
+                                </div> --}}
+                                <div class="col-md-12">
+                                    <label for="il">İl</label>
+                                    <div class="form-group input-with-icon">
+                                        <span class="icon">
+                                            <i class="fa-solid fa-city"></i>
+                                        </span>
+                                        <select name="sehir" id="firma_il" class="form-select form-select-sm"
+                                             onchange="firma_ilceListele()">
+                                            <option value="">İl Seçin</option>
 
-                            <div class="col-md-6">
-                                <label for="ilk_tarih">Başvuru İlk Tarih</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
-                                        <i class="fa-solid fa-calendar-days"></i>
-                                    </span>
-                                    <input type="date" name="ilk_tarih" id="ilk_tarih"
-                                        class="form-control form-control-sm">
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="son_tarih">Başvuru Son Tarih</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
-                                        <i class="fa-solid fa-calendar-days"></i>
-                                    </span>
-                                    <input type="date" name="son_tarih" id="son_tarih"
-                                        class="form-control form-control-sm">
+                                <div class="col-md-12">
+                                    <label for="akreditasyon_kurulusu">Akreditasyon Kuruluşu</label>
+                                    <div class="form-group input-with-icon">
+                                        <span class="icon">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <select name="akreditasyon_kurulusu" id="akreditasyon_kurulusu"
+                                            class="form-select form-select-sm" >
+                                            <option value="">Lütfen Seçiniz</option>
+                                            <option value="TÜRKAK">TÜRKAK</option>
+                                            <option value="IAS">IAS</option>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
 
+                                <div class="col-md-12">
+                                    <label for="akreditasyon_kurulusu">Hizmet Adı</label>
+                                    <div class="form-group input-with-icon">
+                                        <span class="icon">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <select name="hizmet_adi" class="form-select form-select-sm">
+
+                                            <option value="">Hizmet Seçin</option>
+                                            <option value="Danışmanlık Hizmet Bedeli">Danışmanlık Hizmet Bedeli
+                                            </option>
+                                            <option value="SEDEX Belgelendirme">SEDEX Belgelendirme</option>
+                                            <option value="CE Belgelendirme Teknik Dosya Danışmanlık Hizmeti">CE
+                                                Belgelendirme Teknik Dosya Danışmanlık Hizmeti</option>
+                                            <option value="TSE Ürün Belgelendirme Danışmanlık Hizmeti">TSE Ürün
+                                                Belgelendirme Danışmanlık Hizmeti</option>
+                                            <option value="TSE Hizmet Yeri Belgelendirme Danışmanlık Hizmeti">TSE
+                                                Hizmet Yeri Belgelendirme Danışmanlık Hizmeti</option>
+                                            <option value="ISO 9001:2015 Kalite Yonetim Sistem Belgelendirme Hizmeti">
+                                                ISO 9001:2015 Kalite Yonetim Sistem Belgelendirme Hizmeti</option>
+                                            <option value="ISO 9001:2015 Kalite Yonetim Sistem Belge Yenileme Hizmeti">
+                                                ISO 9001:2015 Kalite Yonetim Sistem Belge Yenileme Hizmeti</option>
+                                            <option value="ISO 14001:2015 Çevre Yönetim Sistem Belgelendirme Hizmeti">
+                                                ISO 14001:2015 Çevre Yönetim Sistem Belgelendirme Hizmeti</option>
+                                            <option value="ISO 14001:2015 Çevre Yönetim Sistem Belge Yenileme Hizmeti">
+                                                ISO 14001:2015 Çevre Yönetim Sistem Belge Yenileme Hizmeti</option>
+                                            <option
+                                                value="ISO 45001:2018 İş Güvenliği Yönetim Sistemi Belgelendirme Hizmeti">
+                                                ISO 45001:2018 İş Güvenliği Yönetim Sistemi Belgelendirme Hizmeti
+                                            </option>
+                                            <option
+                                                value="ISO 45001:2018 İş Güvenliği Yönetim Sistem Belge Yenileme Hizmeti">
+                                                ISO 45001:2018 İş Güvenliği Yönetim Sistem Belge Yenileme Hizmeti
+                                            </option>
+                                            <option value="ISO 22000:2018 Gıda Güvenlik Sistem Belgelendirme Hizmeti">
+                                                ISO 22000:2018 Gıda Güvenlik Sistem Belgelendirme Hizmeti</option>
+                                            <option value="ISO 22000:2018 Gıda Güvenlik Sistem Belge Yenileme Hizmeti">
+                                                ISO 22000:2018 Gıda Güvenlik Sistem Belge Yenileme Hizmeti</option>
+                                            <option
+                                                value="ISO/IEC 27001, Bilgi Güvenliği Yönetimi Sistemi Belgelendirme Hizmeti">
+                                                ISO/IEC 27001, Bilgi Güvenliği Yönetimi Sistemi Belgelendirme Hizmeti
+                                            </option>
+                                            <option
+                                                value="ISO/IEC 27001, Bilgi Güvenliği Yönetimi Sistemi Yenileme Hizmeti">
+                                                ISO/IEC 27001, Bilgi Güvenliği Yönetimi Sistemi Yenileme Hizmeti
+                                            </option>
+                                            <option
+                                                value="ISO 10002:2018 Müşteri Memnuniyeti Yönetim Sistemi Belgelendirme Hizmeti">
+                                                ISO 10002:2018 Müşteri Memnuniyeti Yönetim Sistemi Belgelendirme Hizmeti
+                                            </option>
+                                            <option
+                                                value="ISO 10002:2018 Müşteri Memnuniyeti Yönetim Sistemi Belgelendirme Yenileme Hizmeti">
+                                                ISO 10002:2018 Müşteri Memnuniyeti Yönetim Sistemi Belgelendirme
+                                                Yenileme Hizmeti</option>
+                                            <option value="ISO 22716 Gmp Belgelendirme Hizmeti">ISO 22716 Gmp
+                                                Belgelendirme Hizmeti</option>
+                                            <option value="ISO 22716 GMP Belgelendirme Yıllık Yenileme Hizmeti">ISO
+                                                22716 GMP Belgelendirme Yıllık Yenileme Hizmeti</option>
+                                            <option value="ISO 50001:2011 Enerji Yönetim Sistem Belgelendirme Hizmeti">
+                                                ISO 50001:2011 Enerji Yönetim Sistem Belgelendirme Hizmeti</option>
+                                            <option value="ISO 13485 13485:2016 Tıbbi Cihazlar Kalite Yönetim Sistemi">
+                                                ISO 13485 13485:2016 Tıbbi Cihazlar Kalite Yönetim Sistemi</option>
+                                            <option value="ISO 3834-2 Kaynaklı İmalat Yönetim Sistemi">ISO 3834-2
+                                                Kaynaklı İmalat Yönetim Sistemi</option>
+                                            <option value="ISO 22301:2012 İş Sürekliliği Yönetim Sistemi Standardı">ISO
+                                                22301:2012 İş Sürekliliği Yönetim Sistemi Standardı</option>
+                                            <option value="ISO 20000-1:2018 Bilgi Teknolojisi Yönetim Sistemi Belgesi">
+                                                ISO 20000-1:2018 Bilgi Teknolojisi Yönetim Sistemi Belgesi</option>
+                                            <option value="Helal 22 Belgelendirme Hizmet Bedeli">Helal 22 Belgelendirme
+                                                Hizmet Bedeli</option>
+                                            <option value="ISO 9001:2015 KALİTE YÖNETİM SİSTEM DANIŞMANLIK HİZMETİ">ISO
+                                                9001:2015 KALİTE YÖNETİM SİSTEM DANIŞMANLIK HİZMETİ</option>
+                                            <option value="ISO 45001:2018 İŞ GÜVENLİĞİ YÖNETİM SİSTEM DANIŞMANLIĞI">ISO
+                                                45001:2018 İŞ GÜVENLİĞİ YÖNETİM SİSTEM DANIŞMANLIĞI</option>
+                                            <option value="ISO/IEC 17025">ISO/IEC 17025</option>
+                                            <option value="KOŞER">KOŞER</option>
+                                            <option value="ISO 18001:2007 İş Güvenliği Yönetim Sistem Belgesi">ISO
+                                                18001:2007 İş Güvenliği Yönetim Sistem Belgesi</option>
+                                            <option
+                                                value="ISO 45001:2018 İş Sağlığı ve Güvenliği Yönetim Sistemi Dokümantasyon Eğitimi">
+                                                ISO 45001:2018 İş Sağlığı ve Güvenliği Yönetim Sistemi Dokümantasyon
+                                                Eğitimi</option>
+                                            <option value="GDP İyi Dağıtım Uygulamaları">GDP İyi Dağıtım Uygulamaları
+                                            </option>
+                                        </select>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="belgelendirme_kurulusu">Belgelendirme Kuruluşu</label>
+                                    <div class="form-group input-with-icon">
+                                        <span class="icon">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <select name="belgelendirme_kurulusu" id="belgelendirme_kurulusu"
+                                            class="form-select form-select-sm" >
+                                            <option value="">Lütfen Seçiniz</option>
+                                            <option value="DSR BELGELENDİRME">DSR BELGELENDİRME</option>
+                                            <option value="PCA BELGELENDİRME">PCA BELGELENDİRME</option>
+                                            <option value="UDEM BELGELENDİRME">UDEM BELGELENDİRME</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="ilk_tarih">Başvuru İlk Tarih</label>
+                                    <div class="form-group input-with-icon">
+                                        <span class="icon">
+                                            <i class="fa-solid fa-calendar-days"></i>
+                                        </span>
+                                        <input type="date" name="ilk_tarih" id="ilk_tarih"
+                                            class="form-control form-control-sm">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="son_tarih">Başvuru Son Tarih</label>
+                                    <div class="form-group input-with-icon">
+                                        <span class="icon">
+                                            <i class="fa-solid fa-calendar-days"></i>
+                                        </span>
+                                        <input type="date" name="son_tarih" id="son_tarih"
+                                            class="form-control form-control-sm">
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
+                    <!-- Modal Footer -->
+                    <div class="modal-footer bg-light">
+                        <button type="button" class="btn btn-sm btn-outline-secondary"
+                            data-bs-dismiss="modal">Kapat</button>
+                        <button type="submit" id="submit-form"
+                            class="btn btn-outline-primary btn-sm ">Sorgula</button>
+                    </div>
                 </div>
-                <!-- Modal Footer -->
-                <div class="modal-footer bg-light">
-                    <button type="button" class="btn btn-sm btn-outline-secondary"
-                        data-bs-dismiss="modal">Kapat</button>
-                    <button type="submit" id="submit-form" class="btn btn-outline-primary btn-sm ">Sorgula</button>
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-</div>
     <!-- Modal -->
     <div class="modal fade" id="isotakipmodal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-xl">
@@ -592,6 +724,8 @@
                                 <th>#</th>
                                 <th>Referans No</th>
                                 <th>Belge Tarihi</th>
+                                <th>Ara Denetim Tarihi</th>
+                                <th>Belge Bitiş Tarihi</th>
                                 <th>Firma Ünvanı</th>
                                 <th>Hizmet Adı</th>
                                 <th>Akreditasyon Kuruluşu</th>
@@ -606,11 +740,13 @@
                         <tbody>
                             @foreach ($isotakip as $isotakipitem)
                                 <tr>
-                                    <td>{{ $startNumber - $loop->index }}</td>
+                                    <th>{{ $startNumber - $loop->index }}</th>
                                     <td>{{ $isotakipitem->basvuru_referans_no }}</td>
                                     <td>{{ $isotakipitem->belge_tarihi }}</td>
+                                    <td>{{ $isotakipitem->ara_denetim_tarihi }}</td>
+                                    <td>{{ $isotakipitem->belge_bitis_tarihi }}</td>
                                     <td>{{ $isotakipitem->firmaadi->firma_unvan }}</td>
-                                    <td>{{ $isotakipitem->hizmet_adi }}</td>
+                                    <td>{{ Str::limit($isotakipitem->hizmet_adi,30)  }}</td>
                                     <td>{{ $isotakipitem->akreditasyon_kurulusu }}</td>
                                     <td>{{ $isotakipitem->belgelendirme_kurulusu }}</td>
                                     <td>{{ $isotakipitem->kapsam }}</td>
@@ -628,7 +764,7 @@
                                                 </a>
                                             @endif
                                         @else
-                                            <span class="text-muted">Resim Yok</span>
+                                            <span class="text-muted">-</span>
                                         @endif
                                     </td>
                                     <td>
@@ -671,49 +807,8 @@
     </div>
 </div>
 
-{{-- <div id="printArea" style="display: none;">
-    <h1 style="text-align: center;">iso Takip Raporu</h1>
-    <table class="table table-bordered" style="width: 100%; border-collapse: collapse;">
-        <thead>
-            <tr style="background-color: #f8f9fa; text-align: left;">
-                <th>#</th>
-                <th>Referans No</th>
-                <th>Belge Tarihi</th>
-                <th>Firma Ünvanı</th>
-                <th>Hizmet Adı</th>
-                <th>Akreditasyon Kuruluşu</th>
-                <th>Belge Kuruluşu</th>
-                <th>Kapsam</th>
-                <th>Müşteri Temsilcisi</th>
-                <th>Durum</th>
-                <th>Aksiyon</th>
 
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($isotakip as $isotakipitem)
-                <tr>
-                    <td>{{ $startNumber - $loop->index }}</td>
-                    <td>{{ $isotakipitem->islem_tarihi }}</td>
-                    <td>{{ $isotakipitem->basvuru_tarihi }}</td>
-                    <td>{{ $isotakipitem->yenileme_tarih }}</td>
-                    <td>{{ $isotakipitem->referans_no }}</td>
-                    <td>{{ $isotakipitem->firmaadi->firma_unvan }}</td>
-                    <td>{{ $isotakipitem->firmaadi->yetkili_kisi_tel }}</td>
-                    <td>{{ $isotakipitem->iso_adi }}</td>
-                    <td>{{ $isotakipitem->iso_sinif }}</td>
-                    <td>{{ $isotakipitem->basvuru_no }}</td>
-                    <td>{{ $isotakipitem->hizmet->hizmet_ad }}</td>
-                    <td>{{ $isotakipitem->vkn }}</td>
-                    <td>{{ $isotakipitem->tc }}</td>
-                    <td>{{ $isotakipitem->sehir }}</td>
-                    <td>{{ $isotakipitem->iso_islem }}</td>
-                    <td>{{ $isotakipitem->iso_durum }}</td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-</div> --}}
+<script src="{{ asset('custom/customjs/city.js') }}"></script>
 
 <script>
     document.getElementById("belge_tarihi").addEventListener("change", function() {

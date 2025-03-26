@@ -174,62 +174,7 @@ Invoice Area
                                 </div>
                             </div>
                         </div>
-                        <hr class="style1">
-                        <p class="table-title text-center"><b>Rapor:</b></p>
-                        @php
-                            $satis_toplam = 0;
-                        @endphp
 
-                        <table class="invoice-table table-stripe4 theme-color">
-                            <thead>
-                                <tr>
-                                    <th style="width: 15px;  text-align: center;">#</th>
-                                    <th>No</th>
-                                    <th>Tarih</th>
-                                        @if (!$cari_id)
-                                    <th>Firma Adı</th>
-                                        @endif
-                                    <th>Satış Tutar</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($satisrapor as $sn => $satisraporitem)
-                                    <tr>
-                                        <td style=" text-align: center;"><strong>{{ $sn + 1 }}</strong></td>
-
-                                        <td style=" text-align: center;"> <a
-                                                href="{{ url('satislar/' . $satisraporitem->satis_id) }}">{{ $satisraporitem->satis->satis_kodu_text }}-{{ $satisraporitem->satis->satis_kodu }}</a>
-                                        </td>
-                                        <td style=" text-align: center;">{{ $satisraporitem->islem_tarihi }}</td>
-                                        @if (!$cari_id)
-                                        <td style=" text-align: center;">
-                                            {{ $satisraporitem->firmaadi->firma_unvan }}
-                                        </td>
-                                        @else
-
-                                        @endif
-                                        <td style=" text-align: center;">
-                                            {{ number_format($satisraporitem->satis->satis_kdvli_toplam, 2, ',', '.') }}
-                                            ₺</td>
-                                    </tr>
-                                    @php
-                                        $satis_toplam += $satisraporitem->satis->satis_kdvli_toplam;
-                                    @endphp
-                                @endforeach
-                            </tbody>
-                        </table>
-
-                        <div class="row mt-1" style="float: right;">
-                            <div class="col-md-12">
-                                <table class="total-table">
-
-                                    <tr>
-                                        <th>Toplam Satış Tutarı</th>
-                                        <td>{{ number_format($satis_toplam, 2, ',', '.') }} ₺</td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
                         @php
                         $personel_satislar = [];
                         $tum_personeller = [];
@@ -284,7 +229,7 @@ Invoice Area
                     @endphp
 
                     <div class="col-md-12">
-                        <p class="table-title text-center mt-35"><b>Teklif-Satış-Direkt Satış Raporu (Adet)</b></p>
+                        <p class="table-title text-center"><b>Teklif-Satış-Direkt Satış Raporu (Adet)</b></p>
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
@@ -381,22 +326,63 @@ Invoice Area
                                 @endforeach
                             </tbody>
                         </table>
+                        <p class="table-title text-center"><b>Rapor:</b></p>
+                        @php
+                            $satis_toplam = 0;
+                        @endphp
 
-                        <div class="row pt-15">
+                        <table class="invoice-table table-stripe4 theme-color">
+                            <thead>
+                                <tr>
+                                    <th style="width: 15px;  text-align: center;">#</th>
+                                    <th>No</th>
+                                    <th>Tarih</th>
+                                        @if (!$cari_id)
+                                    <th>Firma Adı</th>
+                                        @endif
+                                    <th>Satış Tutar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($satisrapor as $sn => $satisraporitem)
+                                    <tr>
+                                        <td style=" text-align: center;"><strong>{{ $sn + 1 }}</strong></td>
+
+                                        <td style=" text-align: center;"> <a
+                                                href="{{ url('satislar/' . $satisraporitem->satis_id) }}">{{ $satisraporitem->satis->satis_kodu_text }}-{{ $satisraporitem->satis->satis_kodu }}</a>
+                                        </td>
+                                        <td style=" text-align: center;">{{ $satisraporitem->islem_tarihi }}</td>
+                                        @if (!$cari_id)
+                                        <td style=" text-align: center;">
+                                            {{ $satisraporitem->firmaadi->firma_unvan }}
+                                        </td>
+                                        @else
+
+                                        @endif
+                                        <td style=" text-align: center;">
+                                            {{ number_format($satisraporitem->satis->satis_kdvli_toplam, 2, ',', '.') }}
+                                            ₺</td>
+                                    </tr>
+                                    @php
+                                        $satis_toplam += $satisraporitem->satis->satis_kdvli_toplam;
+                                    @endphp
+                                @endforeach
+                            </tbody>
+                        </table>
+
+                        <div class="row mt-1" style="float: right;">
                             <div class="col-md-12">
-                                <p style="text-align: center">Adres: Sümer Mahallesi Bülent Angın Bulvarı 69051 Sokak
-                                    Hatice Hatun Apartmanı No:1 (Denizbank Üstü) 0322 225 8233 <br> Adres: Kavaslı
-                                    Mahallesi Atatürk Bulvarı Ahmet Gürses Apt. No:81/9 Tel: 444 8 148
-                                    Antakya/Hatay/Türkiye
-                                    <br> Adres: İstanbul Cad. No:5 Pelin İş Merkezi Kat:4 No:121 ( Nimet Abla Gişesi
-                                    Üstü ) Tel: 444 8 148 Bakırköy - İstanbul Banka Hesap No: Adana Barajyolu İşbank
-                                    Şubesi: TR030006400000160130862216 İş Bankası Esenler
-                                    Şubesi:TR700006400000110980696588
-                                    <br> Web: www.cukurovapatent.com / info@cukurovapatent.com /
-                                    adana@cukurovapatent.com / istanbul@cukurovapatent.com
-                                </p>
+                                <table class="total-table">
+
+                                    <tr>
+                                        <th>Toplam Satış Tutarı</th>
+                                        <td>{{ number_format($satis_toplam, 2, ',', '.') }} ₺</td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
+
+
 
 
                         <div class="body-shape1">
@@ -497,7 +483,7 @@ Invoice Area
                             canvasImageHeight
                         );
                     }
-                    var pdfUrl = ' {{ $satisrapor->first()->firmaadi->firma_unvan }}-Satış-Raporu.pdf';
+                    var pdfUrl = '-Satış-Raporu.pdf';
                     pdf.save(pdfUrl);
                 });
             });

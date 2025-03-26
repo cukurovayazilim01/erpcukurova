@@ -58,13 +58,21 @@
                    </a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="index2.html">
+                  <a class="dropdown-item" href="{{route('toplusms.index')}}">
                      <div class="d-flex align-items-center">
                        <div class="setting-icon"><i class="bi bi-speedometer"></i></div>
-                       <div class="setting-text ms-3"><span>Dashboard</span></div>
+                       <div class="setting-text ms-3"><span>Toplu SMS</span></div>
                      </div>
                    </a>
                 </li>
+                <li>
+                    <a class="dropdown-item" href="{{route('toplumail.index')}}">
+                       <div class="d-flex align-items-center">
+                         <div class="setting-icon"><i class="bi bi-speedometer"></i></div>
+                         <div class="setting-text ms-3"><span>Toplu Mail</span></div>
+                       </div>
+                     </a>
+                  </li>
                 <li>
                   <a class="dropdown-item" href="{{route('aktiflog.index')}}">
                      <div class="d-flex align-items-center">
@@ -107,15 +115,20 @@
           </div>
           <ul class="nav nav-pills flex-column">
             <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="CRM" >
-              <button class="nav-link  {{ request()->is('anasayfa') || request()->is('anasayfa/*') ? 'active' : '' }} {{ request()->is('muhasebemenu') || request()->is('muhasebemenu/*') ? 'show active' : '' }} {{ request()->is('idariislermenu') || request()->is('idariislermenu/*') ? 'show active' : '' }} {{ request()->is('anamenu') || request()->is('anamenu/*') ? 'show active' : '' }}
+              <button class="nav-link  {{ request()->is('anasayfa') || request()->is('anasayfa/*') ? 'active' : '' }} {{ request()->is('toplusms') || request()->is('toplusms/*') ? 'active' : '' }} {{ request()->is('toplumail') || request()->is('toplumail/*') ? 'active' : '' }} {{ request()->is('muhasebemenu') || request()->is('muhasebemenu/*') ? 'show active' : '' }} {{ request()->is('idariislermenu') || request()->is('idariislermenu/*') ? 'show active' : '' }} {{ request()->is('anamenu') || request()->is('anamenu/*') ? 'show active' : '' }}
                                         {{ request()->is('entegrasyonmenu') || request()->is('entegrasyonmenu/*') ? 'active' : '' }} {{ request()->is('ikmenu') || request()->is('ikmenu/*') ? 'show active' : '' }} {{ request()->is('makinemenu') || request()->is('makinemenu/*') ? 'show active' : '' }}
                                         {{ request()->is('cariler') || request()->is('cariler/*') ? 'active' : '' }} {{ request()->is('tedarikciler') || request()->is('tedarikciler/*') ? 'active' : '' }}
                                          {{ request()->is('kontaklistesi') || request()->is('kontaklistesi/*') ? 'active' : '' }}
                                       {{ request()->is('gorusmelistesi') || request()->is('gorusmelistesi/*') ? 'active' : '' }} {{ request()->is('aktiflog') || request()->is('aktiflog/*') ? ' active' : '' }}
                                       {{ request()->is('teklifler') || request()->is('onaylananteklifler') || request()->is('onaylanmayanteklifler') || request()->is('bekleyenteklifler') || request()->is('teklifler/*') ? 'active' : '' }}
                                        {{ request()->is('hizmetler') || request()->is('hizmetler/*') ? 'active' : '' }} {{ request()->is('satisfisineaktar') || request()->is('satisfisineaktar/*') ? 'active' : '' }}
+
                                          {{ request()->is('hizmetlerkategori') || request()->is('hizmetlerkategori/*') ? 'active' : '' }}
                                           {{ request()->is('resmievraklarr') || request()->is('resmievraklarr/*') ? 'active' : '' }}" data-bs-toggle="pill" data-bs-target="#pills-dashboards" type="button"><i style="font-size:18px;" class="bi bi-house-door-fill"></i></button>
+
+                                         {{ request()->is('hizmetlerkategori') || request()->is('hizmetlerkategori/*') ? 'active' : '' }} {{ request()->is('pano') || request()->is('pano/*') ? 'active' : '' }}
+                                          {{ request()->is('resmievraklarr') || request()->is('resmievraklarr/*') ? 'active' : '' }}" data-bs-toggle="pill" data-bs-target="#pills-dashboards" type="button"><i class="bi bi-house-door-fill"></i></button>
+
             </li>
             <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="ÖN MUHASEBE">
               <button class="nav-link {{ request()->is('satislar') || request()->is('satislar/*') ? 'active' : '' }} {{ request()->is('tahsilatplan') || request()->is('tahsilatplan/*') ? 'active' : '' }} {{ request()->is('odemeplanlari') || request()->is('odemeplanlari/*') ? 'active' : '' }}
@@ -187,7 +200,7 @@
           </div>
           <div class="tab-content">
             <div class="tab-pane fade {{ request()->is('teklifler') || request()->is('onaylananteklifler') || request()->is('onaylanmayanteklifler') || request()->is('bekleyenteklifler') || request()->is('teklifler/*') ? 'show active' : '' }} {{ request()->is('muhasebemenu') || request()->is('muhasebemenu/*') ? 'show active' : '' }} {{ request()->is('makinemenu') || request()->is('makinemenu/*') ? 'show active' : '' }} {{ request()->is('ikmenu') || request()->is('ikmenu/*') ? 'show active' : '' }}
-                {{ request()->is('cariler') || request()->is('cariler/*') ? 'show active' : '' }} {{ request()->is('anasayfa') || request()->is('anasayfa/*') ? 'show active' : '' }} {{ request()->is('entegrasyonmenu') || request()->is('entegrasyonmenu/*') ? 'show active' : '' }} {{ request()->is('register') || request()->is('register/*') ? 'show active' : '' }} {{ request()->is('idariislermenu') || request()->is('idariislermenu/*') ? 'show active' : '' }} {{ request()->is('tedarikciler') || request()->is('tedarikciler/*') ? 'show active' : '' }}
+                {{ request()->is('cariler') || request()->is('cariler/*') ? 'show active' : '' }} {{ request()->is('toplusms') || request()->is('toplusms/*') ? 'show active' : '' }} {{ request()->is('toplumail') || request()->is('toplumail/*') ? 'show active' : '' }} {{ request()->is('anasayfa') || request()->is('anasayfa/*') ? 'show active' : '' }} {{ request()->is('entegrasyonmenu') || request()->is('entegrasyonmenu/*') ? 'show active' : '' }} {{ request()->is('register') || request()->is('register/*') ? 'show active' : '' }} {{ request()->is('idariislermenu') || request()->is('idariislermenu/*') ? 'show active' : '' }} {{ request()->is('tedarikciler') || request()->is('tedarikciler/*') ? 'show active' : '' }}
                  {{ request()->is('kontaklistesi') || request()->is('kontaklistesi/*') ? 'show active' : '' }} {{ request()->is('gorusmelistesi') || request()->is('gorusmelistesi/*') ? 'show active' : '' }} {{ request()->is('aktiflog') || request()->is('aktiflog/*') ? 'show active' : '' }} {{ request()->is('smsapi') || request()->is('smsapi/*') ? 'show active' : '' }} {{ request()->is('smtp') || request()->is('smtp/*') ? 'show active' : '' }} {{ request()->is('efaturaapi') || request()->is('efaturaapi/*') ? 'show active' : '' }}
                   {{ request()->is('satisfisineaktar') || request()->is('satisfisineaktar/*') ? 'show active' : '' }} {{ request()->is('resmievraklarr') || request()->is('resmievraklarr/*') ? 'show active' : '' }} " id="pills-dashboards">
               <div class="list-group list-group-flush">
@@ -199,6 +212,7 @@
                 </div>
                 <a href="{{ route('anamenu.index') }}" class="list-group-item {{ request()->is('anamenu') || request()->is('anamenu/*') ? 'active' : '' }} "><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg> Ana Menü</a>
 
+
                 <a href="{{ route('cariler.index') }}" class="list-group-item {{ request()->is('cariler') || request()->is('cariler/*') ? 'active' : '' }} {{ request()->is('tedarikciler') || request()->is('tedarikciler/*') ? 'active' : '' }}"><i class="fas fa-users"></i>Cariler</a>
                 <a href="{{route('kontaklistesi.index')}}" class="list-group-item {{ request()->is('kontaklistesi') || request()->is('kontaklistesi/*') ? 'active' : '' }}"><i class="fas fa-address-book"></i>Kontak Listesi</a>
                 <a href="{{route('gorusmelistesi.index')}}" class="list-group-item {{ request()->is('gorusmelistesi') || request()->is('gorusmelistesi/*') ? 'active' : '' }}"><i class="fas fa-comments"></i>Görüşme Listesi</a>
@@ -207,6 +221,18 @@
                 <a href="{{route('hizmetlerkategori.index')}}" class="list-group-item {{ request()->is('hizmetlerkategori') || request()->is('hizmetlerkategori/*') ? 'active' : '' }}"><i class="fa-solid fa-laptop-file"></i>Hizmetler Kategori</a>
                 <a href="{{route('resmievraklarr.index')}}" class="list-group-item {{ request()->is('resmievraklarr') || request()->is('resmievraklarr/*') ? 'active' : '' }}"><i class="fa-solid fa-folder-open"></i>Resmi Evraklar</a>
                 <a href="{{route('gorevatama.index')}}" class="list-group-item {{ request()->is('gorevatama') || request()->is('gorevatama/*') ? 'active' : '' }}"><i class="fa-solid fa-boxes-stacked"></i>Görev Atama</a>
+
+                <a href="{{ route('cariler.index') }}" class="list-group-item {{ request()->is('cariler') || request()->is('cariler/*') ? 'active' : '' }} {{ request()->is('tedarikciler') || request()->is('tedarikciler/*') ? 'active' : '' }}"><i class="bi bi-archive"></i> Cariler</a>
+                <a href="{{route('kontaklistesi.index')}}" class="list-group-item {{ request()->is('kontaklistesi') || request()->is('kontaklistesi/*') ? 'active' : '' }}"><i class="bi bi-wallet"></i>Kontak Listesi</a>
+                <a href="{{route('gorusmelistesi.index')}}" class="list-group-item {{ request()->is('gorusmelistesi') || request()->is('gorusmelistesi/*') ? 'active' : '' }}"><i class="bi bi-bar-chart-line"></i>Görüşme Listesi</a>
+                <a href="{{route('teklifler.index')}}" class="list-group-item {{ request()->is('teklifler') || request()->is('onaylanmayanteklifler') || request()->is('bekleyenteklifler') || request()->is('onaylananteklifler') || request()->is('satisfisineaktar/*') || request()->is('teklifler/*') ? 'active' : '' }}"><i class="bi bi-archive"></i>Teklifler</a>
+                <a href="{{route('hizmetler.index')}}" class="list-group-item {{ request()->is('hizmetler') || request()->is('hizmetler/*') ? 'active' : '' }}"><i class="bi bi-cast"></i>Hizmetler</a>
+                <a href="{{route('hizmetlerkategori.index')}}" class="list-group-item {{ request()->is('hizmetlerkategori') || request()->is('hizmetlerkategori/*') ? 'active' : '' }}"><i class="bi bi-cast"></i>Hizmetler Kategori</a>
+                <a href="{{route('resmievraklarr.index')}}" class="list-group-item {{ request()->is('resmievraklarr') || request()->is('resmievraklarr/*') ? 'active' : '' }}"><i class="bi bi-receipt"></i>Resmi Evraklar</a>
+                <a href="{{route('pano.index')}}" class="list-group-item {{ request()->is('pano') || request()->is('pano/*') ? 'active' : '' }}"><i class="bi bi-receipt"></i>Pano</a>
+
+                <a href="{{route('gorevatama.index')}}" class="list-group-item {{ request()->is('gorevatama') || request()->is('gorevatama/*') ? 'active' : '' }}"><i class="bi bi-receipt"></i>Görev Atama</a>
+
               </div>
             </div>
             <div class="tab-pane fade {{ request()->is('satislar') || request()->is('satislar/*') ? 'show active' : '' }}

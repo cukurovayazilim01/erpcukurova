@@ -139,7 +139,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-12">
+                                {{-- <div class="col-md-12">
                                     <label for="sehir">Şehir</label>
                                     <div class="form-group input-with-icon">
                                         <span class="icon">
@@ -148,6 +148,19 @@
                                         <input type="text" name="sehir" id=""
                                             class="form-control form-control-sm">
                                     </div>
+                                </div> --}}
+                                <div class="col-md-12">
+                                    <label for="il">İl</label>
+                                    <div class="form-group input-with-icon">
+                                        <span class="icon">
+                                            <i class="fa-solid fa-city"></i>
+                                        </span>
+                                        <select name="sehir" id="firma_il" class="form-select form-select-sm"
+                                             onchange="firma_ilceListele()">
+                                            <option value="">İl Seçin</option>
+
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="col-md-12">
                                     <label for="akreditasyon_kurulusu">Akreditasyon Kuruluşu</label>
@@ -155,8 +168,12 @@
                                         <span class="icon">
                                             <i class="fa fa-check"></i>
                                         </span>
-                                        <input type="text" name="akreditasyon_kurulusu" id="akreditasyon_kurulusu"
-                                            class="form-control form-control-sm">
+                                        <select name="akreditasyon_kurulusu" id="akreditasyon_kurulusu"
+                                            class="form-select form-select-sm" >
+                                            <option value="">Lütfen Seçiniz</option>
+                                            <option value="TÜRKAK">TÜRKAK</option>
+                                            <option value="IAS">IAS</option>
+                                        </select>
                                     </div>
                                 </div>
 
@@ -254,8 +271,13 @@
                                         <span class="icon">
                                             <i class="fa fa-check"></i>
                                         </span>
-                                        <input type="text" name="belgelendirme_kurulusu"
-                                            id="belgelendirme_kurulusu" class="form-control form-control-sm" required>
+                                        <select name="belgelendirme_kurulusu" id="belgelendirme_kurulusu"
+                                            class="form-select form-select-sm" >
+                                            <option value="">Lütfen Seçiniz</option>
+                                            <option value="DSR BELGELENDİRME">DSR BELGELENDİRME</option>
+                                            <option value="PCA BELGELENDİRME">PCA BELGELENDİRME</option>
+                                            <option value="UDEM BELGELENDİRME">UDEM BELGELENDİRME</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -670,6 +692,8 @@
                             <th>#</th>
                             <th>Referans No</th>
                             <th>Belge Tarihi</th>
+                            <th>Ara Denetim Tarihi</th>
+                            <th>Belge Bitiş Tarihi</th>
                             <th>Firma Ünvanı</th>
                             <th>Hizmet Adı</th>
                             <th>Akreditasyon Kuruluşu</th>
@@ -687,8 +711,10 @@
                                 <th>{{ $startNumber - $loop->index }}</th>
                                 <td>{{ $isotakipitem->basvuru_referans_no }}</td>
                                 <td>{{ $isotakipitem->belge_tarihi }}</td>
+                                <td>{{ $isotakipitem->ara_denetim_tarihi }}</td>
+                                <td>{{ $isotakipitem->belge_bitis_tarihi }}</td>
                                 <td>{{ $isotakipitem->firmaadi->firma_unvan }}</td>
-                                <td>{{ $isotakipitem->hizmet_adi }}</td>
+                                <td>{{ Str::limit($isotakipitem->hizmet_adi,30)  }}</td>
                                 <td>{{ $isotakipitem->akreditasyon_kurulusu }}</td>
                                 <td>{{ $isotakipitem->belgelendirme_kurulusu }}</td>
                                 <td>{{ $isotakipitem->kapsam }}</td>
@@ -707,7 +733,7 @@
                                             </a>
                                         @endif
                                     @else
-                                        <span class="text-muted">Resim Yok</span>
+                                        <span class="text-muted">-</span>
                                     @endif
                                 </td>
                                 <td>
@@ -753,49 +779,7 @@
     </div>
 </div>
 
-{{-- <div id="printArea" style="display: none;">
-    <h1 style="text-align: center;">iso Takip Raporu</h1>
-    <table class="table table-bordered" style="width: 100%; border-collapse: collapse;">
-        <thead>
-            <tr style="background-color: #f8f9fa; text-align: left;">
-                <th>#</th>
-                <th>Referans No</th>
-                <th>Belge Tarihi</th>
-                <th>Firma Ünvanı</th>
-                <th>Hizmet Adı</th>
-                <th>Akreditasyon Kuruluşu</th>
-                <th>Belge Kuruluşu</th>
-                <th>Kapsam</th>
-                <th>Müşteri Temsilcisi</th>
-                <th>Durum</th>
-                <th>Aksiyon</th>
-
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($isotakip as $isotakipitem)
-                <tr>
-                    <td>{{ $startNumber - $loop->index }}</td>
-                    <td>{{ $isotakipitem->islem_tarihi }}</td>
-                    <td>{{ $isotakipitem->basvuru_tarihi }}</td>
-                    <td>{{ $isotakipitem->yenileme_tarih }}</td>
-                    <td>{{ $isotakipitem->referans_no }}</td>
-                    <td>{{ $isotakipitem->firmaadi->firma_unvan }}</td>
-                    <td>{{ $isotakipitem->firmaadi->yetkili_kisi_tel }}</td>
-                    <td>{{ $isotakipitem->iso_adi }}</td>
-                    <td>{{ $isotakipitem->iso_sinif }}</td>
-                    <td>{{ $isotakipitem->basvuru_no }}</td>
-                    <td>{{ $isotakipitem->hizmet->hizmet_ad }}</td>
-                    <td>{{ $isotakipitem->vkn }}</td>
-                    <td>{{ $isotakipitem->tc }}</td>
-                    <td>{{ $isotakipitem->sehir }}</td>
-                    <td>{{ $isotakipitem->iso_islem }}</td>
-                    <td>{{ $isotakipitem->iso_durum }}</td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-</div> --}}
+<script src="{{ asset('custom/customjs/city.js') }}"></script>
 
 <script>
     document.getElementById("belge_tarihi").addEventListener("change", function() {

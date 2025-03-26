@@ -15,6 +15,36 @@ class ZimmetController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+     public function zimmetsearch(Request $request)
+    {
+        $zimmetsearch = $request->input('zimmetsearch');
+
+        // Eğer arama yapılmışsa filtre uygula, yoksa tüm verileri çek
+        $zimmet = Zimmet::with('personel') // İlişkili personel verisini çek
+        ->orderByDesc('id')
+        ->when(!empty($zimmetsearch), function ($query) use ($zimmetsearch) {
+            $query->whereHas('personel', function ($subQuery) use ($zimmetsearch) {
+                $subQuery->where('ad_soyad', 'like', '%' . $zimmetsearch . '%');
+            });
+        })
+        ->paginate(50);
+
+
+        // Sayfa numarasını hesapla
+        $page = $request->query('page', 1);
+        $perPage = 50;
+        $startNumber = $zimmet->total() - (($page - 1) * $perPage);
+
+
+        // AJAX isteği ise sadece arama sonuçlarını döndür
+        if ($request->ajax()) {
+            return view('admin.contents.zimmet.zimmet-search', compact('zimmet', 'startNumber'));
+        }
+
+        // Normal sayfa için tüm veriyi döndür
+        return view('admin.contents.zimmet.zimmet', compact('zimmet', 'startNumber'));
+    }
     public function index()
     {
         $zimmet = Zimmet::all();
