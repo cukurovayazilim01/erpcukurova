@@ -1,53 +1,55 @@
-<table class="table align-middle mb-0 dataTable"  role="grid"
-                        aria-describedby="example_info" >
+<table class="table table-bordered table-hover" style="width:100%; cursor: pointer; ">
+ 
+    <tbody>
+        @foreach ($cariler as $cariitem)
+            <tr>
+                <th scope="row">{{ $startNumber - $loop->index }}</th>
+                <td><a style="color:inherit" href="{{ route('cariler.show', ['cariler' => $cariitem->id]) }}">{{ $cariitem->firma_unvan }} </a> </td>
+                <td style="text-align: center">{{ $cariitem->firma_sektor }}</td>
+                <td style="text-align: center">{{ $cariitem->yetkili_kisi }}</td>
+                <td style="text-align: center">{{ $cariitem->yetkili_kisi_tel }}</td>
+                <td style="text-align: center">{{ $cariitem->eposta }}</td>
+                <td style="text-align: center">{{ $cariitem->musteri_temsilcisi }}</td>
 
-                        <tbody>
-                            @foreach ($cariler as $cariitem)
-                                <tr>
-                                    <th scope="row">{{ $startNumber - $loop->index }}</th>
-                                    <td>{{ $cariitem->firma_unvan }}</td>
-                                    <td>{{ $cariitem->firma_sektor }}</td>
-                                    <td>{{ $cariitem->yetkili_kisi }}</td>
-                                    <td>{{ $cariitem->yetkili_kisi_tel }}</td>
-                                    <td>{{ $cariitem->eposta }}</td>
-                                    <td>{{ $cariitem->musteri_temsilcisi }}</td>
-                                    <td class="text-right">
-                                        <div class="databutton">
-                                            <div class="d-flex align-items-center fs-6">
-                                                <button class="text-purple open-modal-btn" data-bs-toggle="modal"
-                                                    data-bs-target="#dokumanModal-{{ $cariitem->id }}">
-                                                    <i class="fa-solid fa-file"></i>
-                                                </button>
-                                                @include('admin.contents.cariler.dokuman.cari-dokuman')
-                                                <button class="text-success open-modal-btn" data-bs-toggle="modal"
-                                                    data-bs-target="#aramalarModal-{{ $cariitem->id }}">
-                                                    <i class="fas fa-phone"></i>
-                                                </button>
-                                                @include('admin.contents.cariler.aramalar.cari-aramalar')
-                                                <a href="{{ route('cariler.show', ['cariler' => $cariitem->id]) }}"
-                                                    class="text-primary btn btn-link p-0 m-0 ">
-                                                    <i class="bi bi-eye-fill"></i>
-                                                </a>
-                                                <button class="text-warning" data-bs-toggle="modal"
-                                                    data-bs-target="#carilerupdateModal-{{ $cariitem->id }}">
-                                                    <i class="bi bi-pencil-fill"></i>
-                                                </button>
-                                                @include('admin.contents.cariler.cariler-update')
+                <td class="text-right">
+                    <div class="databutton ">
+                        <div class="d-flex align-items-center fs-6" style="justify-content: space-evenly; ">
+                            @include('admin.contents.cariler.aramalar.cari-aramalar')
+                            <a href="{{ route('cariler.show', ['cariler' => $cariitem->id]) }}"
+                                class=" btn btn-link p-0 m-0 ">
+                                <i style="color:#293445;  " class="fa-solid fa-wand-magic-sparkles fs-6" ></i>
+                            </a>
+                            <button class="open-modal-btn" data-bs-toggle="modal"
+                                data-bs-target="#dokumanModal-{{ $cariitem->id }}">
+                                <i style="color:#293445" class="fa-solid fa-file-pdf fs-6"></i>
+                            </button>
+                            @include('admin.contents.cariler.dokuman.cari-dokuman')
+                            <button class=" open-modal-btn" data-bs-toggle="modal"
+                                data-bs-target="#aramalarModal-{{ $cariitem->id }}">
+                                <i style="color:rgb(88, 134, 88)" class="fa-solid fa-square-phone-flip fs-6"></i>
+                            </button>
 
-                                                <form
-                                                    action="{{ route('cariler.destroy', ['cariler' => $cariitem->id]) }}"
-                                                    method="POST" style="display: inline;">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-link text-danger p-0 m-0 show_confirm">
-                                                        <i class="bi bi-trash-fill"></i>
-                                                    </button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
+                            <button class="" data-bs-toggle="modal"
+                                data-bs-target="#carilerupdateModal-{{ $cariitem->id }}">
+                                <i style="color:#293445" class="fa-solid fa-pen-to-square fs-6"></i>
+                            </button>
+                            @include('admin.contents.cariler.cariler-update')
 
-                    </table>
+                            <form
+                                action="{{ route('cariler.destroy', ['cariler' => $cariitem->id]) }}"
+                                method="POST" style="display: inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit"
+                                    class="btn  p-0 m-0 show_confirm " >
+                                    <i style="color: rgb(180, 68, 34)" class="fa-solid fa-trash-can fs-6"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        @endforeach
+    </tbody>
+
+</table>

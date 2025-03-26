@@ -3587,10 +3587,10 @@ fieldset:disabled .btn {
 
 .btn-outline-dark {
     --bs-btn-color: #212529;
-    --bs-btn-border-color: #212529;
+    --bs-btn-border-color: #0064c9;
     --bs-btn-hover-color: #fff;
-    --bs-btn-hover-bg: #212529;
-    --bs-btn-hover-border-color: #212529;
+    --bs-btn-hover-bg: #0582ff;
+    --bs-btn-hover-border-color: #c73f2d;
     --bs-btn-focus-shadow-rgb: 33, 37, 41;
     --bs-btn-active-color: #fff;
     --bs-btn-active-bg: #212529;

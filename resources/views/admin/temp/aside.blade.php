@@ -7,7 +7,7 @@
         <div class="top-navbar d-none d-xl-block">
             <ul class="navbar-nav align-items-center">
                 <li class="nav-item" style="display: flex; justify-content: center;">
-                    <a class="nav-link" style="font-size: 20px;  display: block; text-align: center;">@yield('topheader')</a>
+                    <a class="nav-link" style="font-size: 16px; font-weight: 400;  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ">@yield('topheader')</a>
                 </li>
             </ul>
         </div>
@@ -15,9 +15,9 @@
         <div class="top-navbar-right ms-3 ms-auto">
           <ul class="navbar-nav align-items-center ">
           <li class="nav-item dropdown dropdown-large">
-            <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown" style="border: 1px solid lightgray; padding:1px; border-radius:5px">
+            <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown" style=" padding:0px; border-radius:5px;text-decoration: underline; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
               <div class="user-setting d-flex align-items-center gap-1">
-                <img src="{{asset('resim/1725460898-BEKİR-ÜNAL-KAYMAKÇI.jpeg')}}" class="user-img" alt="" style="border-radius: 10px">
+                <img src="{{asset('resim/1725460898-BEKİR-ÜNAL-KAYMAKÇI.jpeg')}}" class="user-img" alt="" style="border-radius: 50%; ">
                 @if(Auth::check())
 
 
@@ -203,9 +203,8 @@
               <div class="list-group list-group-flush">
                 <div class="list-group-item">
                   <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-0">CRM</h5>
+                    <h6 class="mb-0 fw-bold text-center">CRM <span style=" font-size:12px; font-weight: 200; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif">(Çukurova Yazılım)</span></h6>
                   </div>
-                  <small class="mb-0">Çukurova Yazılım</small>
                 </div>
                 <a href="{{ route('anamenu.index') }}" class="list-group-item {{ request()->is('anamenu') || request()->is('anamenu/*') ? 'active' : '' }} "><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg> Ana Menü</a>
 
@@ -220,7 +219,7 @@
                 <a href="{{route('gorevatama.index')}}" class="list-group-item {{ request()->is('gorevatama') || request()->is('gorevatama/*') ? 'active' : '' }}"><i class="fa-solid fa-boxes-stacked"></i>Görev Atama</a>
 
 
-                <a href="{{route('pano.index')}}" class="list-group-item {{ request()->is('pano') || request()->is('pano/*') ? 'active' : '' }}"><i class="bi bi-receipt"></i>Pano</a>
+                <a href="{{route('pano.index')}}" class="list-group-item {{ request()->is('pano') || request()->is('pano/*') ? 'active' : '' }}"><i style="font-size: 14px" class="fa-solid fa-rectangle-list"></i>Pano</a>
 
 
               </div>
