@@ -11,9 +11,9 @@ use App\Models\Firmahrkt;
 use App\Models\Kontak;
 use App\Models\Teklifler;
 use App\Models\User;
-use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 
@@ -102,7 +102,7 @@ class CarilerController extends Controller
         // Eğer arama yapılmışsa filtre uygula, yoksa tüm verileri çek
         $cariler = Cariler::orderByDesc('id')
             ->when(!empty($carilersearch), function ($query) use ($carilersearch) {
-                $query->where('firma_unvan', 'like', '%' . $carilersearch . '%');
+                $query->where('firma_unvan', 'like', '%' . $carilersearch . '%')->orwhere('yetkili_kisi', 'like', '%' . $carilersearch . '%')->orwhere('firma_sektor', 'like', '%' . $carilersearch . '%');
             })
             ->paginate(50);
 

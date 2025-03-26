@@ -33,6 +33,7 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\OdemelerController;
 use App\Http\Controllers\OdemeplanlariController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PanoController;
 use App\Http\Controllers\PersonelController;
 use App\Http\Controllers\RaporlarController;
 use App\Http\Controllers\ResmievraklarController;
@@ -236,6 +237,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/itiraztakipfiltre/excel', [ExcelController::class, 'itiraztakipFiltreliEXCEL'])->name('itiraztakip.excel');
     Route::get('/tescilnoksanfiltre/excel', [ExcelController::class, 'tescilnoksanFiltreliEXCEL'])->name('tescilnoksan.excel');
 
+
+    //PANO
+    Route::resource('pano',PanoController::class);
+
     //RESMİEVRAKLAR
     Route::resource('resmievraklarr',ResmievraklarController::class);
     //PERSONEL
@@ -245,6 +250,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('/personel-dokuman-sil/{id}',[PersonelController::class,'personeldokumandelete'])->name('personeldokumandelete');
     Route::post('/personelegitimPOST/{id}',[PersonelController::class,'personelegitimPOST'])->name('personelegitimPOST');
     Route::delete('/personelegitimDELETE/{id}',[PersonelController::class,'personelegitimDELETE'])->name('personelegitimDELETE');
+    Route::get('/personelsearch',[PersonelController::class,'personelsearch'])->name('personelsearch');
+    Route::get('/personelozluksearch',[PersonelController::class,'personelozluksearch'])->name('personelozluksearch');
     //GOREVLENDİRME
     Route::resource('gorevatama',GorevlerController::class);
 
@@ -253,14 +260,19 @@ Route::group(['middleware' => ['auth']], function () {
 
     //İZİNLER
     Route::resource('izinler',IzinlerController::class);
+    Route::get('/izinlersearch',[IzinlerController::class,'izinlersearch'])->name('izinlersearch');
 
     //YILLIKİZİN
     Route::resource('yillikizin',YillikizinController::class);
     Route::post('/izinhakkipost',[YillikizinhakkiController::class,'izinhakkipost'])->name('izinhakkipost');
     Route::get('/get-izin-hakki', [YillikizinhakkiController::class, 'getIzinHakki']);
     Route::get('/yillikizinhaklari',[YillikizinController::class,'yillikizinhakkilist'])->name('yillikizinhakkilist');
+    Route::get('/yillikizinsearch',[YillikizinController::class,'yillikizinsearch'])->name('yillikizinsearch');
+
     //ZİMMETLER
     Route::resource('zimmet',ZimmetController::class);
+    Route::get('/zimmetsearch',[ZimmetController::class,'zimmetsearch'])->name('zimmetsearch');
+
     //IS BASVURULARI
     Route::resource('isbasvurulari',IsbasvurulariController::class);
     Route::get('isbasvurularilist',[IsbasvurulariController::class,'isbasvurularilist'])->name('isbasvurularilist');

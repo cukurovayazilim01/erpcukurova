@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Bankalar;
 use App\Models\User;
-use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 

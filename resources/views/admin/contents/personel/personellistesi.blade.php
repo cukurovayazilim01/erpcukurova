@@ -11,6 +11,12 @@ Personel Listesi
         <div class="row g-3 align-items-center">
             <div class="col">
                 <div class="d-flex align-items-center justify-content-end gap-3">
+                 <form id="searchForm" action="{{ route('personelsearch') }}"  method="GET">
+                    <div class="ms-auto position-relative">
+                        <div class="position-absolute top-50 translate-middle-y search-icon fs-5 px-3"><i class="bi bi-search"></i></div>
+                        <input class="form-control ps-5" id="searchInput" type="text" placeholder="Genel Arama">
+                      </div>
+                    </form>
                     <div class="table-buttons">
                         <button class="btn btn-primary" id="copyBtn"><i class="fa fa-copy"></i> </button>
                         <button class="btn btn-success" id="excelBtn"><i class="fa fa-file-excel"></i> </button>
@@ -20,22 +26,7 @@ Personel Listesi
                     </div>
                     <button type="button" class="btn btn-sm btn-outline-primary px-5" data-bs-toggle="modal"
                         data-bs-target="#personelmodal"><i class="fa-solid fa-plus"></i>Yeni Ekle</button>
-                    {{-- <div class="dropdown">
-                        <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"
-                            aria-expanded="false"><i class="bx bx-dots-horizontal-rounded font-22 text-option"></i>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="javascript:;">Action</a>
-                            </li>
-                            <li><a class="dropdown-item" href="javascript:;">Another action</a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="javascript:;">Something else here</a>
-                            </li>
-                        </ul>
-                    </div> --}}
+
                 </div>
             </div>
         </div>
@@ -412,6 +403,48 @@ Personel Listesi
 </div>
 @include('session.session')
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('searchForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('#searchInput').on('input', function(event) {
+            var searchValue = $(this).val();
+
+            if (searchValue.trim() === '') {
+                // Eğer input boşsa, tüm veriyi yükle
+                $.ajax({
+                    url: '{{ route('personelsearch') }}',
+                    method: 'GET',
+                    data: {
+                        personelsearch: ''
+                    }, // Arama değeri boş olduğunda tüm veriyi yükle
+                    success: function(response) {
+                        // Tüm veriyi (tbody) güncelle
+                        $('#example2 tbody').html(response);
+                    }
+                });
+            } else {
+                $.ajax({
+                    url: '{{ route('personelsearch') }}',
+                    method: 'GET',
+                    data: {
+                        personelsearch: searchValue
+                    }, // Arama değeri
+                    success: function(response) {
+                        // Sadece tbody kısmını güncelle
+                        $('#example2 tbody').html(response);
+                    }
+                });
+            }
+        });
+    });
+</script>
 <!-- JavaScript: DataTable Yapılandırma -->
 <script>
     $(document).ready(function() {

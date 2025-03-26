@@ -129,7 +129,7 @@
                                       {{ request()->is('gorusmelistesi') || request()->is('gorusmelistesi/*') ? 'active' : '' }} {{ request()->is('aktiflog') || request()->is('aktiflog/*') ? ' active' : '' }}
                                       {{ request()->is('teklifler') || request()->is('onaylananteklifler') || request()->is('onaylanmayanteklifler') || request()->is('bekleyenteklifler') || request()->is('teklifler/*') ? 'active' : '' }}
                                        {{ request()->is('hizmetler') || request()->is('hizmetler/*') ? 'active' : '' }} {{ request()->is('satisfisineaktar') || request()->is('satisfisineaktar/*') ? 'active' : '' }}
-                                         {{ request()->is('hizmetlerkategori') || request()->is('hizmetlerkategori/*') ? 'active' : '' }}
+                                         {{ request()->is('hizmetlerkategori') || request()->is('hizmetlerkategori/*') ? 'active' : '' }} {{ request()->is('pano') || request()->is('pano/*') ? 'active' : '' }}
                                           {{ request()->is('resmievraklarr') || request()->is('resmievraklarr/*') ? 'active' : '' }}" data-bs-toggle="pill" data-bs-target="#pills-dashboards" type="button"><i class="bi bi-house-door-fill"></i></button>
             </li>
             <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="ÖN MUHASEBE">
@@ -221,6 +221,8 @@
                 <a href="{{route('hizmetler.index')}}" class="list-group-item {{ request()->is('hizmetler') || request()->is('hizmetler/*') ? 'active' : '' }}"><i class="bi bi-cast"></i>Hizmetler</a>
                 <a href="{{route('hizmetlerkategori.index')}}" class="list-group-item {{ request()->is('hizmetlerkategori') || request()->is('hizmetlerkategori/*') ? 'active' : '' }}"><i class="bi bi-cast"></i>Hizmetler Kategori</a>
                 <a href="{{route('resmievraklarr.index')}}" class="list-group-item {{ request()->is('resmievraklarr') || request()->is('resmievraklarr/*') ? 'active' : '' }}"><i class="bi bi-receipt"></i>Resmi Evraklar</a>
+                <a href="{{route('pano.index')}}" class="list-group-item {{ request()->is('pano') || request()->is('pano/*') ? 'active' : '' }}"><i class="bi bi-receipt"></i>Pano</a>
+
                 <a href="{{route('gorevatama.index')}}" class="list-group-item {{ request()->is('gorevatama') || request()->is('gorevatama/*') ? 'active' : '' }}"><i class="bi bi-receipt"></i>Görev Atama</a>
               </div>
             </div>

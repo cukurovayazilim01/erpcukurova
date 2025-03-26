@@ -7,9 +7,9 @@ use App\Models\Aramalar;
 use App\Models\Cariler;
 use App\Models\Kontak;
 use App\Models\User;
-use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use URL;
 
 class AramalarController extends Controller

@@ -19,4 +19,9 @@ class Isotakip extends Model
     {
         return $this->belongsTo(User::class,'satis_temsilcisi');
     }
+    public function islemyapan()
+    {
+        return $this->belongsTo(User::class,'islem_yapan');
+
+    }
 }

@@ -11,24 +11,15 @@
         <div class="row g-3 align-items-center">
             <div class="col">
                 <div class="d-flex align-items-center justify-content-end gap-3">
+                    <form id="searchForm" action="{{ route('personelozluksearch') }}"  method="GET">
+                        <div class="ms-auto position-relative">
+                            <div class="position-absolute top-50 translate-middle-y search-icon fs-5 px-3"><i class="bi bi-search"></i></div>
+                            <input class="form-control ps-5" id="searchInput" type="text" placeholder="Genel Arama">
+                          </div>
+                        </form>
                     <button type="button" class="btn btn-sm btn-outline-primary px-5" data-bs-toggle="modal"
                         data-bs-target="#personelmodal"><i class="fa-solid fa-plus"></i>Yeni Ekle</button>
-                    {{-- <div class="dropdown">
-                        <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"
-                            aria-expanded="false"><i class="bx bx-dots-horizontal-rounded font-22 text-option"></i>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="javascript:;">Action</a>
-                            </li>
-                            <li><a class="dropdown-item" href="javascript:;">Another action</a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="javascript:;">Something else here</a>
-                            </li>
-                        </ul>
-                    </div> --}}
+
                 </div>
             </div>
         </div>
@@ -370,7 +361,7 @@
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table align-middle mb-0">
+            <table class="table align-middle mb-0" id="example2">
                 <thead class="table-light">
                     <tr>
                         <th scope="col">#</th>
@@ -441,4 +432,48 @@
     </div>
 </div>
 @include('session.session')
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('searchForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+        });
+    });
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<script>
+    $(document).ready(function() {
+        $('#searchInput').on('input', function(event) {
+            var searchValue = $(this).val();
+
+            if (searchValue.trim() === '') {
+                // Eğer input boşsa, tüm veriyi yükle
+                $.ajax({
+                    url: '{{ route('personelozluksearch') }}',
+                    method: 'GET',
+                    data: {
+                        personelozluksearch: ''
+                    }, // Arama değeri boş olduğunda tüm veriyi yükle
+                    success: function(response) {
+                        // Tüm veriyi (tbody) güncelle
+                        $('#example2 tbody').html(response);
+                    }
+                });
+            } else {
+                $.ajax({
+                    url: '{{ route('personelozluksearch') }}',
+                    method: 'GET',
+                    data: {
+                        personelozluksearch: searchValue
+                    }, // Arama değeri
+                    success: function(response) {
+                        // Sadece tbody kısmını güncelle
+                        $('#example2 tbody').html(response);
+                    }
+                });
+            }
+        });
+    });
+</script>
 @endsection

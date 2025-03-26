@@ -16,6 +16,37 @@ class YillikizinController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+
+     public function yillikizinsearch(Request $request)
+    {
+        $yillikizinsearch = $request->input('yillikizinsearch');
+
+        // Eğer arama yapılmışsa filtre uygula, yoksa tüm verileri çek
+        $yillikizin = Yillikizin::with('personel') // İlişkili personel verisini çek
+        ->orderByDesc('id')
+        ->when(!empty($yillikizinsearch), function ($query) use ($yillikizinsearch) {
+            $query->whereHas('personel', function ($subQuery) use ($yillikizinsearch) {
+                $subQuery->where('ad_soyad', 'like', '%' . $yillikizinsearch . '%');
+            });
+        })
+        ->paginate(50);
+
+
+        // Sayfa numarasını hesapla
+        $page = $request->query('page', 1);
+        $perPage = 50;
+        $startNumber = $yillikizin->total() - (($page - 1) * $perPage);
+
+
+        // AJAX isteği ise sadece arama sonuçlarını döndür
+        if ($request->ajax()) {
+            return view('admin.contents.yillikizin.yillikizin-search', compact('yillikizin', 'startNumber'));
+        }
+
+        // Normal sayfa için tüm veriyi döndür
+        return view('admin.contents.yillikizin.yillikizin', compact('yillikizin', 'startNumber'));
+    }
     public function yillikizinhakkilist()
     {
         $yillikizin = Yillikizin::all();
