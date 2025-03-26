@@ -56,7 +56,11 @@
                                         <i class="fa-solid fa-inbox"></i>
                                     </span>
                                     <input type="text" name="odeme_tutar" id="odeme_tutar"
+
+                                       
+
                                         class="form-control form-control-sm" required value="{{$odemeplanlariitem->odeme_tutar}}">
+
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -68,8 +72,12 @@
                                     <select name="durum" id="durum"
                                         class="form-select form-select-sm" required>
                                         <option value="">Lütfen Seçim Yapınız...</option>
+
+                                     
+
                                         <option value="Yapıldı"{{ $odemeplanlariitem->durum == 'Yapıldı' ? 'selected' : '' }}>Ödeme Yapıldı</option>
                                         <option value="Yapılmadı"{{ $odemeplanlariitem->durum == 'Yapılmadı' ? 'selected' : '' }}>Ödeme Yapılmadı</option>
+
                                     </select>
                                 </div>
                             </div>
