@@ -93,10 +93,33 @@
                         }
                     </style>
                     <div class="col-md-4">
-                        <a href="{{ route('yillikizin.show', ['yillikizin' => 1]) }}" target="_blank"
+                        {{-- <a href="{{ route('yillikizin.show', ['yillikizin' => 1]) }}" target="_blank"
                             class="btn btn-sm btn-outline-primary px-5 ms-2">
                             Yıllık İzin Planı
-                        </a>
+                        </a> --}}
+                        <a href="javascript:void(0);"
+                        class="btn btn-sm btn-outline-primary px-5 ms-2 openPdfModal"
+                        data-url="{{ route('yillikizin.show', ['yillikizin' => 1]) }}">
+                        Yıllık İzin Planı
+                     </a>
+                        {{-- <button type="button" class="btn btn-sm btn-outline-primary px-5 ms-2"
+                            style="margin-left: 10px" data-bs-toggle="modal" data-bs-target="#yillikizinPlani">
+                            <i class="fa-solid fa-plus"></i> Yıllık İzin Planı
+                        </button> --}}
+
+                     <!-- PDF Modal -->
+<div class="modal fade" id="pdfModal" tabindex="-1" aria-labelledby="pdfModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Kapat"></button>
+            </div>
+            <div class="modal-body">
+                <iframe id="pdfFrame" src="" style="width: 100%; height: 500px; border: none;"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
                     </div>
                     <!-- Yeni Ekle and Action Buttons -->
                     <div class="col-md-8 text-end" style="display: flex; justify-content: flex-end  ">
@@ -499,7 +522,20 @@
         document.getElementById('kalan_izin_hakki').value = this.value;
     });
 </script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".openPdfModal").forEach(button => {
+            button.addEventListener("click", function () {
+                let pdfUrl = this.getAttribute("data-url");
+                let pdfFrame = document.getElementById("pdfFrame");
+                pdfFrame.src = pdfUrl; // PDF kaynağını değiştir
 
+                let pdfModal = new bootstrap.Modal(document.getElementById("pdfModal"));
+                pdfModal.show(); // Modalı aç
+            });
+        });
+    });
+    </script>
 
 {{-- SEARCHHHH  --}}
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

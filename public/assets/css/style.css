@@ -27,13 +27,11 @@ File: style.css
 /* General */
 
 body {
-    font-size: 11px;
-	color: #4c5258;
-	letter-spacing: .5px;
-    font-family: Roboto, sans-serif;
-    background-color: #f7f8fa;
-    overflow-x: hidden;
-    /* line-height: 0.5; BURAYI DEĞİŞTİRDİM 1.5 */
+    font-family: 'Inter', sans-serif; /* Okunaklı modern font */
+    font-size: 11px; /* Uygun yazı boyutu */
+    font-weight: 500; /* Orta kalınlıkta yazı */
+    list-style: none; /* Madde işaretlerini kaldır */
+    background-color: #F7F8FA;
 }
 
 .wrapper{
@@ -492,7 +490,7 @@ td{
 
 .sidebar-wrapper .iconmenu .nav-pills .nav-link.active, .iconmenu .nav-pills .show>.nav-link {
     color: #fff;
-    background-color: #0d6efd;
+    background-color: #293445;
 }
 
 .sidebar-wrapper .textmenu .list-group .list-group-item {
