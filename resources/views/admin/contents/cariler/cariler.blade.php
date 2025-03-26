@@ -24,9 +24,9 @@
     <div class="card-header bg-transparent">
         <div class="row g-3 align-items-center">
             <div class="col-md-6 col-lg-12 ">
-                <div class="d-flex align-items-center justify-content-between gap-3">
+                <div class="d-flex align-items-center justify-content-between gap-1">
                     <div class="col-lg-1 col-1 col-md-1 text-start">
-                        <form method="GET" action="{{ route('cariler.index') }}" id="entriesForm">
+                        <form method="GET" action="{{ route('cariler.index') }}" id="entriesForm" >
                             <select class="form-select form-select-sm" name="entries"
                                 onchange="document.getElementById('entriesForm').submit();">
                                 <option value="10" {{ $perPage == 10 ? 'selected' : '' }}>10</option>
@@ -37,29 +37,34 @@
                         </form>
                     </div>
 
+
+
+
                     <div class="col-lg-4 col-4 col-md-4 mr-4">
-                        <a href="{{route('cariler.index')}}" type="button" class="btn btn-sm btn-primary">
-                            <i class="fa-solid fa-user"></i> Müşteriler
+
+                        <a href="{{route('cariler.index')}}" >
+                            <button type="button" class="btn btn-gray btn-sm px-3"><i class="fa-solid fa-user"></i>Müşteriler</button>
+
                         </a>
-                        <a href="{{route('tedarikciler')}}" type="button" class="btn btn-sm btn-outline-success">
-                            <i class="fas fa-shipping-fast"></i> Tedarikçiler
+                        <a href="{{route('tedarikciler')}}" >
+                            <button type="button" class="btn btn-warning btn-sm px-3"><i class="fa-solid fa-users"></i>Tedarikçiler</button>
+
                         </a>
                     </div>
-
-                    <div class="d-flex align-items-center">
-                        <form class="position-relative">
-                          <div class="position-absolute top-50 translate-middle-y search-icon px-3"><i class="bi bi-search"></i></div>
-                          <input class="form-control ps-5" type="text" placeholder="search">
+                    <div class="d-flex align-items-center" >
+                        <form class="position-relative" id="searchForm" action="{{ route('tekliflersearch') }}" method="GET">
+                          <div class="position-absolute top-50 translate-middle-y search-icon px-3 " ><i class="bi bi-search"></i></div>
+                          <input style="height: 27px; border-radius: 5px; border-color:#293445 " id="searchInput" class="form-control ps-5" type="text" placeholder="Search">
                         </form>
                     </div>
 
                     <div class="ms-auto">
-                        <button type="button" class="btn btn-sm btn-outline-primary px-5" data-bs-toggle="modal"
+                        <button type="button" class="btn btn-outline-dark btn-sm px-3 rounded-1" data-bs-toggle="modal"
                             data-bs-target="#carilermodal">
                             <i class="fa-solid fa-plus"></i> Yeni Ekle
                         </button>
                     </div>
-
+                    {{-- <button type="button" class="btn btn-outline-success px-5 rounded-0">Success</button> --}}
 
                 </div>
             </div>
@@ -326,17 +331,17 @@
 
         <div class="card-body" style="border-radius: 5px">
             <div class="table-responsive" style="border-radius: 5px">
-                <table id="example" class="table table-bordered table-hover" style="width:100%; cursor: pointer; ">
+                <table id="example2" class="table table-bordered table-hover" style="width:100%; cursor: pointer; ">
                     <thead>
                         <tr>
                             <th style="color: white" scope="col">#</th>
                             <th style="color: white">Firma Ünvan</th>
-                            <th style="color: white">Sektör</th>
-                            <th style="color: white">Yetkili Kişi</th>
-                            <th style="color: white">Telefon</th>
-                            <th style="color: white">E-Posta</th>
-                            <th style="color: white">Müşteri Temsilcisi</th>
-                            <th style="color: white">Aksiyon</th>
+                            <th style="color: white; text-align: center">Sektör</th>
+                            <th style="color: white; text-align: center">Yetkili Kişi</th>
+                            <th style="color: white; text-align: center">Telefon</th>
+                            <th style="color: white; text-align: center">E-Posta</th>
+                            <th style="color: white; text-align: center">Müşteri Temsilcisi</th>
+                            <th style="color: white; text-align: center">Aksiyon</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -344,31 +349,33 @@
                             <tr>
                                 <th scope="row">{{ $startNumber - $loop->index }}</th>
                                 <td><a style="color:inherit" href="{{ route('cariler.show', ['cariler' => $cariitem->id]) }}">{{ $cariitem->firma_unvan }} </a> </td>
-                                <td>{{ $cariitem->firma_sektor }}</td>
-                                <td>{{ $cariitem->yetkili_kisi }}</td>
-                                <td>{{ $cariitem->yetkili_kisi_tel }}</td>
-                                <td>{{ $cariitem->eposta }}</td>
-                                <td>{{ $cariitem->musteri_temsilcisi }}</td>
+                                <td style="text-align: center">{{ $cariitem->firma_sektor }}</td>
+                                <td style="text-align: center">{{ $cariitem->yetkili_kisi }}</td>
+                                <td style="text-align: center">{{ $cariitem->yetkili_kisi_tel }}</td>
+                                <td style="text-align: center">{{ $cariitem->eposta }}</td>
+                                <td style="text-align: center">{{ $cariitem->musteri_temsilcisi }}</td>
+
                                 <td class="text-right">
-                                    <div class="databutton">
-                                        <div class="d-flex align-items-center fs-6">
-                                            <button class="text-purple open-modal-btn" data-bs-toggle="modal"
-                                                data-bs-target="#dokumanModal-{{ $cariitem->id }}">
-                                                <i class="fa-solid fa-file"></i>
-                                            </button>
-                                            @include('admin.contents.cariler.dokuman.cari-dokuman')
-                                            <button class="text-success open-modal-btn" data-bs-toggle="modal"
-                                                data-bs-target="#aramalarModal-{{ $cariitem->id }}">
-                                                <i class="fas fa-phone"></i>
-                                            </button>
+                                    <div class="databutton ">
+                                        <div class="d-flex align-items-center fs-6" style="justify-content: space-evenly; ">
                                             @include('admin.contents.cariler.aramalar.cari-aramalar')
                                             <a href="{{ route('cariler.show', ['cariler' => $cariitem->id]) }}"
-                                                class="text-primary btn btn-link p-0 m-0 ">
-                                                <i class="bi bi-eye-fill"></i>
+                                                class=" btn btn-link p-0 m-0 ">
+                                                <i style="color:#293445;  " class="fa-solid fa-wand-magic-sparkles fs-6" ></i>
                                             </a>
-                                            <button class="text-warning" data-bs-toggle="modal"
+                                            <button class="open-modal-btn" data-bs-toggle="modal"
+                                                data-bs-target="#dokumanModal-{{ $cariitem->id }}">
+                                                <i style="color:#293445" class="fa-solid fa-file-pdf fs-6"></i>
+                                            </button>
+                                            @include('admin.contents.cariler.dokuman.cari-dokuman')
+                                            <button class=" open-modal-btn" data-bs-toggle="modal"
+                                                data-bs-target="#aramalarModal-{{ $cariitem->id }}">
+                                                <i style="color:rgb(88, 134, 88)" class="fa-solid fa-square-phone-flip fs-6"></i>
+                                            </button>
+
+                                            <button class="" data-bs-toggle="modal"
                                                 data-bs-target="#carilerupdateModal-{{ $cariitem->id }}">
-                                                <i class="bi bi-pencil-fill"></i>
+                                                <i style="color:#293445" class="fa-solid fa-pen-to-square fs-6"></i>
                                             </button>
                                             @include('admin.contents.cariler.cariler-update')
 
@@ -378,8 +385,8 @@
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit"
-                                                    class="btn btn-link text-danger p-0 m-0 show_confirm ">
-                                                    <i class="bi bi-trash-fill"></i>
+                                                    class="btn  p-0 m-0 show_confirm " >
+                                                    <i style="color: rgb(180, 68, 34)" class="fa-solid fa-trash-can fs-6"></i>
                                                 </button>
                                             </form>
                                         </div>

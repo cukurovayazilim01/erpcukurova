@@ -6,96 +6,7 @@
     ANA MENÜ
 @endsection
 @section('contents')
-    {{-- <style>
-        /* Genel Container */
-        .custom-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 1px;
-        }
 
-        /* Responsive Grid */
-        @media screen and (min-width: 640px) {
-            .custom-container {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-
-        @media screen and (min-width: 768px) {
-            .custom-container {
-                grid-template-columns: repeat(6, 1fr);
-            }
-        }
-
-        /* İkon Kutusu */
-        .icon-box-content {
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .icon-box-content:hover {
-            transform: translateY(-5px);
-        }
-
-        /* Box İçindeki İkon */
-        .box-img {
-            background: linear-gradient(135deg, #ffffff, #ffffff);
-            box-shadow: 0px 10px 20px rgba(106, 17, 203, 0.3);
-            border-radius: 7px;
-            width: 90px;
-            height: 90px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto;
-            transition: all 0.3s ease;
-        }
-
-        .icon-box-content:hover .box-img {
-            background: linear-gradient(135deg, #2575fc, #6a11cb);
-            box-shadow: 0px 15px 25px rgba(37, 117, 252, 0.4);
-        }
-
-        /* İkon */
-        .icon {
-            width: 52px;
-            height: 52px;
-            filter: brightness(1.2);
-        }
-
-        /* Yazı */
-        .text {
-            margin-top: 10px;
-            font-size: 16px;
-            font-weight: bold;
-            color: #333;
-            letter-spacing: 0.5px;
-            transition: color 0.3s ease;
-        }
-
-        .icon-box-content:hover .text {
-            color: #2575fc;
-        }
-
-
-        /* ================ */
-
-        .ads {
-        transition: all 0.3s ease-in-out;
-        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.05);
-        background-color: #ffffff;
-        cursor: pointer;
-    }
-
-    .ads:hover {
-        transform: scale(1.05);
-        box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1);
-        background-color: #e3ebf7; /* Soft açık mavi */
-    }
-
-    </style> --}}
 
 
 <style>
@@ -116,10 +27,16 @@
                 <div class="col-12 col-lg-3 col-6 col-md-3 d-flex">
 
                 <div class="ms-auto position-relative">
-                    <div class="position-absolute top-50 translate-middle-y search-icon px-3 "><i class="bi bi-search"></i></div>
-                    <input class="form-control ps-5" type="text" placeholder="search produts">
+                    <div class="position-absolute top-50 translate-middle-y search-icon px-3 "></div>
+                    <input style="height: 27px; border-radius: 5px; border-color:#293445 " class="form-control ps-5" type="text" placeholder="Search...">
                   </div>
                 </div>
+                {{-- <div class="d-flex align-items-center" >
+                    <form class="position-relative" id="searchForm" action="{{ route('tekliflersearch') }}" method="GET">
+                      <div class="position-absolute top-50 translate-middle-y search-icon px-3 " ><i class="bi bi-search"></i></div>
+                      <input   id="searchInput" class="form-control ps-5" type="text" placeholder="Search">
+                    </form>
+                </div> --}}
 
             </div>
         </div>

@@ -512,6 +512,11 @@
 	background-color: #212529;
 	border-color: #212529
 }
+.btn-gray {
+	color: #fff;
+	background-color: #293445;
+	border-color: #293445
+}
 .btn-dark:hover {
 	color: #fff;
 	background-color: #1c1f23;
