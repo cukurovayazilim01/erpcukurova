@@ -34,7 +34,9 @@ use App\Http\Controllers\OdemelerController;
 use App\Http\Controllers\OdemeplanlariController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PanoController;
+use App\Http\Controllers\PerformanDegerlemeController;
 use App\Http\Controllers\PersonelController;
+use App\Http\Controllers\PyillikhedeflerController;
 use App\Http\Controllers\RaporlarController;
 use App\Http\Controllers\ResmievraklarController;
 use App\Http\Controllers\SatislarController;
@@ -276,7 +278,19 @@ Route::group(['middleware' => ['auth']], function () {
     //IS BASVURULARI
     Route::resource('isbasvurulari',IsbasvurulariController::class);
     Route::get('isbasvurularilist',[IsbasvurulariController::class,'isbasvurularilist'])->name('isbasvurularilist');
-    //ENTEGRASYONLAR,
+    Route::post('/personellistesineaktar/{id}',[IsbasvurulariController::class,'personeleaktar'])->name('personeleaktar');
+    //PERFORMANS DEGERLEME
+    Route::resource('performansdegerleme',PerformanDegerlemeController::class);
+    Route::get('performansdegerleme/{id}/formu',[PerformanDegerlemeController::class,'degerlemeformu'])->name('degerlemeformu');
+    Route::get('/kriterler',[PerformanDegerlemeController::class,'degerlendirmekriterleri'])->name('degerlendirmekriterleri');
+    Route::post('/degerlemeformuPOST',[PerformanDegerlemeController::class,'degerlemeformuPOST'])->name('degerlemeformuPOST');
+    Route::get('/performans-degerleme-formu/{id}', [PerformanDegerlemeController::class, 'degerlemeformuSHOW'])->name('degerlemeformuSHOW');
+
+    //PERSONEL YILLIK HEDEFLERİ
+    Route::resource('pyillikhedefler',PyillikhedeflerController::class);
+    Route::post('/yillikhedefkonulariPOST',[PyillikhedeflerController::class,'yillikhedefkonuPOST'])->name('yillikhedefkonuPOST');
+    Route::get('/yillikhedefkonulari',[PyillikhedeflerController::class,'yillikhedefkonu'])->name('yillikhedefkonu');
+    //ENTEGRASYONLAR
     Route::get('/entegrasyonmenu',[EntegrasyonController::class,'entegrasyonmenu'])->name('entegrasyonmenu');
     Route::get('/smsapi',[EntegrasyonController::class,'smsapi'])->name('smsapi');
     Route::put('/smsapiPUT/{id}',[EntegrasyonController::class,'smsapiPUT'])->name('smsapiPUT');
