@@ -237,6 +237,11 @@ class CarilerController extends Controller
         $log->islemiyapan_id = Auth::user()->id;
         $log->islem = $cariler->firma_unvan . ' ' . 'Carisini Ekledi';
         $log->save();
+        $referer = $request->headers->get('referer');
+
+        if (strpos($referer, '/tedarikciler') !== false) {
+            return redirect('tedarikciler')->with('success', 'Ekleme Başarılı');
+        }
 
         return redirect('cariler')->with('success', 'Ekleme Başarılı');
     }

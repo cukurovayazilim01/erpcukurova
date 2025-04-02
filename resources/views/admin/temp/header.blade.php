@@ -76,12 +76,12 @@
 
   <style>
 
-    input:invalid{
+    /* input:invalid{
         border-color: red;
     }
     input:valid{
         border-color: green;
-    }
+    } */
     @media print {
         body {
             font-size: 6px;

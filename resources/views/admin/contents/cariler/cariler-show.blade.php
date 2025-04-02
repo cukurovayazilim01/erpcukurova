@@ -6,6 +6,7 @@
 @section('topheader')
     Firma Karnesi
 @endsection
+
 <div class="card">
     <div class="card-body">
         <div class="row">
