@@ -1859,3 +1859,103 @@ input[readonly] {
 		display: none
 	}
 }
+
+
+/* =====MODAL====== */
+
+.modal-header {
+    padding: 10px;
+    background: rgb(0,128,255);
+background: linear-gradient(346deg, rgba(0,128,255,1) 25%, rgba(0,193,255,1) 55%);
+    border-bottom: 5px solid #FFCA2C;
+}
+
+.rowx{
+
+    border-bottom: 1px solid rgb(235, 234, 234);
+    padding: 10px 20px;
+
+}
+.rowx .input-group{
+    display: flex;
+    padding-right: 10px ;
+    padding-left: 10px ;
+}
+.modal-body .row{
+    /* --bs-gutter-x: none; */
+border-bottom: 1px solid rgb(240, 235, 235);
+}
+.modal-title{
+    color: #293445;
+    font-size: 16px !important;
+    background: white;
+    padding:0 10px;
+    border-radius: 2px;
+    font-weight: 500;
+}
+.modal-close{
+    color: white !important;
+}
+
+
+/* =================MOBİLE================== */
+@media (max-width: 768px) {
+    .mobile-erp {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+
+    }
+
+    .mobile-erp0 {
+        width: 100%;
+    }
+
+    .mobile-erp1 {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .mobile-erp1 a {
+      width: 100%;
+
+    }
+    .mobile-erp1 a button {
+      width: 100%;
+    }
+
+   .mobile-erp1 i {
+        display: none;
+    }
+
+
+    .mobile-erp2 {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    .mobile-erp2 form {
+        flex: 1;
+    }
+
+    .mobile-erp3 {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .mobile-erp3 button {
+        flex: 1;
+        min-width: 100px;
+        text-align: center;
+    }
+
+}

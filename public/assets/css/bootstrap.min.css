@@ -3587,10 +3587,10 @@ fieldset:disabled .btn {
 
 .btn-outline-dark {
     --bs-btn-color: #212529;
-    --bs-btn-border-color: #0064c9;
+    --bs-btn-border-color: #212529;
     --bs-btn-hover-color: #fff;
-    --bs-btn-hover-bg: #0582ff;
-    --bs-btn-hover-border-color: #c73f2d;
+    --bs-btn-hover-bg: #212529;
+    --bs-btn-hover-border-color: #212529;
     --bs-btn-focus-shadow-rgb: 33, 37, 41;
     --bs-btn-active-color: #fff;
     --bs-btn-active-bg: #212529;
@@ -6103,7 +6103,7 @@ fieldset:disabled .btn {
     background-color: var(--bs-modal-bg);
     background-clip: padding-box;
     border: var(--bs-modal-border-width) solid var(--bs-modal-border-color);
-    border-radius: var(--bs-modal-border-radius);
+    border-radius: 10px;
     outline: 0
 }
 
@@ -6134,7 +6134,7 @@ fieldset:disabled .btn {
     align-items: center;
     justify-content: space-between;
     padding: var(--bs-modal-header-padding);
-    border-bottom: var(--bs-modal-header-border-width) solid var(--bs-modal-header-border-color);
+    /* border-bottom: var(--bs-modal-header-border-width) solid var(--bs-modal-header-border-color); */
     border-top-left-radius: var(--bs-modal-inner-border-radius);
     border-top-right-radius: var(--bs-modal-inner-border-radius)
 }
@@ -6145,6 +6145,7 @@ fieldset:disabled .btn {
 }
 
 .modal-title {
+    /* padding: 50px; */
     margin-bottom: 0;
     line-height: var(--bs-modal-title-line-height)
 }
@@ -6163,7 +6164,6 @@ fieldset:disabled .btn {
     justify-content: flex-end;
     padding: calc(var(--bs-modal-padding) - var(--bs-modal-footer-gap) * .5);
     background-color: var(--bs-modal-footer-bg);
-    border-top: var(--bs-modal-footer-border-width) solid var(--bs-modal-footer-border-color);
     border-bottom-right-radius: var(--bs-modal-inner-border-radius);
     border-bottom-left-radius: var(--bs-modal-inner-border-radius)
 }
