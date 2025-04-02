@@ -154,6 +154,8 @@
               </li>
             <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="İNSAN KAYNAKLARI">
               <button class="nav-link {{ request()->is('zimmet') || request()->is('zimmet/*') ? 'show active' : '' }} {{ request()->is('yillikizinhaklari') || request()->is('yillikizinhaklari/*') ? 'show active' : '' }}
+                {{ request()->is('performansdegerleme') || request()->is('performansdegerleme/*') ? 'show active' : '' }} {{ request()->is('pyillikhedefler') || request()->is('pyillikhedefler/*') ? 'show active' : '' }}
+                 {{ request()->is('isbasvurulari') || request()->is('isbasvurulari/*') ? 'show active' : '' }} {{ request()->is('yillikhedefkonulari') || request()->is('yillikhedefkonulari/*') ? 'show active' : '' }}
               " data-bs-toggle="pill" data-bs-target="#pills-components" type="button"><i style="font-size:24px; display: flex; justify-content: center; align-items: center;" class="fa-solid fa-user-tie"></i></button>
             </li>
 
@@ -308,9 +310,9 @@
               </div>
             </div>
             <div class="tab-pane fade
-                {{ request()->is('personell') || request()->is('personell/*') ? 'show active' : '' }}
-                 {{ request()->is('zimmet') || request()->is('zimmet/*') ? 'show active' : '' }}
-                  {{ request()->is('yillikizinhaklari') || request()->is('yillikizinhaklari/*') ? 'show active' : '' }}
+                {{ request()->is('personell') || request()->is('personell/*') ? 'show active' : '' }} {{ request()->is('performansdegerleme') || request()->is('performansdegerleme/*') ? 'show active' : '' }}
+                 {{ request()->is('zimmet') || request()->is('zimmet/*') ? 'show active' : '' }} {{ request()->is('pyillikhedefler') || request()->is('pyillikhedefler/*') ? 'show active' : '' }} {{ request()->is('yillikhedefkonulari') || request()->is('yillikhedefkonulari/*') ? 'show active' : '' }}
+                  {{ request()->is('yillikizinhaklari') || request()->is('yillikizinhaklari/*') ? 'show active' : '' }} {{ request()->is('isbasvurulari') || request()->is('isbasvurulari/*') ? 'show active' : '' }}
             " id="pills-components">
               <div class="list-group list-group-flush">
                 <div class="list-group-item">
@@ -325,7 +327,10 @@
                 <a href="{{route('izinler.index')}}" class="list-group-item"><i class="bi bi-arrows-collapse"></i>İzinler</a>
                 <a href="{{route('yillikizin.index')}}" class="list-group-item"><i class="bi bi-table"></i>Yıllık İzinler</a>
                 <a href="{{route('zimmet.index')}}" class="list-group-item {{ request()->is('zimmet') || request()->is('zimmet/*') ? 'active' : '' }}"><i class="bi bi-badge-8k"></i>Zimmet</a>
-                <a href="{{route('isbasvurulari.index')}}" class="list-group-item"><i class="bi bi-menu-button"></i>İş Başvuruları</a>
+                <a href="{{route('isbasvurulari.index')}}" class="list-group-item {{ request()->is('isbasvurulari') || request()->is('isbasvurulari/*') ? 'active' : '' }}"><i class="bi bi-menu-button"></i>İş Başvuruları</a>
+                <a href="{{route('degerlendirmekriterleri')}}" class="list-group-item {{ request()->is('kriterler') || request()->is('kriterler/*') ? 'active' : '' }}"><i class="bi bi-menu-button"></i>Değerleme Kriterleri</a>
+                <a href="{{route('performansdegerleme.index')}}" class="list-group-item {{ request()->is('performansdegerleme') || request()->is('performansdegerleme/*') ? 'active' : '' }}"><i class="bi bi-menu-button"></i>Performans Değerleme</a>
+                <a href="{{route('pyillikhedefler.index')}}" class="list-group-item {{ request()->is('pyillikhedefler') || request()->is('pyillikhedefler/*') ? 'active' : '' }} {{ request()->is('yillikhedefkonulari') || request()->is('yillikhedefkonulari/*') ? 'active' : '' }}"><i class="bi bi-badge-8k"></i>Personel Yıllık Hedefleri</a>
 
               </div>
             </div>
