@@ -6,18 +6,17 @@
 @section('topheader')
     Firma Karnesi
 @endsection
-
-<div class="card">
+<div class="card" style="margin-bottom: 0">
     <div class="card-body">
         <div class="row">
             <div class="col-md-12 d-flex justify-content-between align-items-center">
-                <ul class="nav nav-pills" role="tablist">
+                <ul class="nav nav-pills nav-pills-warning" role="tablist">
                     <li class="nav-item" role="presentation">
                         <a class="nav-link active" data-bs-toggle="pill" href="#iletisim" role="tab"
                             aria-selected="true">
                             <div class="d-flex align-items-center">
-                                <div class="tab-icon"><i class='bx bx-microphone font-18 me-1'></i>
-                                </div>
+                                <div class="tab-icon"><i class="fa-solid fa-address-book"></i>
+                                </div>&nbsp;
                                 <div class="tab-title">İletişim</div>
                             </div>
                         </a>
@@ -26,8 +25,8 @@
                         <a class="nav-link" data-bs-toggle="pill" href="#teklifler" role="tab"
                             aria-selected="false">
                             <div class="d-flex align-items-center">
-                                <div class="tab-icon"><i class='bx bx-file font-18 me-1'></i>
-                                </div>
+                                <div class="tab-icon"><i class="fa-solid fa-envelopes-bulk"></i>
+                                </div>&nbsp;
                                 <div class="tab-title">Teklifler</div>
                             </div>
                         </a>
@@ -35,8 +34,8 @@
                     <li class="nav-item" role="presentation">
                         <a class="nav-link" data-bs-toggle="pill" href="#satislar" role="tab" aria-selected="false">
                             <div class="d-flex align-items-center">
-                                <div class="tab-icon"><i class='bx bx-file font-18 me-1'></i>
-                                </div>
+                                <div class="tab-icon"><i class="fa-solid fa-coins"></i>
+                                </div>&nbsp;
                                 <div class="tab-title">Satışlar</div>
                             </div>
                         </a>
@@ -44,8 +43,8 @@
                     <li class="nav-item" role="presentation">
                         <a class="nav-link" data-bs-toggle="pill" href="#tahsilat" role="tab" aria-selected="false">
                             <div class="d-flex align-items-center">
-                                <div class="tab-icon"><i class='bx bx-file font-18 me-1'></i>
-                                </div>
+                                <div class="tab-icon"><i class="fa-solid fa-credit-card"></i>
+                                </div>&nbsp;
                                 <div class="tab-title">Tahsilatlar</div>
                             </div>
                         </a>
@@ -53,8 +52,8 @@
                     <li class="nav-item" role="presentation">
                         <a class="nav-link" data-bs-toggle="pill" href="#alislar" role="tab" aria-selected="false">
                             <div class="d-flex align-items-center">
-                                <div class="tab-icon"><i class='bx bx-file font-18 me-1'></i>
-                                </div>
+                                <div class="tab-icon"><i class="fa-solid fa-shop"></i>
+                                </div>&nbsp;
                                 <div class="tab-title">Alışlar</div>
                             </div>
                         </a>
@@ -62,8 +61,8 @@
                     <li class="nav-item" role="presentation">
                         <a class="nav-link" data-bs-toggle="pill" href="#odemeler" role="tab" aria-selected="false">
                             <div class="d-flex align-items-center">
-                                <div class="tab-icon"><i class='bx bx-file font-18 me-1'></i>
-                                </div>
+                                <div class="tab-icon"><i class="fa-solid fa-file-invoice-dollar"></i>
+                                </div>&nbsp;
                                 <div class="tab-title">Ödemeler</div>
                             </div>
                         </a>
@@ -72,14 +71,14 @@
                 <div class="text-end">
                     <a type="button" target="_blank"
                         href="https://wa.me/+90{{$cariler->yetkili_kisi_tel}}?text=Merhaba, işte vekaletname belgeniz: {{ asset('gereklidosyalar/Cukurova_Vekaletname_Turkce.pdf') }}"
-                        class="btn btn-sm btn-success">
-                        <i class="fa-solid fa-file-pdf" style="font-size: 18px"></i> Vekaletname Gönder
+                        class="btn btn-outline-success btn-sm">
+                        <i class="fa-solid fa-file-pdf" ></i> Vekaletname
                     </a>
 
                     <a type="button"
                         href="{{ route('carihesaprapor.al', ['_token' => csrf_token(), 'cari_id' => $cariler]) }}"
-                        class="btn btn-sm btn-danger ">
-                        <i class="fa-solid fa-file-pdf" style="font-size: 18px"></i> Hesap Ekstresi Al
+                        class="btn btn-outline-dark btn-sm">
+                        <i class="fa-solid fa-file-pdf" ></i> Hesap Ekstresi
                     </a>
                 </div>
 
@@ -96,17 +95,14 @@
             <div class="tab-pane fade show active" id="iletisim" role="tabpanel">
                 <div class="row">
                     <div class="col-md-3">
-                        <div class="card " style="margin-top: -1.5rem; box-shadow: none">
                             <div class="card shadow-sm border-0 overflow-hidden">
                                 <div class="card-body">
 
-                                    <div class="text-center mt-4">
-                                        <h4 class="mb-1" style="font-size: 20px">{{ $cariler->firma_unvan }}</h4>
+                                    <div class="text-center mt-2">
+                                        <h4 class="mb-1 fs-6 fw-bold" style="text-transform: uppercase">{{ $cariler->firma_unvan }}</h4>
                                         <p class="mb-0 text-secondary">{{ $cariler->yetkili_kisi }}</p>
-                                        <div class="mt-4"></div>
 
-                                        {{-- <h6 class="mb-1">HR Manager - Codervent Technology</h6>
-                                        <p class="mb-0 text-secondary">University of Information Technology</p> --}}
+
                                     </div>
                                     <hr>
                                     <div class="text-start">
@@ -195,13 +191,12 @@
 
 
                             </div>
-                        </div>
                     </div>
                     <div class="col-md-9">
-                        <div class="card" style="margin-top: -1.5rem">
+                        <div class="card" >
                             <div class="card-header d-flex justify-content-between align-items-center">
                                 <h5 class="mb-0">Arama Listesi</h5>
-                                <button type="button" class="btn btn-sm btn-outline-primary px-5"
+                                <button type="button" class="btn btn-sm btn-outline-dark px-3"
                                     data-bs-toggle="modal" data-bs-target="#carilershowaramamodal">
                                     <i class="fa-solid fa-plus"></i> Yeni Ekle
                                 </button>
@@ -219,7 +214,7 @@
                                         </div>
 
                                         <!-- Modal Body -->
-                                        <div class="modal-body">
+                                        <div class="modal-body" style="padding: 20px; background-position:center; background-repeat: no-repeat; background-size: cover;  background-image: url('{{ asset('resim/modal7.png') }}') ">
                                             <form id="add-form" action="{{ route('aramaEkle', ['id' => $cariler->id]) }}"
                                                 method="POST" enctype="multipart/form-data">
                                                 @csrf
@@ -325,7 +320,7 @@
                                                     </div>
                                                 </div>
                                                 <!-- Modal Footer -->
-                                                <div class="modal-footer bg-light">
+                                                <div class="modal-footer ">
                                                     <button type="button" class="btn btn-sm btn-outline-secondary"
                                                         data-bs-dismiss="modal">Vazgeç</button>
                                                     <button type="submit" id="submit-form"
@@ -434,10 +429,10 @@
                         <div style="height: 20px;"></div>
 
 
-                        <div class="card" style="margin-top: -1.5rem">
+                        <div class="card" >
                             <div class="card-header d-flex justify-content-between align-items-center">
                                 <h5 class="mb-0">Kontak Listesi</h5>
-                                <button type="button" class="btn btn-sm btn-outline-primary px-5"
+                                <button type="button" class="btn btn-sm btn-outline-dark px-3"
                                     data-bs-toggle="modal" data-bs-target="#carilerkontakeklemodal"><i
                                         class="fa-solid fa-plus"></i>Yeni Ekle</button>
                             </div>
@@ -715,7 +710,7 @@
                         <div class="card">
                             <div class="card-header d-flex justify-content-between align-items-center">
                                 <h5 class="mb-0">Doküman Listesi</h5>
-                                <button type="button" class="btn btn-sm btn-outline-primary px-5"
+                                <button type="button" class="btn btn-sm btn-outline-dark px-3"
                                     data-bs-toggle="modal" data-bs-target="#carilerdokumaneklemodal"><i
                                         class="fa-solid fa-plus"></i>Yeni Ekle</button>
                             </div>
@@ -868,7 +863,7 @@
             <div class="tab-pane fade" id="teklifler" role="tabpanel">
                 <div class="row">
                     <div class="col-md-3">
-                        <div class="card " style="margin-top: -1.5rem; box-shadow: none">
+                        <div class="card " >
                             <div class="card shadow-sm border-0 overflow-hidden">
                                 <div class="card-body">
 
@@ -970,7 +965,7 @@
                         </div>
                     </div>
                     <div class="col-md-9">
-                        <div class="card" style="margin-top: -1.5rem">
+                        <div class="card" >
                             <div class="card-body">
 
                                 <div class="row">
@@ -1015,7 +1010,7 @@
                                                 <div class="ms-auto">
                                                     <a type="button"
                                                         href="{{ route('teklifler.create', ['cari_id' => $cariler->id]) }}"
-                                                        class="btn btn-sm btn-outline-primary px-5"><i
+                                                        class="btn btn-sm btn-outline-dark px-3"><i
                                                             class="fa-solid fa-plus"></i>Teklif Ekle</a>
                                                 </div>
                                             </div>
@@ -1121,7 +1116,7 @@
             <div class="tab-pane fade" id="satislar" role="tabpanel">
                 <div class="row">
                     <div class="col-md-3">
-                        <div class="card " style="margin-top: -1.5rem; box-shadow: none">
+                        <div class="card " >
                             <div class="card shadow-sm border-0 overflow-hidden">
                                 <div class="card-body">
 
@@ -1223,7 +1218,7 @@
                         </div>
                     </div>
                     <div class="col-md-9">
-                        <div class="card" style="margin-top: -1.5rem">
+                        <div class="card" >
                             <div class="card-body">
 
                                 <div class="row">
@@ -1323,7 +1318,7 @@
             <div class="tab-pane fade" id="tahsilat" role="tabpanel">
                 <div class="row">
                     <div class="col-md-3">
-                        <div class="card " style="margin-top: -1.5rem; box-shadow: none">
+                        <div class="card " >
                             <div class="card shadow-sm border-0 overflow-hidden">
                                 <div class="card-body">
 
@@ -1425,7 +1420,7 @@
                         </div>
                     </div>
                     <div class="col-md-9">
-                        <div class="card" style="margin-top: -1.5rem">
+                        <div class="card" >
                             <div class="card-body">
 
                                 <div class="row">
@@ -1518,7 +1513,7 @@
             <div class="tab-pane fade" id="alislar" role="tabpanel">
                 <div class="row">
                     <div class="col-md-3">
-                        <div class="card " style="margin-top: -1.5rem; box-shadow: none">
+                        <div class="card " >
                             <div class="card shadow-sm border-0 overflow-hidden">
                                 <div class="card-body">
 
@@ -1620,7 +1615,7 @@
                         </div>
                     </div>
                     <div class="col-md-9">
-                        <div class="card" style="margin-top: -1.5rem">
+                        <div class="card" >
                             <div class="card-body">
 
                                 <div class="row">
@@ -1719,7 +1714,7 @@
             <div class="tab-pane fade" id="odemeler" role="tabpanel">
                 <div class="row">
                     <div class="col-md-3">
-                        <div class="card " style="margin-top: -1.5rem; box-shadow: none">
+                        <div class="card " >
                             <div class="card shadow-sm border-0 overflow-hidden">
                                 <div class="card-body">
 
@@ -1821,7 +1816,7 @@
                         </div>
                     </div>
                     <div class="col-md-9">
-                        <div class="card" style="margin-top: -1.5rem">
+                        <div class="card" >
                             <div class="card-body">
 
                                 <div class="row">

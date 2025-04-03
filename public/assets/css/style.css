@@ -71,10 +71,14 @@ td{
 .top-header .navbar .top-navbar .nav-link {
 
     color: #293445;
-    font-size: 12px;
+    /* font-size: 12px; */
     text-transform: uppercase;
     font-weight: 500;
 
+}
+
+.nav-link .tab-title{
+    font-size: 12px;
 }
 
 .top-header .navbar .searchbar {
@@ -1863,8 +1867,10 @@ input[readonly] {
 
 /* =====MODAL====== */
 
+
+
 .modal-header {
-    padding: 10px;
+    padding: 20px;
     background: rgb(0,128,255);
 background: linear-gradient(346deg, rgba(0,128,255,1) 25%, rgba(0,193,255,1) 55%);
     border-bottom: 5px solid #FFCA2C;
@@ -1876,6 +1882,10 @@ background: linear-gradient(346deg, rgba(0,128,255,1) 25%, rgba(0,193,255,1) 55%
     padding: 10px 20px;
 
 }
+.mobile-footer{
+    padding: 30px 0;
+}
+
 .rowx .input-group{
     display: flex;
     padding-right: 10px ;
@@ -1884,12 +1894,13 @@ background: linear-gradient(346deg, rgba(0,128,255,1) 25%, rgba(0,193,255,1) 55%
 .modal-body .row{
     /* --bs-gutter-x: none; */
 border-bottom: 1px solid rgb(240, 235, 235);
+padding: 20px 0;
 }
 .modal-title{
     color: #293445;
-    font-size: 16px !important;
-    background: white;
-    padding:0 10px;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    padding:0 0px;
     border-radius: 2px;
     font-weight: 500;
 }
