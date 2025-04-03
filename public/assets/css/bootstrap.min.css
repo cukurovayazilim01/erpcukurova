@@ -6150,10 +6150,12 @@ fieldset:disabled .btn {
     line-height: var(--bs-modal-title-line-height)
 }
 
+
 .modal-body {
     position: relative;
     flex: 1 1 auto;
-    padding: 1px
+    padding: 1px;
+
 }
 
 .modal-footer {

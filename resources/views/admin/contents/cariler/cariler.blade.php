@@ -277,7 +277,7 @@
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <label for="">Firma Durumu</label>
+                                <label for="firma_durumu">Firma Durumu</label>
                                 <div class="input-group mb-2">
                                     <span class="input-group-text"> <i class="fa fa-building"></i>
                                     </span>
@@ -297,8 +297,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div
-                            style="display: flex; padding: 10px 0; gap:20px; text-align: center; justify-content: end">
+                        <div class="mobile-footer"
+                            style="display: flex;  gap:20px; text-align: center; justify-content: end; ">
 
                             <button type="button" class="btn btn-outline-warning btn-sm py-6 w-25" data-bs-dismiss="modal">Vazgeç</button>
                             <button type="submit" class="btn btn-outline-dark btn-sm py-6 w-75">Kaydet</button>
