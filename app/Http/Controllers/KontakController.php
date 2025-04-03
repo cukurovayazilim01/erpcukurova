@@ -20,7 +20,8 @@ class KontakController extends Controller
         // Eğer arama yapılmışsa
         if ($kontaklarsearch) {
             $kontaklarQuery->whereHas('firmaadi', function ($query) use ($kontaklarsearch) {
-                $query->where('firma_unvan', 'like', '%' . $kontaklarsearch . '%');
+                $query->where('firma_unvan', 'like', '%' . $kontaklarsearch . '%')->orwhere('yetkili_isim', 'like', '%' . $kontaklarsearch . '%')
+                ->orwhere('telefon', 'like', '%' . $kontaklarsearch . '%')->orwhere('eposta', 'like', '%' . $kontaklarsearch . '%');
             });
         }
 

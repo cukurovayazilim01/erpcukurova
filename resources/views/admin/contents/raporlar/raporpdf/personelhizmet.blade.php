@@ -111,19 +111,19 @@ Invoice Area
                                 <div class="col-auto">
                                     <h1 class="big-title">Hizmet Bazlı Personel Raporu</h1>
                                     @php
-                                    use Carbon\Carbon;
+                                        use Carbon\Carbon;
 
-                                    // Veritabanındaki ilk kayıt tarihini al
-                                    $ilk_kayit = \App\Models\Firmahrkt::orderBy('created_at', 'asc')->value('created_at');
+                                        // Veritabanındaki ilk kayıt tarihini al
+                                        $ilk_kayit = \App\Models\Firmahrkt::orderBy('created_at', 'asc')->value('created_at');
 
-                                    // Eğer tarih boşsa varsayılan değerleri ata
-                                    $ilk_tarih = !empty($ilk_tarih) ? $ilk_tarih : ($ilk_kayit ? Carbon::parse($ilk_kayit)->format('Y-m-d') : Carbon::now()->format('Y-m-d'));
-                                    $son_tarih = !empty($son_tarih) ? $son_tarih : Carbon::now()->format('Y-m-d');
-                                @endphp
+                                        // Eğer tarih boşsa varsayılan değerleri ata
+                                        $ilk_tarih = !empty($ilk_tarih) ? $ilk_tarih : ($ilk_kayit ? Carbon::parse($ilk_kayit)->format('Y-m-d') : Carbon::now()->format('Y-m-d'));
+                                        $son_tarih = !empty($son_tarih) ? $son_tarih : Carbon::now()->format('Y-m-d');
+                                    @endphp
 
-                                <p class="invoice-number">
-                                    <b>Tarih Aralığı:</b> {{ $ilk_tarih }} / {{ $son_tarih }}
-                                </p>
+                                    <p class="invoice-number">
+                                        <b>Tarih Aralığı:</b> {{ $ilk_tarih }} / {{ $son_tarih }}
+                                    </p>
                                     @php
                                         $islemYapanAdi = null;
 
@@ -161,7 +161,8 @@ Invoice Area
                                 </div>
                             </div>
                         </header>
-                        {{-- <hr class="style1"> --}}
+                        {{--
+                        <hr class="style1"> --}}
                         {{-- <div class="row justify-content-between" style="margin-top: -16px">
                             <div class="col-auto">
                                 <div class="invoice-left">
@@ -177,19 +178,19 @@ Invoice Area
                             <div class="col-auto">
                                 <div class="invoice-right">
                                     {{-- @if (!$cari_id)
-                                        <b>TÜM FİRMALAR:</b>
+                                    <b>TÜM FİRMALAR:</b>
                                     @else
-                                        <b>Müşteri:</b>
-                                        <address>
+                                    <b>Müşteri:</b>
+                                    <address>
 
-                                            {{ $hizmetbazlipersonelrapor->first()->firmaadi->firma_unvan }}
-                                            <br>
-                                            {{ $hizmetbazlipersonelrapor->first()->firmaadi->yetkili_kisi }}
-                                            <br>
-                                            {{ $hizmetbazlipersonelrapor->first()->firmaadi->yetkili_kisi_tel }}
-                                            <br>
-                                            {{ $hizmetbazlipersonelrapor->first()->firmaadi->eposta }}
-                                    @endif
+                                        {{ $hizmetbazlipersonelrapor->first()->firmaadi->firma_unvan }}
+                                        <br>
+                                        {{ $hizmetbazlipersonelrapor->first()->firmaadi->yetkili_kisi }}
+                                        <br>
+                                        {{ $hizmetbazlipersonelrapor->first()->firmaadi->yetkili_kisi_tel }}
+                                        <br>
+                                        {{ $hizmetbazlipersonelrapor->first()->firmaadi->eposta }}
+                                        @endif
 
                                     </address>
                                 </div>
@@ -197,60 +198,60 @@ Invoice Area
                         </div> --}}
 
                         @php
-                        $toplam_satis = 0;
-                        $kategori_toplam_adet = [];
-                        $kategori_toplam_tutar = [];
-                        $kategori_toplam_maliyet = [];
-                        $personel_satislar = [];
-                        $tum_personeller = [];
+                            $toplam_satis = 0;
+                            $kategori_toplam_adet = [];
+                            $kategori_toplam_tutar = [];
+                            $kategori_toplam_maliyet = [];
+                            $personel_satislar = [];
+                            $tum_personeller = [];
 
-                        // Eğer bir hizmet kategorisi filtresi varsa, sadece o kategoriye ait satışları alalım
-                        $filteredRaporlar = !empty($hizmet_kategori)
-                            ? $hizmetbazlipersonelrapor->filter(function ($rapor) use ($hizmet_kategori) {
-                                return $rapor->satis &&
-                                    $rapor->satis->satislardata->contains(function ($satisData) use ($hizmet_kategori) {
-                                        return $satisData->hizmetlerkategori->id == $hizmet_kategori;
-                                    });
-                            })
-                            : $hizmetbazlipersonelrapor;
+                            // Eğer bir hizmet kategorisi filtresi varsa, sadece o kategoriye ait satışları alalım
+                            $filteredRaporlar = !empty($hizmet_kategori)
+                                ? $hizmetbazlipersonelrapor->filter(function ($rapor) use ($hizmet_kategori) {
+                                    return $rapor->satis &&
+                                        $rapor->satis->satislardata->contains(function ($satisData) use ($hizmet_kategori) {
+                                            return $satisData->hizmetlerkategori->id == $hizmet_kategori;
+                                        });
+                                })
+                                : $hizmetbazlipersonelrapor;
 
-                        foreach ($filteredRaporlar as $rapor) {
-                            if ($rapor->satis) {
-                                foreach ($rapor->satis->satislardata as $satislardataitem) {
-                                    if (empty($hizmet_kategori) || $satislardataitem->hizmetlerkategori->id == $hizmet_kategori) {
-                                        $kategori_adi = $satislardataitem->hizmetlerkategori->kategori_ad ?? 'Kategori Yok';
-                                        $personel_adi = $rapor->user->ad_soyad ?? 'Bilinmeyen Personel';
+                            foreach ($filteredRaporlar as $rapor) {
+                                if ($rapor->satis) {
+                                    foreach ($rapor->satis->satislardata as $satislardataitem) {
+                                        if (empty($hizmet_kategori) || $satislardataitem->hizmetlerkategori->id == $hizmet_kategori) {
+                                            $kategori_adi = $satislardataitem->hizmetlerkategori->kategori_ad ?? 'Kategori Yok';
+                                            $personel_adi = $rapor->user->ad_soyad ?? 'Bilinmeyen Personel';
 
-                                        // Tüm personelleri kaydet
-                                        $tum_personeller[$personel_adi] = true;
+                                            // Tüm personelleri kaydet
+                                            $tum_personeller[$personel_adi] = true;
 
-                                        if (!isset($kategori_toplam_adet[$kategori_adi])) {
-                                            $kategori_toplam_adet[$kategori_adi] = 0;
+                                            if (!isset($kategori_toplam_adet[$kategori_adi])) {
+                                                $kategori_toplam_adet[$kategori_adi] = 0;
+                                            }
+                                            if (!isset($kategori_toplam_tutar[$kategori_adi])) {
+                                                $kategori_toplam_tutar[$kategori_adi] = 0;
+                                            }
+                                            if (!isset($kategori_toplam_maliyet[$kategori_adi])) {
+                                                $kategori_toplam_maliyet[$kategori_adi] = 0;
+                                            }
+
+                                            if (!isset($personel_satislar[$kategori_adi][$personel_adi])) {
+                                                $personel_satislar[$kategori_adi][$personel_adi] = 0;
+                                            }
+
+                                            // Toplam satış tutarı, adet ve maliyet hesaplamaları
+                                            $kategori_toplam_adet[$kategori_adi] += $satislardataitem->satis_hizmet_miktar;
+                                            $kategori_toplam_tutar[$kategori_adi] += $satislardataitem->satis_toplam_fiyat;
+                                            $kategori_toplam_maliyet[$kategori_adi] += $satislardataitem->maliyet_toplam_fiyat;
+                                            $toplam_satis += $satislardataitem->satis_toplam_fiyat;
+
+                                            // Personelin yaptığı satış adedini artır
+                                            $personel_satislar[$kategori_adi][$personel_adi] += $satislardataitem->satis_hizmet_miktar;
                                         }
-                                        if (!isset($kategori_toplam_tutar[$kategori_adi])) {
-                                            $kategori_toplam_tutar[$kategori_adi] = 0;
-                                        }
-                                        if (!isset($kategori_toplam_maliyet[$kategori_adi])) {
-                                            $kategori_toplam_maliyet[$kategori_adi] = 0;
-                                        }
-
-                                        if (!isset($personel_satislar[$kategori_adi][$personel_adi])) {
-                                            $personel_satislar[$kategori_adi][$personel_adi] = 0;
-                                        }
-
-                                        // Toplam satış tutarı, adet ve maliyet hesaplamaları
-                                        $kategori_toplam_adet[$kategori_adi] += $satislardataitem->satis_hizmet_miktar;
-                                        $kategori_toplam_tutar[$kategori_adi] += $satislardataitem->satis_toplam_fiyat;
-                                        $kategori_toplam_maliyet[$kategori_adi] += $satislardataitem->maliyet_toplam_fiyat;
-                                        $toplam_satis += $satislardataitem->satis_toplam_fiyat;
-
-                                        // Personelin yaptığı satış adedini artır
-                                        $personel_satislar[$kategori_adi][$personel_adi] += $satislardataitem->satis_hizmet_miktar;
                                     }
                                 }
                             }
-                        }
-                    @endphp
+                        @endphp
 
                         {{-- <p class="table-title text-center"><b>Rapor:</b></p> --}}
 
@@ -291,9 +292,9 @@ Invoice Area
                                             <canvas id="kategoriAdetChart"></canvas>
                                         </div>
                                         {{-- <div class="chart-card">
-                <h2>Satış Tutarı Dağılımı</h2>
-                <canvas id="kategoriTutarChart"></canvas>
-            </div> --}}
+                                            <h2>Satış Tutarı Dağılımı</h2>
+                                            <canvas id="kategoriTutarChart"></canvas>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
@@ -487,7 +488,7 @@ Invoice Area
                         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                         <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
                         <script>
-                            document.addEventListener("DOMContentLoaded", function() {
+                            document.addEventListener("DOMContentLoaded", function () {
                                 var kategoriAdlari = @json(array_keys($kategori_toplam_adet));
                                 var kategoriAdetleri = @json(array_values($kategori_toplam_adet));
                                 var kategoriTutarları = @json(array_values($kategori_toplam_tutar));
@@ -544,6 +545,10 @@ Invoice Area
 
 
                         <br><br><br><br><br>
+
+
+
+
 
                         {{-- <div class="row pt-15">
                             <div class="col-md-12">
@@ -606,7 +611,7 @@ Invoice Area
     <script src="{{ asset('custom/invoce/js/jspdf.min.js') }}"></script>
     <script src="{{ asset('custom/invoce/js/html2canvas.min.js') }}"></script>
     <script>
-        (function($) {
+        (function ($) {
             "use strict";
             /*=================================
               JS Index Here
@@ -622,7 +627,7 @@ Invoice Area
             ==================================*/
 
             /*----------- 01. Print and Download Button ----------*/
-            $('#download_btn').on('click', function() {
+            $('#download_btn').on('click', function () {
                 var downloadSection = $('#download_section');
                 var cWidth = downloadSection.width();
                 var cHeight = downloadSection.height();
@@ -635,7 +640,7 @@ Invoice Area
 
                 html2canvas(downloadSection[0], {
                     allowTaint: true
-                }).then(function(
+                }).then(function (
                     canvas
                 ) {
                     canvas.getContext('2d');
@@ -667,7 +672,7 @@ Invoice Area
             });
 
             // Print Html Document
-            $('.print_btn').on('click', function(e) {
+            $('.print_btn').on('click', function (e) {
                 window.print();
             });
 
@@ -675,7 +680,7 @@ Invoice Area
 
             // Background Image
             if ($("[data-bg-src]").length > 0) {
-                $("[data-bg-src]").each(function() {
+                $("[data-bg-src]").each(function () {
                     var src = $(this).attr("data-bg-src");
                     $(this).css("background-image", "url(" + src + ")");
                     $(this).removeAttr("data-bg-src").addClass("background-image");

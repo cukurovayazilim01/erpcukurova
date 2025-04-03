@@ -180,6 +180,17 @@
                 </div>
             </div>
         </div>
+        <div class="col-lg-2 col-md-3 col-sm-6 col-12 mb-3">
+            <div class="card">
+                <img src="{{ asset('resim/12.png') }}" class="card-img-top">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Aylık Satış Grafiği</h5>
+                    <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#personelayliksatisraporModal">
+                        Rapor Al
+                    </button>
+                </div>
+            </div>
+        </div>
 
         <!-- Diğer kartlar buraya benzer şekilde eklenir -->
 
@@ -1017,6 +1028,75 @@
                                             class="form-control form-control-sm">
                                     </div>
                                 </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal Footer -->
+                    <div class="modal-footer bg-light">
+                        <button type="button" class="btn btn-sm btn-outline-secondary"
+                            data-bs-dismiss="modal">Kapat</button>
+                        <button type="submit" id="submit-form"
+                            class="btn btn-outline-primary btn-sm ">Sorgula</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{{-- PERSONEL AYLIK SATIŞ GRAFİĞİ --}}
+    <div class="modal fade" id="personelayliksatisraporModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <form id="add-form" action="{{route('ayliksatisgrafigi.index')}}" method="GET">
+                @csrf
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header bg-primary text-white">
+                        <h5 class="modal-title">Aylık Satış Grafiği</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+
+                    <!-- Modal Body -->
+                    <div class="modal-body" style="display: flex">
+                        <!-- Left Side -->
+                        <div class="col-md-12" style=" padding: 3%; ">
+                            <div class="row">
+
+                                <div class="col-md-12">
+                                    <label for="islem_yapan">Satış Temsilcisi</label>
+                                    <div class="form-group input-with-icon">
+                                        <span class="icon">
+                                            <i class="fa fa-user"></i>
+                                        </span>
+                                        <select name="islem_yapan" id="islem_yapan" class="form-select form-select-sm" >
+                                            <option value="">Lütfen Seçim Yapınız</option>
+                                            @foreach ($user as $useritem)
+                                                <option value="{{ $useritem->id }}">{{ $useritem->ad_soyad }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                {{-- <div class="col-md-6">
+                                    <label for="ilk_tarih">İlk Tarih</label>
+                                    <div class="form-group input-with-icon">
+                                        <span class="icon">
+                                            <i class="fa-solid fa-calendar-days"></i>
+                                        </span>
+                                        <input type="date" name="ilk_tarih" id="ilk_tarih"
+                                            class="form-control form-control-sm">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="son_tarih">Son Tarih</label>
+                                    <div class="form-group input-with-icon">
+                                        <span class="icon">
+                                            <i class="fa-solid fa-calendar-days"></i>
+                                        </span>
+                                        <input type="date" name="son_tarih" id="son_tarih"
+                                            class="form-control form-control-sm">
+                                    </div>
+                                </div> --}}
 
                             </div>
                         </div>

@@ -69,8 +69,13 @@ class AramalarController extends Controller
 
         // Eğer arama yapılmışsa
         if ($aramalarsearch) {
-            $aramalarQuery->whereHas('cariler', function ($query) use ($aramalarsearch) {
-                $query->where('firma_unvan', 'like', '%' . $aramalarsearch . '%');
+            $aramalarQuery->where(function($query) use ($aramalarsearch) {
+                $query->whereHas('cariler', function ($q) use ($aramalarsearch) {
+                    $q->where('firma_unvan', 'like', '%' . $aramalarsearch . '%')->orwhere('hizmet_turu', 'like', '%' . $aramalarsearch . '%');
+                })
+                ->orWhereHas('adsoyad', function ($q) use ($aramalarsearch) {
+                    $q->where('ad_soyad', 'like', '%' . $aramalarsearch . '%');
+                });
             });
         }
 

@@ -71,7 +71,7 @@
     <!-- Modal -->
     <div class="modal fade" id="carilermodal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-xl">
-            <form id="add-form" action="{{ route('cariler.store') }}" method="POST" style="border-radius: 20px">
+            <form id="add-form" action="{{ route('cariler.store') }}" method="POST">
                 @csrf
                 <div class="modal-content">
 
@@ -300,7 +300,7 @@
                         <div
                             style="display: flex; padding: 10px 0; gap:20px; text-align: center; justify-content: end">
 
-                            <button type="button" class="btn btn-outline-warning btn-sm py-6 w-25">Vazgeç</button>
+                            <button type="button" class="btn btn-outline-warning btn-sm py-6 w-25" data-bs-dismiss="modal">Vazgeç</button>
                             <button type="submit" class="btn btn-outline-dark btn-sm py-6 w-75">Kaydet</button>
 
                         </div>

@@ -3,6 +3,8 @@
 Anasayfa
 @endsection
 @section('contents')
+
+
 <div class="row">
     <div class="col-md-6">
         <div class="card radius-10">

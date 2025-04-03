@@ -12,7 +12,7 @@ use App\Models\Satislardata;
 use App\Models\Teklifler;
 use App\Models\User;
 use Carbon\Carbon;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class RaporlarController extends Controller
@@ -682,5 +682,54 @@ class RaporlarController extends Controller
         // dd($aramarapor);
 
         return view('admin.contents.raporlar.raporpdf.aramarapor', compact('aramarapor', 'ilk_tarih', 'son_tarih', 'islem_tarihi', 'islem_yapan'));
+    }
+
+    public function ayliksatisgrafigi(Request $request)
+    {
+
+
+        $islem_yapan = $request->input('islem_yapan');
+        $ilk_tarih = $request->input('ilk_tarih');
+        $son_tarih = $request->input('son_tarih');
+        $islem_tarihi = Carbon::now();
+        $ayliksatisgrafigi = Firmahrkt::query();
+
+
+
+
+          // İşlem yapan kişi filtresi
+          if (!empty($islem_yapan)) {
+            $ayliksatisgrafigi->where('islem_yapan', $islem_yapan);
+        }
+        if ($ilk_tarih && $son_tarih) {
+            $baslangic = Carbon::parse($ilk_tarih)->startOfDay();
+            $son = Carbon::parse($son_tarih)->endOfDay();
+
+            if ($baslangic->equalTo($son)) {
+                // Durum 1: İki aynı tarih seçildiyse, sadece bu tarihe ait veriler
+                $ayliksatisgrafigi->whereDate('islem_tarihi', $baslangic);
+            } else {
+                // Durum 4: İki farklı tarih seçildiyse, belirtilen aralıktaki veriler
+                $ayliksatisgrafigi->whereBetween('islem_tarihi', [$baslangic, $son]);
+            }
+        } elseif ($ilk_tarih) {
+            // Durum 2: Sadece ilk tarih seçildiyse, o tarihten sonraki veriler
+            $baslangic = Carbon::parse($ilk_tarih)->startOfDay();
+            $ayliksatisgrafigi->where('islem_tarihi', '>=', $baslangic);
+        } elseif ($son_tarih) {
+            // Durum 3: Sadece son tarih seçildiyse, o tarihten önceki veriler
+            $son = Carbon::parse($son_tarih)->endOfDay();
+            $ayliksatisgrafigi->where('islem_tarihi', '<=', $son);
+        } else {
+            // Durum 6: Hiçbir tarih seçilmediyse, tüm veriler
+            $ayliksatisgrafigi->whereNotNull('islem_tarihi'); // veya tüm verileri çekmek için herhangi bir filtre uygulanmaz
+        }
+        // $ayliksatisgrafigi = $ayliksatisgrafigi->get();
+        $ayliksatisgrafigi = $ayliksatisgrafigi->whereNotNull('satis_id')->orderBy('id', 'desc')->get();
+
+
+        // dd($ayliksatisgrafigi);
+
+        return view('admin.contents.raporlar.raporpdf.ayliksatisgrafigi', compact('ayliksatisgrafigi', 'islem_yapan','ilk_tarih', 'son_tarih', 'islem_tarihi'));
     }
 }
