@@ -39,7 +39,7 @@
                         <i class="fa-solid fa-user"></i> Müşteriler
                     </a>
                     <a href="{{ route('tedarikciler') }}" type="button" class="btn btn-dark btn-sm px-3">
-                        <i class="fas fa-shipping-fast"></i> Tedarikçiler
+                        <i class="fa-solid fa-users"></i> Tedarikçiler
                     </a>
                 </div>
 
@@ -298,7 +298,7 @@
                         <div
                             style="display: flex; padding: 10px 0; gap:20px; text-align: center; justify-content: end">
 
-                            <button type="button" class="btn btn-outline-warning btn-sm py-6 w-25">Vazgeç</button>
+                            <button type="button" class="btn btn-outline-warning btn-sm py-6 w-25" data-bs-dismiss="modal">Vazgeç</button>
                             <button type="submit" class="btn btn-outline-dark btn-sm py-6 w-75">Kaydet</button>
 
                         </div>

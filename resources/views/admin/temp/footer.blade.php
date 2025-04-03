@@ -113,7 +113,7 @@
   <script src="{{asset('assets/plugins/chartjs/chart.min.js')}}"></script>
   <script src="{{asset('assets/plugins/select2/js/select2.min.js')}}"></script>
   <script src="{{asset('assets/js/form-select2.js')}}"></script>
-
+  <script src="{{asset('assets/plugins/apexcharts-bundle/js/apex-custom.js')}}"></script>
   <!--app-->
   <script src="{{asset('assets/js/app.js')}}"></script>
   <script src="{{asset('assets/js/index.js')}}"></script>

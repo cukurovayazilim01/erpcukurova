@@ -192,6 +192,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('hizmetbazlipersonelrapor',[RaporlarController::class,'hizmetbazlipersonelrapor'])->name('hizmetbazlipersonelrapor.index');
     Route::get('kdvrapor',[RaporlarController::class,'kdvrapor'])->name('kdvrapor.index');
     Route::get('aramarapor',[RaporlarController::class,'aramarapor'])->name('aramarapor.index');
+    Route::get('ayliksatisgrafigi',[RaporlarController::class,'ayliksatisgrafigi'])->name('ayliksatisgrafigi.index');
 
 
     //DOMAİNTAKİP

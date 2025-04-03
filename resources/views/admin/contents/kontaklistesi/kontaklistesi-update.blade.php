@@ -7,43 +7,41 @@
             @method('put')
             <div class="modal-content">
                 <!-- Modal Header -->
-                <div class="modal-header bg-primary text-white">
+                <div class="modal-header">
                     <h5 class="modal-title">{{ $kontakitem->firmaadi->firma_unvan }} GÜNCELLE</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
                 <!-- Modal Body -->
-                <div class="modal-body" style="display: flex">
-                    <!-- Left Side -->
-                    <div class="col-md-12" style=" padding: 1%; ">
-                        <div class="row">
-                            <div class="col-md-4">
+                <div class="modal-body"
+                        style="padding: 20px; background-position:center; background-repeat: no-repeat; background-size: cover;  background-image: url('{{ asset('resim/modal7.png') }}') ">
+
+                        <div class="row ">
+                            <div class="col-md-6 col-sm-12 ">
                                 <label for="cari_id">Firma</label>
-                                <div class="form-group input-with-icon" style="background-color:#f8f9fa">
-                                    <span class="icon" style="margin-right: 5px">
-                                        <i class="fa fa-user"></i>
-                                    </span>
-                                    {{ $kontakitem->firmaadi->firma_unvan ?? 'Bilinmiyor' }}
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text"><i class="fa fa-building"></i></span>
+                                    <input type="text" value="{{ $kontakitem->firmaadi->firma_unvan ?? 'Bilinmiyor' }}"
+                                    class="form-control form-control-sm" readonly>
                                 </div>
+
                                 <input type="hidden" name="cari_id" value="{{ $kontakitem->cari_id }}">
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-6 col-sm-12 ">
                                 <label for="yetkili_isim">Yetkili Kişi</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
-                                        <i class="fa fa-user"></i>
-                                    </span>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text"><i class="fa-solid fa-user-tie"></i></span>
                                     <input type="text" name="yetkili_isim" id="yetkili_isim"
                                         class="form-control form-control-sm"
                                         value="{{ $kontakitem->yetkili_isim }}" required>
                                 </div>
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-6 col-sm-12 ">
                                 <label for="telefon">Telefon</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-phone"></i>
                                     </span>
                                     <input type="number" name="telefon" id="telefon"
@@ -51,10 +49,10 @@
                                         value="{{ $kontakitem->telefon }}" required>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-6 col-sm-12 ">
                                 <label for="eposta">E-Posta</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-envelope"></i>
                                     </span>
                                     <input type="email" name="eposta" id="eposta"
@@ -62,17 +60,18 @@
                                 </div>
                             </div>
                         </div>
+                        <div
+                            style="display: flex; padding: 10px 0; gap:20px; text-align: center; justify-content: end">
+
+                            <button type="button" class="btn btn-outline-warning btn-sm py-6 w-25" data-bs-dismiss="modal">Vazgeç</button>
+                            <button type="submit" class="btn btn-outline-dark btn-sm py-6 w-75">Kaydet</button>
+
+                        </div>
                     </div>
                 </div>
-                <!-- Modal Footer -->
-                <div class="modal-footer bg-light">
-                    <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-dismiss="modal">Vazgeç</button>
-                    <button type="submit" id="submit-form" class="btn btn-outline-success btn-sm ">Güncelle</button>
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-</div>
 
 
 
