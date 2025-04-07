@@ -196,7 +196,9 @@ Anasayfa
             </div>
             <div class="card-body">
 
+
                 <canvas id="areaChart" style="height: 300px;"></canvas>
+
 
             </div>
         </div>
@@ -208,7 +210,9 @@ Anasayfa
             </div>
             <div class="card-body">
 
+
                 <canvas id="personelbazlisatisgrafigi" style="height: 150px;"></canvas>
+
 
             </div>
         </div>
@@ -220,7 +224,9 @@ Anasayfa
             </div>
             <div class="card-body">
 
+
                 <canvas id="salesChart" style="height: 150px;"></canvas>
+
 
             </div>
         </div>
@@ -231,6 +237,7 @@ Anasayfa
                 <h5 class="mb-0">Personel Hedef Grafiği</h5>
             </div>
             <div class="card-body">
+
 
                 <canvas id="personelhedefgrafigi" height="400"></canvas>
 
