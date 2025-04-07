@@ -5,20 +5,20 @@
             @method('PUT')
             <div class="modal-content">
                 <!-- Modal Header -->
-                <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title">Çek/Senet Güncelleme Ekranı</h5>
+                <div class="modal-header">
+                    <h5 class="modal-title">{{ $ceksenetitem->cek_no }} Nolu Çek/Senet Güncelleme Ekranı</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
                 <!-- Modal Body -->
-                <div class="modal-body" style="display: flex">
-                    <!-- Left Side -->
-                    <div class="col-md-12" style="padding: 1%;">
-                        <div class="row">
+                <div class="modal-body"
+                style="padding: 20px; background-position:center; background-repeat: no-repeat; background-size: cover;  background-image: url('{{ asset('resim/modal7.png') }}') ">
+
+                <div class="row ">
                             {{-- <div class="col-md-3">
                                 <label for="cek_tipi">Çek Tipi</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-building"></i>
                                     </span>
                                     <select name="cek_tipi" id="cek_tipi" class="form-select form-select-sm" required>
@@ -30,8 +30,8 @@
                             </div> --}}
                             {{-- <div class="col-md-4">
                                 <label for="cari_id">Firma</label>
-                                <div class="form-group input-with-icon" style="display: flex; align-items: center;">
-                                    <span class="icon">
+                                <div class="input-group mb-2" style="display: flex; align-items: center;">
+                                    <span class="input-group-text">
                                         <i class="fa fa-building"></i>
                                     </span>
                                     <input type="text" name="cari_unvan" id="cari_unvan"
@@ -41,8 +41,8 @@
                             </div> --}}
                             <div class="col-md-3">
                                 <label for="cek_vade_tarihi">Vade Tarihi</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa-solid fa-calendar-days"></i>
                                     </span>
                                     <input type="date" name="cek_vade_tarihi" id="cek_vade_tarihi" class="form-control form-control-sm" value="{{ $ceksenetitem->cek_vade_tarihi }}" required>
@@ -50,8 +50,8 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="cek_no">Çek No</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa-solid fa-inbox"></i>
                                     </span>
                                     <input type="text" name="cek_no" id="cek_no" class="form-control form-control-sm" value="{{ $ceksenetitem->cek_no }}" required>
@@ -59,8 +59,8 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="banka_adi">Banka Adı</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa-solid fa-inbox"></i>
                                     </span>
                                     <input type="text" name="banka_adi" id="banka_adi" class="form-control form-control-sm" value="{{ $ceksenetitem->banka_adi }}" required>
@@ -68,8 +68,8 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="cek_resim">Çek Resim</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa-solid fa-inbox"></i>
                                     </span>
                                     <input type="file" name="cek_resim" id="cek_resim" class="form-control form-control-sm" value="{{ $ceksenetitem->cek_resim }}">
@@ -80,8 +80,8 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="sube_adi">Şube Adı</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa-solid fa-inbox"></i>
                                     </span>
                                     <input type="text" name="sube_adi" id="sube_adi" class="form-control form-control-sm" value="{{ $ceksenetitem->sube_adi }}" required>
@@ -89,8 +89,8 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="tutar">Çek Tutarı</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa-solid fa-money-bill"></i>
                                     </span>
                                     <input type="number" name="tutar" id="tutar" class="form-control form-control-sm" value="{{ $ceksenetitem->tutar }}" required>
@@ -98,8 +98,8 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="hesap_no">Hesap No</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa-solid fa-inbox"></i>
                                     </span>
                                     <input type="text" name="hesap_no" id="hesap_no" class="form-control form-control-sm" value="{{ $ceksenetitem->hesap_no }}" required>
@@ -110,10 +110,12 @@
 
                             <div class="col-md-12">
                                 <label for="aciklama">Çek Açıklaması</label>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text"><i class="fa-solid fa-comments"></i></span>
                                 <textarea name="aciklama" id="aciklama" cols="20" rows="2" class="form-control form-control-sm">{{ $ceksenetitem->aciklama }}</textarea>
                             </div>
-
                         </div>
+
                     </div>
                 </div>
                 <!-- Modal Footer -->

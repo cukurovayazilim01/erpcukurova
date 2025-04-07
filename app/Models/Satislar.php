@@ -34,4 +34,8 @@ class Satislar extends Model
     {
         return $this->belongsTo(Teklifler::class,'teklif_id');
     }
+    public function user()
+    {
+        return $this->belongsTo(User::class,'user_id');
+    }
 }

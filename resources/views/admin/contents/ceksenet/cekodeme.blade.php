@@ -1,13 +1,13 @@
 @extends('admin.layouts.app')
 @section('title')
-    Çek/Senet Ödeme
+{{$ceksenet->cek_no}} Çek/Senet Ödeme
 @endsection
 @section('contents')
 @section('topheader')
 {{$ceksenet->cek_no}} No'lu Çek Ödemesi
 @endsection
-<div class="card">
-    <div class="card-body">
+<div class="card radius-5">
+    <div class="card-body" style="border-radius: 5px; padding: 20px; background-position:center; background-repeat: no-repeat; background-size: cover;  background-image: url('{{ asset('resim/modal7.png') }}') ">
         <div class="row">
             <form action="{{ route('Postcekodeme',$ceksenet->id) }}" method="POST" id="add-form">
                 @csrf
@@ -15,8 +15,8 @@
                     <div class="row">
                         <div class="col-md-4">
                             <label for="cari_id">Firma</label>
-                            <div class="form-group input-with-icon" style="display: flex; align-items: center;">
-                                <span class="icon">
+                            <div class="input-group mb-2" style="display: flex; align-items: center;">
+                                <span class="input-group-text">
                                     <i class="fa fa-building"></i>
                                 </span>
                                 <input type="text" name="cari_unvan" id="cari_unvan"
@@ -30,8 +30,8 @@
 
                         <div class="col-md-4">
                             <label for="cek_vade_tarihi">Vade Tarihi</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa-solid fa-calendar-days"></i>
                                 </span>
                                 <input type="date" name="cek_vade_tarihi" id="cek_vade_tarihi" class="form-control form-control-sm" value="{{ $ceksenet->cek_vade_tarihi }}" readonly>
@@ -40,8 +40,8 @@
 
                         <div class="col-md-4">
                             <label for="cek_no">Çek No</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa-solid fa-inbox"></i>
                                 </span>
                                 <input type="text" name="cek_no" id="cek_no" class="form-control form-control-sm" value="{{ $ceksenet->cek_no }}" readonly>
@@ -50,8 +50,8 @@
 
                         <div class="col-md-4">
                             <label for="banka_adi">Banka Adı</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa-solid fa-inbox"></i>
                                 </span>
                                 <input type="text" name="banka_adi" id="banka_adi" class="form-control form-control-sm" value="{{ $ceksenet->banka_adi }}" readonly>
@@ -60,8 +60,8 @@
 
                         <div class="col-md-4">
                             <label for="sube_adi">Şube Adı</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa-solid fa-inbox"></i>
                                 </span>
                                 <input type="text" name="sube_adi" id="sube_adi" class="form-control form-control-sm" value="{{ $ceksenet->sube_adi }}" readonly>
@@ -70,8 +70,8 @@
 
                         <div class="col-md-4">
                             <label for="tutar">Çek Tutarı</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa-solid fa-money-bill"></i>
                                 </span>
                                 <input type="text" name="odeme_tutar" id="odeme_tutar" class="form-control form-control-sm" value="{{ $ceksenet->tutar }}" readonly>
@@ -80,8 +80,8 @@
 
                         <div class="col-md-4">
                             <label for="hesap_no">Hesap No</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa-solid fa-inbox"></i>
                                 </span>
                                 <input type="text" name="hesap_no" id="hesap_no" class="form-control form-control-sm" value="{{ $ceksenet->hesap_no }}" readonly>
@@ -89,11 +89,11 @@
                         </div>
                         <div class="col-md-4">
                             <label for="odeme_tipi">Ödeme Yöntemi</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa fa-user"></i>
                                 </span>
-                            <select name="odeme_tipi" id="odeme_tipi" class="form-select form-select-sm" required >
+                            <select name="odeme_tipi" id="odeme_tipi" class="form-control form-control-sm" required >
                                 <option value="">Lütfen Seçim Yapınız</option>
                                 {{-- <option value="Kasa">Kasa</option> --}}
                                 <option value="Banka">Banka</option>
@@ -104,8 +104,8 @@
 
                         <div class="col-md-4">
                             <label id="kasa_banka_label"></label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2" style="border: 1px solid #ced4da;border-radius: 7px;">
+                                <span class="input-group-text">
                                     <i class="fa fa-user"></i>
                                 </span>
                                 {{-- <select name="kasa_id" id="kasa_id" class="form-select form-select-sm" style="display: none;">
@@ -114,7 +114,7 @@
                                     <option value="{{ $item->id }}">{{ $item->kasa_adi }}</option>
                                     @endforeach
                                 </select> --}}
-                                <select name="banka_id" id="banka_id" class="form-select form-select-sm" style="display: none;">
+                                <select name="banka_id" id="banka_id" class="form-control form-control-sm" style="display: none;">
                                     <option value="">Lütfen Seçim Yapınız</option>
                                     @foreach ($bankalar as $banka)
                                     <option value="{{ $banka->id }}">{{ $banka->banka_adi }}</option>
@@ -125,22 +125,24 @@
 
                         <div class="col-md-12">
                             <label for="aciklama">Çek Açıklaması</label>
+                            <div class="input-group mb-2">
+                                <span class="input-group-text"><i class="fa-solid fa-comments"></i></span>
                             <textarea name="aciklama" id="aciklama" cols="20" rows="2" class="form-control form-control-sm" readonly style="background-color: #f7f7f7;">{{ $ceksenet->aciklama }}</textarea>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="row">
-                    <div class="col-md-12 mt-1 mr-15" style="padding-right: 28px">
-                        <button type="submit" id="submit-form" class="btn btn-sm btn-outline-primary"
-                            style="float: right; margin-left: 2px;">
-                            Ödemeyi Kaydet</button>
-                        <a href="{{ route('ceksenet.index') }}" class="btn btn-sm btn-outline-secondary"
-                            style="float: right"> Vazgeç</a>
-                    </div>
+
+            <div style="display: flex; padding: 10px; gap:20px; text-align: center; justify-content: end">
+
+                <a href="{{route('ceksenet.index')}}" class="btn btn-outline-warning btn-sm py-6 w-25"> Vazgeç</a>
+                    <button type="submit" id="submit-form" class="btn btn-outline-dark btn-sm py-6 w-75"
+                       >
+                       Ödemeyi Kaydet</button>
                 </div>
 
-            </form>
+        </form>
 
 
         </div>
