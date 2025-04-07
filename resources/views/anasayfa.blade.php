@@ -195,7 +195,9 @@ Anasayfa
                 <h5 class="mb-0">Satış & Alış Grafiği</h5>
             </div>
             <div class="card-body">
+
                 <canvas id="areaChart" style="height: 300px;"></canvas>
+
             </div>
         </div>
     </div>
@@ -205,7 +207,9 @@ Anasayfa
                 <h5 class="mb-0">Personel Bazlı Satış Grafiği</h5>
             </div>
             <div class="card-body">
+
                 <canvas id="personelbazlisatisgrafigi" style="height: 150px;"></canvas>
+
             </div>
         </div>
     </div>
@@ -215,7 +219,9 @@ Anasayfa
                 <h5 class="mb-0">Aylara Göre Hizmet Türü Satış Grafiği</h5>
             </div>
             <div class="card-body">
+
                 <canvas id="salesChart" style="height: 150px;"></canvas>
+
             </div>
         </div>
     </div>
@@ -225,7 +231,9 @@ Anasayfa
                 <h5 class="mb-0">Personel Hedef Grafiği</h5>
             </div>
             <div class="card-body">
+
                 <canvas id="personelhedefgrafigi" height="400"></canvas>
+
             </div>
         </div>
     </div>

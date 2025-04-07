@@ -9,14 +9,15 @@
 <div class="card" style="margin-bottom: 0">
     <div class="card-body">
         <div class="row">
-            <div class="col-md-12 d-flex justify-content-between align-items-center">
-                <ul class="nav nav-pills nav-pills-warning" role="tablist">
+            <div class="col-md-6 d-flex  justify-content-between align-items-start align-items-md-center gap-3">
+
+                <!-- NAV TABS -->
+                <ul class="nav nav-pills nav-pills-warning flex-wrap" role="tablist">
                     <li class="nav-item" role="presentation">
                         <a class="nav-link active" data-bs-toggle="pill" href="#iletisim" role="tab"
                             aria-selected="true">
                             <div class="d-flex align-items-center">
-                                <div class="tab-icon"><i class="fa-solid fa-address-book"></i>
-                                </div>&nbsp;
+                                <div class="tab-icon"><i class="fa-solid fa-address-book"></i></div>&nbsp;
                                 <div class="tab-title">İletişim</div>
                             </div>
                         </a>
@@ -25,8 +26,7 @@
                         <a class="nav-link" data-bs-toggle="pill" href="#teklifler" role="tab"
                             aria-selected="false">
                             <div class="d-flex align-items-center">
-                                <div class="tab-icon"><i class="fa-solid fa-envelopes-bulk"></i>
-                                </div>&nbsp;
+                                <div class="tab-icon"><i class="fa-solid fa-envelopes-bulk"></i></div>&nbsp;
                                 <div class="tab-title">Teklifler</div>
                             </div>
                         </a>
@@ -34,8 +34,7 @@
                     <li class="nav-item" role="presentation">
                         <a class="nav-link" data-bs-toggle="pill" href="#satislar" role="tab" aria-selected="false">
                             <div class="d-flex align-items-center">
-                                <div class="tab-icon"><i class="fa-solid fa-coins"></i>
-                                </div>&nbsp;
+                                <div class="tab-icon"><i class="fa-solid fa-coins"></i></div>&nbsp;
                                 <div class="tab-title">Satışlar</div>
                             </div>
                         </a>
@@ -43,8 +42,7 @@
                     <li class="nav-item" role="presentation">
                         <a class="nav-link" data-bs-toggle="pill" href="#tahsilat" role="tab" aria-selected="false">
                             <div class="d-flex align-items-center">
-                                <div class="tab-icon"><i class="fa-solid fa-credit-card"></i>
-                                </div>&nbsp;
+                                <div class="tab-icon"><i class="fa-solid fa-credit-card"></i></div>&nbsp;
                                 <div class="tab-title">Tahsilatlar</div>
                             </div>
                         </a>
@@ -52,8 +50,7 @@
                     <li class="nav-item" role="presentation">
                         <a class="nav-link" data-bs-toggle="pill" href="#alislar" role="tab" aria-selected="false">
                             <div class="d-flex align-items-center">
-                                <div class="tab-icon"><i class="fa-solid fa-shop"></i>
-                                </div>&nbsp;
+                                <div class="tab-icon"><i class="fa-solid fa-shop"></i></div>&nbsp;
                                 <div class="tab-title">Alışlar</div>
                             </div>
                         </a>
@@ -61,31 +58,35 @@
                     <li class="nav-item" role="presentation">
                         <a class="nav-link" data-bs-toggle="pill" href="#odemeler" role="tab" aria-selected="false">
                             <div class="d-flex align-items-center">
-                                <div class="tab-icon"><i class="fa-solid fa-file-invoice-dollar"></i>
-                                </div>&nbsp;
+                                <div class="tab-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>&nbsp;
                                 <div class="tab-title">Ödemeler</div>
                             </div>
                         </a>
                     </li>
                 </ul>
-                <div class="text-end">
-                    <a type="button" target="_blank"
-                        href="https://wa.me/+90{{$cariler->yetkili_kisi_tel}}?text=Merhaba, işte vekaletname belgeniz: {{ asset('gereklidosyalar/Cukurova_Vekaletname_Turkce.pdf') }}"
+
+
+            </div>
+            <div class="col-md-6 d-flex  justify-content-between align-items-start align-items-md-center gap-3">
+
+                <!-- BUTTONS -->
+                <div class="text-end w-100 w-md-auto d-flex flex-column flex-sm-row gap-2 justify-content-end">
+                    <a target="_blank"
+                        href="https://wa.me/+90{{ $cariler->yetkili_kisi_tel }}?text=Merhaba, işte vekaletname belgeniz: {{ asset('gereklidosyalar/Cukurova_Vekaletname_Turkce.pdf') }}"
                         class="btn btn-outline-success btn-sm">
-                        <i class="fa-solid fa-file-pdf" ></i> Vekaletname
+                        <i class="fa-solid fa-file-pdf"></i> Vekaletname
                     </a>
 
-                    <a type="button"
-                        href="{{ route('carihesaprapor.al', ['_token' => csrf_token(), 'cari_id' => $cariler]) }}"
+                    <a href="{{ route('carihesaprapor.al', ['_token' => csrf_token(), 'cari_id' => $cariler]) }}"
                         class="btn btn-outline-dark btn-sm">
-                        <i class="fa-solid fa-file-pdf" ></i> Hesap Ekstresi
+                        <i class="fa-solid fa-file-pdf"></i> Hesap Ekstresi
                     </a>
                 </div>
-
             </div>
         </div>
     </div>
 </div>
+
 
 <div class="card" style="background: transparent; box-shadow: none;">
     <div class="card-body">
@@ -95,107 +96,92 @@
             <div class="tab-pane fade show active" id="iletisim" role="tabpanel">
                 <div class="row">
                     <div class="col-md-3">
-                            <div class="card shadow-sm border-0 overflow-hidden">
-                                <div class="card-body">
-
-                                    <div class="text-center mt-2">
-                                        <h4 class="mb-1 fs-6 fw-bold" style="text-transform: uppercase">{{ $cariler->firma_unvan }}</h4>
-                                        <p class="mb-0 text-secondary">{{ $cariler->yetkili_kisi }}</p>
-
-
-                                    </div>
-                                    <hr>
-                                    <div class="text-start">
-                                        <h5 class="">Adres</h5>
-                                        <p class="mb-0">{{ $cariler->adres }}
-                                        </p>
-                                    </div>
+                        <div class="card shadow-sm border-0 rounded-lg" style="box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);">
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <h5 class="mb-1 fs-6 fw-bold text-uppercase text-dark">
+                                        {{ $cariler->firma_unvan }}
+                                    </h5>
+                                    <p class="mb-0 text-secondary">{{ $cariler->yetkili_kisi }}</p>
                                 </div>
-                                <ul class="list-group list-group-flush">
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-top">
-                                        Telefon
-                                        <span>{{ $cariler->yetkili_kisi_tel }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        E-Posta
-                                        <span>{{ $cariler->eposta }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        Müşteri Temsilcisi
-                                        <span>{{ $cariler->musteri_temsilcisi }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        Vergi No
-                                        <span>{{ $cariler->vergi_no }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        Vergi Dairesi
-                                        <span>{{ $cariler->vergi_dairesi }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        T.C Kimlik No
-                                        <span>{{ $cariler->tc_kimlik }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        İl
-                                        <span>{{ $cariler->il }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        İlçe
-                                        <span>{{ $cariler->ilce }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        Firma Tipi
-                                        <span>{{ $cariler->firma_tipi }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        Firma Durumu
-                                        <span>{{ $cariler->firma_durumu }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        Web Adresi
-                                        <span>{{ $cariler->web_adres }}</span>
-                                    </li>
-                                    @php
-                                        $borc_toplam = 0;
-                                        $alacak_toplam = 0;
-                                        $sonuc = 0;
-                                    @endphp
-                                    @foreach ($firmahrkt as $firmahrktitem)
-                                        @php
-                                            $borc_toplam += $firmahrktitem->borc;
-                                            $alacak_toplam += $firmahrktitem->alacak;
-                                            $sonuc = $borc_toplam - $alacak_toplam;
-                                        @endphp
-                                    @endforeach
-
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        Kalan Bakiye
-                                        <span>{{ number_format($sonuc, 2, ',', '.') }} <b
-                                                style="color: red">₺</b></span>
-                                    </li>
-
-                                </ul>
-
-
+                                <hr>
+                                <div class="text-start">
+                                    <h5 class="fw-bold text-secondary">
+                                        <i class="fa-solid fa-map-marker-alt me-2" style="color:#293445;"></i> Adres
+                                    </h5>
+                                    <p class="mb-0 text-muted">{{ $cariler->adres }}</p>
+                                </div>
                             </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-phone me-2" style="color:#293445;"></i> <span>Telefon:</span>
+                                    <span class="ms-auto">{{ $cariler->yetkili_kisi_tel }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-envelope me-2" style="color:#293445;"></i> <span>E-Posta:</span>
+                                    <span class="ms-auto text-primary">{{ $cariler->eposta }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-user-tie me-2" style="color:#293445;"></i> <span>Müşteri Temsilcisi:</span>
+                                    <span class="ms-auto">{{ $cariler->musteri_temsilcisi }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-file-invoice-dollar me-2" style="color:#293445;"></i> <span>Vergi No:</span>
+                                    <span class="ms-auto">{{ $cariler->vergi_no }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-building me-2" style="color:#293445;"></i> <span>Vergi Dairesi:</span>
+                                    <span class="ms-auto">{{ $cariler->vergi_dairesi }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-id-card me-2" style="color:#293445;"></i> <span>T.C Kimlik No:</span>
+                                    <span class="ms-auto">{{ $cariler->tc_kimlik }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-map-marker me-2" style="color:#293445;"></i> <span>İl:</span>
+                                    <span class="ms-auto">{{ $cariler->il }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-location-arrow me-2" style="color:#293445;"></i> <span>İlçe:</span>
+                                    <span class="ms-auto">{{ $cariler->ilce }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-industry me-2" style="color:#293445;"></i> <span>Firma Tipi:</span>
+                                    <span class="ms-auto">{{ $cariler->firma_tipi }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-clipboard-check me-2" style="color:#293445;"></i> <span>Firma Durumu:</span>
+                                    <span class="ms-auto">{{ $cariler->firma_durumu }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-globe me-2" style="color:#293445;"></i> <span>Web Adresi:</span>
+                                    <span class="ms-auto"><a href="{{ $cariler->web_adres }}" target="_blank">{{ $cariler->web_adres }}</a></span>
+                                </li>
+                                @php
+                                    $borc_toplam = 0;
+                                    $alacak_toplam = 0;
+                                    $sonuc = 0;
+                                @endphp
+                                @foreach ($firmahrkt as $firmahrktitem)
+                                    @php
+                                        $borc_toplam += $firmahrktitem->borc;
+                                        $alacak_toplam += $firmahrktitem->alacak;
+                                        $sonuc = $borc_toplam - $alacak_toplam;
+                                    @endphp
+                                @endforeach
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-wallet me-2" style="color:#293445;"></i> <span>Kalan Bakiye:</span>
+                                    <span class="ms-auto fw-bold">{{ number_format($sonuc, 2, ',', '.') }} <b class="text-danger">₺</b></span>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
+
+
                     <div class="col-md-9">
-                        <div class="card" >
+                        <div class="card">
                             <div class="card-header d-flex justify-content-between align-items-center">
-                                <h5 class="mb-0">Arama Listesi</h5>
+                                <h5 class="mb-0 fs-6 fw-bold">Arama Listesi</h5>
                                 <button type="button" class="btn btn-sm btn-outline-dark px-3"
                                     data-bs-toggle="modal" data-bs-target="#carilershowaramamodal">
                                     <i class="fa-solid fa-plus"></i> Yeni Ekle
@@ -214,12 +200,14 @@
                                         </div>
 
                                         <!-- Modal Body -->
-                                        <div class="modal-body" style="padding: 20px; background-position:center; background-repeat: no-repeat; background-size: cover;  background-image: url('{{ asset('resim/modal7.png') }}') ">
-                                            <form id="add-form" action="{{ route('aramaEkle', ['id' => $cariler->id]) }}"
+                                        <div class="modal-body "
+                                            style="padding: 20px; background-position:center; background-repeat: no-repeat; background-size: cover;  background-image: url('{{ asset('resim/modal7.png') }}') ">
+                                            <form id="add-form"
+                                                action="{{ route('aramaEkle', ['id' => $cariler->id]) }}"
                                                 method="POST" enctype="multipart/form-data">
                                                 @csrf
                                                 <!-- Left Side -->
-                                                <div class="col-md-12" style=" padding: 1%; ">
+                                                <div class="col-md-12">
                                                     <div class="row">
                                                         <div class="col-md-12" style="display: none">
                                                             <label for="hatirlat_tarihi">url</label>
@@ -313,18 +301,30 @@
                                                                     class="form-control form-control-sm" required>
                                                             </div>
                                                         </div>
+
+
                                                         <div class="col-md-12">
                                                             <label for="not">Görüşme Notu</label>
-                                                            <textarea name="not" id="not" class="form-control" rows="4"></textarea>
+                                                            <div class="input-group mb-2">
+                                                                <span class="input-group-text"><i
+                                                                        class="fa-solid fa-comments"></i></span>
+                                                                <textarea name="not" id="not" class="form-control" aria-label="With textarea"></textarea>
+                                                            </div>
                                                         </div>
+
+
                                                     </div>
                                                 </div>
                                                 <!-- Modal Footer -->
-                                                <div class="modal-footer ">
-                                                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                                                <div class="mobile-footer"
+                                                    style="display: flex;  gap:20px; text-align: center; justify-content: end; ">
+
+                                                    <button type="button"
+                                                        class="btn btn-outline-warning btn-sm py-6 w-25"
                                                         data-bs-dismiss="modal">Vazgeç</button>
-                                                    <button type="submit" id="submit-form"
-                                                        class="btn btn-outline-primary btn-sm ">Kaydet</button>
+                                                    <button type="submit"
+                                                        class="btn btn-outline-dark btn-sm py-6 w-75">Kaydet</button>
+
                                                 </div>
                                             </form>
                                         </div>
@@ -336,7 +336,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     @foreach ($aramalar as $aramaitem)
-                                        <div class="col-md-3">
+                                        <div class="col-md-4">
                                             <div class="card shadow-sm border-0 rounded"
                                                 style="border-radius: 15px; overflow: hidden; background-color: #f9f9f9;">
                                                 <div class="card-body border-bottom d-flex justify-content-between align-items-center"
@@ -363,7 +363,8 @@
                                                         method="POST" style="margin: 0;">
                                                         @csrf
                                                         @method('delete')
-                                                        <button type="submit" class="btn btn-outline-danger btn-sm show_confirm"
+                                                        <button type="submit"
+                                                            class="btn btn-outline-warning btn-sm show_confirm"
                                                             style="font-size: 11px; padding: 5px 15px; border-radius: 5px;">
                                                             <i class="fa fa-trash me-1" aria-hidden="true"
                                                                 style="font-size: 16px;"></i> Sil
@@ -386,7 +387,7 @@
                                                                     style="color: #555; font-size: 11px; font-weight: 500;">
                                                                     <i class="fa fa-calendar-alt mr-2"
                                                                         aria-hidden="true"
-                                                                        style="font-size: 11px; color: #007bff;"></i>
+                                                                        style="font-size: 11px; color: #293445;"></i>
                                                                     {{ $aramaitem->islem_tarihi }}
                                                                 </p>
                                                             </div>
@@ -394,7 +395,7 @@
                                                                 <p class="mb-1"
                                                                     style="color: #555; font-size: 11px; font-weight: 500;">
                                                                     <i class="fa fa-user mr-2" aria-hidden="true"
-                                                                        style="font-size: 11px; color: #28a745;"></i>
+                                                                        style="font-size: 11px; color: #293445;"></i>
                                                                     {{ $aramaitem->adsoyad->ad_soyad }}
                                                                 </p>
                                                             </div>
@@ -403,7 +404,7 @@
                                                                     style="color: #555; font-size: 11px; font-weight: 500;">
                                                                     <i class="fa fa-check-circle mr-2"
                                                                         aria-hidden="true"
-                                                                        style="font-size: 11px; color: #ffc107;"></i>
+                                                                        style="font-size: 11px; color: #293445;"></i>
                                                                     {{ $aramaitem->hatirlat_durumu }}
                                                                 </p>
                                                             </div>
@@ -411,7 +412,7 @@
                                                                 <p class="mb-1"
                                                                     style="color: #555; font-size: 11px; font-weight: 500;">
                                                                     <i class="fa fa-bell mr-2" aria-hidden="true"
-                                                                        style="font-size: 11px; color: #17a2b8;"></i>
+                                                                        style="font-size: 11px; color: #293445;"></i>
                                                                     {{ $aramaitem->hatirlat_tarihi }}
                                                                 </p>
                                                             </div>
@@ -426,12 +427,12 @@
                             </div>
                         </div>
 
-                        <div style="height: 20px;"></div>
+                        {{-- <div style="height: 20px;"></div> --}}
 
 
-                        <div class="card" >
+                        <div class="card">
                             <div class="card-header d-flex justify-content-between align-items-center">
-                                <h5 class="mb-0">Kontak Listesi</h5>
+                                <h5 class="mb-0 fs-6 fw-bold">Kontak Listesi</h5>
                                 <button type="button" class="btn btn-sm btn-outline-dark px-3"
                                     data-bs-toggle="modal" data-bs-target="#carilerkontakeklemodal"><i
                                         class="fa-solid fa-plus"></i>Yeni Ekle</button>
@@ -441,9 +442,9 @@
                             <div class="card-body">
                                 <div class="row">
                                     @foreach ($kontak as $kontakitem)
-                                        <div class="col-md-4 mb-4">
+                                        <div class="col-md-4">
                                             <div class="card bg-secondary text-white border-0 shadow-lg radius-10"
-                                                style="background: linear-gradient(to bottom right, #6C757D, #f8f9fa );">
+                                                style="background: linear-gradient(to bottom right, #293445, #f8f9fa );">
                                                 <div class="card-body">
                                                     <div class="d-flex align-items-center">
                                                         <div>
@@ -465,7 +466,7 @@
                                                             id="carilerkontakguncellemodal{{ $kontakitem->id }}"
                                                             tabindex="-1" aria-labelledby="updateModalLabel"
                                                             aria-hidden="true">
-                                                            <div class="modal-dialog">
+                                                            <div class="modal-dialog modal-lg">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header bg-primary text-white">
                                                                         <h5 class="modal-title">
@@ -475,7 +476,8 @@
                                                                             data-bs-dismiss="modal"
                                                                             aria-label="Close"></button>
                                                                     </div>
-                                                                    <div class="modal-body">
+                                                                    <div class="modal-body"
+                                                                        style="padding: 20px; background-position:center; background-repeat: no-repeat; background-size: cover;  background-image: url('{{ asset('resim/modal7.png') }}') ">
                                                                         <form
                                                                             action="{{ route('kontakGuncelle', $kontakitem->id) }}"
                                                                             method="POST"
@@ -484,8 +486,7 @@
                                                                             @method('put')
 
                                                                             <!-- Left Side -->
-                                                                            <div class="col-md-12"
-                                                                                style=" padding: 1%; ">
+                                                                            <div class="col-md-12">
                                                                                 <div class="row">
                                                                                     <div class="col-md-12"
                                                                                         style="display: none">
@@ -575,7 +576,8 @@
                                                                                                 name="eposta"
                                                                                                 id="eposta"
                                                                                                 class="form-control form-control-sm no-zero"
-                                                                                                required  oninput="this.value = this.value.toLowerCase()"
+                                                                                                required
+                                                                                                oninput="this.value = this.value.toLowerCase()"
                                                                                                 value="{{ $kontakitem->eposta }}">
                                                                                         </div>
                                                                                     </div>
@@ -583,12 +585,15 @@
                                                                                 </div>
                                                                             </div>
                                                                             <!-- Modal Footer -->
-                                                                            <div class="modal-footer bg-light">
+                                                                            <div class="mobile-footer"
+                                                                                style="display: flex;  gap:20px; text-align: center; justify-content: end; ">
+
                                                                                 <button type="button"
-                                                                                    class="btn btn-sm btn-outline-secondary"
+                                                                                    class="btn btn-outline-warning btn-sm py-6 w-25"
                                                                                     data-bs-dismiss="modal">Vazgeç</button>
                                                                                 <button type="submit"
-                                                                                    class="btn btn-outline-primary btn-sm ">Kaydet</button>
+                                                                                    class="btn btn-outline-dark btn-sm py-6 w-75">Kaydet</button>
+
                                                                             </div>
                                                                         </form>
                                                                     </div>
@@ -602,7 +607,7 @@
                                                             @csrf
                                                             @method('delete')
                                                             <button type="submit"
-                                                                class="btn btn-sm btn-outline-danger">
+                                                                class="btn btn-sm btn-outline-dark">
                                                                 <i class="fa fa-trash"></i> Sil
                                                             </button>
                                                         </form>
@@ -617,7 +622,7 @@
                             <!-- Kontakekle Modal -->
                             <div class="modal fade" id="carilerkontakeklemodal" tabindex="-1"
                                 aria-labelledby="updateModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
+                                <div class="modal-dialog modal-xl">
                                     <div class="modal-content">
                                         <div class="modal-header bg-primary text-white">
                                             <h5 class="modal-title">{{ $cariler->firma_unvan }} Kontak Ekleme Ekranı
@@ -625,12 +630,13 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
-                                        <div class="modal-body">
+                                        <div class="modal-body"
+                                            style="padding: 20px; background-position:center; background-repeat: no-repeat; background-size: cover;  background-image: url('{{ asset('resim/modal7.png') }}') ">
                                             <form action="{{ route('kontakEkle', ['id' => $cariler->id]) }}"
                                                 method="POST" enctype="multipart/form-data">
                                                 @csrf
                                                 <!-- Left Side -->
-                                                <div class="col-md-12" style=" padding: 1%; ">
+                                                <div class="col-md-12">
                                                     <div class="row">
                                                         <div class="col-md-12" style="display: none">
                                                             <label for="hatirlat_tarihi">url</label>
@@ -662,7 +668,8 @@
                                                                     <i class="fa-solid fa-user"></i>
                                                                 </span>
                                                                 <input type="text" name="yetkili_isim"
-                                                                    id="yetkili_isim" oninput="this.value = this.value.toUpperCase()"
+                                                                    id="yetkili_isim"
+                                                                    oninput="this.value = this.value.toUpperCase()"
                                                                     class="form-control form-control-sm" required>
                                                             </div>
                                                         </div>
@@ -685,18 +692,23 @@
                                                                 </span>
                                                                 <input type="email" name="eposta" id="eposta"
                                                                     class="form-control form-control-sm no-zero"
-                                                                    oninput="this.value = this.value.toLowerCase()" required>
+                                                                    oninput="this.value = this.value.toLowerCase()"
+                                                                    required>
                                                             </div>
                                                         </div>
 
                                                     </div>
                                                 </div>
                                                 <!-- Modal Footer -->
-                                                <div class="modal-footer bg-light">
-                                                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                                                <div class="mobile-footer"
+                                                    style="display: flex;  gap:20px; text-align: center; justify-content: end; ">
+
+                                                    <button type="button"
+                                                        class="btn btn-outline-warning btn-sm py-6 w-25"
                                                         data-bs-dismiss="modal">Vazgeç</button>
                                                     <button type="submit"
-                                                        class="btn btn-outline-primary btn-sm ">Kaydet</button>
+                                                        class="btn btn-outline-dark btn-sm py-6 w-75">Kaydet</button>
+
                                                 </div>
                                             </form>
                                         </div>
@@ -707,17 +719,21 @@
 
 
                         </div>
+
+
+
                         <div class="card">
                             <div class="card-header d-flex justify-content-between align-items-center">
-                                <h5 class="mb-0">Doküman Listesi</h5>
+                                <h5 class="mb-0 fs-6 fw-bold">Doküman Listesi</h5>
                                 <button type="button" class="btn btn-sm btn-outline-dark px-3"
                                     data-bs-toggle="modal" data-bs-target="#carilerdokumaneklemodal"><i
                                         class="fa-solid fa-plus"></i>Yeni Ekle</button>
                             </div>
-                            <div class="card-body">
-                                <table class="table align-middle mb-0 dataTable" id="example2" role="grid"
-                                    aria-describedby="example_info">
-                                    <thead class="table-light">
+                            <div class="card-body" style="border-radius: 5px">
+                                <div class="table-responsive" style="border-radius: 5px">
+                                <table class="table table-bordered table-hover" id="example2" role="grid"
+                                    aria-describedby="example_info" style="border-radius: 5px">
+                                    <thead>
                                         <tr>
                                             <th scope="col">#</th>
                                             <th>Tarih</th>
@@ -731,7 +747,7 @@
                                     <tbody>
                                         @foreach ($dokuman as $sn => $dokumanitem)
                                             <tr>
-                                                <th scope="row">{{ $sn + 1 }}</th>
+                                                <th style="color:black" scope="row">{{ $sn + 1 }}</th>
                                                 <td>{{ $dokumanitem->islem_tarihi }}</td>
                                                 <td>{{ $dokumanitem->user->ad_soyad }}</td>
                                                 <td>{{ $dokumanitem->dosya_adi }}</td>
@@ -771,8 +787,9 @@
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <button type="submit"
-                                                                    class="btn btn-link text-danger p-0 m-0 show_confirm">
-                                                                    <i class="bi bi-trash-fill"></i>
+                                                                    class="btn btn-link text-dark p-0 m-0 show_confirm">
+                                                                    <i style="color: rgb(180, 68, 34)"
+                                                                    class="fa-solid fa-trash-can fs-6"></i>
                                                                 </button>
                                                             </form>
                                                         </div>
@@ -787,20 +804,21 @@
                             <!-- Doküman EKLE Modal -->
                             <div class="modal fade" id="carilerdokumaneklemodal" tabindex="-1"
                                 aria-labelledby="updateModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
+                                <div class="modal-dialog modal-xl">
                                     <div class="modal-content">
-                                        <div class="modal-header bg-primary text-white">
+                                        <div class="modal-header ">
                                             <h5 class="modal-title">{{ $cariler->firma_unvan }} Doküman Ekleme Ekranı
                                             </h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
-                                        <div class="modal-body">
+                                        <div class="modal-body"
+                                            style="padding: 20px; background-position:center; background-repeat: no-repeat; background-size: cover;  background-image: url('{{ asset('resim/modal7.png') }}') ">
                                             <form action="{{ route('dokumanEkle', ['id' => $cariler->id]) }}"
                                                 method="POST" enctype="multipart/form-data">
                                                 @csrf
                                                 <!-- Left Side -->
-                                                <div class="col-md-12" style=" padding: 1%; ">
+                                                <div class="col-md-12">
                                                     <div class="row">
                                                         <div class="col-md-12" style="display: none">
                                                             <label for="hatirlat_tarihi">Cariid</label>
@@ -836,23 +854,33 @@
                                                             </div>
                                                         </div>
                                                         <div class="col-md-12">
-                                                            <label for="not">Doküman Açıklaması</label>
-                                                            <textarea name="aciklama" id="aciklama" cols="20" rows="2" class="form-control form-control-sm "></textarea>
+                                                            <label for="aciklama">Doküman Açıklaması</label>
+                                                            <div class="input-group mb-2">
+                                                                <span class="input-group-text"><i
+                                                                        class="fa-solid fa-comments"></i></span>
+                                                                <textarea name="aciklama" id="aciklama" class="form-control" aria-label="With textarea"></textarea>
+                                                            </div>
                                                         </div>
+
 
                                                     </div>
                                                 </div>
                                                 <!-- Modal Footer -->
-                                                <div class="modal-footer bg-light">
-                                                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                                                <div class="mobile-footer"
+                                                    style="display: flex;  gap:20px; text-align: center; justify-content: end; ">
+
+                                                    <button type="button"
+                                                        class="btn btn-outline-warning btn-sm py-6 w-25"
                                                         data-bs-dismiss="modal">Vazgeç</button>
                                                     <button type="submit"
-                                                        class="btn btn-outline-primary btn-sm ">Kaydet</button>
+                                                        class="btn btn-outline-dark btn-sm py-6 w-75">Kaydet</button>
+
                                                 </div>
                                             </form>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -863,109 +891,88 @@
             <div class="tab-pane fade" id="teklifler" role="tabpanel">
                 <div class="row">
                     <div class="col-md-3">
-                        <div class="card " >
-                            <div class="card shadow-sm border-0 overflow-hidden">
-                                <div class="card-body">
-
-                                    <div class="text-center mt-4">
-                                        <h4 class="mb-1" style="font-size: 20px">{{ $cariler->firma_unvan }}</h4>
-                                        <p class="mb-0 text-secondary">{{ $cariler->yetkili_kisi }}</p>
-                                        <div class="mt-4"></div>
-
-                                        {{-- <h6 class="mb-1">HR Manager - Codervent Technology</h6>
-                                        <p class="mb-0 text-secondary">University of Information Technology</p> --}}
-                                    </div>
-                                    <hr>
-                                    <div class="text-start">
-                                        <h5 class="">Adres</h5>
-                                        <p class="mb-0">{{ $cariler->adres }}
-                                        </p>
-                                    </div>
+                        <div class="card shadow-sm border-0 rounded-lg" style="box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);">
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <h5 class="mb-1 fs-6 fw-bold text-uppercase text-dark">
+                                        {{ $cariler->firma_unvan }}
+                                    </h5>
+                                    <p class="mb-0 text-secondary">{{ $cariler->yetkili_kisi }}</p>
                                 </div>
-                                <ul class="list-group list-group-flush">
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-top">
-                                        Telefon
-                                        <span>{{ $cariler->yetkili_kisi_tel }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        E-Posta
-                                        <span>{{ $cariler->eposta }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        Müşteri Temsilcisi
-                                        <span>{{ $cariler->musteri_temsilcisi }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        Vergi No
-                                        <span>{{ $cariler->vergi_no }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        Vergi Dairesi
-                                        <span>{{ $cariler->vergi_dairesi }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        T.C Kimlik No
-                                        <span>{{ $cariler->tc_kimlik }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        İl
-                                        <span>{{ $cariler->il }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        İlçe
-                                        <span>{{ $cariler->ilce }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        Firma Tipi
-                                        <span>{{ $cariler->firma_tipi }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        Firma Durumu
-                                        <span>{{ $cariler->firma_durumu }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        Web Adresi
-                                        <span>{{ $cariler->web_adres }}</span>
-                                    </li>
-                                    @php
-                                        $borc_toplam = 0;
-                                        $alacak_toplam = 0;
-                                        $sonuc = 0;
-                                    @endphp
-                                    @foreach ($firmahrkt as $firmahrktitem)
-                                        @php
-                                            $borc_toplam += $firmahrktitem->borc;
-                                            $alacak_toplam += $firmahrktitem->alacak;
-                                            $sonuc = $borc_toplam - $alacak_toplam;
-                                        @endphp
-                                    @endforeach
-
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        Kalan Bakiye
-                                        <span>{{ number_format($sonuc, 2, ',', '.') }} <b
-                                                style="color: red">₺</b></span>
-                                    </li>
-
-                                </ul>
-
-
+                                <hr>
+                                <div class="text-start">
+                                    <h5 class="fw-bold text-secondary">
+                                        <i class="fa-solid fa-map-marker-alt me-2" style="color:#293445;"></i> Adres
+                                    </h5>
+                                    <p class="mb-0 text-muted">{{ $cariler->adres }}</p>
+                                </div>
                             </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-phone me-2" style="color:#293445;"></i> <span>Telefon:</span>
+                                    <span class="ms-auto">{{ $cariler->yetkili_kisi_tel }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-envelope me-2" style="color:#293445;"></i> <span>E-Posta:</span>
+                                    <span class="ms-auto text-primary">{{ $cariler->eposta }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-user-tie me-2" style="color:#293445;"></i> <span>Müşteri Temsilcisi:</span>
+                                    <span class="ms-auto">{{ $cariler->musteri_temsilcisi }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-file-invoice-dollar me-2" style="color:#293445;"></i> <span>Vergi No:</span>
+                                    <span class="ms-auto">{{ $cariler->vergi_no }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-building me-2" style="color:#293445;"></i> <span>Vergi Dairesi:</span>
+                                    <span class="ms-auto">{{ $cariler->vergi_dairesi }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-id-card me-2" style="color:#293445;"></i> <span>T.C Kimlik No:</span>
+                                    <span class="ms-auto">{{ $cariler->tc_kimlik }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-map-marker me-2" style="color:#293445;"></i> <span>İl:</span>
+                                    <span class="ms-auto">{{ $cariler->il }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-location-arrow me-2" style="color:#293445;"></i> <span>İlçe:</span>
+                                    <span class="ms-auto">{{ $cariler->ilce }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-industry me-2" style="color:#293445;"></i> <span>Firma Tipi:</span>
+                                    <span class="ms-auto">{{ $cariler->firma_tipi }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-clipboard-check me-2" style="color:#293445;"></i> <span>Firma Durumu:</span>
+                                    <span class="ms-auto">{{ $cariler->firma_durumu }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-globe me-2" style="color:#293445;"></i> <span>Web Adresi:</span>
+                                    <span class="ms-auto"><a href="{{ $cariler->web_adres }}" target="_blank">{{ $cariler->web_adres }}</a></span>
+                                </li>
+                                @php
+                                    $borc_toplam = 0;
+                                    $alacak_toplam = 0;
+                                    $sonuc = 0;
+                                @endphp
+                                @foreach ($firmahrkt as $firmahrktitem)
+                                    @php
+                                        $borc_toplam += $firmahrktitem->borc;
+                                        $alacak_toplam += $firmahrktitem->alacak;
+                                        $sonuc = $borc_toplam - $alacak_toplam;
+                                    @endphp
+                                @endforeach
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-wallet me-2" style="color:#293445;"></i> <span>Kalan Bakiye:</span>
+                                    <span class="ms-auto fw-bold">{{ number_format($sonuc, 2, ',', '.') }} <b class="text-danger">₺</b></span>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                     <div class="col-md-9">
-                        <div class="card" >
+                        <div class="card">
                             <div class="card-body">
 
                                 <div class="row">
@@ -1000,28 +1007,21 @@
                                     @endforeach
                                 </div>
                                 <div class="card-header bg-transparent">
-                                    <div class="row g-3 align-items-center">
-                                        <div class="col">
-                                            <div class="d-flex align-items-center justify-content-between gap-3">
-                                                <div class="col-lg-2 col-6 col-md-3 text-start">
-                                                    <h6>FİRMA TEKLİFLERİ</h6>
-                                                </div>
-
-                                                <div class="ms-auto">
-                                                    <a type="button"
-                                                        href="{{ route('teklifler.create', ['cari_id' => $cariler->id]) }}"
-                                                        class="btn btn-sm btn-outline-dark px-3"><i
-                                                            class="fa-solid fa-plus"></i>Teklif Ekle</a>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <h6 class="fs-6 fw-bold mb-0">FİRMA TEKLİFLERİ</h6>
+                                        <a href="{{ route('teklifler.create', ['cari_id' => $cariler->id]) }}"
+                                            class="btn btn-sm btn-outline-dark px-3">
+                                            <i class="fa-solid fa-plus"></i> Teklif Ekle
+                                        </a>
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <table class="table align-middle mb-0" id="example2">
-                                            <thead class="table-light">
+
+                                <div class="card-body" style="border-radius: 5px">
+                                    <div class="table-responsive" style="border-radius: 5px">
+                                    <table class="table table-bordered table-hover" id="example2" role="grid"
+                                        aria-describedby="example_info" style="border-radius: 5px">
+                                            <thead>
                                                 <tr>
                                                     <th scope="col">#</th>
                                                     <th>Teklif Kodu</th>
@@ -1106,6 +1106,7 @@
                                         </table>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -1116,109 +1117,88 @@
             <div class="tab-pane fade" id="satislar" role="tabpanel">
                 <div class="row">
                     <div class="col-md-3">
-                        <div class="card " >
-                            <div class="card shadow-sm border-0 overflow-hidden">
-                                <div class="card-body">
-
-                                    <div class="text-center mt-4">
-                                        <h4 class="mb-1" style="font-size: 20px">{{ $cariler->firma_unvan }}</h4>
-                                        <p class="mb-0 text-secondary">{{ $cariler->yetkili_kisi }}</p>
-                                        <div class="mt-4"></div>
-
-                                        {{-- <h6 class="mb-1">HR Manager - Codervent Technology</h6>
-                                        <p class="mb-0 text-secondary">University of Information Technology</p> --}}
-                                    </div>
-                                    <hr>
-                                    <div class="text-start">
-                                        <h5 class="">Adres</h5>
-                                        <p class="mb-0">{{ $cariler->adres }}
-                                        </p>
-                                    </div>
+                        <div class="card shadow-sm border-0 rounded-lg" style="box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);">
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <h5 class="mb-1 fs-6 fw-bold text-uppercase text-dark">
+                                        {{ $cariler->firma_unvan }}
+                                    </h5>
+                                    <p class="mb-0 text-secondary">{{ $cariler->yetkili_kisi }}</p>
                                 </div>
-                                <ul class="list-group list-group-flush">
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-top">
-                                        Telefon
-                                        <span>{{ $cariler->yetkili_kisi_tel }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        E-Posta
-                                        <span>{{ $cariler->eposta }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        Müşteri Temsilcisi
-                                        <span>{{ $cariler->musteri_temsilcisi }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        Vergi No
-                                        <span>{{ $cariler->vergi_no }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        Vergi Dairesi
-                                        <span>{{ $cariler->vergi_dairesi }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        T.C Kimlik No
-                                        <span>{{ $cariler->tc_kimlik }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        İl
-                                        <span>{{ $cariler->il }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        İlçe
-                                        <span>{{ $cariler->ilce }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        Firma Tipi
-                                        <span>{{ $cariler->firma_tipi }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        Firma Durumu
-                                        <span>{{ $cariler->firma_durumu }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        Web Adresi
-                                        <span>{{ $cariler->web_adres }}</span>
-                                    </li>
-                                    @php
-                                        $borc_toplam = 0;
-                                        $alacak_toplam = 0;
-                                        $sonuc = 0;
-                                    @endphp
-                                    @foreach ($firmahrkt as $firmahrktitem)
-                                        @php
-                                            $borc_toplam += $firmahrktitem->borc;
-                                            $alacak_toplam += $firmahrktitem->alacak;
-                                            $sonuc = $borc_toplam - $alacak_toplam;
-                                        @endphp
-                                    @endforeach
-
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        Kalan Bakiye
-                                        <span>{{ number_format($sonuc, 2, ',', '.') }} <b
-                                                style="color: red">₺</b></span>
-                                    </li>
-
-                                </ul>
-
-
+                                <hr>
+                                <div class="text-start">
+                                    <h5 class="fw-bold text-secondary">
+                                        <i class="fa-solid fa-map-marker-alt me-2" style="color:#293445;"></i> Adres
+                                    </h5>
+                                    <p class="mb-0 text-muted">{{ $cariler->adres }}</p>
+                                </div>
                             </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-phone me-2" style="color:#293445;"></i> <span>Telefon:</span>
+                                    <span class="ms-auto">{{ $cariler->yetkili_kisi_tel }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-envelope me-2" style="color:#293445;"></i> <span>E-Posta:</span>
+                                    <span class="ms-auto text-primary">{{ $cariler->eposta }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-user-tie me-2" style="color:#293445;"></i> <span>Müşteri Temsilcisi:</span>
+                                    <span class="ms-auto">{{ $cariler->musteri_temsilcisi }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-file-invoice-dollar me-2" style="color:#293445;"></i> <span>Vergi No:</span>
+                                    <span class="ms-auto">{{ $cariler->vergi_no }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-building me-2" style="color:#293445;"></i> <span>Vergi Dairesi:</span>
+                                    <span class="ms-auto">{{ $cariler->vergi_dairesi }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-id-card me-2" style="color:#293445;"></i> <span>T.C Kimlik No:</span>
+                                    <span class="ms-auto">{{ $cariler->tc_kimlik }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-map-marker me-2" style="color:#293445;"></i> <span>İl:</span>
+                                    <span class="ms-auto">{{ $cariler->il }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-location-arrow me-2" style="color:#293445;"></i> <span>İlçe:</span>
+                                    <span class="ms-auto">{{ $cariler->ilce }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-industry me-2" style="color:#293445;"></i> <span>Firma Tipi:</span>
+                                    <span class="ms-auto">{{ $cariler->firma_tipi }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-clipboard-check me-2" style="color:#293445;"></i> <span>Firma Durumu:</span>
+                                    <span class="ms-auto">{{ $cariler->firma_durumu }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-globe me-2" style="color:#293445;"></i> <span>Web Adresi:</span>
+                                    <span class="ms-auto"><a href="{{ $cariler->web_adres }}" target="_blank">{{ $cariler->web_adres }}</a></span>
+                                </li>
+                                @php
+                                    $borc_toplam = 0;
+                                    $alacak_toplam = 0;
+                                    $sonuc = 0;
+                                @endphp
+                                @foreach ($firmahrkt as $firmahrktitem)
+                                    @php
+                                        $borc_toplam += $firmahrktitem->borc;
+                                        $alacak_toplam += $firmahrktitem->alacak;
+                                        $sonuc = $borc_toplam - $alacak_toplam;
+                                    @endphp
+                                @endforeach
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-wallet me-2" style="color:#293445;"></i> <span>Kalan Bakiye:</span>
+                                    <span class="ms-auto fw-bold">{{ number_format($sonuc, 2, ',', '.') }} <b class="text-danger">₺</b></span>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                     <div class="col-md-9">
-                        <div class="card" >
+                        <div class="card">
                             <div class="card-body">
 
                                 <div class="row">
@@ -1247,7 +1227,7 @@
                                             <div class="col">
                                                 <div class="d-flex align-items-center justify-content-between gap-3">
                                                     <div class="col-lg-2 col-6 col-md-3 text-start">
-                                                        <h6>FİRMA SATIŞLARI</h6>
+                                                        <h6 class="fs-6 fw-bold">FİRMA SATIŞLARI</h6>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1255,9 +1235,11 @@
                                     </div>
 
 
-                                    <div class="col-md-12">
-                                        <table class="table align-middle mb-0" id="example2">
-                                            <thead class="table-light">
+                                    <div class="card-body" style="border-radius: 5px">
+                                        <div class="table-responsive" style="border-radius: 5px">
+                                        <table class="table table-bordered table-hover" id="example2" role="grid"
+                                            aria-describedby="example_info" style="border-radius: 5px">
+                                            <thead>
                                                 <tr>
                                                     <th scope="col">#</th>
                                                     <th>Satış Kodu</th>
@@ -1307,6 +1289,7 @@
                                         </table>
                                     </div>
                                 </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1318,109 +1301,88 @@
             <div class="tab-pane fade" id="tahsilat" role="tabpanel">
                 <div class="row">
                     <div class="col-md-3">
-                        <div class="card " >
-                            <div class="card shadow-sm border-0 overflow-hidden">
-                                <div class="card-body">
-
-                                    <div class="text-center mt-4">
-                                        <h4 class="mb-1" style="font-size: 20px">{{ $cariler->firma_unvan }}</h4>
-                                        <p class="mb-0 text-secondary">{{ $cariler->yetkili_kisi }}</p>
-                                        <div class="mt-4"></div>
-
-                                        {{-- <h6 class="mb-1">HR Manager - Codervent Technology</h6>
-                                        <p class="mb-0 text-secondary">University of Information Technology</p> --}}
-                                    </div>
-                                    <hr>
-                                    <div class="text-start">
-                                        <h5 class="">Adres</h5>
-                                        <p class="mb-0">{{ $cariler->adres }}
-                                        </p>
-                                    </div>
+                        <div class="card shadow-sm border-0 rounded-lg" style="box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);">
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <h5 class="mb-1 fs-6 fw-bold text-uppercase text-dark">
+                                        {{ $cariler->firma_unvan }}
+                                    </h5>
+                                    <p class="mb-0 text-secondary">{{ $cariler->yetkili_kisi }}</p>
                                 </div>
-                                <ul class="list-group list-group-flush">
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-top">
-                                        Telefon
-                                        <span>{{ $cariler->yetkili_kisi_tel }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        E-Posta
-                                        <span>{{ $cariler->eposta }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        Müşteri Temsilcisi
-                                        <span>{{ $cariler->musteri_temsilcisi }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        Vergi No
-                                        <span>{{ $cariler->vergi_no }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        Vergi Dairesi
-                                        <span>{{ $cariler->vergi_dairesi }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        T.C Kimlik No
-                                        <span>{{ $cariler->tc_kimlik }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        İl
-                                        <span>{{ $cariler->il }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        İlçe
-                                        <span>{{ $cariler->ilce }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        Firma Tipi
-                                        <span>{{ $cariler->firma_tipi }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        Firma Durumu
-                                        <span>{{ $cariler->firma_durumu }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        Web Adresi
-                                        <span>{{ $cariler->web_adres }}</span>
-                                    </li>
-                                    @php
-                                        $borc_toplam = 0;
-                                        $alacak_toplam = 0;
-                                        $sonuc = 0;
-                                    @endphp
-                                    @foreach ($firmahrkt as $firmahrktitem)
-                                        @php
-                                            $borc_toplam += $firmahrktitem->borc;
-                                            $alacak_toplam += $firmahrktitem->alacak;
-                                            $sonuc = $borc_toplam - $alacak_toplam;
-                                        @endphp
-                                    @endforeach
-
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        Kalan Bakiye
-                                        <span>{{ number_format($sonuc, 2, ',', '.') }} <b
-                                                style="color: red">₺</b></span>
-                                    </li>
-
-                                </ul>
-
-
+                                <hr>
+                                <div class="text-start">
+                                    <h5 class="fw-bold text-secondary">
+                                        <i class="fa-solid fa-map-marker-alt me-2" style="color:#293445;"></i> Adres
+                                    </h5>
+                                    <p class="mb-0 text-muted">{{ $cariler->adres }}</p>
+                                </div>
                             </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-phone me-2" style="color:#293445;"></i> <span>Telefon:</span>
+                                    <span class="ms-auto">{{ $cariler->yetkili_kisi_tel }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-envelope me-2" style="color:#293445;"></i> <span>E-Posta:</span>
+                                    <span class="ms-auto text-primary">{{ $cariler->eposta }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-user-tie me-2" style="color:#293445;"></i> <span>Müşteri Temsilcisi:</span>
+                                    <span class="ms-auto">{{ $cariler->musteri_temsilcisi }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-file-invoice-dollar me-2" style="color:#293445;"></i> <span>Vergi No:</span>
+                                    <span class="ms-auto">{{ $cariler->vergi_no }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-building me-2" style="color:#293445;"></i> <span>Vergi Dairesi:</span>
+                                    <span class="ms-auto">{{ $cariler->vergi_dairesi }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-id-card me-2" style="color:#293445;"></i> <span>T.C Kimlik No:</span>
+                                    <span class="ms-auto">{{ $cariler->tc_kimlik }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-map-marker me-2" style="color:#293445;"></i> <span>İl:</span>
+                                    <span class="ms-auto">{{ $cariler->il }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-location-arrow me-2" style="color:#293445;"></i> <span>İlçe:</span>
+                                    <span class="ms-auto">{{ $cariler->ilce }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-industry me-2" style="color:#293445;"></i> <span>Firma Tipi:</span>
+                                    <span class="ms-auto">{{ $cariler->firma_tipi }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-clipboard-check me-2" style="color:#293445;"></i> <span>Firma Durumu:</span>
+                                    <span class="ms-auto">{{ $cariler->firma_durumu }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-globe me-2" style="color:#293445;"></i> <span>Web Adresi:</span>
+                                    <span class="ms-auto"><a href="{{ $cariler->web_adres }}" target="_blank">{{ $cariler->web_adres }}</a></span>
+                                </li>
+                                @php
+                                    $borc_toplam = 0;
+                                    $alacak_toplam = 0;
+                                    $sonuc = 0;
+                                @endphp
+                                @foreach ($firmahrkt as $firmahrktitem)
+                                    @php
+                                        $borc_toplam += $firmahrktitem->borc;
+                                        $alacak_toplam += $firmahrktitem->alacak;
+                                        $sonuc = $borc_toplam - $alacak_toplam;
+                                    @endphp
+                                @endforeach
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-wallet me-2" style="color:#293445;"></i> <span>Kalan Bakiye:</span>
+                                    <span class="ms-auto fw-bold">{{ number_format($sonuc, 2, ',', '.') }} <b class="text-danger">₺</b></span>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                     <div class="col-md-9">
-                        <div class="card" >
+                        <div class="card">
                             <div class="card-body">
 
                                 <div class="row">
@@ -1450,7 +1412,7 @@
                                             <div class="col">
                                                 <div class="d-flex align-items-center justify-content-between gap-3">
                                                     <div class="col-lg-2 col-6 col-md-3 text-start">
-                                                        <h6>FİRMA TAHSİLATLARI</h6>
+                                                        <h6 class="fs-6 fw-bold">FİRMA TAHSİLATLARI</h6>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1458,9 +1420,11 @@
                                     </div>
 
 
-                                    <div class="col-md-12">
-                                        <table class="table align-middle mb-0" id="example2">
-                                            <thead class="table-light">
+                                    <div class="card-body" style="border-radius: 5px">
+                                        <div class="table-responsive" style="border-radius: 5px">
+                                        <table class="table table-bordered table-hover" id="example2" role="grid"
+                                            aria-describedby="example_info" style="border-radius: 5px">
+                                            <thead>
                                                 <tr>
                                                     <th scope="col">#</th>
                                                     <th>Tahsilat Kodu</th>
@@ -1503,6 +1467,7 @@
                                         </table>
                                     </div>
                                 </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1513,109 +1478,88 @@
             <div class="tab-pane fade" id="alislar" role="tabpanel">
                 <div class="row">
                     <div class="col-md-3">
-                        <div class="card " >
-                            <div class="card shadow-sm border-0 overflow-hidden">
-                                <div class="card-body">
-
-                                    <div class="text-center mt-4">
-                                        <h4 class="mb-1" style="font-size: 20px">{{ $cariler->firma_unvan }}</h4>
-                                        <p class="mb-0 text-secondary">{{ $cariler->yetkili_kisi }}</p>
-                                        <div class="mt-4"></div>
-
-                                        {{-- <h6 class="mb-1">HR Manager - Codervent Technology</h6>
-                                        <p class="mb-0 text-secondary">University of Information Technology</p> --}}
-                                    </div>
-                                    <hr>
-                                    <div class="text-start">
-                                        <h5 class="">Adres</h5>
-                                        <p class="mb-0">{{ $cariler->adres }}
-                                        </p>
-                                    </div>
+                        <div class="card shadow-sm border-0 rounded-lg" style="box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);">
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <h5 class="mb-1 fs-6 fw-bold text-uppercase text-dark">
+                                        {{ $cariler->firma_unvan }}
+                                    </h5>
+                                    <p class="mb-0 text-secondary">{{ $cariler->yetkili_kisi }}</p>
                                 </div>
-                                <ul class="list-group list-group-flush">
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-top">
-                                        Telefon
-                                        <span>{{ $cariler->yetkili_kisi_tel }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        E-Posta
-                                        <span>{{ $cariler->eposta }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        Müşteri Temsilcisi
-                                        <span>{{ $cariler->musteri_temsilcisi }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        Vergi No
-                                        <span>{{ $cariler->vergi_no }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        Vergi Dairesi
-                                        <span>{{ $cariler->vergi_dairesi }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        T.C Kimlik No
-                                        <span>{{ $cariler->tc_kimlik }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        İl
-                                        <span>{{ $cariler->il }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        İlçe
-                                        <span>{{ $cariler->ilce }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        Firma Tipi
-                                        <span>{{ $cariler->firma_tipi }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        Firma Durumu
-                                        <span>{{ $cariler->firma_durumu }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        Web Adresi
-                                        <span>{{ $cariler->web_adres }}</span>
-                                    </li>
-                                    @php
-                                        $borc_toplam = 0;
-                                        $alacak_toplam = 0;
-                                        $sonuc = 0;
-                                    @endphp
-                                    @foreach ($firmahrkt as $firmahrktitem)
-                                        @php
-                                            $borc_toplam += $firmahrktitem->borc;
-                                            $alacak_toplam += $firmahrktitem->alacak;
-                                            $sonuc = $borc_toplam - $alacak_toplam;
-                                        @endphp
-                                    @endforeach
-
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        Kalan Bakiye
-                                        <span>{{ number_format($sonuc, 2, ',', '.') }} <b
-                                                style="color: red">₺</b></span>
-                                    </li>
-
-                                </ul>
-
-
+                                <hr>
+                                <div class="text-start">
+                                    <h5 class="fw-bold text-secondary">
+                                        <i class="fa-solid fa-map-marker-alt me-2" style="color:#293445;"></i> Adres
+                                    </h5>
+                                    <p class="mb-0 text-muted">{{ $cariler->adres }}</p>
+                                </div>
                             </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-phone me-2" style="color:#293445;"></i> <span>Telefon:</span>
+                                    <span class="ms-auto">{{ $cariler->yetkili_kisi_tel }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-envelope me-2" style="color:#293445;"></i> <span>E-Posta:</span>
+                                    <span class="ms-auto text-primary">{{ $cariler->eposta }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-user-tie me-2" style="color:#293445;"></i> <span>Müşteri Temsilcisi:</span>
+                                    <span class="ms-auto">{{ $cariler->musteri_temsilcisi }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-file-invoice-dollar me-2" style="color:#293445;"></i> <span>Vergi No:</span>
+                                    <span class="ms-auto">{{ $cariler->vergi_no }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-building me-2" style="color:#293445;"></i> <span>Vergi Dairesi:</span>
+                                    <span class="ms-auto">{{ $cariler->vergi_dairesi }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-id-card me-2" style="color:#293445;"></i> <span>T.C Kimlik No:</span>
+                                    <span class="ms-auto">{{ $cariler->tc_kimlik }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-map-marker me-2" style="color:#293445;"></i> <span>İl:</span>
+                                    <span class="ms-auto">{{ $cariler->il }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-location-arrow me-2" style="color:#293445;"></i> <span>İlçe:</span>
+                                    <span class="ms-auto">{{ $cariler->ilce }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-industry me-2" style="color:#293445;"></i> <span>Firma Tipi:</span>
+                                    <span class="ms-auto">{{ $cariler->firma_tipi }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-clipboard-check me-2" style="color:#293445;"></i> <span>Firma Durumu:</span>
+                                    <span class="ms-auto">{{ $cariler->firma_durumu }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-globe me-2" style="color:#293445;"></i> <span>Web Adresi:</span>
+                                    <span class="ms-auto"><a href="{{ $cariler->web_adres }}" target="_blank">{{ $cariler->web_adres }}</a></span>
+                                </li>
+                                @php
+                                    $borc_toplam = 0;
+                                    $alacak_toplam = 0;
+                                    $sonuc = 0;
+                                @endphp
+                                @foreach ($firmahrkt as $firmahrktitem)
+                                    @php
+                                        $borc_toplam += $firmahrktitem->borc;
+                                        $alacak_toplam += $firmahrktitem->alacak;
+                                        $sonuc = $borc_toplam - $alacak_toplam;
+                                    @endphp
+                                @endforeach
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-wallet me-2" style="color:#293445;"></i> <span>Kalan Bakiye:</span>
+                                    <span class="ms-auto fw-bold">{{ number_format($sonuc, 2, ',', '.') }} <b class="text-danger">₺</b></span>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                     <div class="col-md-9">
-                        <div class="card" >
+                        <div class="card">
                             <div class="card-body">
 
                                 <div class="row">
@@ -1644,7 +1588,7 @@
                                             <div class="col">
                                                 <div class="d-flex align-items-center justify-content-between gap-3">
                                                     <div class="col-lg-2 col-6 col-md-3 text-start">
-                                                        <h6>FİRMA ALIŞLARI</h6>
+                                                        <h6 class="fs-6 fw-bold">FİRMA ALIŞLARI</h6>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1652,9 +1596,11 @@
                                     </div>
 
 
-                                    <div class="col-md-12">
-                                        <table class="table align-middle mb-0" id="example2">
-                                            <thead class="table-light">
+                                    <div class="card-body" style="border-radius: 5px">
+                                        <div class="table-responsive" style="border-radius: 5px">
+                                        <table class="table table-bordered table-hover" id="example2" role="grid"
+                                            aria-describedby="example_info" style="border-radius: 5px">
+                                            <thead>
                                                 <tr>
                                                     <th scope="col">#</th>
                                                     <th>Alış Kodu</th>
@@ -1671,38 +1617,39 @@
                                             </thead>
                                             <tbody>
                                                 @foreach ($alislar as $sn => $alislaritem)
-                                                <tr>
-                                                    <th scope="row">{{ $sn + 1 }}</th>
-                                                    <th scope="row">
-                                                        {{ $alislaritem->alis->alis_kodu_text }}-{{ $alislaritem->alis->alis_kodu }}
-                                                    </th>
-                                                    <td>{{ $alislaritem->firmaadi->firma_unvan }}</td>
-                                                    <td>{{ $alislaritem->alis->islem_tarihi }}</td>
-                                                    <td>{{ number_format($alislaritem->alis->toplam_iskonto, 2, ',', '.') }}₺
-                                                    </td>
-                                                    <td>{{ number_format($alislaritem->alis->toplam_kdv_tutar, 2, ',', '.') }}₺
-                                                    </td>
-                                                    <td>{{ number_format($alislaritem->alis->toplam_ara_toplam, 2, ',', '.') }}₺
-                                                    </td>
-                                                    <td>{{ number_format($alislaritem->alis->toplam_tutar, 2, ',', '.') }}₺
-                                                    </td>
-                                                    <td class="text-right">
-                                                        <div class="databutton">
-                                                            <div class="d-flex align-items-center fs-6">
+                                                    <tr>
+                                                        <th scope="row">{{ $sn + 1 }}</th>
+                                                        <th scope="row">
+                                                            {{ $alislaritem->alis->alis_kodu_text }}-{{ $alislaritem->alis->alis_kodu }}
+                                                        </th>
+                                                        <td>{{ $alislaritem->firmaadi->firma_unvan }}</td>
+                                                        <td>{{ $alislaritem->alis->islem_tarihi }}</td>
+                                                        <td>{{ number_format($alislaritem->alis->toplam_iskonto, 2, ',', '.') }}₺
+                                                        </td>
+                                                        <td>{{ number_format($alislaritem->alis->toplam_kdv_tutar, 2, ',', '.') }}₺
+                                                        </td>
+                                                        <td>{{ number_format($alislaritem->alis->toplam_ara_toplam, 2, ',', '.') }}₺
+                                                        </td>
+                                                        <td>{{ number_format($alislaritem->alis->toplam_tutar, 2, ',', '.') }}₺
+                                                        </td>
+                                                        <td class="text-right">
+                                                            <div class="databutton">
+                                                                <div class="d-flex align-items-center fs-6">
 
-                                                                <a href="{{ route('alislar.show', ['alislar' => $alislaritem->alis->id]) }}"
-                                                                    class="text-primary btn btn-link p-0 m-0 ">
-                                                                    <i class="bi bi-eye-fill"></i>
-                                                                </a>
+                                                                    <a href="{{ route('alislar.show', ['alislar' => $alislaritem->alis->id]) }}"
+                                                                        class="text-primary btn btn-link p-0 m-0 ">
+                                                                        <i class="bi bi-eye-fill"></i>
+                                                                    </a>
 
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>
+                                </div>
                                 </div>
                             </div>
                         </div>
@@ -1714,109 +1661,88 @@
             <div class="tab-pane fade" id="odemeler" role="tabpanel">
                 <div class="row">
                     <div class="col-md-3">
-                        <div class="card " >
-                            <div class="card shadow-sm border-0 overflow-hidden">
-                                <div class="card-body">
-
-                                    <div class="text-center mt-4">
-                                        <h4 class="mb-1" style="font-size: 20px">{{ $cariler->firma_unvan }}</h4>
-                                        <p class="mb-0 text-secondary">{{ $cariler->yetkili_kisi }}</p>
-                                        <div class="mt-4"></div>
-
-                                        {{-- <h6 class="mb-1">HR Manager - Codervent Technology</h6>
-                                        <p class="mb-0 text-secondary">University of Information Technology</p> --}}
-                                    </div>
-                                    <hr>
-                                    <div class="text-start">
-                                        <h5 class="">Adres</h5>
-                                        <p class="mb-0">{{ $cariler->adres }}
-                                        </p>
-                                    </div>
+                        <div class="card shadow-sm border-0 rounded-lg" style="box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);">
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <h5 class="mb-1 fs-6 fw-bold text-uppercase text-dark">
+                                        {{ $cariler->firma_unvan }}
+                                    </h5>
+                                    <p class="mb-0 text-secondary">{{ $cariler->yetkili_kisi }}</p>
                                 </div>
-                                <ul class="list-group list-group-flush">
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-top">
-                                        Telefon
-                                        <span>{{ $cariler->yetkili_kisi_tel }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        E-Posta
-                                        <span>{{ $cariler->eposta }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        Müşteri Temsilcisi
-                                        <span>{{ $cariler->musteri_temsilcisi }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        Vergi No
-                                        <span>{{ $cariler->vergi_no }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        Vergi Dairesi
-                                        <span>{{ $cariler->vergi_dairesi }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        T.C Kimlik No
-                                        <span>{{ $cariler->tc_kimlik }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        İl
-                                        <span>{{ $cariler->il }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        İlçe
-                                        <span>{{ $cariler->ilce }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        Firma Tipi
-                                        <span>{{ $cariler->firma_tipi }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        Firma Durumu
-                                        <span>{{ $cariler->firma_durumu }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        Web Adresi
-                                        <span>{{ $cariler->web_adres }}</span>
-                                    </li>
-                                    @php
-                                        $borc_toplam = 0;
-                                        $alacak_toplam = 0;
-                                        $sonuc = 0;
-                                    @endphp
-                                    @foreach ($firmahrkt as $firmahrktitem)
-                                        @php
-                                            $borc_toplam += $firmahrktitem->borc;
-                                            $alacak_toplam += $firmahrktitem->alacak;
-                                            $sonuc = $borc_toplam - $alacak_toplam;
-                                        @endphp
-                                    @endforeach
-
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                                        Kalan Bakiye
-                                        <span>{{ number_format($sonuc, 2, ',', '.') }} <b
-                                                style="color: red">₺</b></span>
-                                    </li>
-
-                                </ul>
-
-
+                                <hr>
+                                <div class="text-start">
+                                    <h5 class="fw-bold text-secondary">
+                                        <i class="fa-solid fa-map-marker-alt me-2" style="color:#293445;"></i> Adres
+                                    </h5>
+                                    <p class="mb-0 text-muted">{{ $cariler->adres }}</p>
+                                </div>
                             </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-phone me-2" style="color:#293445;"></i> <span>Telefon:</span>
+                                    <span class="ms-auto">{{ $cariler->yetkili_kisi_tel }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-envelope me-2" style="color:#293445;"></i> <span>E-Posta:</span>
+                                    <span class="ms-auto text-primary">{{ $cariler->eposta }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-user-tie me-2" style="color:#293445;"></i> <span>Müşteri Temsilcisi:</span>
+                                    <span class="ms-auto">{{ $cariler->musteri_temsilcisi }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-file-invoice-dollar me-2" style="color:#293445;"></i> <span>Vergi No:</span>
+                                    <span class="ms-auto">{{ $cariler->vergi_no }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-building me-2" style="color:#293445;"></i> <span>Vergi Dairesi:</span>
+                                    <span class="ms-auto">{{ $cariler->vergi_dairesi }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-id-card me-2" style="color:#293445;"></i> <span>T.C Kimlik No:</span>
+                                    <span class="ms-auto">{{ $cariler->tc_kimlik }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-map-marker me-2" style="color:#293445;"></i> <span>İl:</span>
+                                    <span class="ms-auto">{{ $cariler->il }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-location-arrow me-2" style="color:#293445;"></i> <span>İlçe:</span>
+                                    <span class="ms-auto">{{ $cariler->ilce }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-industry me-2" style="color:#293445;"></i> <span>Firma Tipi:</span>
+                                    <span class="ms-auto">{{ $cariler->firma_tipi }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-clipboard-check me-2" style="color:#293445;"></i> <span>Firma Durumu:</span>
+                                    <span class="ms-auto">{{ $cariler->firma_durumu }}</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-globe me-2" style="color:#293445;"></i> <span>Web Adresi:</span>
+                                    <span class="ms-auto"><a href="{{ $cariler->web_adres }}" target="_blank">{{ $cariler->web_adres }}</a></span>
+                                </li>
+                                @php
+                                    $borc_toplam = 0;
+                                    $alacak_toplam = 0;
+                                    $sonuc = 0;
+                                @endphp
+                                @foreach ($firmahrkt as $firmahrktitem)
+                                    @php
+                                        $borc_toplam += $firmahrktitem->borc;
+                                        $alacak_toplam += $firmahrktitem->alacak;
+                                        $sonuc = $borc_toplam - $alacak_toplam;
+                                    @endphp
+                                @endforeach
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fa-solid fa-wallet me-2" style="color:#293445;"></i> <span>Kalan Bakiye:</span>
+                                    <span class="ms-auto fw-bold">{{ number_format($sonuc, 2, ',', '.') }} <b class="text-danger">₺</b></span>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                     <div class="col-md-9">
-                        <div class="card" >
+                        <div class="card">
                             <div class="card-body">
 
                                 <div class="row">
@@ -1845,7 +1771,7 @@
                                             <div class="col">
                                                 <div class="d-flex align-items-center justify-content-between gap-3">
                                                     <div class="col-lg-2 col-6 col-md-3 text-start">
-                                                        <h6>FİRMA ÖDEMELERİ</h6>
+                                                        <h6 class="fs-6 fw-bold">FİRMA ÖDEMELERİ</h6>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1853,9 +1779,11 @@
                                     </div>
 
 
-                                    <div class="col-md-12">
-                                        <table class="table align-middle mb-0" id="example2">
-                                            <thead class="table-light">
+                                   <div class="card-body" style="border-radius: 5px">
+                                <div class="table-responsive" style="border-radius: 5px">
+                                <table class="table table-bordered table-hover" id="example2" role="grid"
+                                    aria-describedby="example_info" style="border-radius: 5px">
+                                    <thead>
                                                 <tr>
                                                     <th scope="col">#</th>
                                                     <th>Ödeme Kodu</th>
@@ -1897,6 +1825,7 @@
                                             </tbody>
                                         </table>
                                     </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1907,5 +1836,6 @@
 
         </div>
     </div>
-    @include('session.session')
+</div>
+@include('session.session')
 @endsection
