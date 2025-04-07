@@ -143,7 +143,13 @@ Invoice Area
 
 
 <div class="container">
-    <h4 class="text-center mb-4">Personel Satış Grafiği</h4>
+    @if (!empty($islemYapanAdi))
+
+    <h4 class="text-center mb-4">Aylara Göre Personel Satış Grafiği</h4>
+    @else
+    <h4 class="text-center mb-4">Aylara Göre Hizmet Türü Satış Grafiği</h4>
+
+    @endif
 
 
 

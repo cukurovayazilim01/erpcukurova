@@ -6,57 +6,38 @@ Bankalar
 @section('topheader')
 Bankalar
 @endsection
-<div class="card">
+<div class="card radius-5">
     <div class="card-header bg-transparent">
-        <div class="row g-3 align-items-center">
-            <div class="col">
-                <div class="d-flex align-items-center justify-content-between gap-3">
-
-                    <div class="ms-auto">
-                        <button type="button" class="btn btn-sm btn-outline-primary px-5" data-bs-toggle="modal" data-bs-target="#bankaeklemodal">
-                            <i class="fa-solid fa-plus"></i> Yeni Ekle
-                        </button>
-                    </div>
-
-                    <div class="dropdown">
-                        <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            <i class="bx bx-dots-horizontal-rounded font-22 text-option"></i>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="javascript:;">Action</a></li>
-                            <li><a class="dropdown-item" href="javascript:;">Another action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="javascript:;">Something else here</a></li>
-                        </ul>
-                    </div>
+        <div class="row ">
+            <div class="d-flex align-items-center justify-content-between gap-1 mobile-erp">
+                <div class="col-lg-4 ms-auto mobile-erp3 text-end">
+                    <button type="button" class="btn btn-outline-dark btn-sm " data-bs-toggle="modal"
+                        data-bs-target="#bankaeklemodal"> <i class="fa-solid fa-plus"></i> Banka Ekle</button>
                 </div>
             </div>
         </div>
     </div>
     <!-- Modal -->
     <div class="modal fade" id="bankaeklemodal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-xl">
             <form id="add-form" action="{{ route('bankalar.store') }}" method="POST" id="add-form">
                 @csrf
                 <div class="modal-content">
                     <!-- Modal Header -->
-                    <div class="modal-header bg-primary text-white">
+                    <div class="modal-header">
                         <h5 class="modal-title">Banka Kayıt Ekranı</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
                     <!-- Modal Body -->
-                    <div class="modal-body" style="display: flex">
-                        <!-- Left Side -->
-                        <div class="col-md-12" style=" padding: 1%; ">
-                            <div class="row" >
+                    <div class="modal-body"
+                    style="padding: 20px; background-position:center; background-repeat: no-repeat; background-size: cover;  background-image: url('{{ asset('resim/modal7.png') }}') ">
+
+                    <div class="row ">
                                 <div class="col-md-4">
                                     <label for="banka_adi">Banka Adı</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-inbox"></i>
                                         </span>
                                         <input type="text" name="banka_adi" id="banka_adi"
@@ -65,8 +46,8 @@ Bankalar
                                 </div>
                                 <div class="col-md-4">
                                     <label for="sube_adi">Şube Adı</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-inbox"></i>
                                         </span>
                                         <input type="text" name="sube_adi" id="sube_adi"
@@ -75,8 +56,8 @@ Bankalar
                                 </div>
                                 <div class="col-md-4">
                                     <label for="sube_kodu">Şube Kodu</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-inbox"></i>
                                         </span>
                                         <input type="text" name="sube_kodu" id="sube_kodu"
@@ -85,8 +66,8 @@ Bankalar
                                 </div>
                                 <div class="col-md-4">
                                     <label for="hesap_adi">Hesap Adı</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-inbox"></i>
                                         </span>
                                         <input type="text" name="hesap_adi" id="hesap_adi"
@@ -95,8 +76,8 @@ Bankalar
                                 </div>
                                 <div class="col-md-4">
                                     <label for="iban">IBAN</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-inbox"></i>
                                         </span>
                                         <input type="text" name="iban" id="iban"
@@ -105,8 +86,8 @@ Bankalar
                                 </div>
                                 <div class="col-md-4">
                                     <label for="hesap_no">Hesap No</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-money-bill"></i>
                                         </span>
                                         <input type="number" name="hesap_no" id="hesap_no"
@@ -115,12 +96,12 @@ Bankalar
                                 </div>
                                 <div class="col-md-4">
                                     <label for="user_id">Yetkili Kişi</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
-                                            <i class="fa fa-building"></i>
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
+                                            <i class="fa fa-user"></i>
                                         </span>
                                         <select name="user_id" id="user_id"
-                                            class="form-select form-select-sm" required>
+                                            class="form-control form-control-sm" required>
                                             <option value="">Lütfen Seçim Yapınız...</option>
                                             @foreach ($user as $useritem)
                                             <option value="{{$useritem->id}}">{{$useritem->ad_soyad}}</option>
@@ -130,8 +111,8 @@ Bankalar
                                 </div>
                                 <div class="col-md-4">
                                     <label for="acilis_bakiyesi">Açılış Bakiyesi</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-money-bill"></i>
                                         </span>
                                         <input type="text" name="acilis_bakiyesi" id="acilis_bakiyesi"
@@ -140,12 +121,12 @@ Bankalar
                                 </div>
                                 <div class="col-md-4">
                                     <label for="kart_turu">Kart Türü</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-building"></i>
                                         </span>
                                         <select name="kart_turu" id="kart_turu"
-                                            class="form-select form-select-sm" required>
+                                            class="form-control form-control-sm" required>
                                             <option value="Hesap Kartı">Hesap Kartı</option>
                                             <option value="Kredi Kartı">Kredi Kartı</option>
                                             <option value="Sanal Kart">Sanal Kart</option>
@@ -154,12 +135,12 @@ Bankalar
                                 </div>
                                 <div class="col-md-4">
                                     <label for="doviz">Para Birimi</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-building"></i>
                                         </span>
                                         <select name="doviz" id="doviz"
-                                            class="form-select form-select-sm" required>
+                                            class="form-control form-control-sm" required>
                                             <option value="TL">TL</option>
                                             <option value="DOLAR">DOLAR</option>
                                             <option value="EURO">EURO</option>
@@ -169,8 +150,8 @@ Bankalar
 
                                 <div class="col-md-4">
                                     <label for="acilis_bakiye_tarih">Banka Açılış Tarihi</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-calendar-days"></i>
                                         </span>
                                         <input type="date" name="acilis_bakiye_tarih" id="acilis_bakiye_tarih"
@@ -179,24 +160,24 @@ Bankalar
                                 </div>
                                 <div class="col-md-4">
                                     <label for="durum">Durum</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-check"></i>
                                         </span>
-                                        <select name="durum" id="durum" class="form-select form-select-sm">
+                                        <select name="durum" id="durum" class="form-control form-control-sm">
                                             <option value="Aktif">Aktif</option>
                                             <option value="Pasif">Pasif</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <!-- Modal Footer -->
-                    <div class="modal-footer bg-light">
-                        <button type="button" class="btn btn-sm btn-outline-secondary"
-                            data-bs-dismiss="modal">Vazgeç</button>
-                        <button type="submit"  id="submit-form" class="btn btn-outline-primary btn-sm ">Kaydet</button>
+                            <div
+                            style="display: flex; padding: 10px 0; gap:20px; text-align: center; justify-content: end">
+
+                            <button type="button" class="btn btn-outline-warning btn-sm py-6 w-25" data-bs-dismiss="modal">Vazgeç</button>
+                            <button type="submit" id="submit-form" class="btn btn-outline-dark btn-sm py-6 w-75">Kaydet</button>
+
+                            </div>
                     </div>
                 </div>
             </form>
@@ -204,12 +185,10 @@ Bankalar
     </div>
 
 
-    <div class="card-body">
-        <div class="row">
-            <div class="col-md-12">
-                <table class="table align-middle mb-0 dataTable" id="example2" role="grid"
-                    aria-describedby="example_info">
-                    <thead class="table-light">
+    <div class="card-body" style="border-radius: 5px">
+        <div class="table-responsive" style="border-radius: 5px">
+            <table class="table table-bordered table-hover" style="width:100%;  ">
+                <thead>
                         <tr>
                             <th scope="col">#</th>
                             <th>Açılış Tarihi</th>
@@ -229,7 +208,7 @@ Bankalar
                     <tbody>
                         @foreach ($bankalar as $sn => $bankalaritem)
                             <tr>
-                                <th scope="row">{{ $sn + 1 }}</th>
+                                <td scope="row">{{ $sn + 1 }}</td>
                                 <td>{{ $bankalaritem->acilis_bakiye_tarih }}</td>
                                 <td>{{ $bankalaritem->banka_adi }}</td>
                                 <td>{{ $bankalaritem->sube_adi }}/{{ $bankalaritem->sube_kodu }}</td>
@@ -261,18 +240,18 @@ Bankalar
                                     @endif</td>
                                 <td class="text-right">
                                     <div class="databutton">
-                                        <div class="d-flex align-items-center fs-6">
+                                        <div class="d-flex align-items-center fs-6"  style="justify-content: space-evenly; ">
                                             <button class="text-warning" data-bs-toggle="modal"
-                                            data-bs-target="#bankalarupdateModal-{{ $bankalaritem->id }}"><i
-                                                class="bi bi-pencil-fill"></i></button>
+                                            data-bs-target="#bankalarupdateModal-{{ $bankalaritem->id }}"><i style="color:#293445" class="fa-solid fa-pen-to-square fs-6"></i></button>
                                         @include('admin.contents.bankalar.bankalar-update')
                                             <form action="{{ route('bankalar.destroy', ['bankalar' => $bankalaritem->id]) }}"
                                                 method="POST" style="display: inline;">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit"
-                                                    class="btn btn-link text-danger p-0 m-0 show_confirm">
-                                                    <i class="bi bi-trash-fill"></i>
+                                                    class="btn  p-0 m-0 show_confirm">
+                                                    <i style="color: rgb(180, 68, 34)"
+                                                    class="fa-solid fa-trash-can fs-6"></i>
                                                 </button>
                                             </form>
                                         </div>
@@ -283,7 +262,6 @@ Bankalar
                     </tbody>
                 </table>
             </div>
-        </div>
 
         <div class="col-sm-4 col-md-5 " style=" float: right; margin-top: 20px; ">
             {{-- {{ $aramalar->appends(['entries' => $perPage])->links() }} --}}

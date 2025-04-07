@@ -161,8 +161,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('virman',VirmanController::class);
     //ODEME PLANLARI
     Route::resource('odemeplanlari', OdemeplanlariController::class);
+    Route::get('/odemeplanlarisearch',[OdemeplanlariController::class,'odemeplanlarisearch'])->name('odemeplanlarisearch');
+
     //TAHSILAT PLAN
     Route::resource('tahsilatplan',TahsilatPlanController::class);
+    Route::get('/tahsilatplanlarisearch',[TahsilatPlanController::class,'tahsilatplanlarisearch'])->name('tahsilatplanlarisearch');
+
+
 
     //GELEN E FATURALAR
     Route::resource('gelenefaturalar',GelenefaturalarController::class);

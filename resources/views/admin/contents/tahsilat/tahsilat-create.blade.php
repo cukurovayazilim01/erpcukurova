@@ -6,15 +6,16 @@
 @section('topheader')
 Tahsilat
 @endsection
-<div class="card">
-    <div class="card-body">
+<div class="card radius-5">
+    <div class="card-body" style="border-radius: 5px; padding: 20px; background-position:center; background-repeat: no-repeat; background-size: cover;  background-image: url('{{ asset('resim/modal7.png') }}') ">
+
         <div class="row">
             <form action="{{route('tahsilat.store')}}" method="POST" id="add-form">
                 @csrf
             <div class="col-md-12" style="padding: 1%; ">
                 <div class="row">
 
-                    <div class="col-md-3 select2-sm">
+                    <div class="col-md-6 col-sm-12 select2-sm">
                         <label for="cari_id" >Firma</label>
 
                           <select name="cari_id" id="cari_id" required style="border: none; width: 100%; height: 10px; outline: none; appearance: none; background-color: transparent; padding: 2px 0;">
@@ -22,10 +23,10 @@ Tahsilat
                           </select>
                       </div>
 
-                    <div class="col-md-3">
+                    <div class="col-md-6 col-sm-12">
                         <label for="tarih">Tahsilat Tarihi</label>
-                        <div class="form-group input-with-icon">
-                            <span class="icon">
+                        <div class="input-group mb-2">
+                            <span class="input-group-text">
                                 <i class="fa fa-calendar"></i>
                             </span>
                             <input type="datetime-local" name="tarih" id="tarih"
@@ -34,13 +35,13 @@ Tahsilat
                     </div>
                     <input type="hidden" name="tahsilat_kodu" id="tahsilat_kodu">
 
-                    <div class="col-md-3">
+                    <div class="col-md-4 col-sm-12">
                         <label for="tahsileden_id">Tahsil Eden</label>
-                        <div class="form-group input-with-icon">
-                            <span class="icon">
+                        <div class="input-group mb-2">
+                            <span class="input-group-text">
                                 <i class="fa fa-user"></i>
                             </span>
-                            <select name="tahsileden_id" id="tahsileden_id" class="form-select form-select-sm" required>
+                            <select name="tahsileden_id" id="tahsileden_id" class="form-control form-control-sm" required>
                                 <option value="">Lütfen Seçim Yapınız</option>
                                 @foreach ($user as $useritem)
                                     <option value="{{ $useritem->id }}">{{ $useritem->ad_soyad }}
@@ -49,23 +50,23 @@ Tahsilat
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4 col-sm-12">
                         <label for="odeme_yapan">Ödeme Yapan</label>
-                        <div class="form-group input-with-icon">
-                            <span class="icon">
+                        <div class="input-group mb-2">
+                            <span class="input-group-text">
                                 <i class="fa fa-user"></i>
                             </span>
                             <input type="text" name="odeme_yapan" id="odeme_yapan"
                                 class="form-control form-control-sm" required>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4 col-sm-12">
                         <label for="odeme_turu">Ödeme Türü</label>
-                        <div class="form-group input-with-icon">
-                            <span class="icon">
-                                <i class="fa fa-user"></i>
+                        <div class="input-group mb-2">
+                            <span class="input-group-text">
+                                <i class="fa fa-check"></i>
                             </span>
-                        <select name="odeme_turu" id="odeme_turu" class="form-select form-select-sm" required>
+                        <select name="odeme_turu" id="odeme_turu" class="form-control form-control-sm" required>
                             <option value="">Lütfen Seçim Yapınız</option>
                             <option value="EFT">EFT</option>
                             <option value="Havale">Havale</option>
@@ -75,13 +76,13 @@ Tahsilat
 
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="col-md-4 col-sm-12">
                         <label for="odeme_tipi">Ödeme Yöntemi</label>
-                        <div class="form-group input-with-icon">
-                            <span class="icon">
-                                <i class="fa fa-user"></i>
+                        <div class="input-group mb-2">
+                            <span class="input-group-text">
+                                <i class="fa fa-check"></i>
                             </span>
-                        <select name="odeme_tipi" id="odeme_tipi" class="form-select form-select-sm" required >
+                        <select name="odeme_tipi" id="odeme_tipi" class="form-control form-control-sm" required >
                             <option value="">Lütfen Seçim Yapınız</option>
                             <option value="Kasa">Kasa</option>
                             <option value="Banka">Banka</option>
@@ -90,19 +91,19 @@ Tahsilat
 
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="col-md-4 col-sm-12">
                         <label id="kasa_banka_label"></label>
-                        <div class="form-group input-with-icon">
-                            <span class="icon">
-                                <i class="fa fa-user"></i>
+                        <div class="input-group mb-2" style="border: 1px solid #ced4da;border-radius: 7px;">
+                            <span class="input-group-text">
+                                <i class="fa-solid fa-layer-group"></i>
                             </span>
-                            <select name="kasa_id" id="kasa_id" class="form-select form-select-sm" style="display: none;" required>
+                            <select name="kasa_id" id="kasa_id" class="form-control form-control-sm" style="display: none;" required>
                                 <option value="">Lütfen Seçim Yapınız</option>
                                 @foreach ($kasalar as $item)
                                 <option value="{{ $item->id }}">{{ $item->kasa_adi }}</option>
                                 @endforeach
                             </select>
-                            <select name="banka_id" id="banka_id" class="form-select form-select-sm" style="display: none;" required>
+                            <select name="banka_id" id="banka_id" class="form-control form-control-sm" style="display: none;" required>
                                 <option value="">Lütfen Seçim Yapınız</option>
                                 @foreach ($bankalar as $banka)
                                 <option value="{{ $banka->id }}">{{ $banka->banka_adi }}</option>
@@ -113,11 +114,11 @@ Tahsilat
 
 
 
-                    <div class="col-md-3">
+                    <div class="col-md-4 col-sm-12">
                         <label for="tahsilat_tutar">Tahsilat Tutarı</label>
-                        <div class="form-group input-with-icon">
-                            <span class="icon">
-                                <i class="fa fa-user"></i>
+                        <div class="input-group mb-2">
+                            <span class="input-group-text">
+                                <i class="fa-solid fa-money-bill"></i>
                             </span>
                             <input type="text" name="tahsilat_tutar" id="tahsilat_tutar"
                                 class="form-control form-control-sm input-mask" required>
@@ -128,14 +129,13 @@ Tahsilat
             </div>
 
 
-            <div class="row">
-                <div class="col-md-12 mt-1 mr-15" style="padding-right: 28px">
-                    <button type="submit" id="submit-form" class="btn btn-sm btn-outline-primary"
-                        style="float: right; margin-left: 2px;">
+            <div style="display: flex; padding: 10px; gap:20px; text-align: center; justify-content: end">
+
+                <a href="{{route('tahsilat.index')}}" class="btn btn-outline-warning btn-sm py-6 w-25"> Vazgeç</a>
+                    <button type="submit" id="submit-form" class="btn btn-outline-dark btn-sm py-6 w-75"
+                       >
                         Kaydet</button>
-                    <a href="{{route('tahsilat.index')}}" class="btn btn-sm btn-outline-secondary" style="float: right"> Vazgeç</a>
                 </div>
-            </div>
 
         </form>
 

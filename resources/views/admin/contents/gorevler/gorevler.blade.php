@@ -6,38 +6,22 @@
 @section('topheader')
     GÖREV ATAMA
 @endsection
-<div class="card radius-10">
+<div class="card radius-5">
     <div class="card-header bg-transparent">
-        <div class="row g-3 align-items-center">
-            <div class="col">
-                <div class="d-flex align-items-center justify-content-end gap-3">
-                    <button type="button" class="btn btn-sm btn-outline-primary px-5" data-bs-toggle="modal"
-                        data-bs-target="#gorevatamamodal"><i class="fa-solid fa-plus"></i>Görev Ekle</button>
-                    <div class="dropdown">
-                        <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"
-                            aria-expanded="false"><i class="bx bx-dots-horizontal-rounded font-22 text-option"></i>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="javascript:;">Action</a>
-                            </li>
-                            <li><a class="dropdown-item" href="javascript:;">Another action</a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="javascript:;">Something else here</a>
-                            </li>
-                        </ul>
-                    </div>
+        <div class="row ">
+            <div class="d-flex align-items-center justify-content-between gap-1 mobile-erp">
+                <div class="col-lg-4 ms-auto mobile-erp3 text-end">
+                    <button type="button" class="btn btn-outline-dark btn-sm " data-bs-toggle="modal"
+                        data-bs-target="#gorevatamamodal"> <i class="fa-solid fa-plus"></i> Yeni Ekle</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table align-middle mb-0">
-                <thead class="table-light">
+    <div class="card-body" style="border-radius: 5px">
+        <div class="table-responsive" style="border-radius: 5px">
+            <table class="table table-bordered table-hover" style="width:100%;  ">
+                <thead >
                     <tr>
                         <th scope="col">#</th>
                         <th>Görevlendiren</th>
@@ -57,7 +41,7 @@
                 <tbody>
                     @foreach ($gorevler as $sn => $gorevleritem)
                         <tr>
-                            <th scope="row">{{ $sn + 1 }}</th>
+                            <td scope="row">{{ $sn + 1 }}</td>
                             <td>{{ $gorevleritem->user->ad_soyad }}</td>
                             <td>{{ $gorevleritem->gorev_baslama_tarihi }}</td>
                             <td>{{ $gorevleritem->gorev_bitis_tarihi }}</td>
@@ -78,20 +62,20 @@
                             </td>
                             <td class="text-right">
                                 <div class="databutton">
-                                    <div class="d-flex align-items-center fs-6">
+                                    <div class="d-flex align-items-center fs-6" style="justify-content: space-evenly; ">
                                         @if (Auth::check())
                                         @if (Auth::user()->id == $gorevleritem->islem_yapan)
                                             <!-- Görevi oluşturan kişi ise -->
-                                            <button class="text-warning" data-bs-toggle="modal"
+                                            <button  data-bs-toggle="modal"
                                                 data-bs-target="#gorevlerupdateModal-{{ $gorevleritem->id }}">
-                                                <i class="bi bi-pencil-fill"></i>
+                                                <i style="color:#293445" class="fa-solid fa-pen-to-square fs-6"></i>
                                             </button>
                                             @include('admin.contents.gorevler.gorevler-update')
                                         @else
                                             <!-- Başka bir kullanıcı ise -->
-                                            <button class="text-warning" data-bs-toggle="modal"
+                                            <button  data-bs-toggle="modal"
                                                 data-bs-target="#gorevlerdurumupdateModal-{{ $gorevleritem->id }}">
-                                                <i class="bi bi-pencil-fill"></i>
+                                                <i style="color:#293445" class="fa-solid fa-pen-to-square fs-6"></i>
                                             </button>
                                             @include('admin.contents.gorevler.gorevdurum-update')
                                         @endif
@@ -103,8 +87,9 @@
                                             method="POST" style="display: inline;">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-link text-danger p-0 m-0 show_confirm">
-                                                <i class="bi bi-trash-fill"></i>
+                                            <button type="submit" class="btn p-0 m-0 show_confirm">
+                                                <i style="color: rgb(180, 68, 34)"
+                                                class="fa-solid fa-trash-can fs-6"></i>
                                             </button>
                                         </form>
                                     </div>
@@ -118,25 +103,25 @@
     </div>
       <!-- Modal -->
     <div class="modal fade" id="gorevatamamodal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-xl">
             <form action="{{ route('gorevatama.store') }}" method="POST" enctype="multipart/form-data" id="add-form">
                 @csrf
                 <div class="modal-content">
                     <!-- Modal Header -->
-                    <div class="modal-header bg-primary text-white">
+                    <div class="modal-header ">
                         <h5 class="modal-title">Görev Atama Ekranı</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
                     <!-- Modal Body -->
-                    <div class="modal-body" style="display: flex">
-                        <!-- Left Side -->
-                        <div class="col-md-12" style="padding: 2%;">
-                            <div class="row">
+                    <div class="modal-body"
+                    style="padding: 20px; background-position:center; background-repeat: no-repeat; background-size: cover;  background-image: url('{{ asset('resim/modal7.png') }}') ">
+
+                    <div class="row ">
                                 <div class="col-md-4">
                                     <label for="gorev_adi">Görev Adı</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-layer-group"></i>
                                         </span>
                                         <input type="text" name="gorev_adi" id="gorev_adi"
@@ -145,9 +130,9 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label for="gorevlendirilen_id">Görevlendiren</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
-                                            <i class="fa-solid fa-layer-group"></i>
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
+                                            <i class="fa fa-user"></i>
                                         </span>
                                         @if (Auth::check())
                                             <input type="text" name="" id=""
@@ -158,12 +143,12 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label for="gorevlendirilen_id">Görevlendirilen Personel</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
-                                            <i class="fa-solid fa-layer-group"></i>
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
+                                            <i class="fa fa-user"></i>
                                         </span>
                                         <select name="gorevlendirilen_id" id="gorevlendirilen_id"
-                                            class="form-select form-select-sm">
+                                            class="form-control form-control-sm">
                                             <option value="">Lütfen Seçim Yapınız..</option>
                                             @foreach ($user as $useritem)
                                                 <option value="{{ $useritem->id }}">{{ $useritem->ad_soyad }}
@@ -174,8 +159,11 @@
                                 </div>
                                 <div class="col-md-12">
                                     <label for="gorev_tanimi">Görev Tanımı</label>
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text"><i class="fa-solid fa-comments"></i></span>
                                     <textarea name="gorev_tanimi" id="gorev_tanimi" cols="20" rows="1" class="form-control form-control-sm "></textarea>
                                 </div>
+                            </div>
 
                                 <div class="col-md-12 select2-sm">
                                     <label for="cari_id">Firma Ünvanı</label>
@@ -187,9 +175,9 @@
                                 </div>
                                 <div class="col-md-3">
                                     <label for="gorev_baslama_tarihi">Görev Başlama Tarihi</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
-                                            <i class="fa-solid fa-layer-group"></i>
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
+                                            <i class="fa-solid fa-calendar-days"></i>
                                         </span>
                                         <input type="date" name="gorev_baslama_tarihi" id="gorev_baslama_tarihi"
                                             class="form-control form-control-sm" required>
@@ -197,9 +185,9 @@
                                 </div>
                                 <div class="col-md-3">
                                     <label for="gorev_bitis_tarihi">Görev Bitiş Tarihi</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
-                                            <i class="fa-solid fa-layer-group"></i>
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
+                                            <i class="fa-solid fa-calendar-days"></i>
                                         </span>
                                         <input type="date" name="gorev_bitis_tarihi" id="gorev_bitis_tarihi"
                                             class="form-control form-control-sm" required>
@@ -207,12 +195,12 @@
                                 </div>
                                 <div class="col-md-3">
                                     <label for="gorev_derecesi">Görev Derecesi</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-layer-group"></i>
                                         </span>
                                         <select name="gorev_derecesi" id="gorev_derecesi"
-                                            class="form-select form-select-sm" required>
+                                            class="form-control form-control-sm" required>
                                             <option value="Yüksek">Yüksek</option>
                                             <option value="Orta">Orta</option>
                                             <option value="Düşük">Düşük</option>
@@ -221,12 +209,12 @@
                                 </div>
                                 <div class="col-md-3">
                                     <label for="gorev_durumu">Görev Durumu</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-layer-group"></i>
                                         </span>
                                         <select name="gorev_durumu" id="gorev_durumu"
-                                            class="form-select form-select-sm" required>
+                                            class="form-control form-control-sm" required>
                                             <option value="Beklemede">Beklemede</option>
                                             <option value="Yapılmadı">Yapılmadı</option>
                                             <option value="Yapıldı">Yapıldı</option>
@@ -234,23 +222,19 @@
                                     </div>
                                 </div>
 
+                            </div>
+                            <div
+                                style="display: flex; padding: 10px 0; gap:20px; text-align: center; justify-content: end">
 
+                                <button type="button" class="btn btn-outline-warning btn-sm py-6 w-25" data-bs-dismiss="modal">Vazgeç</button>
+                                <button type="submit" id="submit-form" class="btn btn-outline-dark btn-sm py-6 w-75">Kaydet</button>
 
                             </div>
                         </div>
                     </div>
-                    <!-- Modal Footer -->
-                    <div class="modal-footer bg-light">
-                        <button type="button" class="btn btn-sm btn-outline-secondary"
-                            data-bs-dismiss="modal">Vazgeç</button>
-                        <button type="submit" id="submit-form"
-                            class="btn btn-outline-primary btn-sm ">Kaydet</button>
-                    </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
-    </div>
-</div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
