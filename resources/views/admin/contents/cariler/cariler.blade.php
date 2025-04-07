@@ -48,7 +48,7 @@
                 </div>
 
                 <div class="col-lg-4 d-flex align-items-center mobile-erp2 justify-content-center">
-                    <form class="position-relative" id="searchForm" action="{{ route('tekliflersearch') }}"
+                    <form class="position-relative" id="searchForm" action="{{ route('carilersearch') }}"
                         method="GET">
                         <div class="position-absolute top-50 translate-middle-y search-icon px-3 "><i
                                 class="bi bi-search"></i></div>

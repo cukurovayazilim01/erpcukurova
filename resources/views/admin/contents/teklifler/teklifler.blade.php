@@ -6,95 +6,73 @@
 @section('topheader')
     TEKLİFLER
 @endsection
-<div class="card radius-10">
+<div class="card radius-5">
     <div class="card-header bg-transparent">
-        <div class="row align-items-center">
-            <div class="col-lg-1 col-1 col-md-1 text-start">
-                <form method="GET" action="{{ route('teklifler.index') }}" id="entriesForm">
-                    <select class="form-select form-select-sm" name="entries"
-                        onchange="document.getElementById('entriesForm').submit();">
-                        <option value="10" {{ $perPage == 10 ? 'selected' : '' }}>10</option>
-                        <option value="25" {{ $perPage == 25 ? 'selected' : '' }}>25</option>
-                        <option value="50" {{ $perPage == 50 ? 'selected' : '' }}>50</option>
-                        <option value="100" {{ $perPage == 100 ? 'selected' : '' }}>100</option>
-                    </select>
-                </form>
-            </div>
-            <div class="col-md-6" style="display: flex; ">
-                <a href="{{ route('teklifler.index') }}"
-                    class="btn btn-sm {{ request()->routeIs('teklifler.index') ? 'btn-primary' : 'btn-outline-primary' }}"
-                    style="margin-right: 5px;">
-                    <i class="fa-solid fa-plus"></i> Tüm Teklifler
-                </a>
+        <div class="row g-2">
+            <div class="col-12 col-lg-5">
+                <div class="d-flex flex-wrap gap-2 justify-content-start">
+                    <!-- Sayfa boyutu seçici -->
+                    <form method="GET" action="{{ route('teklifler.index') }}" id="entriesForm">
+                        <select class="form-select form-select-sm" name="entries"
+                            onchange="document.getElementById('entriesForm').submit();">
+                            <option value="10" {{ $perPage == 10 ? 'selected' : '' }}>10</option>
+                            <option value="25" {{ $perPage == 25 ? 'selected' : '' }}>25</option>
+                            <option value="50" {{ $perPage == 50 ? 'selected' : '' }}>50</option>
+                            <option value="100" {{ $perPage == 100 ? 'selected' : '' }}>100</option>
+                        </select>
+                    </form>
 
-                <a href="{{ route('bekleyenteklifler') }}"
-                    class="btn btn-sm {{ request()->routeIs('bekleyenteklifler') ? 'btn-warning' : 'btn-outline-warning' }}"
-                    style="margin-right: 5px;">
-                    <i class="fa-solid fa-plus"></i> Bekleyen Teklifler
-                </a>
+                    <!-- Teklif durum butonları -->
+                    <a href="{{ route('teklifler.index') }}"
+                        class="btn btn-sm flex-fill flex-md-grow-0 px-2 {{ request()->routeIs('teklifler.index') ? 'btn-dark' : 'btn-outline-dark' }}">
+                        Tümü
+                    </a>
 
-                <a href="{{ route('onaylananteklifler') }}"
-                    class="btn btn-sm {{ request()->routeIs('onaylananteklifler') ? 'btn-success' : 'btn-outline-success' }}"
-                    style="margin-right: 5px;">
-                    <i class="fa-solid fa-plus"></i> Onaylanan Teklifler
-                </a>
+                    <a href="{{ route('bekleyenteklifler') }}"
+                        class="btn btn-sm flex-fill flex-md-grow-0 px-2 {{ request()->routeIs('bekleyenteklifler') ? 'btn-warning' : 'btn-outline-warning' }}">
+                        Bekleyen
+                    </a>
 
-                <a href="{{ route('onaylanmayanteklifler') }}"
-                    class="btn btn-sm {{ request()->routeIs('onaylanmayanteklifler') ? 'btn-danger' : 'btn-outline-danger' }}"
-                    style="margin-right: 5px;">
-                    <i class="fa-solid fa-plus"></i> Onaylanmayan Teklifler
-                </a>
-            </div>
+                    <a href="{{ route('onaylananteklifler') }}"
+                        class="btn btn-sm flex-fill flex-md-grow-0 px-2 {{ request()->routeIs('onaylananteklifler') ? 'btn-success' : 'btn-outline-success' }}">
+                        Onaylanan
+                    </a>
 
-            <div class="col">
-                <div class="d-flex align-items-center justify-content-end gap-3">
-                    <a type="button" href="{{ route('teklifler.create') }}"
-                        class="btn btn-sm btn-outline-primary px-5"><i class="fa-solid fa-plus"></i>Teklif Ekle</a>
-                    <div class="dropdown">
-                        <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"
-                            aria-expanded="false"><i class="bx bx-dots-horizontal-rounded font-22 text-option"></i>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="javascript:;">Action</a>
-                            </li>
-                            <li><a class="dropdown-item" href="javascript:;">Another action</a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="javascript:;">Something else here</a>
-                            </li>
-                        </ul>
-                    </div>
+                    <a href="{{ route('onaylanmayanteklifler') }}"
+                        class="btn btn-sm flex-fill flex-md-grow-0 px-2 {{ request()->routeIs('onaylanmayanteklifler') ? 'btn-danger' : 'btn-outline-danger' }}">
+                        Red Edilen
+                    </a>
                 </div>
             </div>
+
+            <!-- Arama Kutusu -->
+            <div class="col-lg-5 d-flex align-items-center mobile-erp2 justify-content-start">
+                <form class="position-relative" id="searchForm" action="{{ route('carilersearch') }}"
+                    method="GET">
+                    <div class="position-absolute top-50 translate-middle-y search-icon px-3 "><i
+                            class="bi bi-search"></i></div>
+                    <input style="height: 27px;  border-radius: 5px; border-color:#293445 " id="searchInput"
+                        class="form-control ps-5" type="text" placeholder="Ara">
+                </form>
+            </div>
+
+            <!-- Teklif Ekle Butonu -->
+            <div class="col-12 col-lg-1 ms-auto text-end mobile-erp3">
+                <a href="{{ route('teklifler.create') }}" class="btn btn-outline-dark btn-sm w-100">
+                    <i class="fa-solid fa-plus"></i> Teklif Ekle
+                </a>
+            </div>
+
         </div>
     </div>
+
     <!-- Modal -->
 
 
-    <div class="card-body">
-        <div class="table-responsive">
-            <div class="row">
-                {{-- {{ route(Route::currentRouteName()) }} --}}
-
-                <form id="searchForm" action="{{ route('tekliflersearch') }}" method="GET">
-                    <div class="ms-auto position-relative" style="margin-bottom: 10px">
-                        <!-- Arama ikonu -->
-                        <div class="position-absolute top-50 translate-middle-y search-icon fs-5 px-3"
-                            style="color: blue;">
-                            <i class="bi bi-search"></i>
-                        </div>
-                        <!-- Arama inputu -->
-                        <input type="text" id="searchInput" class="form-control ps-5"
-                            style="border: 1px solid blue; height: 38px;" placeholder="Lütfen Arama Terimi Giriniz">
-                    </div>
-                </form>
-
-
-            </div>
-            <table class="table align-middle mb-0" id="example2">
-                <thead class="table-light">
+    <div class="card-body" style="border-radius: 5px">
+        <div class="table-responsive" style="border-radius: 5px">
+            <table id="example2" class="table table-bordered table-hover" style="width:100%; cursor: pointer; ">
+                <thead>
                     <tr>
                         <th scope="col">#</th>
                         <th>Teklif Kodu</th>
@@ -112,7 +90,8 @@
                     @foreach ($teklifler as $teklifleritem)
                         <tr>
                             <th scope="row">{{ $startNumber - $loop->index }}</th>
-                            <th scope="row">{{ $teklifleritem->teklif_kodu_text }}-{{ $teklifleritem->teklif_kodu }}</th>
+                            <th scope="row">
+                                {{ $teklifleritem->teklif_kodu_text }}-{{ $teklifleritem->teklif_kodu }}</th>
                             <td>{{ $teklifleritem->islem_tarihi }}</td>
                             <td>{{ $teklifleritem->firmaadi->firma_unvan }}</td>
                             <td>{{ $teklifleritem->teklif_konu }}</td>
@@ -122,37 +101,40 @@
                             <td>{{ number_format($teklifleritem->teklif_kdvli_toplam, 2, ',', '.') }} ₺</td>
 
 
-                            <td class="text-right">
-                                <div class="databutton">
+                            <td class="text-right" >
+                                <div class="databutton" style="display:flex; justify-content: space-around" >
                                     <div class="d-flex align-items-center fs-6">
                                         @if (!Request::is('teklifler') && !Request::is('onaylananteklifler') && !Request::is('onaylanmayanteklifler'))
                                             <button class="btn btn-sm btn-outline-success open-modal-btn"
                                                 style="margin-right: 3px" data-bs-toggle="modal"
-                                                data-bs-target="#teklifislemmodal-{{ $teklifleritem->id }}">Teklif İşlemleri</button>
+                                                data-bs-target="#teklifislemmodal-{{ $teklifleritem->id }}">Teklif
+                                                İşlemleri</button>
                                             @include('admin.contents.teklifler.tekliflerdurum.teklifler-islem')
                                         @endif
-                                        @if ( $teklifleritem->satis_durum == '0'  && Request::is('onaylananteklifler') || Request::is('onaylanmayanteklifler'))
+                                        @if (($teklifleritem->satis_durum == '0' && Request::is('onaylananteklifler')) || Request::is('onaylanmayanteklifler'))
                                             <button class="btn btn-sm btn-outline-danger open-modal-btn"
                                                 style="margin-right: 3px" data-bs-toggle="modal"
-                                                data-bs-target="#teklifislemmodal-{{ $teklifleritem->id }}">İptal Et</button>
+                                                data-bs-target="#teklifislemmodal-{{ $teklifleritem->id }}">İptal
+                                                Et</button>
                                             @include('admin.contents.teklifler.tekliflerdurum.teklifler-islem')
-
                                         @endif
                                         @if (Request::is('onaylananteklifler') && $teklifleritem->satis_durum == '0')
-                                        <a href="{{route('satisafisineaktar',['id'=>$teklifleritem->id])}}" class="btn btn-sm btn-outline-success open-modal-btn"
-                                                style="margin-right: 3px" >Satışa Aktar</a>
+                                            <a href="{{ route('satisafisineaktar', ['id' => $teklifleritem->id]) }}"
+                                                class="btn btn-sm btn-outline-success open-modal-btn"
+                                                style="margin-right: 3px">Satışa Aktar</a>
                                         @elseif (Request::is('onaylananteklifler') && $teklifleritem->satis_durum == '1')
                                             <a href="#" class="btn btn-sm btn-success open-modal-btn"
-                                                style="margin-right: 3px" >Satışa Aktarıldı</a>
+                                                style="margin-right: 3px">Satışa Aktarıldı</a>
                                         @endif
 
                                         <a href="{{ route('teklifler.show', ['teklifler' => $teklifleritem->id]) }}"
                                             class="text-primary btn btn-link p-0 m-0 " target="_blank">
-                                            <i class="bi bi-eye-fill"></i>
+                                            <i style="color:#293445;  "
+                                            class="fa-solid fa-wand-magic-sparkles fs-6"></i>
                                         </a>
                                         <a href="{{ route('teklifler.edit', ['teklifler' => $teklifleritem->id]) }}"
                                             class="text-warning btn btn-link p-0 m-0 ">
-                                            <i class="bi bi-pencil-fill"></i>
+                                            <i style="color:#293445" class="fa-solid fa-pen-to-square fs-6"></i>
                                         </a>
                                         <form
                                             action="{{ route('teklifler.destroy', ['teklifler' => $teklifleritem->id]) }}"
@@ -161,7 +143,8 @@
                                             @method('DELETE')
                                             <button type="submit"
                                                 class="btn btn-link text-danger p-0 m-0 show_confirm">
-                                                <i class="bi bi-trash-fill"></i>
+                                                <i style="color: rgb(180, 68, 34)"
+                                                class="fa-solid fa-trash-can fs-6"></i>
                                             </button>
                                         </form>
                                     </div>

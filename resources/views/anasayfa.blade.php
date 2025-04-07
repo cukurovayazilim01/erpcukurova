@@ -19,7 +19,7 @@ Anasayfa
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table align-middle mb-0">
-                  <thead class="table-light">
+                  <thead >
                     <tr>
                       <th>#</th>
                       <th>Firma Ünvanı</th>
@@ -63,7 +63,7 @@ Anasayfa
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table align-middle mb-0">
-                  <thead class="table-light">
+                  <thead >
                     <tr>
                       <th>#</th>
                       <th>Tebliğ Tarihi</th>
@@ -112,7 +112,7 @@ Anasayfa
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table align-middle mb-0">
-                  <thead class="table-light">
+                  <thead >
                     <tr>
                       <th>#</th>
                       <th>Başvuru No</th>
@@ -161,7 +161,7 @@ Anasayfa
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table align-middle mb-0">
-                  <thead class="table-light">
+                  <thead >
                     <tr>
                       <th>#</th>
                       <th>Tarih</th>
