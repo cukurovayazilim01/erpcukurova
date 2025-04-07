@@ -19,7 +19,7 @@ return new class extends Migration
             $table->date('fis_tarihi')->nullable();
             $table->string('fis_no')->nullable();
             $table->longText('doviz')->nullable();
-            $table->longText('alis_kodu')->nullable();
+            $table->integer('alis_kodu')->nullable();
             $table->longText('alis_kodu_text')->nullable();
 
             // $table->longText('durum')->nullable();

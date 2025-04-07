@@ -13,6 +13,29 @@ class TahsilatPlanController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function tahsilatplanlarisearch(Request $request)
+    {
+        $tahsilatplanlarisearch = $request->input('tahsilatplanlarisearch');
+
+        $tahsilatplan = Tahsilatplan::orderByDesc('id')
+            ->when(!empty($tahsilatplanlarisearch), function ($query) use ($tahsilatplanlarisearch) {
+                $query->whereHas('firmaadi', function ($q) use ($tahsilatplanlarisearch) {
+                    $q->where('firma_unvan', 'like', '%' . $tahsilatplanlarisearch . '%');
+                });
+
+            })
+            ->paginate(50);
+
+        $page = $request->query('page', 1);
+        $perPage = 50;
+        $startNumber = $tahsilatplan->total() - (($page - 1) * $perPage);
+
+        if ($request->ajax()) {
+            return view('admin.contents.tahsilatplan.tahsilatplan-search', compact('tahsilatplan', 'startNumber'));
+        }
+
+        return view('admin.contents.tahsilatplan.tahsilatplan', compact('tahsilatplan', 'startNumber'));
+    }
     public function index(Request $request)
     {
         $perPage = $request->input('entries', 20);

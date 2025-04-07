@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreign('islem_yapan')->references('id')->on('users')->onDelete('cascade');
             $table->date('islem_tarihi')->nullable();
             $table->date('satis_tarihi')->nullable();
-            $table->longText('satis_kodu')->nullable();
+            $table->integer('satis_kodu')->nullable();
             $table->longText('satis_kodu_text')->nullable();
 
             $table->longText('durum')->nullable();
