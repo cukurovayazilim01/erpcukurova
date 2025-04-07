@@ -1,9 +1,9 @@
-<table class="table align-middle mb-0" >
+<table class="table table-bordered table-hover" style="width:100%;" id="example2">
 
     <tbody>
         @foreach ($odemeler as $odemeleritem)
         <tr>
-            <th scope="row">{{ $startNumber - $loop->index }}</th>
+            <td scope="row">{{ $startNumber - $loop->index }}</td>
             <th>{{ $odemeleritem->odeme_kodu_text }}-{{ $odemeleritem->odeme_kodu }}</th>
             <td>{{ $odemeleritem->tarih }}</td>
             <td>{{ $odemeleritem->firmaadi->firma_unvan }}</td>
@@ -13,25 +13,24 @@
 
             <td class="text-right">
                 <div class="databutton">
-                    <div class="d-flex align-items-center fs-6">
+                    <div class="d-flex align-items-center fs-6" style="justify-content: space-evenly; ">
 
 
                         <a href="{{ route('odemeler.show', ['odemeler' => $odemeleritem->id]) }}"
-                            class="text-primary btn btn-link p-0 m-0 " target="_blank">
-                            <i class="bi bi-eye-fill"></i>
+                            class=" btn btn-link p-0 m-0 " target="_blank">
+                            <i style="color:#293445;  "
+                            class="fa-solid fa-wand-magic-sparkles fs-6"></i>
                         </a>
-                        {{-- <a href="{{ route('odemeler.edit', ['odemeler' => $odemeleritem->id]) }}"
-                            class="text-warning btn btn-link p-0 m-0 ">
-                            <i class="bi bi-pencil-fill"></i>
-                        </a> --}}
+
                         <form
                             action="{{ route('odemeler.destroy', ['odemeler' => $odemeleritem->id]) }}"
                             method="POST" style="display: inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit"
-                                class="btn btn-link text-danger p-0 m-0 show_confirm">
-                                <i class="bi bi-trash-fill"></i>
+                                class="btn  p-0 m-0 show_confirm">
+                                <i style="color: rgb(180, 68, 34)"
+                                class="fa-solid fa-trash-can fs-6"></i>
                             </button>
                         </form>
                     </div>

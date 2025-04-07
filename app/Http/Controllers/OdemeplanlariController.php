@@ -13,6 +13,30 @@ class OdemeplanlariController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function odemeplanlarisearch(Request $request)
+    {
+        $odemeplanlarisearch = $request->input('odemeplanlarisearch');
+
+        $odemeplanlari = Odemeplanlari::orderByDesc('id')
+            ->when(!empty($odemeplanlarisearch), function ($query) use ($odemeplanlarisearch) {
+                $query->whereHas('firmaadi', function ($q) use ($odemeplanlarisearch) {
+                    $q->where('firma_unvan', 'like', '%' . $odemeplanlarisearch . '%');
+                });
+
+            })
+            ->paginate(50);
+
+        $page = $request->query('page', 1);
+        $perPage = 50;
+        $startNumber = $odemeplanlari->total() - (($page - 1) * $perPage);
+
+        if ($request->ajax()) {
+            return view('admin.contents.odemeplanlari.odemeplanlari-search', compact('odemeplanlari', 'startNumber'));
+        }
+
+        return view('admin.contents.odemeplanlari.odemeplanlari', compact('odemeplanlari', 'startNumber'));
+    }
+
     public function index(Request $request)
     {
         $perPage = $request->input('entries', 20);
