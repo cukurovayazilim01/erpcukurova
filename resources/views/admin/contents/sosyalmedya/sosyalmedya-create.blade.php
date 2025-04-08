@@ -73,28 +73,53 @@
                     <div class="col-md-12" style="padding: 1%; ">
                         <div class="row">
 
+                                        <div class="row " style="padding: 0 5rem; display: flex; justify-content: center">
+                                            <div class="col-lg-2 " >
+                                                <div class="card radius-5 card-container">
+                                                    <div class="card-body text-center" >
+                                                        <input type="radio" name="service" id="kargo" class="card-radio" />
+                                                        <img src="{{asset('resim/ins.png')}}"  alt="">
 
-                            <div class="icon-container">
-                                <input type="checkbox" id="instagram" name="gonderi_yeri[]" value="instagram">
-                                <label class="icon-label" for="instagram" title="Instagram">
-                                </label>
-                                <i class="fa-brands fa-instagram" style="color:#E1306C; font-size: 40px;"></i>
+                                                    </div>
 
-                                <input type="checkbox" id="facebook" name="gonderi_yeri[]" value="facebook">
-                                <label class="icon-label" for="facebook" title="Facebook">
-                                </label>
-                                <i class="fa-brands fa-facebook" style="color:#1877F2; font-size: 40px;"></i>
 
-                                <input type="checkbox" id="x" name="gonderi_yeri[]" value="x">
-                                <label class="icon-label" for="x" title="X">
-                                </label>
-                                <i class="fa-brands fa-x-twitter" style="color:#000; font-size: 40px;"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2" >
+                                                <div class="card radius-5 card-container">
+                                                    <div class="card-body text-center">
+                                                        <input type="radio" name="service" id="kargo" class="card-radio" />
+                                                        <img src="{{asset('resim/face.png')}}"  alt="">
 
-                                <input type="checkbox" id="linkedin" name="gonderi_yeri[]" value="linkedin">
-                                <label class="icon-label" for="linkedin" title="LinkedIn">
-                                </label>
-                                <i class="fa-brands fa-linkedin" style="color:#0A66C2; font-size: 40px;"></i>
-                              </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2" >
+                                                <div class="card radius-5 card-container">
+                                                    <div class="card-body text-center">
+                                                        <input type="radio" name="service" id="kargo" class="card-radio" />
+                                                        <img src="{{asset('resim/twt.png')}}"  alt="">
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2" >
+                                                <div class="card radius-5 card-container">
+                                                    <div class="card-body text-center">
+                                                        <input type="radio" name="service" id="kargo" class="card-radio" />
+                                                        <img src="{{asset('resim/lnk.png')}}"  alt="">
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
+
 
                             <div class="col-md-4 col-sm-12">
                                 <label for="gonderi_adi">Gönderi Adı</label>
