@@ -40,6 +40,8 @@ use App\Http\Controllers\PyillikhedeflerController;
 use App\Http\Controllers\RaporlarController;
 use App\Http\Controllers\ResmievraklarController;
 use App\Http\Controllers\SatislarController;
+use App\Http\Controllers\SmhesaplarilistController;
+use App\Http\Controllers\SosyalmedyaController;
 use App\Http\Controllers\TahsilatController;
 use App\Http\Controllers\TahsilatPlanController;
 use App\Http\Controllers\TekliflerController;
@@ -296,6 +298,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('pyillikhedefler',PyillikhedeflerController::class);
     Route::post('/yillikhedefkonulariPOST',[PyillikhedeflerController::class,'yillikhedefkonuPOST'])->name('yillikhedefkonuPOST');
     Route::get('/yillikhedefkonulari',[PyillikhedeflerController::class,'yillikhedefkonu'])->name('yillikhedefkonu');
+
+    //SOSYAL MEDYA
+    Route::resource('sosyalmedya',SosyalmedyaController::class);
+
+    Route::resource('smhesaplarilist',SmhesaplarilistController::class);
+
+
     //ENTEGRASYONLAR
     Route::get('/entegrasyonmenu',[EntegrasyonController::class,'entegrasyonmenu'])->name('entegrasyonmenu');
     Route::get('/smsapi',[EntegrasyonController::class,'smsapi'])->name('smsapi');

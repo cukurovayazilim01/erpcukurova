@@ -80,7 +80,7 @@ class GidenefaturalarController extends Controller
     public function createInvoice(Request $request)
     {
         $apiUrl = 'https://apidemo.rahatsistem.com.tr/v2/documents/invoice.create';
-        $apiKey = 'sucatutest1';
+        $apiKey = '865a41ca-8ff0-487a-99e0-cb0953673599';
 
         $data = [
             "draft" => true,
@@ -93,7 +93,7 @@ class GidenefaturalarController extends Controller
                 "Type" => $request->input('fatura_tipi'),
                 "Profile" => $request->input('fatura_turu'),
                 "NumberOrSerie" => "RS",
-                "UUID" => "f50af7e0-0dd5-4361-ab96-2e04f7bc7e30",
+                "UUID" => "",
                 "IssueDateTime" => "string",
                 "Notes" => ["string"],
                 "CurrencyCode" => "TRY",
