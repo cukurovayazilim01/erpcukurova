@@ -163,10 +163,11 @@
             <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="İDARİ İŞLER">
               <button class="nav-link" data-bs-toggle="pill" data-bs-target="#pills-tables" type="button"><i style="font-size:24px; display: flex; justify-content: center; align-items: center;" class="fa-solid fa-file-word"></i></button>
             </li>
-             {{--
-            <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Authentication">
-              <button class="nav-link" data-bs-toggle="pill" data-bs-target="#pills-authentication" type="button"><i class="bi bi-lock-fill"></i></button>
+
+            <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="SOSYAL MEDYA">
+              <button class="nav-link" data-bs-toggle="pill" data-bs-target="#pills-authentication" type="button"><i style="font-size:24px; display: flex; justify-content: center; align-items: center;" class="fa-solid fa-thumbs-up"></i></button>
             </li>
+            {{--
             <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Icons">
               <button class="nav-link" data-bs-toggle="pill" data-bs-target="#pills-icons" type="button"><i class="bi bi-cloud-arrow-down-fill"></i></button>
             </li>
@@ -372,16 +373,17 @@
               <div class="list-group list-group-flush">
                 <div class="list-group-item">
                   <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-0">Authentication</h5>
+                    <h5 class="mb-0">Sosyal Medya</h5>
                   </div>
                   <small class="mb-0">Çukurova Yazılım</small>
                 </div>
-                <a href="authentication-signin.html" class="list-group-item"><i class="bi bi-easel"></i>Sign In</a>
-                <a href="authentication-signin-with-header-footer.html" class="list-group-item d-flex align-items-center"><i class="bi bi-eject"></i>Sign In with Header & Footer</a>
-                <a href="authentication-signup.html" class="list-group-item"><i class="bi bi-emoji-heart-eyes"></i>Sign Up</a>
-                <a href="authentication-signup-with-header-footer.html" class="list-group-item d-flex align-items-center"><i class="bi bi-eye"></i>Sign Up with Header & Footer</a>
-                <a href="authentication-forgot-password.html" class="list-group-item"><i class="bi bi-file-earmark-code"></i>Forgot Password</a>
-                <a href="authentication-reset-password.html" class="list-group-item"><i class="bi bi-gem"></i>Reset Password</a>
+                <a href="authentication-signin-with-header-footer.html" class="list-group-item d-flex align-items-center"><i style="font-size: 14px" class="fa-brands fa-instagram"></i>İnstagram</a>
+                <a href="authentication-signup.html" class="list-group-item"><i class="fa-brands fa-facebook"></i>Facebook</a>
+                <a href="authentication-signup-with-header-footer.html" class="list-group-item d-flex align-items-center"><i class="fa-brands fa-square-x-twitter"></i>X</a>
+                <a href="authentication-forgot-password.html" class="list-group-item"><i class="fa-brands fa-linkedin"></i>LinkedIn</a>
+                <a href="{{route('sosyalmedya.index')}}" class="list-group-item"><i class="bi bi-easel"></i>Gönderi Oluştur</a>
+                <a href="{{route('smhesaplarilist.index')}}" class="list-group-item"><i class="fa-solid fa-star"></i>Sosyal Medya Hesapları</a>
+                {{-- <a href="authentication-reset-password.html" class="list-group-item"><i class="bi bi-gem"></i>Reset Password</a> --}}
               </div>
             </div>
             <div class="tab-pane fade" id="pills-icons">
