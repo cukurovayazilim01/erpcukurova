@@ -71,6 +71,67 @@
                 <form action="{{ route('postToInstagram') }}" method="POST" style="display: inline;">
                     @csrf
 
+
+
+
+
+                            <div class="col-md-4 col-sm-12">
+                                <label for="gonderi_adi">Gönderi Adı</label>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
+                                        <i class="fa fa-check"></i>
+                                    </span>
+                                    <input type="text" name="gonderi_adi" id="gonderi_adi"
+                                        class="form-control form-control-sm " required>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-4 col-sm-12">
+                                <label for="odeme_yapan">Gönderi</label>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                    <input type="file" name="resim[]" multiple class="form-control form-control-sm" required>
+                                </div>
+                            </div>
+
+{{--
+                            <div class="col-md-4 col-sm-12">
+                                <label for="odeme_tipi">Ödeme Yöntemi</label>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
+                                        <i class="fa fa-check"></i>
+                                    </span>
+                                    <select name="odeme_tipi" id="odeme_tipi" class="form-control form-control-sm" required>
+                                        <option value="">Lütfen Seçim Yapınız</option>
+                                        <option value="Kasa">Kasa</option>
+                                        <option value="Banka">Banka</option>
+                                    </select>
+                                </div>
+
+                            </div>
+
+
+
+
+
+                            <div class="col-md-4 col-sm-12">
+                                <label for="Gönderi Oluştur_tutar">Gönderi Oluştur Tutarı</label>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
+                                        <i class="fa-solid fa-money-bill"></i>
+                                    </span>
+                                    <input type="text" name="Gönderi Oluştur_tutar" id="Gönderi Oluştur_tutar"
+                                        class="form-control form-control-sm input-mask" required>
+                                </div>
+                            </div> --}}
+
+                        </div>
+                    </div>
+
+
                     <div>
                         <label for="image_url">Resim URL:</label>
                         <input type="text" name="image_url" id="image_url" placeholder="https://..." required>
