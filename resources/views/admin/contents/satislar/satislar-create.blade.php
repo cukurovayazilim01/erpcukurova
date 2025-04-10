@@ -14,7 +14,7 @@ SATIŞ OLUŞTUR
             <div class="col-md-12" style="padding: 1%; ">
                 <div class="row">
 
-                    <div class="col-md-3 select2-sm">
+                    <div class="col-md-4 select2-sm">
                         <label for="cari_id" >Firma</label>
 
                           <select name="cari_id" id="cari_id" required style="border: none; width: 100%; height: 10px; outline: none; appearance: none; background-color: transparent; padding: 2px 0;">
@@ -26,13 +26,13 @@ SATIŞ OLUŞTUR
                     <input type="hidden" name="satis_kodu" id="satis_kodu">
                     <input type="hidden" name="durum" id="durum">
 
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <label for="user_id">Satış Temsilcisi</label>
-                        <div class="form-group input-with-icon">
-                            <span class="icon">
+                        <div class="input-group mb-2">
+                            <span class="input-group-text">
                                 <i class="fa fa-user"></i>
                             </span>
-                            <select name="user_id" id="user_id" class="form-select form-select-sm" required>
+                            <select name="user_id" id="user_id" class="form-control form-control-sm" required>
                                 <option value="">Lütfen Seçim Yapınız</option>
                                 @foreach ($user as $useritem)
                                     <option value="{{ $useritem->id }}">{{ $useritem->ad_soyad }}
@@ -41,62 +41,72 @@ SATIŞ OLUŞTUR
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <label for="satis_tarihi">Satış Tarihi</label>
-                        <div class="form-group input-with-icon">
-                            <span class="icon">
+                        <div class="input-group mb-2">
+                            <span class="input-group-text">
                                 <i class="fa fa-calendar"></i>
                             </span>
                             <input type="date" name="satis_tarihi" id="satis_tarihi"
                                 class="form-control form-control-sm" required>
                         </div>
                     </div>
-                    <div class="col-md-3">
+
+
+                    <div class="col-md-8">
+                        <label for="satis_konu">Satış Konusu</label>
+                        <div class="input-group mb-2">
+                            <span class="input-group-text"><i class="fa-solid fa-comments"></i></span>
+                            <select name="satis_konu" id="satis_konu" class="form-control form-control-sm"
+                                required="">
+                                <option value="">Lütfen Satış Konusu Seçiniz...</option>
+                                <option value="Kalite Yönetim Sistemleri Satışı">Kalite Yönetim Sistemleri Satışı
+                                </option>
+                                <option value="Marka Tescil Satışı">Marka Tescil Satışı</option>
+                                <option value="Patent Tescil Satışı">Patent Tescil Satışı</option>
+                                <option value="Faydalı Model Tescil Satışı">Faydalı Model Tescil Satışı</option>
+                                <option value="Endüstriyel Tasarım Tescil Satışı">Endüstriyel Tasarım Tescil
+                                    Satışı</option>
+                                <option value="Barkod Tescil Satışı">Barkod Tescil Satışı</option>
+                                <option value="GLN  Numarası Tescil Satışı">GLN Numarası Tescil Satışı</option>
+                                <option value="Domain (Alan Adı) Tescil Satışı">Domain (Alan Adı) Tescil Satışı
+                                </option>
+                                <option value="Web Tasarım Satışı">Web Tasarım Satışı</option>
+                                <option value="Hosting Satışı">Hosting Satışı</option>
+                                <option value="Özel ERP Yazılım Satışı">Özel ERP Yazılım Satışı</option>
+                                <option value="Eğitim Hizmetleri Satışı">Eğitim Hizmetleri Satışı</option>
+                                <option value="Kurumsal Mail Satışı">Kurumsal Mail Satışı</option>
+                                <option value="Hibe-Kredi Proje Danışmanlık Satışı">Hibe-Kredi Proje Danışmanlık
+                                    Satışı</option>
+                                <option value="Logo Tasarım Satışı">Logo Tasarım Satışı</option>
+                                <option value="Mail Hosting Satışı">Mail Hosting Satışı</option>
+                                <option value="Web Hizmetleri Satışı">Web Hizmetleri Satışı</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
                         <label for="tescil_tl">Tescil Ücreti</label>
-                        <div class="form-group input-with-icon">
-                            <span class="icon">
+                        <div class="input-group mb-2">
+                            <span class="input-group-text">
                                 <i class="fa fa-check"></i>
                             </span>
                             <input type="text" name="tescil_tl" id="tescil_tl"
                                 class="form-control form-control-sm" value="13000" required>
                         </div>
                     </div>
-                    {{-- <div class="col-md-2">
-                        <label for="odeme_türü">Ödeme Planı</label>
-                        <div class="form-group input-with-icon">
-                            <span class="icon">
-                                <i class="fa fa-money-bill"></i>
-                            </span>
-                            <select name="odeme_plani" id="odeme_plani" class="form-select form-select-sm" required>
-                                <option value="">Lütfen Seçim Yapınız</option>
-                                <option value="Var">Var</option>
-                                <option value="Yok">Yok</option>
-                            </select>
-                        </div>
-                    </div> --}}
-                    <div class="col-md-12">
-                        <label for="satis_konu">Satış Konusu</label>
-                        <textarea name="satis_konu" id="satis_konu" cols="20" rows="2" class="form-control form-control-sm "></textarea>
-                    </div>
-                    {{-- <div class="col-md-6">
-                        <label for="satis_aciklama">Açıklama</label>
-                        <textarea name="satis_aciklama" id="satis_aciklama" cols="20" rows="2"
-                            class="form-control form-control-sm "></textarea>
-                    </div> --}}
+
                 </div>
             </div>
-            <div class="col-md-12">
-                <table id="table" class="table table-responsive" style="width: 100%; cellspacing: 0; margin-bottom: 0">
-                    <thead>
-                        <tr>
-                            <th colspan="100%">
-                                <button type="button" id="add" class="btn btn-sm btn-primary btn-block"
-                                    style="width: 100%; text-align: center;">
-                                    <i class="fa fa-plus"></i> Hizmet Ekle
-                                </button>
-                            </th>
-                        </tr>
-                    </thead>
+            <div class="card-body" style="border-radius: 5px">
+                <button type="button" id="add" class="btn btn-sm btn-primary btn-block mb-1"
+                style="width: 100%; text-align: center;">
+                <i class="fa fa-plus"></i> <span>Hizmet Ekle</span>
+            </button>
+            <div class="table-responsive" style="border-radius: 5px">
+
+                <table id="table" class="table table-bordered table-hover"
+                style="width:100% ">
+
                     <thead>
                         <tr>
                             <th><b>#</b></th>
@@ -146,7 +156,7 @@ SATIŞ OLUŞTUR
                                 <div class="form-group">
                                     <div class="input-group m-b-sm">
                                         <span class="input-group-addon"></span>
-                                        <div class="col-md-5" style="padding: 0px">
+                                        <div class="col-md-5" style="padding-right: 3px">
                                             <input type="text" name="inputs[0][satis_hizmet_miktar]"
                                                 class="form-control form-control-sm input-mask" required>
                                         </div>
@@ -189,7 +199,7 @@ SATIŞ OLUŞTUR
                                 <div class="form-group">
                                     <div class="input-group m-b-sm">
                                         <span class="input-group-addon"></span>
-                                        <div class="col-md-5" style="padding: 0px">
+                                        <div class="col-md-5" style="padding-right: 3px">
                                             <select name="inputs[0][satis_kdv_oran]" id="inputs[0][satis_kdv_oran]"
                                                 class="form-control form-control-sm">
                                                 <option value="20">%20</option>
@@ -236,17 +246,19 @@ SATIŞ OLUŞTUR
                     </tbody>
                 </table>
             </div>
-
             <div class="row" style="display: flex; flex-wrap: wrap;">
                 <!-- Açıklama Alanı -->
-                <div class="col-md-6" style="flex: 1; max-width: 50%; padding: 10px;">
+                <div class="col-md-6" style=" padding: 10px;">
                     <label for="aciklama" style="display: block; margin-bottom: 5px;">Açıklama</label>
-                    <textarea id="aciklama" name="aciklama" rows="5"
-                        style="width: 100%; height: 150px; padding: 10px; border: 1px solid #ccc; border-radius: 4px; resize: none;"></textarea>
+                    <div class="input-group mb-2">
+                        <span class="input-group-text"><i class="fa-solid fa-comments"></i></span>
+                    <textarea id="aciklama" name="aciklama" class="form-control"
+                        ></textarea>
                 </div>
+            </div>
 
                 <!-- Diğer Kısımlar -->
-                <div class="col-md-6" style="flex: 1; max-width: 50%; padding: 10px;">
+                <div class="col-md-6 col-sm-12"  style=" padding: 10px;">
                     <div class="row" style="display: none;">
                         <div class="col-md-12">
                             <label for="exampleInputEmail1">TOPLAM MALİYET<span style="color: red">*</span></label>
@@ -294,15 +306,17 @@ SATIŞ OLUŞTUR
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="row">
-                <div class="col-md-12 mt-1">
-                    <button type="submit"  id="submit-form" class="btn btn-sm btn-outline-primary"
-                        style="float: right; margin-left: 2px;">
+
+
+            <div style="display: flex; padding: 10px; gap:20px; text-align: center; justify-content: end">
+
+                <a href="{{route('satislar.index')}}" class="btn btn-outline-warning btn-sm py-6 w-25"> Vazgeç</a>
+                    <button type="submit" id="submit-form" class="btn btn-outline-dark btn-sm py-6 w-75"
+                       >
                         Kaydet</button>
-                    <a href="{{route('satislar.index')}}" class="btn btn-sm btn-outline-secondary" style="float: right"> Vazgeç</a>
                 </div>
-            </div>
 
         </form>
 
@@ -465,7 +479,7 @@ $(document).ready(function() {
                                                             <div class="form-group">
                                                                 <div class="input-group m-b-sm">
                                                                     <span class="input-group-addon" ></span>
-                                                                    <div class="col-md-5" style="padding: 0px">
+                                                                    <div class="col-md-5" style="padding-right: 3px">
                                                                         <input type="text" name="inputs[` + i + `][satis_hizmet_miktar]" class="form-control form-control-sm input-mask" required>
                                                                     </div>
                                                                     <div class="col-md-7" style="padding: 0px">
@@ -507,7 +521,7 @@ $(document).ready(function() {
                                                             <div class="form-group">
                                                                 <div class="input-group m-b-sm">
                                                                     <span class="input-group-addon" ></span>
-                                                                    <div class="col-md-5" style="padding: 0px">
+                                                                    <div class="col-md-5" style="padding-right: 3px">
                                                                         <select name="inputs[` + i +
                 `][satis_kdv_oran]" id="inputs[` + i +
                 `][satis_kdv_oran]"

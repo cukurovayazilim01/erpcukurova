@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreign('islem_yapan')->references('id')->on('users')->onDelete('cascade');
             $table->date('islem_tarihi')->nullable();
             $table->date('teklif_tarihi')->nullable();
-            $table->longText('teklif_kodu')->nullable();
+            $table->integer('teklif_kodu')->nullable();
             $table->longText('teklif_kodu_text')->nullable();
 
             $table->string('odemeplan_durum')->nullable();

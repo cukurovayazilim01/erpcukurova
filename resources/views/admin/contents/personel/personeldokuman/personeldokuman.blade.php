@@ -1,51 +1,54 @@
    <!-- Modal -->
    <div class="modal fade" id="perseoneldokumanModal-{{ $personelitem->id }}" tabindex="-1" aria-hidden="true">
-       <div class="modal-dialog modal-lg">
+       <div class="modal-dialog modal-xl">
            <form id="add-form" action="{{ route('personeldokumanpost', ['id' => $personelitem->id]) }}" method="POST"
                enctype="multipart/form-data">
                @csrf
                <div class="modal-content">
                    <!-- Modal Header -->
-                   <div class="modal-header bg-primary text-white">
+                   <div class="modal-header ">
                        <h5 class="modal-title">{{ $personelitem->ad_soyad }} Personel Doküman Ekleme Ekranı</h5>
                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                    </div>
 
                    <!-- Modal Body -->
-                   <div class="modal-body d-flex flex-column" style="padding: 2%;">
+                   <div class="modal-body d-flex flex-column" style="padding: 20px; background-position:center; background-repeat: no-repeat; background-size: cover;  background-image: url('{{ asset('resim/modal7.png') }}') ">
                     <!-- Form Alanı -->
-                    <div class="row mb-3">
+                    <div class="row ">
                         <div class="col-md-4">
                             <label for="dokuman_donem">Doküman Yılı</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon"><i class="fa-solid fa-layer-group"></i></span>
+                            <div class="input-group mb-2">
+                                <span class="input-group-text"><i class="fa-solid fa-layer-group"></i></span>
                                 <input type="date" name="dokuman_donem" id="dokuman_donem" class="form-control form-control-sm" required>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <label for="dokuman_adi">Doküman Adı</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon"><i class="fa-solid fa-layer-group"></i></span>
+                            <div class="input-group mb-2">
+                                <span class="input-group-text"><i class="fa-solid fa-layer-group"></i></span>
                                 <input type="text" name="dokuman_adi" id="dokuman_adi" class="form-control form-control-sm" required>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <label for="dokuman_yolu">Doküman</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon"><i class="fa-solid fa-layer-group"></i></span>
+                            <div class="input-group mb-2">
+                                <span class="input-group-text"><i class="fa-solid fa-layer-group"></i></span>
                                 <input type="file" name="dokuman_yolu" id="dokuman_yolu" class="form-control form-control-sm" required>
                             </div>
                         </div>
                         <div class="col-md-12 mt-2">
                             <label for="aciklama">Açıklama</label>
+                            <div class="input-group mb-2">
+                                <span class="input-group-text"><i class="fa-solid fa-comments"></i></span>
                             <textarea name="aciklama" id="aciklama" cols="20" rows="2" class="form-control form-control-sm"></textarea>
                         </div>
+                    </div>
                     </div>
 
                     <!-- Tablo Alanı -->
                     <div class="table-responsive">
-                        <table class="table align-middle mb-0" id="example2">
-                            <thead class="table-light">
+                        <table class="table table-bordered table-hover" id="example2">
+                            <thead >
                                 <tr>
                                     <th>#</th>
                                     <th>Doküman Tarihi</th>
@@ -121,14 +124,15 @@
                             </tbody>
                         </table>
                     </div>
+                     <!-- Modal Footer -->
+                   <div class="mobile-footer"
+                   style="display: flex;  gap:20px; text-align: center; justify-content: end; ">
+                    <button type="button" class="btn btn-outline-warning btn-sm py-6 w-25" data-bs-dismiss="modal">Vazgeç</button>
+                    <button type="submit" class="btn btn-outline-dark btn-sm py-6 w-75">Kaydet</button>
+                   </div>
                 </div>
 
-                   <!-- Modal Footer -->
-                   <div class="modal-footer bg-light">
-                       <button type="button" class="btn btn-sm btn-outline-secondary"
-                           data-bs-dismiss="modal">Vazgeç</button>
-                       <button type="submit" id="submit-form" class="btn btn-outline-primary btn-sm ">Kaydet</button>
-                   </div>
+
                </div>
            </form>
        </div>

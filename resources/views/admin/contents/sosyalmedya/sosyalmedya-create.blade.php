@@ -68,98 +68,28 @@
         <div class="card-body"
             style="border-radius: 5px; padding: 20px; background-position:center; background-repeat: no-repeat; background-size: cover;  background-image: url('{{ asset('resim/modal7.png') }}') ">
             <div class="row">
-                <form action="{{route('sosyalmedya.store')}}" method="POST" id="add-form"  enctype="multipart/form-data">
+                <form action="{{ route('postToInstagram') }}" method="POST" style="display: inline;">
                     @csrf
-                    <div class="col-md-12" style="padding: 1%; ">
-                        <div class="row">
 
-
-                            <div class="icon-container">
-                                <input type="checkbox" id="instagram" name="gonderi_yeri[]" value="instagram">
-                                <label class="icon-label" for="instagram" title="Instagram">
-                                </label>
-                                <i class="fa-brands fa-instagram" style="color:#E1306C; font-size: 40px;"></i>
-
-                                <input type="checkbox" id="facebook" name="gonderi_yeri[]" value="facebook">
-                                <label class="icon-label" for="facebook" title="Facebook">
-                                </label>
-                                <i class="fa-brands fa-facebook" style="color:#1877F2; font-size: 40px;"></i>
-
-                                <input type="checkbox" id="x" name="gonderi_yeri[]" value="x">
-                                <label class="icon-label" for="x" title="X">
-                                </label>
-                                <i class="fa-brands fa-x-twitter" style="color:#000; font-size: 40px;"></i>
-
-                                <input type="checkbox" id="linkedin" name="gonderi_yeri[]" value="linkedin">
-                                <label class="icon-label" for="linkedin" title="LinkedIn">
-                                </label>
-                                <i class="fa-brands fa-linkedin" style="color:#0A66C2; font-size: 40px;"></i>
-                              </div>
-
-                            <div class="col-md-4 col-sm-12">
-                                <label for="gonderi_adi">Gönderi Adı</label>
-                                <div class="input-group mb-2">
-                                    <span class="input-group-text">
-                                        <i class="fa fa-check"></i>
-                                    </span>
-                                    <input type="text" name="gonderi_adi" id="gonderi_adi"
-                                        class="form-control form-control-sm " required>
-                                </div>
-                            </div>
-
-
-                            <div class="col-md-4 col-sm-12">
-                                <label for="odeme_yapan">Gönderi</label>
-                                <div class="input-group mb-2">
-                                    <span class="input-group-text">
-                                        <i class="fa fa-user"></i>
-                                    </span>
-                                    <input type="file" name="resim[]" multiple class="form-control form-control-sm" required>
-                                </div>
-                            </div>
-
-{{--
-                            <div class="col-md-4 col-sm-12">
-                                <label for="odeme_tipi">Ödeme Yöntemi</label>
-                                <div class="input-group mb-2">
-                                    <span class="input-group-text">
-                                        <i class="fa fa-check"></i>
-                                    </span>
-                                    <select name="odeme_tipi" id="odeme_tipi" class="form-control form-control-sm" required>
-                                        <option value="">Lütfen Seçim Yapınız</option>
-                                        <option value="Kasa">Kasa</option>
-                                        <option value="Banka">Banka</option>
-                                    </select>
-                                </div>
-
-                            </div>
-
-
-
-
-
-                            <div class="col-md-4 col-sm-12">
-                                <label for="Gönderi Oluştur_tutar">Gönderi Oluştur Tutarı</label>
-                                <div class="input-group mb-2">
-                                    <span class="input-group-text">
-                                        <i class="fa-solid fa-money-bill"></i>
-                                    </span>
-                                    <input type="text" name="Gönderi Oluştur_tutar" id="Gönderi Oluştur_tutar"
-                                        class="form-control form-control-sm input-mask" required>
-                                </div>
-                            </div> --}}
-
-                        </div>
+                    <div>
+                        <label for="image_url">Resim URL:</label>
+                        <input type="text" name="image_url" id="image_url" placeholder="https://..." required>
                     </div>
 
-
-                    <div style="display: flex; padding: 10px; gap:20px; text-align: center; justify-content: end">
-
-                        <a href="{{route('sosyalmedya.index')}}" class="btn btn-outline-warning btn-sm py-6 w-25"> Vazgeç</a>
-                        <button type="submit" id="submit-form" class="btn btn-outline-dark btn-sm py-6 w-75">
-                            Kaydet</button>
+                    <div>
+                        <label for="caption">Açıklama (Caption):</label>
+                        <input type="text" name="caption" id="caption" placeholder="#etiket yaz" required>
                     </div>
 
+                    <div>
+                        <label for="alt_text">Alt Metin:</label>
+                        <input type="text" name="alt_text" id="alt_text" placeholder="Açıklayıcı alternatif metin">
+                    </div>
+
+                    <button type="submit" class="btn p-0 m-0">
+                        <i style="color: rgb(180, 68, 34)" class="fa-solid fa-paper-plane fs-6"></i>
+                        Gönderiyi Paylaş
+                    </button>
                 </form>
 
 

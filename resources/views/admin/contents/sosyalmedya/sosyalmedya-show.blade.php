@@ -8,17 +8,7 @@ Sosyal Medya
 @endsection
 <div class="card radius-5">
     <div class="card-header bg-transparent">
-        {{-- <div class="row ">
 
-            <div class="d-flex align-items-center justify-content-between gap-1 mobile-erp">
-
-                <div class="col-lg-4 ms-auto mobile-erp3 text-end">
-                    <a type="button" href="{{ route('sosyalmedya.create') }}"
-                    class="btn btn-outline-dark btn-sm "><i class="fa-solid fa-plus"></i>Yeni Ekle</a>
-                </div>
-
-            </div>
-        </div> --}}
     </div>
     <!-- Modal -->
 
