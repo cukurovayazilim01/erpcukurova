@@ -143,7 +143,7 @@
                     </button>
                     <div class="table-responsive" style="border-radius: 5px">
                         <table id="table" class="table table-bordered table-hover"
-                            style="width:100%; cursor: pointer; ">
+                            style="width:100% ">
 
                             <thead>
                                 <tr>
@@ -402,17 +402,16 @@
                             </div>
                         </div>
                     </div>
+                    <div style="display: flex; padding: 10px; gap:20px; text-align: center; justify-content: end">
+
+                        <a href="{{route('teklifler.index')}}" class="btn btn-outline-warning btn-sm py-6 w-25"> Vazgeç</a>
+                            <button type="submit" id="submit-form" class="btn btn-outline-dark btn-sm py-6 w-75"
+                               >
+                                Kaydet</button>
+                        </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-md-12 mt-1">
-                        <button type="submit" id="submit-form" class="btn btn-sm btn-outline-primary"
-                            style="float: right; margin-left: 2px;">
-                            Kaydet</button>
-                        <a href="{{ route('teklifler.index') }}" class="btn btn-sm btn-outline-secondary"
-                            style="float: right"> Vazgeç</a>
-                    </div>
-                </div>
+
 
             </form>
 

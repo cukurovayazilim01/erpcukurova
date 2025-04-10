@@ -17,6 +17,7 @@ Sosyal Medya
                     class="btn btn-outline-dark btn-sm "><i class="fa-solid fa-plus"></i>Yeni Ekle</a>
                 </div>
 
+
             </div>
         </div>
     </div>

@@ -68,55 +68,9 @@
         <div class="card-body"
             style="border-radius: 5px; padding: 20px; background-position:center; background-repeat: no-repeat; background-size: cover;  background-image: url('{{ asset('resim/modal7.png') }}') ">
             <div class="row">
-                <form action="{{route('sosyalmedya.store')}}" method="POST" id="add-form"  enctype="multipart/form-data">
+                <form action="{{ route('postToInstagram') }}" method="POST" style="display: inline;">
                     @csrf
-                    <div class="col-md-12" style="padding: 1%; ">
-                        <div class="row">
 
-                                        <div class="row " style="padding: 0 5rem; display: flex; justify-content: center">
-                                            <div class="col-lg-2 " >
-                                                <div class="card radius-5 card-container">
-                                                    <div class="card-body text-center" >
-                                                        <input type="radio" name="service" id="kargo" class="card-radio" />
-                                                        <img src="{{asset('resim/ins.png')}}"  alt="">
-
-                                                    </div>
-
-
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-2" >
-                                                <div class="card radius-5 card-container">
-                                                    <div class="card-body text-center">
-                                                        <input type="radio" name="service" id="kargo" class="card-radio" />
-                                                        <img src="{{asset('resim/face.png')}}"  alt="">
-
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-2" >
-                                                <div class="card radius-5 card-container">
-                                                    <div class="card-body text-center">
-                                                        <input type="radio" name="service" id="kargo" class="card-radio" />
-                                                        <img src="{{asset('resim/twt.png')}}"  alt="">
-
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-2" >
-                                                <div class="card radius-5 card-container">
-                                                    <div class="card-body text-center">
-                                                        <input type="radio" name="service" id="kargo" class="card-radio" />
-                                                        <img src="{{asset('resim/lnk.png')}}"  alt="">
-
-                                                    </div>
-
-                                                </div>
-                                            </div>
-
-                                        </div>
 
 
 
@@ -178,13 +132,25 @@
                     </div>
 
 
-                    <div style="display: flex; padding: 10px; gap:20px; text-align: center; justify-content: end">
-
-                        <a href="{{route('sosyalmedya.index')}}" class="btn btn-outline-warning btn-sm py-6 w-25"> Vazgeç</a>
-                        <button type="submit" id="submit-form" class="btn btn-outline-dark btn-sm py-6 w-75">
-                            Kaydet</button>
+                    <div>
+                        <label for="image_url">Resim URL:</label>
+                        <input type="text" name="image_url" id="image_url" placeholder="https://..." required>
                     </div>
 
+                    <div>
+                        <label for="caption">Açıklama (Caption):</label>
+                        <input type="text" name="caption" id="caption" placeholder="#etiket yaz" required>
+                    </div>
+
+                    <div>
+                        <label for="alt_text">Alt Metin:</label>
+                        <input type="text" name="alt_text" id="alt_text" placeholder="Açıklayıcı alternatif metin">
+                    </div>
+
+                    <button type="submit" class="btn p-0 m-0">
+                        <i style="color: rgb(180, 68, 34)" class="fa-solid fa-paper-plane fs-6"></i>
+                        Gönderiyi Paylaş
+                    </button>
                 </form>
 
 

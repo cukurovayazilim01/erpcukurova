@@ -15,8 +15,8 @@
                 <div class="row">
                     <div class="col-md-4">
                         <label for="cari_id">Firma</label>
-                        <div class="form-group input-with-icon" style="display: flex; align-items: center;">
-                            <span class="icon">
+                        <div class="input-group mb-2" style="display: flex; align-items: center;">
+                            <span class="input-group-text">
                                 <i class="fa fa-building"></i>
                             </span>
                             <input type="text" name="cari_id" id="cari_id" class="form-control form-control-sm"
@@ -25,8 +25,8 @@
                     </div>
                     <div class="col-md-4">
                         <label for="teklif_tarihi">Teklif Tarihi</label>
-                        <div class="form-group input-with-icon">
-                            <span class="icon">
+                        <div class="input-group mb-2">
+                            <span class="input-group-text">
                                 <i class="fa fa-calendar"></i>
                             </span>
                             <input type="date" name="teklif_tarihi" id="teklif_tarihi"
@@ -35,8 +35,8 @@
                     </div>
                     <div class="col-md-4">
                         <label for="user_id">Satış Temsilcisi</label>
-                        <div class="form-group input-with-icon">
-                            <span class="icon">
+                        <div class="input-group mb-2">
+                            <span class="input-group-text">
                                 <i class="fa fa-user"></i>
                             </span>
                             <input type="text" name="user_id" id="user_id" class="form-control form-control-sm"
@@ -200,16 +200,15 @@
                             value="{{ number_format($teklifler->teklif_kdvli_toplam, 2, ',', '.') }} ₺" readonly>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12 mt-3">
-                        <button type="submit" id="submit-form" class="btn btn-sm btn-outline-primary"
-                            style="float: right; margin-left: 2px;">
-                            Satış Fişine Aktar</button>
-                        <a href="{{ route('teklifler.index') }}" class="btn btn-sm btn-outline-secondary"
-                            style="float: right;">Vazgeç</a>
-                    </div>
-                </div>
+
             </div>
+                <div style="display: flex; padding: 10px; gap:20px; text-align: center; justify-content: end">
+                    <a href="{{ route('teklifler.index') }}" class="btn btn-outline-warning btn-sm py-6 w-25"
+                    >Vazgeç</a>
+                    <button type="submit" id="submit-form" class="btn btn-outline-dark btn-sm py-6 w-75"
+                        >
+                        Satış Fişine Aktar</button>
+                    </div>
         </div>
     </form>
     </div>

@@ -435,8 +435,8 @@ class TekliflerController extends Controller
         $hizmetler = Hizmetler::all();
         $cariler = Cariler::find($teklifler->cari_id);
         $tekliflerdata = Tekliflerdata::where('teklif_id', $id)->get();
-
-        return view('admin.contents.teklifler.teklifler-update', compact('teklifler', 'user', 'hizmetlerkategori', 'hizmetler', 'cariler', 'tekliflerdata'));
+        $odemeplani = Odemeplan::where('teklif_id',$id)->get();
+        return view('admin.contents.teklifler.teklifler-update', compact('teklifler', 'user', 'hizmetlerkategori', 'hizmetler', 'cariler', 'tekliflerdata','odemeplani'));
     }
 
     /**

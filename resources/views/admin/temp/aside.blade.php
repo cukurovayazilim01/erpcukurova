@@ -381,7 +381,7 @@
                 <a href="authentication-signup.html" class="list-group-item"><i class="fa-brands fa-facebook"></i>Facebook</a>
                 <a href="authentication-signup-with-header-footer.html" class="list-group-item d-flex align-items-center"><i class="fa-brands fa-square-x-twitter"></i>X</a>
                 <a href="authentication-forgot-password.html" class="list-group-item"><i class="fa-brands fa-linkedin"></i>LinkedIn</a>
-                <a href="{{route('sosyalmedya.index')}}" class="list-group-item"><i class="bi bi-easel"></i>Gönderi Oluştur</a>
+                <a href="{{route('sosyalmedya.index')}}" class="list-group-item"><i class="fa-solid fa-photo-film"></i>Gönderi Oluştur</a>
                 <a href="{{route('smhesaplarilist.index')}}" class="list-group-item"><i class="fa-solid fa-star"></i>Sosyal Medya Hesapları</a>
                 {{-- <a href="authentication-reset-password.html" class="list-group-item"><i class="bi bi-gem"></i>Reset Password</a> --}}
               </div>

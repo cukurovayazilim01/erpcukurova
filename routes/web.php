@@ -13,6 +13,7 @@ use App\Http\Controllers\DomainhizmetController;
 use App\Http\Controllers\DomaintakipController;
 use App\Http\Controllers\EntegrasyonController;
 use App\Http\Controllers\ExcelController;
+use App\Http\Controllers\FacebookApiController;
 use App\Http\Controllers\FiltrePDFController;
 use App\Http\Controllers\GelenefaturalarController;
 use App\Http\Controllers\GidenefaturalarController;
@@ -304,6 +305,10 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('smhesaplarilist',SmhesaplarilistController::class);
 
+
+    Route::get('/facebook/redirect', [FacebookApiController::class, 'redirect']);
+    Route::get('/facebook/callback', [FacebookApiController::class, 'callback']);
+    Route::post('/facebook/callback', [FacebookApiController::class, 'postToInstagram'])->name('postToInstagram');
 
     //ENTEGRASYONLAR
     Route::get('/entegrasyonmenu',[EntegrasyonController::class,'entegrasyonmenu'])->name('entegrasyonmenu');
