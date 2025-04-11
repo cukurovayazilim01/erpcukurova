@@ -1,20 +1,21 @@
    <!-- Modal -->
    <div class="modal fade" id="perseonelegitimModal-{{ $personelitem->id }}" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-xl">
         <form id="add-form" action="{{ route('personelegitimPOST', ['id' => $personelitem->id]) }}" method="POST"
             enctype="multipart/form-data">
             @csrf
             <div class="modal-content">
                 <!-- Modal Header -->
-                <div class="modal-header bg-primary text-white">
+                <div class="modal-header ">
                     <h5 class="modal-title">{{ $personelitem->ad_soyad }} Personel Eğitim Ekleme Ekranı</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
                 <!-- Modal Body -->
-                <div class="modal-body d-flex flex-column" style="padding: 2%;">
+                <div class="modal-body d-flex flex-column" style="padding: 20px; background-position:center; background-repeat: no-repeat; background-size: cover;  background-image: url('{{ asset('resim/modal7.png') }}') ">
+
                  <!-- Form Alanı -->
-                 <div class="row mb-3">
+                 <div class="row ">
                      <div class="col-md-4">
                          <label for="egitim_yili">Eğitim Tarihi</label>
                          <div class="form-group input-with-icon">
@@ -52,14 +53,17 @@
                     </div>
                      <div class="col-md-12 mt-2">
                          <label for="egitim_sonucu">Eğitim İçeriği</label>
+                         <div class="input-group mb-2">
+                            <span class="input-group-text"><i class="fa-solid fa-comments"></i></span>
                          <textarea name="egitim_sonucu" id="egitim_sonucu" cols="20" rows="2" class="form-control form-control-sm"></textarea>
                      </div>
+                    </div>
                  </div>
 
                  <!-- Tablo Alanı -->
                  <div class="table-responsive">
-                     <table class="table align-middle mb-0" id="example2">
-                         <thead class="table-light">
+                     <table class="table table-bordered table-hover" id="example2">
+                         <thead>
                              <tr>
                                  <th>#</th>
                                  <th>Eğitim Tarihi</th>
@@ -140,16 +144,17 @@
                              @endforeach
                          </tbody>
                      </table>
-                 </div>
-             </div>
+                    </div>
+                    <!-- Modal Footer -->
+                  <div class="mobile-footer"
+                  style="display: flex;  gap:20px; text-align: center; justify-content: end; ">
+                   <button type="button" class="btn btn-outline-warning btn-sm py-6 w-25" data-bs-dismiss="modal">Vazgeç</button>
+                   <button type="submit" class="btn btn-outline-dark btn-sm py-6 w-75">Kaydet</button>
+                  </div>
+               </div>
 
-                <!-- Modal Footer -->
-                <div class="modal-footer bg-light">
-                    <button type="button" class="btn btn-sm btn-outline-secondary"
-                        data-bs-dismiss="modal">Vazgeç</button>
-                    <button type="submit" id="submit-form" class="btn btn-outline-primary btn-sm ">Kaydet</button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
+
+              </div>
+          </form>
+      </div>
+  </div>

@@ -8,8 +8,9 @@
 @endsection
 
 
-<div class="card">
-    <div class="card-body">
+<div class="card radius-5">
+    <div class="card-body" style="border-radius: 5px; padding: 20px; background-position:center; background-repeat: no-repeat; background-size: cover;  background-image: url('{{ asset('resim/modal7.png') }}') ">
+
         <div class="row">
             <form action="{{route('gelenfaturayialisaktarPOST',$gelenefatura->id)}}" method="POST" id="add-form">
                 @csrf
@@ -26,19 +27,19 @@
 
                     <div class="col-md-3">
                         <label for="fis_tarihi">Fiş Tarih</label>
-                        <div class="form-group input-with-icon">
-                            <span class="icon">
+                        <div class="input-group mb-2">
+                            <span class="input-group-text">
                                 <i class="fa fa-calendar"></i>
                             </span>
                             <input type="date" name="fis_tarihi" id="fis_tarihi" readonly  style="cursor: not-allowed"
                                             onkeydown="return false;"
-                                class="form-control form-control-sm" value="{{$gelenefatura->fatura_tarihi}}" required>
+                                class="form-control form-control-sm" value="{{$gelenefatura->issue_date}}" required>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <label for="fis_no">Fatura/Fiş No</label>
-                        <div class="form-group input-with-icon">
-                            <span class="icon">
+                        <div class="input-group mb-2">
+                            <span class="input-group-text">
                                 <i class="fa-solid fa-hashtag"></i>
                             </span>
                             <input type="text" name="fis_no" id="fis_no" value="{{$gelenefatura->fatura_no}}" style="cursor: not-allowed"
@@ -49,8 +50,8 @@
                     <input type="hidden" name="alis_kodu" id="alis_kodu">
                     <div class="col-md-3">
                         <label for="tahsil_eden">Tahsil Eden</label>
-                        <div class="form-group input-with-icon">
-                            <span class="icon">
+                        <div class="input-group mb-2">
+                            <span class="input-group-text">
                                 <i class="fa fa-user"></i>
                             </span>
                             <input type="text" name="tahsil_eden" id="tahsil_eden"
@@ -59,11 +60,11 @@
                     </div>
                     <div class="col-md-3">
                         <label for="odeme_turu">Ödeme Türü</label>
-                        <div class="form-group input-with-icon">
-                            <span class="icon">
+                        <div class="input-group mb-2">
+                            <span class="input-group-text">
                                 <i class="fa fa-check"></i>
                             </span>
-                        <select name="odeme_turu" id="odeme_turu" class="form-select form-select-sm" required>
+                        <select name="odeme_turu" id="odeme_turu" class="form-control form-control-sm" required>
                             <option value="">Lütfen Seçim Yapınız</option>
                             <option value="EFT">EFT</option>
                             <option value="Havale">Havale</option>
@@ -75,11 +76,11 @@
 
                     <div class="col-md-3">
                         <label for="odeme_tipi">Ödeme Yöntemi</label>
-                        <div class="form-group input-with-icon">
-                            <span class="icon">
+                        <div class="input-group mb-2">
+                            <span class="input-group-text">
                                 <i class="fa fa-check"></i>
                             </span>
-                        <select name="odeme_tipi" id="odeme_tipi" class="form-select form-select-sm" required >
+                        <select name="odeme_tipi" id="odeme_tipi" class="form-control form-control-sm" required >
                             <option value="">Lütfen Seçim Yapınız</option>
                             <option value="Kasa">Kasa</option>
                             <option value="Banka">Banka</option>
@@ -90,17 +91,17 @@
 
                     <div class="col-md-3">
                         <label id="kasa_banka_label"></label>
-                        <div class="form-group input-with-icon">
-                            <span class="icon">
+                        <div class="input-group mb-2" style="border: 1px solid #ced4da;border-radius: 7px;">
+                            <span class="input-group-text">
                                 <i class="fa fa-check"></i>
                             </span>
-                            <select name="kasa_id" id="kasa_id" class="form-select form-select-sm" style="display: none;">
+                            <select name="kasa_id" id="kasa_id" class="form-control form-control-sm" style="display: none;">
                                 <option value="">Lütfen Seçim Yapınız</option>
                                 @foreach ($kasalar as $item)
                                 <option value="{{ $item->id }}">{{ $item->kasa_adi }}</option>
                                 @endforeach
                             </select>
-                            <select name="banka_id" id="banka_id" class="form-select form-select-sm" style="display: none;">
+                            <select name="banka_id" id="banka_id" class="form-control form-control-sm" style="display: none;">
                                 <option value="">Lütfen Seçim Yapınız</option>
                                 @foreach ($bankalar as $banka)
                                 <option value="{{ $banka->id }}">{{ $banka->banka_adi }}</option>
@@ -113,8 +114,8 @@
 
                     <div class="col-md-3">
                         <label for="odeme_tutar">Ödeme Tutarı</label>
-                        <div class="form-group input-with-icon">
-                            <span class="icon">
+                        <div class="input-group mb-2">
+                            <span class="input-group-text">
                                 <i class="fa fa-check"></i>
                             </span>
                             <input type="text" name="odeme_tutar" id="odeme_tutar"

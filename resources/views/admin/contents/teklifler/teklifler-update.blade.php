@@ -1,14 +1,14 @@
 @extends('admin.layouts.app')
 @section('title')
-    TEKLİF GÜNCELLE
+{{ $teklifler->teklif_kodu_text }} - {{ $teklifler->teklif_kodu }} NOLU {{ $teklifler->firmaadi->firma_unvan }} TEKLİFİ GÜNCELLE
 @endsection
 @section('contents')
 @section('topheader')
-    {{ $teklifler->firmaadi->firma_unvan }} TEKLİFİ GÜNCELLE
+{{ $teklifler->teklif_kodu_text }} - {{ $teklifler->teklif_kodu }} NOLU {{ $teklifler->firmaadi->firma_unvan }} TEKLİFİ GÜNCELLE
 @endsection
 
 
-<div class="card">
+<div class="card ">
     <div class="card-body">
         <div class="row">
             <form action="{{ route('teklifler.update', ['teklifler' => $teklifler->id]) }}" method="POST" id="add-form">
@@ -16,10 +16,10 @@
                 @method('put')
                 <div class="col-md-12" style="padding: 1%; ">
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-8 col-sm-12">
                             <label for="cari_id">Firma Ünvanı</label>
-                            <div class="form-group input-with-icon" style="display: flex; align-items: center;">
-                                <span class="icon" >
+                            <div class="input-group mb-2" style="display: flex; align-items: center;">
+                                <span class="input-group-text" >
                                     <i class="fa fa-building"></i>
                                 </span>
                                 <input type="text" name="cari_unvan" id="cari_unvan" class="form-control form-control-sm"
@@ -29,13 +29,13 @@
                         </div>
 
 
-                        <div class="col-md-3">
+                        <div class="col-md-4 col-sm-12">
                             <label for="user_id">Satış Temsilcisi</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa fa-user"></i>
                                 </span>
-                                <select name="user_id" id="user_id" class="form-select form-select-sm" required>
+                                <select name="user_id" id="user_id" class="form-control form-control-sm" required>
                                     <option value="">Lütfen Seçim Yapınız</option>
                                     @foreach ($user as $useritem)
                                         <option value="{{ $useritem->id }}"
@@ -47,10 +47,10 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-4">
                             <label for="teklif_tarihi">Teklif Tarihi</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa fa-calendar"></i>
                                 </span>
                                 <input type="date" name="teklif_tarihi" id="teklif_tarihi"
@@ -58,68 +58,98 @@
                                     value="{{ $teklifler->teklif_tarihi }}">
                             </div>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-4">
                             <label for="tescil_tl">Tescil Ücreti</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa fa-check"></i>
                                 </span>
                                 <input type="text" name="tescil_tl" id="tescil_tl"
                                     class="form-control form-control-sm" value="{{$teklifler->tescil_tl}}" required>
                             </div>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-4">
                             <label for="odeme_türü">Ödeme Planı</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa fa-money-bill"></i>
                                 </span>
-                                <select name="odeme_plani" id="odeme_plani" class="form-select form-select-sm" required>
+                                <select name="odemeplan_durum" id="odemeplan_durum" class="form-control form-control-sm" required>
                                     <option value="">Lütfen Seçim Yapınız</option>
-                                    <option value="Var" {{ $teklifler->odeme_plani == 'Var' ? 'selected' : '' }}>Var</option>
-                                    <option value="Yok" {{ $teklifler->odeme_plani == 'Yok' ? 'selected' : '' }}>Yok</option>
+                                    <option value="Var" {{ $teklifler->odemeplan_durum == 'Var' ? 'selected' : '' }}>Var</option>
+                                    <option value="Yok" {{ $teklifler->odemeplan_durum == 'Yok' ? 'selected' : '' }}>Yok</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-8">
                             <label for="teklif_konu">Teklif Konusu</label>
-                            <textarea name="teklif_konu" id="teklif_konu" cols="20" rows="2" class="form-control form-control-sm ">{{ $teklifler->teklif_konu }}</textarea>
+                            <div class="input-group mb-2">
+                                <span class="input-group-text"><i class="fa-solid fa-comments"></i></span>
+                                <select name="teklif_konu" id="teklif_konu" class="form-control form-control-sm"
+                                    required="">
+                                    <option value="">Lütfen Teklif Konusu Seçiniz...</option>
+                                    <option value="Kalite Yönetim Sistemleri Teklifi" {{ $teklifler->teklif_konu == 'Kalite Yönetim Sistemleri Teklifi' ? 'selected' : '' }}>Kalite Yönetim Sistemleri Teklifi
+                                    </option>
+                                    <option value="Marka Tescil Teklifi" {{ $teklifler->teklif_konu == 'Marka Tescil Teklifi' ? 'selected' : '' }}>Marka Tescil Teklifi</option>
+                                    <option value="Patent Tescil Teklifi" {{ $teklifler->teklif_konu == 'Patent Tescil Teklifi' ? 'selected' : '' }}>Patent Tescil Teklifi</option>
+                                    <option value="Faydalı Model Tescil Teklifi" {{ $teklifler->teklif_konu == 'Faydalı Model Tescil Teklifi' ? 'selected' : '' }}>Faydalı Model Tescil Teklifi</option>
+                                    <option value="Endüstriyel Tasarım Tescil Teklifi" {{ $teklifler->teklif_konu == 'Endüstriyel Tasarım Tescil Teklifi' ? 'selected' : '' }}>Endüstriyel Tasarım Tescil
+                                        Teklifi</option>
+                                    <option value="Barkod Tescil Teklifi" {{ $teklifler->teklif_konu == 'Barkod Tescil Teklifi' ? 'selected' : '' }}>Barkod Tescil Teklifi</option>
+                                    <option value="GLN  Numarası Tescil Teklifi" {{ $teklifler->teklif_konu == 'GLN Numarası Tescil Teklifi' ? 'selected' : '' }}>GLN Numarası Tescil Teklifi</option>
+                                    <option value="Domain (Alan Adı) Tescil Teklifi" {{ $teklifler->teklif_konu == 'Domain (Alan Adı) Tescil Teklifi' ? 'selected' : '' }}>Domain (Alan Adı) Tescil Teklifi
+                                    </option>
+                                    <option value="Web Tasarım Teklifi" {{ $teklifler->teklif_konu == 'Web Tasarım Teklifi' ? 'selected' : '' }}>Web Tasarım Teklifi</option>
+                                    <option value="Hosting Teklifi" {{ $teklifler->teklif_konu == 'Hosting Teklifi' ? 'selected' : '' }}>Hosting Teklifi</option>
+                                    <option value="Özel ERP Yazılım Teklifi" {{ $teklifler->teklif_konu == 'Özel ERP Yazılım Teklifi' ? 'selected' : '' }}>Özel ERP Yazılım Teklifi</option>
+                                    <option value="Eğitim Hizmetleri Teklifi" {{ $teklifler->teklif_konu == 'Eğitim Hizmetleri Teklifi' ? 'selected' : '' }}>Eğitim Hizmetleri Teklifi</option>
+                                    <option value="Kurumsal Mail Teklifi" {{ $teklifler->teklif_konu == 'Kurumsal Mail Teklifi' ? 'selected' : '' }}>Kurumsal Mail Teklifi</option>
+                                    <option value="Hibe-Kredi Proje Danışmanlık Teklifi" {{ $teklifler->teklif_konu == 'Hibe-Kredi Proje Danışmanlık Teklifi' ? 'selected' : '' }}>Hibe-Kredi Proje Danışmanlık
+                                        Teklifi</option>
+                                    <option value="Logo Tasarım Teklifi" {{ $teklifler->teklif_konu == 'Logo Tasarım Teklifi' ? 'selected' : '' }}>Logo Tasarım Teklifi</option>
+                                    <option value="Mail Hosting Teklifi" {{ $teklifler->teklif_konu == 'Mail Hosting Teklifi' ? 'selected' : '' }}>Mail Hosting Teklifi</option>
+                                    <option value="Web Hizmetleri Teklifi" {{ $teklifler->teklif_konu == 'Web Hizmetleri Teklifi' ? 'selected' : '' }}>Web Hizmetleri Teklifi</option>
+                                </select>
+                            </div>
                         </div>
-                        {{-- <div class="col-md-6">
-                            <label for="teklif_aciklama">Açıklama</label>
-                            <textarea name="teklif_aciklama" id="teklif_aciklama" cols="20" rows="2"
-                                class="form-control form-control-sm ">{{ $teklifler->teklif_aciklama }}</textarea>
-                        </div> --}}
+                        <div class="col-md-4">
+                            <label for="exampleInputEmail1">KDV Seçimi Yapınız<span
+                                    style="color: red">*</span></label>
+                            <div class="input-group mb-2">
+                                <span class="input-group-text"><i class="fa-regular fa-building"></i></span>
+                                <select name="kdv_status" id="kdv_status" class="form-control form-control-sm ">
+                                    <option value="kdvli" {{ $teklifler->kdv_status == 'kdvli' ? 'selected' : '' }}>KDV'li İşlem</option>
+                                    <option value="kdvsiz" {{ $teklifler->kdv_status == 'kdvsiz' ? 'selected' : '' }}>KDV'siz İşlem</option>
+                                </select>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-                <div class="col-md-12">
-                    <table id="example3" class="table table-responsive"
-                        style="width: 100%; cellspacing: 0; margin-bottom: 0">
-                        <thead>
-                            <tr>
-                                <th colspan="100%">
-                                    <button type="button" id="add" class="btn btn-sm btn-primary btn-block"
-                                        style="width: 100%; text-align: center;">
-                                        <i class="fa fa-plus"></i> Hizmet Ekle
-                                    </button>
-                                </th>
-                            </tr>
-                        </thead>
+                <div class="card-body" style="border-radius: 5px">
+                    <button type="button" id="add" class="btn btn-sm btn-primary btn-block mb-1"
+                    style="width: 100%; text-align: center;">
+                    <i class="fa fa-plus"></i> <span>Hizmet Ekle</span>
+                </button>
+                <div class="table-responsive" style="border-radius: 5px">
+                    <table id="example3" class="table table-bordered table-hover"
+                    style="width:100% ">
+
                         <thead>
                             <tr>
                                 <th><b>#</b></th>
                                 <th style="width: 15%">Hizmet Türü</th>
-                                <th style="width: 15%">Hizmet/Ürün</th>
+                                <th style="width: 15%">Hizmet / Ürün</th>
                                 <th style="width: 15%">Açıklama</th>
-                                <th style="width: 10%">Miktar/Birim</th>
+                                <th style="width: 10%">Miktar / Birim</th>
                                 <th style="display: none">maliyet</th>
                                 <th style="display: none">maliyet toplam</th>
                                 <th style="width: 9%">Fiyat</th>
-                                <th>Kdv/Tutar</th>
+                                <th>Kdv / Tutar</th>
                                 <th>Toplam Fiyat</th>
                                 <th style="width: 5%">İskonto</th>
                                 <th>Ödenecek Tutar</th>
-                                <th>Ekle/Çıkar</th>
+                                <th>Ekle / Çıkar</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -160,7 +190,7 @@
                                     <td>
                                         <div class="form-group">
                                             <div class="input-group m-b-sm">
-                                                <div class="col-md-5" style="padding: 0px">
+                                                <div class="col-md-5" style="padding-right: 3px">
                                                     <input type="text"
                                                         name="inputs[{{ $key }}][teklif_hizmet_miktar]"
                                                         class="form-control form-control-sm teklif_hizmet_miktar input-mask"
@@ -212,7 +242,7 @@
                                     <td>
                                         <div class="form-group">
                                             <div class="input-group m-b-sm">
-                                                <div class="col-md-5" style="padding: 0px">
+                                                <div class="col-md-5" style="padding-right: 3px">
                                                     <select name="inputs[{{ $key }}][teklif_kdv_oran]"
                                                         class="form-control form-control-sm teklif_kdv_oran" required>
                                                         <option value="20"
@@ -275,17 +305,75 @@
                         </tbody>
                     </table>
                 </div>
+            </div>
 
-                <div class="row" style="display: flex; flex-wrap: wrap;">
+                <div class="row px-3" >
                     <!-- Açıklama Alanı -->
-                    <div class="col-md-6" style="flex: 1; max-width: 50%; padding: 10px;">
-                        <label for="aciklama" style="display: block; margin-bottom: 5px;">Açıklama</label>
-                        <textarea id="aciklama" name="aciklama" rows="5"
-                            style="width: 100%; height: 150px; padding: 10px; border: 1px solid #ccc; border-radius: 4px; resize: none;">{{ $teklifler->aciklama }}</textarea>
+                    <div class="col-md-6 col-sm-12" style="  padding: 10px;">
+
+
+                        <div class="col-md-12" id="odeme_tablo" style="display: none; border-radius: 5px">
+                            <button type="button" id="addtaksit" class="btn btn-sm btn-primary btn-block mb-1"
+                                style="width: 100%; text-align: center;">
+                                <i class="fa fa-plus"></i> Taksit Ekle
+                            </button>
+                            <table id="odeme_table" class="table table-bordered table-hover"
+                                style="width:100%; cursor: pointer; border-radius: 5px">
+
+                                <thead style="border-radius: 5px">
+                                    <tr style="border-radius: 5px">
+                                        <th><b>#</b></th>
+                                        <th>Ödeme Tarihi</th>
+                                        <th>Tutar</th>
+                                        <th>Ödeme Şekli</th>
+                                        <th>Ekle/Çıkar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($odemeplani as $key => $odemeplaniitem)
+
+                                    <tr>
+                                        <td>{{$key + 1}}</td>
+                                        <td>
+                                            <div class="input-group m-b-sm">
+                                                <span class="input-group-addon"></span>
+                                                <input type="date" name="inputss[{{$key}}][odeme_tarihi]"
+                                                    class="form-control form-control-sm " value="{{$odemeplaniitem->odeme_tarihi}}" >
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="input-group m-b-sm">
+                                                <span class="input-group-addon"></span>
+                                                <input type="text" name="inputss[{{$key}}][tutar]"
+                                                    class="form-control form-control-sm input-mask"  value="{{$odemeplaniitem->tutar}}" >
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <select name="inputss[{{$key}}][odeme_turu]"
+                                                class="form-control form-control-sm ">
+                                                <option value="">Lütfen Seçiniz</option>
+                                                <option value="Nakit"  {{ $odemeplaniitem->odeme_turu == 'Nakit' ? 'selected' : '' }}>Nakit</option>
+                                                <option value="EFT"  {{ $odemeplaniitem->odeme_turu == 'EFT' ? 'selected' : '' }}>EFT</option>
+
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <label for="aciklama" style="display: block; margin-bottom: 5px">Açıklama Ekle</label>
+                        <div class="input-group mb-2">
+                            <span class="input-group-text"><i class="fa-solid fa-comments"></i></span>
+                            <textarea name="aciklama" id="aciklama" class="form-control" aria-label="With textarea">{{$teklifler->aciklama}}</textarea>
+                        </div>
+
                     </div>
 
                     <!-- Diğer Kısımlar -->
-                    <div class="col-md-6" style="flex: 1; max-width: 50%; padding: 10px;">
+                    <div class="col-md-6 col-sm-12" style=" padding: 10px;">
+
                         <div class="row" style="display: none;">
                             <div class="col-md-12">
                                 <label for="exampleInputEmail1">TOPLAM MALİYET<span
@@ -338,18 +426,16 @@
                             </div>
                         </div>
                     </div>
+                    <div style="display: flex; padding: 10px; gap:20px; text-align: center; justify-content: end">
+
+                        <a href="{{route('teklifler.index')}}" class="btn btn-outline-warning btn-sm py-6 w-25"> Vazgeç</a>
+                            <button type="submit" id="submit-form" class="btn btn-outline-dark btn-sm py-6 w-75"
+                               >
+                                Güncelle</button>
+                        </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-md-12 ">
-                        <button type="submit" id="submit-form" class="btn btn-sm btn-outline-primary"
-                            style="float: right; margin-left: 2px">
-                            Kaydet</button>
-                        <a href="{{ route('teklifler.index') }}" class="btn btn-sm btn-outline-secondary"
-                            style="float: right">
-                            Vazgeç</a>
-                    </div>
-                </div>
+
 
             </form>
 
@@ -359,37 +445,55 @@
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-{{-- SATIR SİLMEEE --}}
-{{-- <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Satır silme butonunu seçiyoruz
-        const deleteButton = document.querySelector('.satirsil');
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const odemePlani = document.getElementById("odemeplan_durum");
+        const odemeTablo = document.getElementById("odeme_tablo");
 
-        // Sayfadaki tüm form elemanlarını seçiyoruz
-        const allForms = document.querySelectorAll('form');
+        // Sayfa yüklendiğinde ilk kontrol
+        odemeTablo.style.display = odemePlani.value === "Var" ? "block" : "none";
 
-        // Diğer formların submit olayını engellemek için bir döngü kuruyoruz
-        allForms.forEach(function(form) {
-            form.addEventListener('submit', function(e) {
-                // Eğer form id'si 'satirsil' değilse, işlem iptal edilir
-                if (form.id !== 'satirsil') {
-                    e.preventDefault();
-                }
-            });
-        });
-
-        // Satır silme butonuna tıklama olayını ekliyoruz
-        deleteButton.addEventListener('click', function(e) {
-            e.preventDefault();  // Formun normal gönderilmesini engeller
-            const form = document.getElementById('satirsil');
-
-            // 'satirsil' formunu gönderiyoruz
-            form.submit();
+        // Seçenek değiştiğinde göster/gizle
+        odemePlani.addEventListener("change", function() {
+            odemeTablo.style.display = this.value === "Var" ? "block" : "none";
         });
     });
-</script> --}}
+</script>
+{{-- ÖDEME PLANI TAKSİT EKLEME --}}
+<script>
+    var i = 0;
+    $(document).on('click', '#addtaksit', function() {
+
+        ++i;
+        var newRow = $('<tr>');
+        newRow.append('<td>' + i + '</td>');
+        newRow.append(`
+                        <td>
+                            <div class="input-group m-b-sm">
+                                <span class="input-group-addon" ></span>
+                                <input type="date" name="inputss[` + i + `][odeme_tarihi]" class="form-control form-control-sm " >
+                            </div>
+                        </td>
+                        <td>
+                            <div class="input-group m-b-sm">
+                                <span class="input-group-addon" ></span>
+                                <input type="text" name="inputss[` + i + `][tutar]" class="form-control form-control-sm input-mask" >
+                            </div>
+                        </td>
+                         <td>
+                            <select name="inputss[` + i + `][odeme_turu]" class="form-control form-control-sm" >
+                                <option value="">Lütfen Seçiniz</option>
+                                <option value="Nakit">Nakit</option>
+                                <option value="EFT">EFT</option>
+                            </select>
+                        </td>
+                        <td><button type="button" class="btn btn-sm btn-danger remove-table-row" style="--bs-btn-padding-y: 0.12rem">-</button></td>
+                        `);
+        $('#odeme_table').append(newRow);
 
 
+    });
+</script>
 <script>
     $(document).ready(function() {
         var i = $('#example3 tbody tr').length;
@@ -495,7 +599,7 @@
                      <div class="form-group">
                                                                 <div class="input-group m-b-sm">
                                                                     <span class="input-group-addon" ></span>
-                                                                    <div class="col-md-5" style="padding: 0px">
+                                                                    <div class="col-md-5" style="padding-right:2px">
                                                                         <input type="text" name="inputs[` +
                 i +
                 `][teklif_hizmet_miktar]" class="form-control form-control-sm teklif_hizmet_miktar input-mask" required>
@@ -550,7 +654,7 @@
                                                             <div class="form-group">
                                                                 <div class="input-group m-b-sm">
                                                                     <span class="input-group-addon" ></span>
-                                                                    <div class="col-md-5" style="padding: 0px">
+                                                                    <div class="col-md-5" style="padding-right:2px">
                                                                         <select name="inputs[` +
                 i +
                 `][teklif_kdv_oran]" id="inputs[` +

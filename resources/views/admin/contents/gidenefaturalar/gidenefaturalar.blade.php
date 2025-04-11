@@ -21,12 +21,12 @@ GİDEN E-FATURALAR
         font-size: 12px;
     }
 </style>
-<div class="card radius-10">
+<div class="card radius-5">
     <div class="card-header bg-transparent">
-        <div class="row g-3 align-items-center">
-            <div class="col">
-                <div class="d-flex align-items-center justify-content-between gap-3">
-                    <div class="col-lg-1 col-1 col-md-1 text-start">
+        <div class="row">
+            <div class="d-flex align-items-center justify-content-between gap-1 mobile-erp">
+
+                <div class=" col-md-4 mr-4 mobile-erp1 d-flex gap-2">
                         <form method="GET" action="{{ route('gidenefaturalar.index') }}" id="entriesForm">
                             <select class="form-select form-select-sm" name="entries"
                                 onchange="document.getElementById('entriesForm').submit();">
@@ -38,19 +38,20 @@ GİDEN E-FATURALAR
                         </form>
                     </div>
 
-                    {{-- <div class="col-lg-4 col-4 col-md-4 mr-4">
-                        <a href="{{route('cariler.index')}}" type="button" class="btn btn-sm btn-primary">
-                            <i class="fa-solid fa-user"></i> Müşteriler
-                        </a>
-                        <a href="{{route('tedarikciler')}}" type="button" class="btn btn-sm btn-outline-success">
-                            <i class="fas fa-shipping-fast"></i> Tedarikçiler
-                        </a>
-                    </div> --}}
+                    <div class="col-lg-4 d-flex align-items-center mobile-erp2 justify-content-center">
+                        <form class="position-relative" id="searchForm" action="{{ route('carilersearch') }}"
+                            method="GET">
+                            <div class="position-absolute top-50 translate-middle-y search-icon px-3 "><i
+                                    class="bi bi-search"></i></div>
+                            <input style="height: 27px;  border-radius: 5px; border-color:#293445 " id="searchInput"
+                                class="form-control ps-5" type="text" placeholder="Ara">
+                        </form>
+                    </div>
 
 
-                    <div class="ms-auto">
-                        <a href="{{route('gidenefaturalar.create')}}" type="button" class="btn btn-sm btn-outline-primary px-5"
-                            >
+
+                    <div class="col-12 col-lg-1 ms-auto text-end mobile-erp3">
+                        <a href="{{ route('gidenefaturalar.create') }}" class="btn btn-outline-dark btn-sm w-100">
                             <i class="fa-solid fa-plus"></i> Fatura Oluştur
                         </a>
                     </div>
@@ -59,34 +60,13 @@ GİDEN E-FATURALAR
                 </div>
             </div>
         </div>
-    </div>
 
 
-    <div class="card-body">
-        <div class="table-responsive">
-            <div id="example_wrapper" class="dataTables_wrapper dt-bootstrap5">
-                <div class="row">
-
-
-                    <form id="searchForm" action="{{ route('carilersearch') }}" method="GET">
-                        <div class="ms-auto position-relative" style="margin-bottom: 10px">
-                            <!-- Arama ikonu -->
-                            <div class="position-absolute top-50 translate-middle-y search-icon fs-5 px-3"
-                                style="color: blue;">
-                                <i class="bi bi-search"></i>
-                            </div>
-                            <!-- Arama inputu -->
-                            <input type="text" id="searchInput" class="form-control ps-5"
-                                style="border: 1px solid blue; height: 38px;"
-                                placeholder="Lütfen Arama Terimi Giriniz">
-                        </div>
-                    </form>
-
-
-                </div>
-                <table class="table align-middle mb-0 dataTable" id="example2" role="grid"
+    <div class="card-body" style="border-radius: 5px">
+        <div class="table-responsive" style="border-radius: 5px">
+                <table class="table table-bordered table-hover" style="width:100%;" id="example2" role="grid"
                     aria-describedby="example_info">
-                    <thead class="table-light">
+                    <thead>
                         <tr>
                             <th scope="col">#</th>
                             <th>Fatura</th>
@@ -128,7 +108,7 @@ GİDEN E-FATURALAR
                                             <a href="javascript:void(0);"
                                             class="text-danger btn btn-link p-0 m-0 openPdfModal"
                                             data-url="{{ route('invoices.pdf', $gidenefaturalaritem->uuid ?? '') }}">
-                                            <i class="fa fa-file-pdf"></i>
+                                            <i style="font-size: 18px" class="fa fa-file-pdf"></i>
                                          </a>
                                          @if ($gidenefaturalaritem->alis_aktarilma_durum == 'Aktarıldı')
                                          <a  class="btn btn-sm btn-primary  "

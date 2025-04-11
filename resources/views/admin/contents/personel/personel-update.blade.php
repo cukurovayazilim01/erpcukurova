@@ -1,22 +1,22 @@
    <!-- Modal -->
    <div class="modal fade" id="personelupdateModal-{{ $personelitem->id }}" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-xl">
         <form action="{{ route('personell.update', ['personell' => $personelitem->id]) }}" method="POST"
             enctype="multipart/form-data">
             @csrf
             @method('put')
             <div class="modal-content">
                 <!-- Modal Header -->
-                <div class="modal-header bg-primary text-white">
+                <div class="modal-header">
                     <h5 class="modal-title">Personel Özlük Dosyası Güncelleme Ekranı</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
                 <!-- Modal Body -->
-                <div class="modal-body" style="display: flex">
-                    <!-- Left Side -->
-                    <div class="col-md-12" style="padding: 2%;">
-                        <div class="row">
+                <div class="modal-body"
+                style="padding: 20px; background-position:center; background-repeat: no-repeat; background-size: cover;  background-image: url('{{ asset('resim/modal7.png') }}') ">
+
+                <div class="row ">
 
                             <div class="col-md-3">
                                 <label for="ad_soyad">Ad Soyad</label>
@@ -324,16 +324,17 @@
                                     class="form-control form-control-sm ">{{$personelitem->acil_durum_kisi}}</textarea>
                             </div>
                         </div>
+                        <div
+                            style="display: flex; padding: 10px 0; gap:20px; text-align: center; justify-content: end">
+
+                            <button type="button" class="btn btn-outline-warning btn-sm py-6 w-25" data-bs-dismiss="modal">Vazgeç</button>
+                            <button type="submit" class="btn btn-outline-dark btn-sm py-6 w-75">Kaydet</button>
+
+                        </div>
                     </div>
-                </div>
-                <!-- Modal Footer -->
-                <div class="modal-footer bg-light">
-                    <button type="button" class="btn btn-sm btn-outline-secondary"
-                        data-bs-dismiss="modal">Vazgeç</button>
-                    <button type="submit" id="submit-form"
-                        class="btn btn-outline-primary btn-sm ">Kaydet</button>
-                </div>
+
+                    </div>
+                </form>
             </div>
-        </form>
-    </div>
-</div>
+        </div>
+

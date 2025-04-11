@@ -140,6 +140,7 @@ class GelenefaturalarController extends Controller
     public function gelenfaturayialisaktar(string $id)
     {
         $gelenefatura = Gelenefaturalar::find($id);
+
         $giderkategori = Giderkategori::all();
         $kasalar = Kasalar::all();
         $bankalar = Bankalar::all();

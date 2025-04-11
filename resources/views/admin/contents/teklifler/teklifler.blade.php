@@ -47,7 +47,7 @@
 
             <!-- Arama Kutusu -->
             <div class="col-lg-5 d-flex align-items-center mobile-erp2 justify-content-start">
-                <form class="position-relative" id="searchForm" action="{{ route('carilersearch') }}"
+                <form class="position-relative" id="searchForm" action="{{ route('tekliflersearch') }}"
                     method="GET">
                     <div class="position-absolute top-50 translate-middle-y search-icon px-3 "><i
                             class="bi bi-search"></i></div>
@@ -71,7 +71,7 @@
 
     <div class="card-body" style="border-radius: 5px">
         <div class="table-responsive" style="border-radius: 5px">
-            <table id="example2" class="table table-bordered table-hover" style="width:100%; cursor: pointer; ">
+            <table id="example2" class="table table-bordered table-hover" style="width:100%;  ">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -90,8 +90,14 @@
                     @foreach ($teklifler as $teklifleritem)
                         <tr>
                             <th scope="row">{{ $startNumber - $loop->index }}</th>
+                            @if ($teklifleritem->teklif_kodu_text!= 'ÇT')
+                            <th scope="row">
+                                {{ $teklifleritem->teklif_kodu_text }}</th>
+                            @else
                             <th scope="row">
                                 {{ $teklifleritem->teklif_kodu_text }}-{{ $teklifleritem->teklif_kodu }}</th>
+                            @endif
+
                             <td>{{ $teklifleritem->islem_tarihi }}</td>
                             <td>{{ $teklifleritem->firmaadi->firma_unvan }}</td>
                             <td>{{ $teklifleritem->teklif_konu }}</td>
@@ -102,8 +108,8 @@
 
 
                             <td class="text-right" >
-                                <div class="databutton" style="display:flex; justify-content: space-around" >
-                                    <div class="d-flex align-items-center fs-6">
+                                <div class="databutton">
+                                    <div class="d-flex align-items-center fs-6"  style="justify-content: space-evenly; ">
                                         @if (!Request::is('teklifler') && !Request::is('onaylananteklifler') && !Request::is('onaylanmayanteklifler'))
                                             <button class="btn btn-sm btn-outline-success open-modal-btn"
                                                 style="margin-right: 3px" data-bs-toggle="modal"
