@@ -33,7 +33,7 @@ Personel Listesi
     </div>
     <!-- Modal -->
     <div class="modal fade" id="personelmodal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-xl">
             <form action="{{ route('personell.store') }}" method="POST" enctype="multipart/form-data" id="add-form">
                 @csrf
                 <div class="modal-content">
@@ -355,9 +355,9 @@ Personel Listesi
     </div>
 
     <div class="card-body">
-        <div class="table-responsive">
-            <table class="table align-middle mb-0" id="example2">
-                <thead class="table-light">
+        <div class="table-responsive" style="border-radius: 5px">
+            <table id="example2" class="table table-bordered table-hover" style="width:100%; cursor: pointer; ">
+                <thead >
                     <tr>
                         <th scope="col">#</th>
                         <th>Adı Soyadı</th>
