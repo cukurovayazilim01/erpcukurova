@@ -6,74 +6,139 @@
     @section('topheader')
         Gönderi Oluştur
     @endsection
-    <style>
-    .icon-container {
-      display: flex;
-      gap: 30px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
 
-    /* Checkbox'ları gizleyelim */
-    input[type="checkbox"] {
-      display: none;
-    }
-
-    .icon-label {
-      font-size: 50px;
-      cursor: pointer;
-      padding: 20px;
-      border-radius: 15px;
-      transition: all 0.3s ease;
-      border: 2px solid transparent;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-
-    /* Seçilen iconların etrafına mavi border ekleyip, arka planı değiştiriyoruz */
-    input[type="checkbox"]:checked + .icon-label {
-      border-color: #478bfb;
-      background-color: #eaf1ff;
-    }
-
-    /* Seçili ikonun etrafına küçük check işareti ekliyoruz */
-    input[type="checkbox"]:checked + .icon-label::after {
-      content: '\f00c'; /* FontAwesome check işareti */
-      font-family: 'Font Awesome 5 Free';
-      font-weight: 900;
-      position: absolute;
-      top: -5px;
-      right: -5px;
-      font-size: 20px;
-      color: #478bfb;
-    }
-
-    /* Hover efekti */
-    .icon-label:hover {
-      background-color: rgba(71, 139, 251, 0.1);
-    }
-
-    .icon-label i {
-      transition: color 0.3s ease;
-    }
-
-    /* Seçilen ikonun rengini değiştiriyoruz */
-    input[type="checkbox"]:checked + .icon-label i {
-      color: #478bfb;
-    }
-  </style>
     <div class="card radius-5">
         <div class="card-body"
             style="border-radius: 5px; padding: 20px; background-position:center; background-repeat: no-repeat; background-size: cover;  background-image: url('{{ asset('resim/modal7.png') }}') ">
             <div class="row">
-                <form action="{{ route('postToInstagram') }}" method="POST" style="display: inline;">
+                <form action="{{ route('sosyalmedya.store') }}" method="POST" style="display: inline;" enctype="multipart/form-data">
                     @csrf
 
 
 
+                    <div class="col-md-12" style="padding: 1%; ">
+                        <div class="row">
 
+                            <style>
+                                .card-container {
+                                    position: relative;
+                                    cursor: pointer;
+                                    transition: all 0.3s ease;
+                                    border: 2px solid transparent;
+                                    border-radius: 5px;
+                                }
+
+                                .card-checkbox {
+                                    position: absolute;
+                                    opacity: 0;
+                                    width: 100%;
+                                    height: 100%;
+                                    top: 0;
+                                    left: 0;
+                                    margin: 0;
+                                    cursor: pointer;
+                                    z-index: 1;
+                                }
+
+                                .card-container:hover {
+                                    border-color: rgba(71, 139, 251, 0.3);
+                                }
+
+                                .card-checkbox:checked ~ .card-container {
+                                    border-color: #478bfb;
+                                    box-shadow: 0 0 0 1px #478bfb;
+                                }
+
+                                .card-checkbox:checked + .card-body {
+                                    background-color: #eaf1ff;
+                                }
+
+                                .card-body {
+                                    padding: 15px;
+                                    transition: all 0.3s ease;
+                                    height: 100%;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                }
+
+                                /* Seçili card'da check işareti */
+                                .card-checkbox:checked ~ .card-container::after {
+                                    content: '\2713'; /* Check işareti */
+                                    position: absolute;
+                                    top: -8px;
+                                    right: -8px;
+                                    width: 20px;
+                                    height: 20px;
+                                    background: #478bfb;
+                                    color: white;
+                                    border-radius: 50%;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    font-size: 12px;
+                                    z-index: 2;
+                                }
+                            </style>
+
+                            <div class="row" style="padding: 0 5rem; display: flex; justify-content: center">
+                                <div class="col-lg-2" style="position: relative;">
+                                    <input type="checkbox" name="service[]" id="instagram" class="card-checkbox" value="instagram" />
+                                    <div class="card radius-5 card-container">
+                                        <div class="card-body text-center">
+                                            <img src="{{ asset('resim/ins.png') }}" alt="Instagram">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2" style="position: relative;">
+                                    <input type="checkbox" name="service[]" id="facebook" class="card-checkbox" value="facebook" />
+                                    <div class="card radius-5 card-container">
+                                        <div class="card-body text-center">
+                                            <img src="{{ asset('resim/face.png') }}" alt="Facebook">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2" style="position: relative;">
+                                    <input type="checkbox" name="service[]" id="twitter" class="card-checkbox" value="twitter" />
+                                    <div class="card radius-5 card-container">
+                                        <div class="card-body text-center">
+                                            <img src="{{ asset('resim/twt.png') }}" alt="Twitter">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2" style="position: relative;">
+                                    <input type="checkbox" name="service[]" id="linkedin" class="card-checkbox" value="linkedin" />
+                                    <div class="card radius-5 card-container">
+                                        <div class="card-body text-center">
+                                            <img src="{{ asset('resim/lnk.png') }}" alt="LinkedIn">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2" style="position: relative;">
+                                    <input type="checkbox" name="service[]" id="google" class="card-checkbox" value="google" />
+                                    <div class="card radius-5 card-container">
+                                        <div class="card-body text-center">
+                                            <img src="{{ asset('resim/google.png') }}" alt="google">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2" style="position: relative;">
+                                    <input type="checkbox" name="service[]" id="whatsapp" class="card-checkbox" value="whatsapp" />
+                                    <div class="card radius-5 card-container">
+                                        <div class="card-body text-center">
+                                            <img src="{{ asset('resim/wp.png') }}" alt="whatsapp">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="form-group">
+                                <label for="text">Açıklama</label>
+                                <textarea name="text" class="form-control" rows="4" required></textarea>
+                            </div>
 
                             <div class="col-md-4 col-sm-12">
                                 <label for="gonderi_adi">Gönderi Adı</label>
@@ -93,40 +158,17 @@
                                     <span class="input-group-text">
                                         <i class="fa fa-user"></i>
                                     </span>
-                                    <input type="file" name="resim[]" multiple class="form-control form-control-sm" required>
+                                    <input type="file" name="resim[]" multiple class="form-control form-control-sm"
+                                        required>
                                 </div>
                             </div>
 
-{{--
-                            <div class="col-md-4 col-sm-12">
-                                <label for="odeme_tipi">Ödeme Yöntemi</label>
-                                <div class="input-group mb-2">
-                                    <span class="input-group-text">
-                                        <i class="fa fa-check"></i>
-                                    </span>
-                                    <select name="odeme_tipi" id="odeme_tipi" class="form-control form-control-sm" required>
-                                        <option value="">Lütfen Seçim Yapınız</option>
-                                        <option value="Kasa">Kasa</option>
-                                        <option value="Banka">Banka</option>
-                                    </select>
-                                </div>
-
-                            </div>
 
 
+                        </div>
+                    </div>
 
 
-
-                            <div class="col-md-4 col-sm-12">
-                                <label for="Gönderi Oluştur_tutar">Gönderi Oluştur Tutarı</label>
-                                <div class="input-group mb-2">
-                                    <span class="input-group-text">
-                                        <i class="fa-solid fa-money-bill"></i>
-                                    </span>
-                                    <input type="text" name="Gönderi Oluştur_tutar" id="Gönderi Oluştur_tutar"
-                                        class="form-control form-control-sm input-mask" required>
-                                </div>
-                            </div> --}}
 
                         </div>
                     </div>
@@ -134,12 +176,12 @@
 
                     <div>
                         <label for="image_url">Resim URL:</label>
-                        <input type="text" name="image_url" id="image_url" placeholder="https://..." required>
+                        <input type="text" name="image_url" id="image_url" placeholder="https://..." >
                     </div>
 
                     <div>
                         <label for="caption">Açıklama (Caption):</label>
-                        <input type="text" name="caption" id="caption" placeholder="#etiket yaz" required>
+                        <input type="text" name="caption" id="caption" placeholder="#etiket yaz" >
                     </div>
 
                     <div>

@@ -8,7 +8,7 @@
             <div class="modal-content">
                 <!-- Modal Header -->
                 <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title">{{$smhesaplarilistitem->kasa_adi}} -  Adlı Kasayı Güncelle</h5>
+                    <h5 class="modal-title">{{$smhesaplarilistitem->hesap_adi}} -  Adlı Hesabı Güncelle</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 

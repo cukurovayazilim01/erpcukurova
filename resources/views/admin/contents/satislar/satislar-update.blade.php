@@ -18,8 +18,8 @@
                     <div class="row">
                         <div class="col-md-4">
                             <label for="cari_id">Firma</label>
-                            <div class="form-group input-with-icon" style="display: flex; align-items: center;">
-                                <span class="icon" >
+                            <div class="input-group mb-2" style="display: flex; align-items: center;">
+                                <span class="input-group-text" >
                                     <i class="fa fa-building"></i>
                                 </span>
                                 <input type="text" name="cari_unvan" id="cari_unvan" class="form-control form-control-sm"
@@ -30,11 +30,11 @@
 
                         <div class="col-md-4">
                             <label for="user_id">Satış Temsilcisi</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa fa-user"></i>
                                 </span>
-                                <select name="user_id" id="user_id" class="form-select form-select-sm" required>
+                                <select name="user_id" id="user_id" class="form-control form-control-sm" required>
                                     <option value="">Lütfen Seçim Yapınız</option>
                                     @foreach ($user as $useritem)
                                         <option value="{{ $useritem->id }}"
@@ -47,8 +47,8 @@
                         </div>
                         <div class="col-md-4">
                             <label for="satis_tarihi">Satış Tarihi</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa fa-calendar"></i>
                                 </span>
                                 <input type="date" name="satis_tarihi" id="satis_tarihi"
@@ -91,8 +91,8 @@
                         </div>
                         <div class="col-md-4">
                             <label for="tescil_tl">Tescil Ücreti</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa fa-check"></i>
                                 </span>
                                 <input type="text" name="tescil_tl" id="tescil_tl"

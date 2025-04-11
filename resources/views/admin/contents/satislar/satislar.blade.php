@@ -12,7 +12,7 @@
                 <div class="col-12 col-lg-5">
                     <div class="d-flex flex-wrap gap-2 justify-content-start">
                         <!-- Sayfa boyutu seçici -->
-                        <form method="GET" action="{{ route('teklifler.index') }}" id="entriesForm">
+                        <form method="GET" action="{{ route('satislar.index') }}" id="entriesForm">
                             <select class="form-select form-select-sm" name="entries"
                                 onchange="document.getElementById('entriesForm').submit();">
                                 <option value="10" {{ $perPage == 10 ? 'selected' : '' }}>10</option>
@@ -170,77 +170,4 @@
                 });
             });
         </script>
-
-
-
-
-
-
-        {{--
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                document.getElementById('searchForm').addEventListener('submit', function (event) {
-                    event.preventDefault();
-                });
-            });
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-        <script>
-            async function handleTeklifAction(event, id, actionType) {
-                event.preventDefault(); // Varsayılan form davranışını engelle
-
-                let titleText, confirmButtonText, confirmButtonColor, actionURL;
-
-                // İşlem tipine göre ayarlar
-                if (actionType === 'onay') {
-                    titleText = 'Teklifi Onaylamak Üzeresiniz!';
-                    confirmButtonText = 'Evet, Onayla!';
-                    confirmButtonColor = '#28a745';
-                    actionURL = `/teklif/onayla/${id}`; // Laravel route
-                } else if (actionType === 'red') {
-                    titleText = 'Teklifi Reddetmek Üzeresiniz!';
-                    confirmButtonText = 'Evet, Reddet!';
-                    confirmButtonColor = '#dc3545';
-                    actionURL = `/teklif/reddet/${id}`;
-                } else if (actionType === 'iptal') {
-                    titleText = 'Teklif İptal Edilecek!';
-                    confirmButtonText = 'Evet, İptal Et!';
-                    confirmButtonColor = '#ffc107';
-                    actionURL = `/teklif/iptalet/${id}`; // Laravel route
-                }
-
-                // SweetAlert ile onaylama
-                const result = await Swal.fire({
-                    icon: 'warning',
-                    title: titleText,
-                    text: 'Bu işlemi gerçekleştirmek istiyor musunuz?',
-                    showCancelButton: true,
-                    confirmButtonText: confirmButtonText,
-                    confirmButtonColor: confirmButtonColor,
-                    cancelButtonText: 'İptal',
-                    padding: '2em',
-                });
-
-                if (result.isConfirmed) {
-                    // Onaylanırsa formu gönder
-                    const form = document.createElement('form');
-                    form.method = 'POST';
-                    form.action = actionURL;
-                    form.style.display = 'none';
-
-                    // CSRF token ekle
-                    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-                    const csrfInput = document.createElement('input');
-                    csrfInput.type = 'hidden';
-                    csrfInput.name = '_token';
-                    csrfInput.value = csrfToken;
-
-                    form.appendChild(csrfInput);
-                    document.body.appendChild(form);
-                    form.submit();
-                }
-            }
-        </script> --}}
 @endsection
