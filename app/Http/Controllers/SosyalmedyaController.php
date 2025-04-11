@@ -32,14 +32,16 @@ class SosyalmedyaController extends Controller
      */
     public function store(Request $request)
     {
-        $sosyalmedya = new Sosyalmedya();
-        $sosyalmedya->islem_yapan   = Auth::user()->id;
-        $sosyalmedya->islem_tarihi  = Carbon::now();
-        $sosyalmedya->gonderi_tipi  = $request->gonderi_tipi;
-        $sosyalmedya->gonderi_zamani = $request->gonderi_zamani;
-        $sosyalmedya->gonderi_adi   = $request->gonderi_adi;
-        $sosyalmedya->gonderi_yeri  = $request->gonderi_yeri;
-        $sosyalmedya->gonderi_boyutu = $request->gonderi_boyutu;
+        $sosyalmedya = new SosyalMedya();
+        $sosyalmedya->islem_yapan     = Auth::user()->id;
+        $sosyalmedya->islem_tarihi    = Carbon::now();
+        $sosyalmedya->gonderi_tipi    = $request->gonderi_tipi;
+        $sosyalmedya->gonderi_zamani  = $request->gonderi_zamani;
+        $sosyalmedya->gonderi_adi     = $request->gonderi_adi;
+        $sosyalmedya->gonderi_yeri    = $request->gonderi_yeri;
+        $sosyalmedya->gonderi_boyutu  = $request->gonderi_boyutu;
+        $sosyalmedya->text            = $request->text;
+        $sosyalmedya->platforms       = implode(',', $request->service);
 
         $resimYollar = [];
 
@@ -53,8 +55,11 @@ class SosyalmedyaController extends Controller
         }
 
         $sosyalmedya->resim = json_encode($resimYollar);
+        $imageUrl = asset($sosyalmedya->resim);
+        dd( $imageUrl);
 
         $sosyalmedya->save();
+
         return redirect()->route('sosyalmedya.index')->with('success', 'Ekleme Başarılı');
     }
 

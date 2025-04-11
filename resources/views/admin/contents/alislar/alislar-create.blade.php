@@ -26,8 +26,8 @@ GİDER OLUŞTUR
 
                     <div class="col-md-3">
                         <label for="fis_tarihi">Fiş Tarih</label>
-                        <div class="form-group input-with-icon">
-                            <span class="icon">
+                        <div class="input-group mb-2">
+                            <span class="input-group-text">
                                 <i class="fa fa-calendar"></i>
                             </span>
                             <input type="datetime-local" name="fis_tarihi" id="fis_tarihi"
@@ -36,8 +36,8 @@ GİDER OLUŞTUR
                     </div>
                     <div class="col-md-3">
                         <label for="fis_no">Fatura/Fiş No</label>
-                        <div class="form-group input-with-icon">
-                            <span class="icon">
+                        <div class="input-group mb-2">
+                            <span class="input-group-text">
                                 <i class="fa-solid fa-hashtag"></i>
                             </span>
                             <input type="text" name="fis_no" id="fis_no"
@@ -49,12 +49,12 @@ GİDER OLUŞTUR
 
                     <div class="col-md-3">
                         <label for="doviz">Para Birimi</label>
-                        <div class="form-group input-with-icon">
-                            <span class="icon">
+                        <div class="input-group mb-2">
+                            <span class="input-group-text">
                                 <i class="fa fa-building"></i>
                             </span>
                             <select name="doviz" id="doviz"
-                                class="form-select form-select-sm" required>
+                                class="form-control form-control-sm" required>
                                 <option value="TL">TL</option>
                                 <option value="DOLAR">DOLAR</option>
                                 <option value="EURO">EURO</option>
@@ -63,18 +63,14 @@ GİDER OLUŞTUR
                     </div>
                 </div>
             </div>
-            <div class="col-md-12">
-                <table id="example3" class="table table-responsive" style="width: 100%; cellspacing: 0; margin-bottom: 0">
-                    <thead>
-                        <tr>
-                            <th colspan="100%">
-                                <button type="button" id="add" class="btn btn-sm btn-primary btn-block"
-                                    style="width: 100%; text-align: center;">
-                                    <i class="fa fa-plus"></i> Satır Ekle
-                                </button>
-                            </th>
-                        </tr>
-                    </thead>
+            <div class="card-body" style="border-radius: 5px">
+                <button type="button" id="add" class="btn btn-sm btn-primary btn-block mb-1"
+                style="width: 100%; text-align: center;">
+                <i class="fa fa-plus"></i> <span>Satır Ekle</span>
+            </button>
+            <div class="table-responsive" style="border-radius: 5px">
+                <table id="example3" class="table table-bordered table-hover" style="width: 100%;">
+
                     <thead>
                         <tr>
                             <th><b>#</b></th>
@@ -204,14 +200,14 @@ GİDER OLUŞTUR
 
             <div class="row" style="display: flex; flex-wrap: wrap;">
                 <!-- Açıklama Alanı -->
-                <div class="col-md-6" style="flex: 1; max-width: 50%; padding: 10px;">
+                <div class="col-md-6" style=" padding: 10px;">
                     <label for="aciklama" style="display: block; margin-bottom: 5px;">Açıklama</label>
                     <textarea id="aciklama" name="aciklama" rows="5"
                         style="width: 100%; height: 150px; padding: 10px; border: 1px solid #ccc; border-radius: 4px; resize: none;"></textarea>
                 </div>
 
                 <!-- Diğer Kısımlar -->
-                <div class="col-md-6" style="flex: 1; max-width: 50%; padding: 10px;">
+                <div class="col-md-6" style=" padding: 10px;">
                     <div class="row" style="display: none;">
                         <div class="col-md-12">
                             <label for="exampleInputEmail1">Ara Toplam<span style="color: red">*</span></label>
@@ -259,14 +255,14 @@ GİDER OLUŞTUR
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="row">
-                <div class="col-md-12 mt-1">
-                    <button type="submit" id="submit-form" class="btn btn-sm btn-outline-primary"
-                        style="float: right; margin-left: 2px;">
-                        Kaydet</button>
-                    <a href="{{route('alislar.index')}}" class="btn btn-sm btn-outline-secondary" style="float: right"> Vazgeç</a>
-                </div>
+        <div style="display: flex; padding: 10px; gap:20px; text-align: center; justify-content: end">
+
+            <a href="{{route('alislar.index')}}" class="btn btn-outline-warning btn-sm py-6 w-25"> Vazgeç</a>
+                <button type="submit" id="submit-form" class="btn btn-outline-dark btn-sm py-6 w-75"
+                   >
+                    Kaydet</button>
             </div>
 
         </form>

@@ -52,7 +52,7 @@ GİDEN E-FATURALAR
 
                     <div class="col-12 col-lg-1 ms-auto text-end mobile-erp3">
                         <a href="{{ route('gidenefaturalar.create') }}" class="btn btn-outline-dark btn-sm w-100">
-                            <i class="fa-solid fa-plus"></i> Teklif Ekle
+                            <i class="fa-solid fa-plus"></i> Fatura Oluştur
                         </a>
                     </div>
 

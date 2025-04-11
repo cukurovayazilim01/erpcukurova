@@ -19,9 +19,10 @@ return new class extends Migration
             $table->string('gonderi_tipi')->nullable();
             $table->dateTime('gonderi_zamani')->nullable();
             $table->string('gonderi_adi')->nullable();
-            $table->string('gonderi_yeri')->nullable();
             $table->string('gonderi_boyutu')->nullable();
             $table->json('resim')->nullable();
+            $table->text('text')->nullable();
+            $table->string('platforms')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

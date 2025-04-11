@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 @section('title')
-    Alış FATURASI GÜNCELLE
+{{ $alislar->firmaadi->firma_unvan }} SATIŞ FATURASI GÜNCELLE
 @endsection
 @section('contents')
 @section('topheader')

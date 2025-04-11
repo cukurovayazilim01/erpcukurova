@@ -6,63 +6,52 @@
 @section('topheader')
     Alışlar
 @endsection
-<div class="card radius-10">
+<div class="card radius-5">
     <div class="card-header bg-transparent">
-        <div class="row align-items-center">
-
-            <div class="col">
-                <div class="d-flex align-items-center justify-content-end gap-3 ">
+        <div class="row g-2">
+            <div class="col-12 col-lg-5">
+                <div class="d-flex flex-wrap gap-2 justify-content-start">
+                     <!-- Sayfa boyutu seçici -->
+                     <form method="GET" action="{{ route('alislar.index') }}" id="entriesForm">
+                        <select class="form-select form-select-sm" name="entries"
+                            onchange="document.getElementById('entriesForm').submit();">
+                            <option value="10" {{ $perPage == 10 ? 'selected' : '' }}>10</option>
+                            <option value="25" {{ $perPage == 25 ? 'selected' : '' }}>25</option>
+                            <option value="50" {{ $perPage == 50 ? 'selected' : '' }}>50</option>
+                            <option value="100" {{ $perPage == 100 ? 'selected' : '' }}>100</option>
+                        </select>
+                    </form>
                     <form action="{{ route('firmahrktaktaralislar') }}" method="POST">
                         @csrf
                         <button type="submit" class="btn btn-sm btn-success ">Firma Hareketlerine Aktar</button>
                     </form>
-                    <a type="button" href="{{ route('alislar.create') }}"
-                        class="btn btn-sm btn-outline-primary px-5"><i class="fa-solid fa-plus"></i>Yeni Ekle</a>
-                    <div class="dropdown">
-                        <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"
-                            aria-expanded="false"><i class="bx bx-dots-horizontal-rounded font-22 text-option"></i>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="javascript:;">Action</a>
-                            </li>
-                            <li><a class="dropdown-item" href="javascript:;">Another action</a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="javascript:;">Something else here</a>
-                            </li>
-                        </ul>
-                    </div>
+
                 </div>
             </div>
+             <!-- Arama Kutusu -->
+             <div class="col-lg-5 d-flex align-items-center mobile-erp2 justify-content-start">
+                <form class="position-relative" id="searchForm" action="{{ route('alislarsearch') }}" method="GET">
+                    <div class="position-absolute top-50 translate-middle-y search-icon px-3 "><i
+                            class="bi bi-search"></i></div>
+                    <input style="height: 27px;  border-radius: 5px; border-color:#293445 " id="searchInput"
+                        class="form-control ps-5" type="text" placeholder="Ara">
+                </form>
+            </div>
+            <div class="col-12 col-lg-1 ms-auto text-end mobile-erp3">
+
+            <a type="button" href="{{ route('alislar.create') }}"
+            class="btn btn-outline-dark btn-sm w-100"><i class="fa-solid fa-plus"></i>Yeni Ekle</a>
         </div>
+    </div>
     </div>
     <!-- Modal -->
 
 
-    <div class="card-body">
-        <div class="table-responsive">
-            <div class="row">
-                {{-- {{ route(Route::currentRouteName()) }} --}}
+    <div class="card-body" style="border-radius: 5px">
+        <div class="table-responsive" style="border-radius: 5px">
 
-                <form id="searchForm" action="{{route('alislarsearch')}}" method="GET">
-                    <div class="ms-auto position-relative" style="margin-bottom: 10px">
-                        <!-- Arama ikonu -->
-                        <div class="position-absolute top-50 translate-middle-y search-icon fs-5 px-3"
-                            style="color: blue;">
-                            <i class="bi bi-search"></i>
-                        </div>
-                        <!-- Arama inputu -->
-                        <input type="text" id="searchInput" class="form-control ps-5"
-                            style="border: 1px solid blue; height: 38px;" placeholder="Lütfen Arama Terimi Giriniz">
-                    </div>
-                </form>
-
-
-            </div>
-            <table class="table align-middle mb-0" id="example2">
-                <thead class="table-light">
+            <table class="table table-bordered table-hover" id="example2">
+                <thead>
                     <tr>
                         <th scope="col">#</th>
                         <th>Alış Kodu</th>
@@ -86,14 +75,15 @@
                             <td>{{ $alislaritem->aciklama }} </td>
                             <td class="text-right">
                                 <div class="databutton">
-                                    <div class="d-flex align-items-center fs-6">
+                                    <div class="d-flex align-items-center fs-6" style="justify-content: space-evenly; ">
                                         <a href="{{ route('alislar.show', ['alislar' => $alislaritem->id]) }}"
                                             class="text-primary btn btn-link p-0 m-0 " target="_blank">
-                                            <i class="bi bi-eye-fill"></i>
+                                            <i style="color:#293445;  "
+                                                    class="fa-solid fa-wand-magic-sparkles fs-6"></i>
                                         </a>
                                         <a href="{{ route('alislar.edit', ['alislar' => $alislaritem->id]) }}"
                                             class="text-warning btn btn-link p-0 m-0 ">
-                                            <i class="bi bi-pencil-fill"></i>
+                                            <i style="color:#293445" class="fa-solid fa-pen-to-square fs-6"></i>
                                         </a>
                                         <form
                                             action="{{ route('alislar.destroy', ['alislar' => $alislaritem->id]) }}"
@@ -102,7 +92,8 @@
                                             @method('DELETE')
                                             <button type="submit"
                                                 class="btn btn-link text-danger p-0 m-0 show_confirm">
-                                                <i class="bi bi-trash-fill"></i>
+                                                <i style="color: rgb(180, 68, 34)"
+                                                class="fa-solid fa-trash-can fs-6"></i>
                                             </button>
                                         </form>
                                     </div>
