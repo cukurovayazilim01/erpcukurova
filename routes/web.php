@@ -306,9 +306,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('smhesaplarilist',SmhesaplarilistController::class);
 
 
+
+    Route::get('/instagram',[FacebookApiController::class, 'instagram'])->name('instagram');
     Route::get('/facebook/redirect', [FacebookApiController::class, 'redirect']);
     Route::get('/facebook/callback', [FacebookApiController::class, 'callback']);
     Route::post('/facebook/callback', [FacebookApiController::class, 'postToInstagram'])->name('postToInstagram');
+    Route::get('/debug-facebook-url', [FacebookApiController::class, 'debugFacebookUrl']);
+    Route::get('/instagram-data', [FacebookApiController::class, 'getInstagramBusinessData'])->name('getInstagramBusinessData');
 
     //ENTEGRASYONLAR
     Route::get('/entegrasyonmenu',[EntegrasyonController::class,'entegrasyonmenu'])->name('entegrasyonmenu');

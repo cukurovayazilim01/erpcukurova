@@ -377,7 +377,7 @@
                   </div>
                   <small class="mb-0">Çukurova Yazılım</small>
                 </div>
-                <a href="#" class="list-group-item d-flex align-items-center"><i style="font-size: 14px" class="fa-brands fa-instagram"></i>İnstagram</a>
+                <a href="{{route('instagram')}}" class="list-group-item d-flex align-items-center"><i style="font-size: 14px" class="fa-brands fa-instagram"></i>İnstagram</a>
                 <a href="#" class="list-group-item"><i class="fa-brands fa-facebook"></i>Facebook</a>
                 <a href="#" class="list-group-item d-flex align-items-center"><i class="fa-brands fa-square-x-twitter"></i>X</a>
                 <a href="#" class="list-group-item"><i class="fa-brands fa-linkedin"></i>LinkedIn</a>
