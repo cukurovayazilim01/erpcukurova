@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('gonderi_adi')->nullable();
             $table->string('gonderi_boyutu')->nullable();
             $table->json('resim')->nullable();
+            $table->json('video')->nullable();
             $table->text('text')->nullable();
             $table->string('platforms')->nullable();
             $table->softDeletes();

@@ -153,15 +153,10 @@
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-12">
-                                <label for="odeme_yapan">Reels</label>
-                                <div class="input-group mb-2">
-                                    <span class="input-group-text">
-                                        <i class="fa fa-user"></i>
-                                    </span>
-                                    <input type="file" name="video[]" multiple class="form-control form-control-sm"
-                                        required>
-                                </div>
-                            </div>
+
+                            <input type="checkbox" name="isReels" > Reels olarak paylaş
+                        </div>
+
                             <div class="form-group">
                                 <label for="text">Açıklama</label>
                                 <textarea name="text" class="form-control" rows="4" required></textarea>
