@@ -19,6 +19,7 @@ use App\Http\Controllers\GelenefaturalarController;
 use App\Http\Controllers\GidenefaturalarController;
 use App\Http\Controllers\GiderController;
 use App\Http\Controllers\GiderKategoriController;
+use App\Http\Controllers\googleAPI\GoogleController;
 use App\Http\Controllers\GorevlerController;
 use App\Http\Controllers\HizmetlerController;
 use App\Http\Controllers\HizmetlerKategoriController;
@@ -314,6 +315,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/debug-facebook-url', [FacebookApiController::class, 'debugFacebookUrl']);
     Route::get('/instagram-data', [FacebookApiController::class, 'getInstagramBusinessData'])->name('getInstagramBusinessData');
 
+    //googleAPI
+    Route::get('/google/login', [GoogleController::class, 'redirectToGoogle'])->name('google.login');
+    Route::get('/google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('google.callback');
+    
     //ENTEGRASYONLAR
     Route::get('/entegrasyonmenu',[EntegrasyonController::class,'entegrasyonmenu'])->name('entegrasyonmenu');
     Route::get('/smsapi',[EntegrasyonController::class,'smsapi'])->name('smsapi');
