@@ -315,10 +315,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/debug-facebook-url', [FacebookApiController::class, 'debugFacebookUrl']);
     Route::get('/instagram-data', [FacebookApiController::class, 'getInstagramBusinessData'])->name('getInstagramBusinessData');
 
+    Route::post('/instagram/comment/reply', [FacebookApiController::class, 'replyToComment'])->name('instagram.comment.reply');
+    Route::delete('/instagram/comment/delete', [FacebookApiController::class, 'deleteComment'])->name('instagram.comment.delete');
+
+
     //googleAPI
     Route::get('/google/login', [GoogleController::class, 'redirectToGoogle'])->name('google.login');
     Route::get('/google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('google.callback');
-    
+
     //ENTEGRASYONLAR
     Route::get('/entegrasyonmenu',[EntegrasyonController::class,'entegrasyonmenu'])->name('entegrasyonmenu');
     Route::get('/smsapi',[EntegrasyonController::class,'smsapi'])->name('smsapi');
