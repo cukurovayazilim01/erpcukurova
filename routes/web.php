@@ -313,7 +313,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/facebook/callback', [FacebookApiController::class, 'postToInstagram'])->name('postToInstagram');
     Route::get('/debug-facebook-url', [FacebookApiController::class, 'debugFacebookUrl']);
     Route::get('/instagram-data', [FacebookApiController::class, 'getInstagramBusinessData'])->name('getInstagramBusinessData');
-
+    Route::post('/instagram/comment/reply', [FacebookApiController::class, 'replyToComment'])->name('instagram.comment.reply');
+    Route::delete('/instagram/comment/delete', [FacebookApiController::class, 'deleteComment'])->name('instagram.comment.delete');
     //ENTEGRASYONLAR
     Route::get('/entegrasyonmenu',[EntegrasyonController::class,'entegrasyonmenu'])->name('entegrasyonmenu');
     Route::get('/smsapi',[EntegrasyonController::class,'smsapi'])->name('smsapi');
