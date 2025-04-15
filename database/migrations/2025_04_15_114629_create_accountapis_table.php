@@ -11,16 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('smhesaplarilists', function (Blueprint $table) {
+        Schema::create('accountapis', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('islem_yapan')->nullable();
             $table->foreign('islem_yapan')->references('id')->on('users')->onDelete('cascade');
             $table->date('islem_tarihi')->nullable();
+            $table->string('instagram_account_id')->nullable();
             $table->string('account_email')->nullable();
-            $table->string('account_name');
-            $table->string('display_name');
-            $table->json('access_token');
+            $table->string('account_name')->nullable();
+            $table->string('display_name')->nullable();
+            $table->json('access_token')->nullable();
             $table->string('refresh_token')->nullable();
+            $table->string('status')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
@@ -31,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('smhesaplarilists');
+        Schema::dropIfExists('accountapis');
     }
 };
