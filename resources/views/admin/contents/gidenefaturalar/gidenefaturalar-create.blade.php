@@ -147,7 +147,7 @@
                                 <span class="icon">
                                     <i class="fa fa-folder"></i>
                                 </span>
-                                <select name="fatura_tipi" id="fatura_tipi" class="form-select form-select-sm">
+                                <select name="efatura_tipi" id="efatura_tipi" class="form-select form-select-sm">
                                     <option value="SATIS">Satış Faturası</option>
                                     <option value="IADE">İade Faturası</option>
                                     <option value="ISTISNA">İstisna Faturası</option>

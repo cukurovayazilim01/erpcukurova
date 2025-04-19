@@ -153,10 +153,37 @@
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-12">
+                                 <label for="odeme_yapan">Gönderi Tipi</label>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+<select name="gonderi_tipi" id="gonderi_tipi" class="form-control form-control-sm" required>
+            <option value="normal">Tekli Gönderi</option>
+            <option value="isReels">Reels</option>
+            <option value="isCarousel">Carousel (Çoklu Foto/Video)</option>
 
-                            <input type="checkbox" name="isReels" > Reels olarak paylaş
-                        </div>
-
+        </select>
+        </div>
+                       </div>
+                       <div class="col-md-4 col-sm-12">
+ <label for="accountapi_id">Instagram Hesabı:</label>
+                       <select name="accountapi_id" class="form-control" required>
+                           @foreach(\App\Models\accountapi::where('platform_tipi', 'İnstagram')->get() as $account)
+                               <option value="{{ $account->id }}">
+                                   {{ $account->account_name }} ({{ Str::limit($account->instagram_account_id, 10) }})
+                               </option>
+                           @endforeach
+                       </select>
+                                                   </div>
+                                                   <div class="col-md-4 col-sm-12">
+                                                   <label>Hesap Seç:</label>
+    <select name="accountapi_id">
+        @foreach(\App\Models\accountapi::where('platform_tipi', 'Instagram')->get() as $acc)
+            <option value="{{ $acc->id }}">{{ $acc->account_name }}</option>
+        @endforeach
+    </select>
+    </div>
                             <div class="form-group">
                                 <label for="text">Açıklama</label>
                                 <textarea name="text" class="form-control" rows="4" required></textarea>
@@ -167,20 +194,20 @@
         </div>
 
 
-        <div>
-            <label for="image_url">Resim URL:</label>
-            <input type="text" name="image_url" id="image_url" placeholder="https://...">
-        </div>
+        <!--<div>-->
+        <!--    <label for="image_url">Resim URL:</label>-->
+        <!--    <input type="text" name="image_url" id="image_url" placeholder="https://...">-->
+        <!--</div>-->
 
-        <div>
-            <label for="caption">Açıklama (Caption):</label>
-            <input type="text" name="caption" id="caption" placeholder="#etiket yaz">
-        </div>
+        <!--<div>-->
+        <!--    <label for="caption">Açıklama (Caption):</label>-->
+        <!--    <input type="text" name="caption" id="caption" placeholder="#etiket yaz">-->
+        <!--</div>-->
 
-        <div>
-            <label for="alt_text">Alt Metin:</label>
-            <input type="text" name="alt_text" id="alt_text" placeholder="Açıklayıcı alternatif metin">
-        </div>
+        <!--<div>-->
+        <!--    <label for="alt_text">Alt Metin:</label>-->
+        <!--    <input type="text" name="alt_text" id="alt_text" placeholder="Açıklayıcı alternatif metin">-->
+        <!--</div>-->
 
         <button type="submit" class="btn p-0 m-0">
             <i style="color: rgb(180, 68, 34)" class="fa-solid fa-paper-plane fs-6"></i>

@@ -57,7 +57,7 @@
             </div>
 
             <!-- Teklif Ekle Butonu -->
-            <div class="col-12 col-lg-1 ms-auto text-end mobile-erp3">
+            <div class=" col-lg-1 col-md-2 ms-auto text-end mobile-erp3">
                 <a href="{{ route('teklifler.create') }}" class="btn btn-outline-dark btn-sm w-100">
                     <i class="fa-solid fa-plus"></i> Teklif Ekle
                 </a>
