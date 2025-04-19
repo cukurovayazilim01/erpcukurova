@@ -48,16 +48,15 @@
                 </div>
 
                 <div class="col-lg-4 d-flex align-items-center mobile-erp2 justify-content-center">
-                    <form class="position-relative" id="searchForm" action="{{ route('carilersearch') }}"
-                        method="GET">
-                        <div class="position-absolute top-50 translate-middle-y search-icon px-3 "><i
-                                class="bi bi-search"></i></div>
-                        <input style="height: 27px;  border-radius: 5px; border-color:#293445 " id="searchInput"
-                            class="form-control ps-5" type="text" placeholder="Ara">
-                    </form>
+                    <form id="searchForm" action="{{ route('carilersearch') }}"  method="GET">
+                        <div class="ms-auto position-relative">
+                            <div class="position-absolute top-50 translate-middle-y search-icon px-3"><i class="bi bi-search"></i></div>
+                            <input class="form-control ps-5" id="searchInput" type="text" placeholder="Genel Arama">
+                          </div>
+                        </form>
                 </div>
                 <div class="col-lg-4 ms-auto mobile-erp3 text-end">
-                    <button type="button" class="btn btn-outline-dark btn-sm " data-bs-toggle="modal"
+                    <button type="button" class="btn btn-outline-dark btn-sm mx-0 mx-lg-2" data-bs-toggle="modal"
                         data-bs-target="#carilermodal"> <i class="fa-solid fa-plus"></i> Yeni Ekle</button>
 
                 </div>

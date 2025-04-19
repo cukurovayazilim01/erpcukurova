@@ -9,26 +9,29 @@ Personel Listesi
 <div class="card radius-10">
     <div class="card-header bg-transparent">
         <div class="row g-3 align-items-center">
-            <div class="col">
-                <div class="d-flex align-items-center justify-content-end gap-3">
-                 <form id="searchForm" action="{{ route('personelsearch') }}"  method="GET">
-                    <div class="ms-auto position-relative">
-                        <div class="position-absolute top-50 translate-middle-y search-icon fs-5 px-3"><i class="bi bi-search"></i></div>
-                        <input class="form-control ps-5" id="searchInput" type="text" placeholder="Genel Arama">
-                      </div>
-                    </form>
-                    <div class="table-buttons">
-                        <button class="btn btn-primary" id="copyBtn"><i class="fa fa-copy"></i> </button>
-                        <button class="btn btn-success" id="excelBtn"><i class="fa fa-file-excel"></i> </button>
-                        <button class="btn btn-danger" id="pdfBtn"><i class="fa fa-file-pdf"></i> </button>
-                        <button class="btn btn-warning" id="printBtn"><i class="fa fa-print"></i> </button>
+            <div class="d-flex align-items-center justify-content-between gap-1 mobile-erp">
+                <div class=" col-md-4 mr-4  d-flex gap-2">
+                        <button class="btn btn-outline-dark" id="copyBtn"><i class="fa-solid fa-clone"></i> </button>
+                        <button class="btn btn-outline-dark" id="excelBtn"><i class="fa-solid fa-file-excel"></i> </button>
+                        <button class="btn btn-outline-dark" id="pdfBtn"><i class="fa-solid fa-file-pdf"></i> </button>
+                        <button class="btn btn-outline-dark" id="printBtn"><i class="fa fa-print"></i> </button>
                         <!-- Yeni Ekle Button -->
-                    </div>
-                    <button type="button" class="btn btn-sm btn-outline-primary px-5" data-bs-toggle="modal"
-                        data-bs-target="#personelmodal"><i class="fa-solid fa-plus"></i>Yeni Ekle</button>
-
                 </div>
-            </div>
+                <div class="col-lg-4 d-flex align-items-center mobile-erp2 justify-content-center">
+                    <form id="searchForm" action="{{ route('personelsearch') }}"  method="GET">
+                        <div class="ms-auto position-relative">
+                            <div class="position-absolute top-50 translate-middle-y search-icon px-3"><i class="bi bi-search"></i></div>
+                            <input class="form-control ps-5" id="searchInput" type="text" placeholder="Genel Arama">
+                          </div>
+                        </form>
+                </div>
+                <div class="col-lg-4 ms-auto mobile-erp3 text-end">
+                    <button type="button" class="btn btn-outline-dark btn-sm mx-0 mx-lg-2"  data-bs-toggle="modal"
+                    data-bs-target="#personelmodal"><i class="fa-solid fa-plus"></i>Yeni Ekle</button>
+                </div>
+
+
+        </div>
         </div>
     </div>
     <!-- Modal -->
