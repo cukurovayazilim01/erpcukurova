@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('display_name')->nullable();
             $table->json('access_token')->nullable();
             $table->string('refresh_token')->nullable();
+            $table->string('platform_tipi')->nullable();
             $table->string('status')->nullable();
             $table->softDeletes();
             $table->timestamps();

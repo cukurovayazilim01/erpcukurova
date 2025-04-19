@@ -43,7 +43,7 @@
 
                         <div class="row" style="padding: 0 5rem; display: flex; justify-content: center">
                             <div class="col-lg-4" style="position: relative;">
-                                <a href="#">
+                                <a href="{{route('facebook.redirect')}}">
                                 <div class="card radius-5 card-container">
                                     <div class="card-body text-center">
                                             <div class="col-md-12">
@@ -196,33 +196,39 @@
                         <th style="color: white">Bağlı Mail</th>
                         <th style="color: white">Bağlı Telefon</th>
                         <th style="color: white">Sorumlu Personel</th>
+                        <th style="color: white">Durum</th>
 
                         <th style="color: white">Aksiyon</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($smhesaplarilist as $sn => $smhesaplarilistitem)
+                    @foreach ($account as $sn => $accountitem)
                         <tr>
                             <td scope="row">{{ $sn + 1 }}</td>
                             <td>
-                                {{ $smhesaplarilistitem->hesap_adi }}
+                                {{ $accountitem->account_name }}
                             </td>
-                            @if ($smhesaplarilistitem->platform == 'İnstagram')
+                            @if ($accountitem->platform_tipi == 'İnstagram')
                                 <td><i class="fa-brands fa-instagram" style="color: #E1306C; font-size: 25px"></i></td>
-                            @elseif ($smhesaplarilistitem->platform == 'Facebook')
+                            @elseif ($accountitem->platform_tipi == 'Facebook')
                                 <td><i class="fa-brands fa-facebook-f" style="color: #1877F2; font-size: 25px"></i></td>
-                            @elseif ($smhesaplarilistitem->platform == 'X')
+                            @elseif ($accountitem->platform_tipi == 'X')
                                 <td><i class="fa-brands fa-x-twitter" style="color: #000000; font-size: 25px"></i></td>
-                            @elseif ($smhesaplarilistitem->platform == 'LinkedIn')
+                            @elseif ($accountitem->platform_tipi == 'LinkedIn')
                                 <td><i class="fa-brands fa-linkedin-in" style="color: #0077B5; font-size: 25px"></i>
                                 </td>
                             @else
                                 <td><i class="fa-solid fa-question" style="color: #666666; font-size: 25px"></i></td>
                             @endif
-                            <td>{{ $smhesaplarilistitem->acilis_tarihi }}</td>
-                            <td>{{ $smhesaplarilistitem->mail }}</td>
-                            <td>{{ $smhesaplarilistitem->telefon }}</td>
-                            <td>{{ $smhesaplarilistitem->personel->ad_soyad }}</td>
+                            <td>{{ $accountitem->acilis_tarihi }}</td>
+                            <td>{{ $accountitem->mail }}</td>
+                            <td>{{ $accountitem->telefon }}</td>
+                            <td>{{ $accountitem->adsoyad->ad_soyad }}</td>
+                            <td>@if ($accountitem->status === 'Aktif')
+                                <span class="badge bg-success">{{ $accountitem->status }}</span>
+                                @elseif($accountitem->status === 'Pasif')
+                                <span class="badge bg-danger">{{ $accountitem->status }}</span>
+                                @endif</td>
 
 
 
@@ -230,13 +236,13 @@
                                 <div class="databutton">
                                     <div class="d-flex align-items-center fs-6" style="justify-content: space-evenly; ">
                                         <button data-bs-toggle="modal"
-                                            data-bs-target="#smhesaplarilistupdateModal-{{ $smhesaplarilistitem->id }}">
+                                            data-bs-target="#smhesaplarilistupdateModal-{{ $accountitem->id }}">
                                             <i style="color:#293445" class="fa-solid fa-pen-to-square fs-6"></i>
                                         </button>
                                         @include('admin.contents.smhesaplarilist.smhesaplarilist-update')
 
                                         <form
-                                            action="{{ route('smhesaplarilist.destroy', ['smhesaplarilist' => $smhesaplarilistitem->id]) }}"
+                                            action="{{ route('smhesaplarilist.destroy', ['smhesaplarilist' => $accountitem->id]) }}"
                                             method="POST" style="display: inline;">
                                             @csrf
                                             @method('DELETE')

@@ -5,12 +5,14 @@ use App\Http\Controllers\AlislarController;
 use App\Http\Controllers\AramalarController;
 use App\Http\Controllers\auth\LoginController;
 use App\Http\Controllers\auth\RegisterController;
+use App\Http\Controllers\bankaAPI\KuveytTurkVPosController;
 use App\Http\Controllers\BankalarController;
 use App\Http\Controllers\CarilerController;
 use App\Http\Controllers\CeksenetController;
 use App\Http\Controllers\DokumanController;
 use App\Http\Controllers\DomainhizmetController;
 use App\Http\Controllers\DomaintakipController;
+use App\Http\Controllers\InstagramApiController;
 use App\Http\Controllers\EntegrasyonController;
 use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\FacebookApiController;
@@ -62,6 +64,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LoginController::class, 'index'])->name('admin.login');
 Route::post('/userlogin', [LoginController::class, 'userlogin'])->name('user.login');
+
+
+
 
 
 Route::group(['middleware' => ['auth']], function () {
@@ -309,7 +314,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     Route::get('/instagram',[FacebookApiController::class, 'instagram'])->name('instagram');
-    Route::get('/facebook/redirect', [FacebookApiController::class, 'redirect']);
+    Route::get('/facebook/redirect', [FacebookApiController::class, 'redirect'])->name('facebook.redirect');
     Route::get('/facebook/callback', [FacebookApiController::class, 'callback']);
     Route::post('/facebook/callback', [FacebookApiController::class, 'postToInstagram'])->name('postToInstagram');
     Route::get('/debug-facebook-url', [FacebookApiController::class, 'debugFacebookUrl']);
@@ -319,9 +324,19 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('/instagram/comment/delete', [FacebookApiController::class, 'deleteComment'])->name('instagram.comment.delete');
 
 
+    //INSTAGRAMAPI
+
+
+    Route::get('/instagram/login', [InstagramApiController::class, 'redirect'])->name('instagram.redirect');
+Route::get('/instagram/callback', [InstagramApiController::class, 'callback'])->name('instagram.callback');
+Route::post('/instagram/post', [InstagramApiController::class, 'post'])->name('instagram.post');
+
+
     //googleAPI
     Route::get('/google/login', [GoogleController::class, 'redirectToGoogle'])->name('google.login');
     Route::get('/google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('google.callback');
+
+       Route::get('/onlinetahsilat', [PageController::class, 'onlinetahsilat'])->name('onlinetahsilat.index');
 
     //ENTEGRASYONLAR
     Route::get('/entegrasyonmenu',[EntegrasyonController::class,'entegrasyonmenu'])->name('entegrasyonmenu');

@@ -4,12 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\Cariler;
 use App\Models\Efaturaapi;
+use App\Models\Efaturalar;
+use App\Models\Efaturalardata;
 use App\Models\Gidenefaturalar;
 use App\Models\Hizmetler;
 use App\Models\Hizmetlerkategori;
 use App\Models\User;
+use Carbon\Carbon;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
 class GidenefaturalarController extends Controller
@@ -25,9 +30,9 @@ class GidenefaturalarController extends Controller
         $response = Http::withHeaders([
             'Content-Type' => 'application/json',
         ])->post('https://api.mimsoft.com.tr/v1.0/account/auth', [
-                    'username' => $efaturaApi->rf_kullanici_adi,
-                    'password' => $efaturaApi->rf_sifre,
-                ]);
+            'username' => $efaturaApi->rf_kullanici_adi,
+            'password' => $efaturaApi->rf_sifre,
+        ]);
 
 
         return $response->json();
@@ -77,87 +82,126 @@ class GidenefaturalarController extends Controller
         }
     }
 
+
+
     public function createInvoice(Request $request)
     {
-        $apiUrl = 'https://apidemo.rahatsistem.com.tr/v2/documents/invoice.create';
-        $apiKey = '865a41ca-8ff0-487a-99e0-cb0953673599';
+        $efaturaApi = Efaturaapi::first();
 
-        $data = [
-            "draft" => true,
-            "document" => [
-                "External" => [
-                    "ID" => "string",
-                    "RefNo" => "MEA11152",
-                    "Type" => "Müthiş Entegre App"
-                ],
-                "Type" => $request->input('fatura_tipi'),
-                "Profile" => $request->input('fatura_turu'),
-                "NumberOrSerie" => "RS",
-                "UUID" => "",
-                "IssueDateTime" => "string",
-                "Notes" => ["string"],
-                "CurrencyCode" => "TRY",
-                "ExchangeRate" => 0,
-                "TaxExemptions" => ["KDV" => 322],
-                "Order" => ["Date" => "2023-10-19", "Value" => "SIP0001"],
-                "Despatches" => [["Date" => "2023-10-19", "Value" => "IRS0001"]],
-                "Customer" => [
-                    "TaxNumber" => $request->input('vergi_no'),
-                    "TaxOffice" => $request->input('vergi_dairesi'),
-                    "Name" => $request->input('firma_unvan'),
-                    "Alias" => "string",
-                    "Address" => $request->input('adres'),
-                    "District" => $request->input('ilce'),
-                    "City" => $request->input('il'),
-                    "Country" => "TÜRKİYE",
-                    "PostalCode" => "string",
-                    "Phone" => $request->input('is_tel'),
-                    "Fax" => "string",
-                    "Mail" => $request->input('eposta'),
-                    "Website" => "string"
-                ],
-                "Lines" => []
-            ]
-        ];
+        if (!$efaturaApi || empty($efaturaApi->rf_token)) {
+            return back()->with('error', 'Efatura entegrasyon bilgileri eksik!');
+        }
 
-        foreach ($request->input('inputs', []) as $input) {
-            $data["document"]["Lines"][] = [
-                "Name" => $input['hizmet_adi'] ?? '',
-                "Quantity" => isset($input['miktar']) ? (float) $input['miktar'] : 0,
-                "UnitCode" => isset($input['birim']) ? strtoupper($input['birim']) : 'ADET',
-                "Price" => isset($input['birim_fiyat']) ? (float) $input['birim_fiyat'] : 0,
+        // Fatura no
+        $nextFaturaNo = Efaturalar::max('fatura_no') ?? 0;
+
+        // Yeni fatura kaydı
+        $efaturalar = new Efaturalar();
+        $efaturalar->fatura_no_text = 'EF';
+        $efaturalar->fatura_no = $nextFaturaNo + 1;
+        $efaturalar->islem_yapan = Auth::id();
+        $efaturalar->islem_tarihi = now();
+        $efaturalar->fatura_tarihi = $request->fatura_tarihi;
+        $efaturalar->cari_id = $request->cari_id;
+        $efaturalar->user_id = Auth::id();
+        $efaturalar->vkn = $request->vergi_no;
+        $efaturalar->tckimlikno = $request->tc_kimlik;
+        $efaturalar->vergidairesi = $request->vergi_dairesi;
+        $efaturalar->il = $request->il;
+        $efaturalar->ilce = $request->ilce;
+        $efaturalar->efatura_tipi = $request->efatura_tipi;
+        $efaturalar->kdv_toplam = $request->toplam_kdv_tutar;
+        $efaturalar->ara_toplam = $request->toplam_ara_toplam;
+        $efaturalar->iskonto_toplam = $request->toplam_iskonto;
+        $efaturalar->toplam_tutar = $request->toplam_tutar;
+        $efaturalar->save();
+
+        if (!$request->has('inputs') || empty($request->inputs)) {
+            return back()->with('error', 'Fatura detayları eksik!');
+        }
+
+        $lines = [];
+        foreach ($request->inputs as $input) {
+            $efaturalardata = new Efaturalardata();
+            $efaturalardata->efatura_id = $efaturalar->id;
+            $efaturalardata->hizmet_adi = $input['hizmet_adi'];
+            $efaturalardata->aciklama = $input['aciklama'];
+            $efaturalardata->miktar = floatval($input['miktar']);
+            $efaturalardata->birim = $input['birim'];
+            $efaturalardata->fiyat = floatval($input['birim_fiyat']);
+            $efaturalardata->kdv_oran = floatval($input['kdv_oran']);
+            $efaturalardata->kdv_tutar = $input['kdv_tutar'];
+            $efaturalardata->kdvsiztutar = $input['kdvsiztutar'];
+            $efaturalardata->iskonto = $input['iskonto'];
+            $efaturalardata->toplam_fiyat = $input['tutar'];
+            $efaturalardata->save();
+
+            $lines[] = [
+                "Name" => $efaturalardata->hizmet_adi,
+                "Quantity" => $efaturalardata->miktar,
+                "UnitCode" => "C62",
+                "Price" => $efaturalardata->fiyat,
                 "KDV" => [
-                    "Percent" => isset($input['kdv_oran']) ? (float) $input['kdv_oran'] : 0,
-                    "Amount" => isset($input['kdv_tutar']) ? (float) $input['kdv_tutar'] : 0
+                    "Percent" => $efaturalardata->kdv_oran
                 ],
                 "Allowance" => [
-                    "Percent" => isset($input['iskonto']) ? (float) $input['iskonto'] : 0,
-                    "Price" => 0
+                    "Price" => floatval($efaturalardata->iskonto)
                 ],
-                "WithholdingTax" => [
-                    "Code" => 621
-                ],
-                "Taxes" => [
-                    [
-                        "Percent" => isset($input['kdv_oran']) ? (float) $input['kdv_oran'] : 0,
-                        "Code" => "0053"
-                    ]
+                "AdditionalNames" => [
+                    "Description" => $efaturalardata->aciklama
                 ]
             ];
         }
 
+        $taxNumber = $request->vergi_no ?: $request->tc_kimlik;
 
-        $response = Http::withHeaders([
-            'Content-Type' => 'application/json',
-            'x-api-key' => $apiKey
-        ])->post($apiUrl, $data);
+        $body = [
+            "draft" => "true",
+            "integrator" => "mimsoft",
+            "document" => [
+                "External" => [
+                    "ID" => $efaturalar->id,
+                    "RefNo" => $efaturalar->fatura_no
+                ],
+                "IssueDateTime" => now()->format('Y-m-d\TH:i:s'),
+                "Type" => $efaturalar->efatura_tipi,
+                "TaxExemptions" => [
+                    "KDV" => 350
+                ],
+                "Notes" => new \stdClass(),
+                "Customer" => [
+                    "TaxNumber" => $taxNumber,
+                    "TaxOffice" => $request->vergi_dairesi,
+                    "Name" => $request->firma_unvan,
+                    "Address" => $request->ilce . ' ' . $request->il . ' ' . $request->adres,
+                    "District" => $request->ilce,
+                    "City" => $request->il,
+                    "Country" => "TÜRKİYE",
+                    "PostalCode" => "",
+                    "Phone" => $request->is_tel,
+                    "Mail" => $request->eposta
+                ],
+                "Lines" => $lines
+            ]
+        ];
 
-        if ($response->successful()) {
-            return $response->json();
-        } else {
-            return $response->body();
+        try {
+            $response = Http::withHeaders([
+                'api-key' => $efaturaApi->rf_token,
+                'Content-Type' => 'application/json',
+            ])->post('https://apidemo.rahatsistem.com.tr/v2/documents/invoice.create', $body);
+
+            if ($response->successful()) {
+                return back()->with('success', 'Fatura başarıyla kesildi!');
+            } else {
+                return back()->with('error', 'API Hatası: ' . $response->body());
+            }
+        } catch (\Exception $e) {
+            return back()->with('error', 'Fatura API isteğinde hata: ' . $e->getMessage());
         }
     }
+
+
 
     public function getMusteri($vkn)
     {

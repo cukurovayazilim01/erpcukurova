@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\accountapi;
 use App\Models\Personel;
 use App\Models\Smhesaplarilist;
 use Carbon\Carbon;
@@ -17,8 +18,8 @@ class SmhesaplarilistController extends Controller
     {
         $smhesaplarilist = Smhesaplarilist::all();
         $personel = Personel::all();
-
-        return view("admin.contents.smhesaplarilist.smhesaplarilist", compact("smhesaplarilist",'personel'));
+        $account = accountapi::where('status','Aktif')->get();
+        return view("admin.contents.smhesaplarilist.smhesaplarilist", compact("smhesaplarilist",'personel','account'));
     }
 
     /**

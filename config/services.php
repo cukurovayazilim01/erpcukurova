@@ -42,5 +42,10 @@ return [
     'client_secret' => env('GOOGLE_CLIENT_SECRET'),
     'redirect' => env('GOOGLE_REDIRECT_URI'),
 ],
+'instagram' => [
+    'client_id' => env('INSTAGRAM_CLIENT_ID'),
+    'client_secret' => env('INSTAGRAM_CLIENT_SECRET'),
+    'redirect' => env('INSTAGRAM_REDIRECT_URI'),
+],
 
 ];
