@@ -6,36 +6,22 @@ Değerlendirme Kriterleri
 @section('topheader')
 Değerlendirme Kriterleri
 @endsection
-<div class="card">
+<div class="card radius-5">
     <div class="card-header bg-transparent">
-        <div class="row g-3 align-items-center">
-            <div class="col">
-                <div class="d-flex align-items-center justify-content-between gap-3">
+        <div class="row ">
+                <div class="d-flex align-items-center justify-content-between gap-1 mobile-erp">
 
-                    <div class="ms-auto">
-                        <button type="button" class="btn btn-sm btn-outline-primary px-5" data-bs-toggle="modal" data-bs-target="#kasaeklemodal">
-                            <i class="fa-solid fa-plus"></i> Yeni Ekle
-                        </button>
+
+                    <div class="col-lg-4 ms-auto mobile-erp3 text-end">
+                        <button type="button" class="btn btn-outline-dark btn-sm mx-0 mx-lg-2" data-bs-toggle="modal"
+                            data-bs-target="#kasaeklemodal"> <i class="fa-solid fa-plus"></i> Yeni Ekle</button>
+
                     </div>
 
-                    <div class="dropdown">
-                        <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            <i class="bx bx-dots-horizontal-rounded font-22 text-option"></i>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="javascript:;">Action</a></li>
-                            <li><a class="dropdown-item" href="javascript:;">Another action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="javascript:;">Something else here</a></li>
-                        </ul>
-                    </div>
+
                 </div>
             </div>
         </div>
-    </div>
     <!-- Modal -->
     <div class="modal fade" id="kasaeklemodal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -43,7 +29,7 @@ Değerlendirme Kriterleri
                 @csrf
                 <div class="modal-content">
                     <!-- Modal Header -->
-                    <div class="modal-header bg-primary text-white">
+                    <div class="modal-header ">
                         <h5 class="modal-title">Değerleme Kriterleri Kayıt Ekranı</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
@@ -56,8 +42,8 @@ Değerlendirme Kriterleri
                             <div class="hizmet-item d-flex align-items-center">
                                 <div class="col-md-6">
                                     <label for="hizmet_adi">Kriter</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-cogs"></i>
                                         </span>
                                         <input type="text" name="inputs[0][kriter]"
@@ -67,11 +53,11 @@ Değerlendirme Kriterleri
                                 </div>
                                 <div class="col-md-6">
                                     <label for="durum">Durum</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-check"></i>
                                         </span>
-                                        <select name="inputs[0][durum]" id="inputs[0][durum]" class="form-select form-select-sm">
+                                        <select name="inputs[0][durum]" id="inputs[0][durum]" class="form-control form-control-sm">
                                             <option value="Aktif">Aktif</option>
                                             <option value="Pasif">Pasif</option>
                                         </select>
@@ -104,7 +90,7 @@ Değerlendirme Kriterleri
             <div class="col-md-12">
                 <table class="table align-middle mb-0 dataTable" id="example2" role="grid"
                     aria-describedby="example_info">
-                    <thead class="table-light">
+                    <thead >
                         <tr>
                             <th scope="col">#</th>
                             <th>Kriterler</th>
@@ -169,8 +155,8 @@ Değerlendirme Kriterleri
         newRow.innerHTML = `
              <div class="col-md-6">
                                     <label for="hizmet_adi">Kriter</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-cogs"></i>
                                         </span>
                                         <input type="text" name="inputs[${rowIndex}][kriter]"
@@ -180,11 +166,11 @@ Değerlendirme Kriterleri
                                 </div>
                                    <div class="col-md-6">
                                     <label for="durum">Durum</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-check"></i>
                                         </span>
-                                        <select name="inputs[${rowIndex}][durum]" id="inputs[${rowIndex}][durum]" class="form-select form-select-sm">
+                                        <select name="inputs[${rowIndex}][durum]" id="inputs[${rowIndex}][durum]" class="form-control form-control-sm">
                                             <option value="Aktif">Aktif</option>
                                             <option value="Pasif">Pasif</option>
                                         </select>

@@ -7,22 +7,7 @@ PERSONEL PERFORMANS DEĞERLEME
 PERSONEL PERFORMANS DEĞERLEME
 @endsection
 <div class="card">
-    {{-- <div class="card-header bg-transparent">
-        <div class="row g-3 align-items-center">
-            <div class="col">
-                <div class="d-flex align-items-center justify-content-between gap-3">
 
-                    <div class="ms-auto">
-                        <button type="button" class="btn btn-sm btn-outline-primary px-5" data-bs-toggle="modal" data-bs-target="#kasaeklemodal">
-                            <i class="fa-solid fa-plus"></i> Yeni Ekle
-                        </button>
-                    </div>
-
-
-                </div>
-            </div>
-        </div>
-    </div> --}}
     <!-- Modal -->
     <div class="modal fade" id="kasaeklemodal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -43,8 +28,8 @@ PERSONEL PERFORMANS DEĞERLEME
                             <div class="hizmet-item d-flex align-items-center">
                                 <div class="col-md-12">
                                     <label for="hizmet_adi">Kriter</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-cogs"></i>
                                         </span>
                                         <input type="text" name="inputs[0][kriter]"
@@ -76,9 +61,9 @@ PERSONEL PERFORMANS DEĞERLEME
     <div class="card-body">
         <div class="row">
             <div class="col-md-12">
-                <table class="table align-middle mb-0 dataTable" id="example2" role="grid"
+                <table class="table table-bordered table-striped" id="example2" role="grid" style="width:100%;  "
                     aria-describedby="example_info">
-                    <thead class="table-light">
+                    <thead >
                         <tr>
                             <th scope="col">#</th>
                             <th>Personel Adı</th>

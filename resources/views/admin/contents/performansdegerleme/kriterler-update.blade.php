@@ -20,8 +20,8 @@
 
                             <div class="col-md-6">
                                 <label for="kasa_adi">Kriter</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa-solid fa-inbox"></i>
                                     </span>
                                     <input type="text" name="kriter" id="kriter"
@@ -30,8 +30,8 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="durum">Durum</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa-solid fa-check"></i>
                                     </span>
                                     <select name="durum" id="durum" class="form-select form-select-sm "

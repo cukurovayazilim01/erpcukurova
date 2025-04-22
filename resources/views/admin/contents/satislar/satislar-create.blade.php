@@ -104,7 +104,7 @@ SATIŞ OLUŞTUR
             </button>
             <div class="table-responsive" style="border-radius: 5px">
 
-                <table id="table" class="table table-bordered table-hover"
+                <table id="table" class="table table-bordered table-striped"
                 style="width:100% ">
 
                     <thead>

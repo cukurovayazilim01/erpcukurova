@@ -136,7 +136,7 @@ Tahsilat Plan
 
         <div class="card-body" style="border-radius: 5px">
             <div class="table-responsive" style="border-radius: 5px">
-                <table class="table table-bordered table-hover" id="example2">
+                <table class="table table-bordered table-striped" id="example2">
                     <thead>
                         <tr>
                             <th scope="col">#</th>

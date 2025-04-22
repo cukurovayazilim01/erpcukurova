@@ -76,8 +76,8 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="personel_id">Sorumlu Personel</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-user"></i>
                                     </span>
                                     <select name="personel_id" id="personel_id" class="form-select form-select-sm" required>

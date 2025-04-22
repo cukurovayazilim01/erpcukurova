@@ -37,8 +37,8 @@ Toplu SMS
                             <div class="row">
                                 <div class="col-md-12">
                                     <label for="firma_sektor">Firma Sektörü</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-building"></i>
                                         </span>
                                         <select name="firma_sektor" id="firma_sektor" class="form-select form-select-sm"

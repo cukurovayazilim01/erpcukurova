@@ -63,38 +63,42 @@ class TescilnoksanController extends Controller
     }
 
     public function tescilnoksansearch(Request $request)
-    {
-        $tescilnoksansearch = $request->input('tescilnoksansearch');
+{
+    $tescilnoksansearch = $request->input('tescilnoksansearch');
+    $perPage = 15;
+    $page = $request->query('page', 1);
 
-        // Eğer arama yapılmışsa
-        if ($tescilnoksansearch) {
-            $tescilnoksan = Tescilnoksan::orderByDesc('id')
-            ->where('firma_adi', 'like', '%' . $tescilnoksansearch . '%')
-            ->paginate(50);
+    // Ana sorgu
+    $query = Tescilnoksan::orderByDesc('id');
 
+    // Arama varsa filtre uygula
+    if (!empty($tescilnoksansearch) && mb_strlen($tescilnoksansearch, 'UTF-8') >= 2) {
+        $loweredSearch = mb_strtolower($tescilnoksansearch, 'UTF-8');
 
-            // Sayfa numarasını hesapla
-            $page = $request->query('page', 1);
-            $perPage = 50;
-            $startNumber = $tescilnoksan->total() - (($page - 1) * $perPage);
-
-            $user = User::all();
-
-            // Arama sonucu varsa ve AJAX isteği ise arama sonucunu döndür
-            if ($request->ajax()) {
-                return view('admin.contents.tescilnoksan.tescilnoksan-search', compact('tescilnoksan', 'startNumber', 'user'));
-            }
-
-            // Normal sayfa için arama sonucu döndür
-            return view('admin.contents.tescilnoksan.tescilnoksan', compact('tescilnoksan', 'startNumber', 'user'));
-        }
-
-        // Arama yapılmamışsa ana sayfayı döndür
-        return view('admin.contents.tescilnoksan.tescilnoksan');
+        $query->where(function ($q) use ($loweredSearch) {
+            $q->whereRaw('LOWER(firma_adi) LIKE ?', ["%{$loweredSearch}%"])
+              ->orWhereRaw('LOWER(marka_adi) LIKE ?', ["%{$loweredSearch}%"])
+              ->orWhereRaw('LOWER(satis_temsilcisi) LIKE ?', ["%{$loweredSearch}%"]);
+        });
     }
+
+    // Verileri çek
+    $tescilnoksan = $query->paginate($perPage);
+    $startNumber = $tescilnoksan->total() - (($page - 1) * $perPage);
+    $user = User::all();
+
+    // AJAX isteği ise parça view döndür
+    if ($request->ajax()) {
+        return view('admin.contents.tescilnoksan.tescilnoksan-search', compact('tescilnoksan', 'startNumber', 'user'));
+    }
+
+    // Normal sayfa
+    return view('admin.contents.tescilnoksan.tescilnoksan', compact('tescilnoksan', 'startNumber', 'user'));
+}
+
     public function index(Request $request)
     {
-        $perPage = $request->input('entries', 20);
+        $perPage = $request->input('entries', 15);
 
         $tescilnoksan = Tescilnoksan::orderByDesc('id')->paginate($perPage);
 

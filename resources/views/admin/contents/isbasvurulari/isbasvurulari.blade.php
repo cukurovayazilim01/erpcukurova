@@ -6,40 +6,38 @@
     @section('topheader')
         İş Başvuruları
     @endsection
-    <div class="card radius-10">
+    <d+iv class="card radius-10">
         <div class="card-header bg-transparent">
             <div class="row g-3 align-items-center">
-                <div class="col-md-3">
-                    <a href="{{asset('gereklidosyalar/isbasvuruformu.doc')}}" download="" type="button"
-                        class="btn btn-sm btn-outline-danger">
-                        <i class="fa-solid fa-file-pdf"></i>İş Başvuru Formu İndir</a>
-                    <a href="{{route('isbasvurularilist')}}" type="button" class="btn btn-sm btn-outline-success">Tüm İş
-                        Başvuruları</a>
-                </div>
-
-                <div class="col-md-9">
-                    <div class="d-flex align-items-center justify-content-end gap-3">
-                        <div class="table-buttons">
-                            <button class="btn btn-primary" id="copyBtn"><i class="fa fa-copy"></i> </button>
-                            <button class="btn btn-success" id="excelBtn"><i class="fa fa-file-excel"></i> </button>
-                            <button class="btn btn-danger" id="pdfBtn"><i class="fa fa-file-pdf"></i> </button>
-                            <button class="btn btn-warning" id="printBtn"><i class="fa fa-print"></i> </button>
-                            <!-- Yeni Ekle Button -->
-                        </div>
+                <div class="d-flex align-items-center justify-content-between gap-1 mobile-erp">
+                    <div class=" col-md-4 mr-4  d-flex gap-2">
+                        <button class="btn btn-outline-dark" id="copyBtn"><i class="fa-solid fa-clone"></i> </button>
+                        <button class="btn btn-outline-dark" id="excelBtn"><i class="fa-solid fa-file-excel"></i> </button>
+                        <button class="btn btn-outline-dark" id="pdfBtn"><i class="fa-solid fa-file-pdf"></i> </button>
+                        <button class="btn btn-outline-dark" id="printBtn"><i class="fa fa-print"></i> </button>
+                        <!-- Yeni Ekle Button -->
+                    </div>
+                    <div class="col-lg-4 d-flex align-items-center mobile-erp2 justify-content-end">
+                        <a href="{{asset('gereklidosyalar/isbasvuruformu.doc')}}" download="" type="button"
+                            class="btn btn-sm btn-outline-danger">
+                            <i class="fa-solid fa-file-pdf"></i>İş Başvuru Formu İndir</a>
+                        <a href="{{route('isbasvurularilist')}}" type="button" class="btn btn-sm btn-outline-success">Tüm İş
+                            Başvuruları</a>
+                    </div>
+                    <div class="col-lg-4 ms-auto mobile-erp3 text-end">
                         <a type="button" href="{{ route('isbasvurulari.create') }}"
-                            class="btn btn-sm btn-outline-primary px-5"><i class="fa-solid fa-plus"></i>İş Başvurusu
+                            class="btn btn-outline-dark btn-sm mx-0 mx-lg-2"><i class="fa-solid fa-plus"></i>İş Başvurusu
                             Ekle</a>
-
                     </div>
                 </div>
             </div>
         </div>
 
 
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table align-middle mb-0" id="example2">
-                    <thead class="table-light">
+    <div class="card-body">
+        <div class="table-responsive" style="border-radius: 5px">
+            <table id="example2" class="table table-bordered table-striped" style="width:100%;  ">
+                    <thead >
                         <tr>
                             <th scope="col">#</th>
                             <th>Başvuru Tarihi</th>
@@ -89,7 +87,7 @@
                                                 @endif
                                             </td>
                                             <td class="text-right">
-                                                <div class="d-flex align-items-center">
+                                                <div class="d-flex align-items-center" style="justify-content: space-evenly; ">
                                                     @if($isbasvuruitem->personel_aktarma_durum == 1)
                                                         <button class="btn btn-sm btn-outline-secondary px-2" disabled>
                                                             <i class="fa-solid fa-check"></i> Aktarıldı
@@ -104,11 +102,13 @@
                                                         </form>
                                                     @endif
                                                     <a href="{{ route('isbasvurulari.show', ['isbasvurulari' => $isbasvuruitem->id]) }}"
-                                                        class="text-primary btn btn-link p-0 m-0 ">
-                                                        <i class="bi bi-eye-fill"></i>
+                                                        class=" btn btn-link p-0 m-0 ">
+                                                        <i style="color:#293445;  "
+                                                        class="fa-solid fa-wand-magic-sparkles fs-6"></i>
                                                     </a>
-                                                    <a href="{{ route('isbasvurulari.edit', ['isbasvurulari' => $isbasvuruitem->id]) }}" class="text-warning">
-                                                        <i class="bi bi-pencil-fill"></i>
+                                                    <a href="{{ route('isbasvurulari.edit', ['isbasvurulari' => $isbasvuruitem->id]) }}"
+                                                        class="text-warning">
+                                                        <i style="color:#293445" class="fa-solid fa-pen-to-square fs-6"></i>
                                                     </a>
 
                                                     <form
@@ -117,7 +117,8 @@
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-link btn-sm text-danger show_confirm">
-                                                            <i class="bi bi-trash-fill"></i>
+                                                            <i style="color: rgb(180, 68, 34)"
+                                                            class="fa-solid fa-trash-can fs-6"></i>
                                                         </button>
                                                     </form>
                                                 </div>
@@ -129,7 +130,7 @@
                 </table>
             </div>
         </div>
-    </div>
+    </d+iv>
     @include('session.session')
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function () {
@@ -165,27 +166,27 @@
             var newRow = $('<tr>');
             newRow.append('<td>' + i + '</td>');
             newRow.append(`
-                                <td>
-                                    <div class="input-group m-b-sm">
-                                        <span class="input-group-addon" ></span>
-                                        <input type="date" name="inputss[` + i + `][odeme_tarihi]" class="form-control form-control-sm " >
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="input-group m-b-sm">
-                                        <span class="input-group-addon" ></span>
-                                        <input type="text" name="inputss[` + i + `][tutar]" class="form-control form-control-sm input-mask" >
-                                    </div>
-                                </td>
-                                 <td>
-                                    <select name="inputss[` + i + `][odeme_turu]" class="form-control form-control-sm" >
-                                        <option value="">Lütfen Seçiniz</option>
-                                        <option value="Nakit">Nakit</option>
-                                        <option value="EFT">EFT</option>
-                                    </select>
-                                </td>
-                                <td><button type="button" class="btn btn-sm btn-danger remove-table-row" style="--bs-btn-padding-y: 0.12rem">-</button></td>
-                                `);
+                                    <td>
+                                        <div class="input-group m-b-sm">
+                                            <span class="input-group-addon" ></span>
+                                            <input type="date" name="inputss[` + i + `][odeme_tarihi]" class="form-control form-control-sm " >
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="input-group m-b-sm">
+                                            <span class="input-group-addon" ></span>
+                                            <input type="text" name="inputss[` + i + `][tutar]" class="form-control form-control-sm input-mask" >
+                                        </div>
+                                    </td>
+                                     <td>
+                                        <select name="inputss[` + i + `][odeme_turu]" class="form-control form-control-sm" >
+                                            <option value="">Lütfen Seçiniz</option>
+                                            <option value="Nakit">Nakit</option>
+                                            <option value="EFT">EFT</option>
+                                        </select>
+                                    </td>
+                                    <td><button type="button" class="btn btn-sm btn-danger remove-table-row" style="--bs-btn-padding-y: 0.12rem">-</button></td>
+                                    `);
             $('#odeme_table').append(newRow);
 
 
@@ -209,8 +210,8 @@
                     className: 'btn btn-primary',
                     text: '<i class="fa fa-copy"></i> Kopyala',
                     exportOptions: {
-                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 8,
-                            9, 10, 11, 12, 13] // Sadece istediğiniz kolonları seçin
+                        columns: [0, 1, 2, 3, 4, 5, 6, 7
+                            ] // Sadece istediğiniz kolonları seçin
                     }
                 },
                 {
@@ -218,8 +219,7 @@
                     className: 'btn btn-success',
                     text: '<i class="fa fa-file-excel"></i> Excel',
                     exportOptions: {
-                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 8,
-                            9, 10, 11, 12, 13] // Sadece istediğiniz kolonları seçin
+                        columns: [0, 1, 2, 3, 4, 5, 6, 7] // Sadece istediğiniz kolonları seçin
                     }
                 },
                 {
@@ -267,7 +267,7 @@
                         doc.content[1].layout = objLayout;
                     },
                     exportOptions: {
-                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] // Kolonları belirle
+                        columns: [0, 1, 2, 3, 4, 5, 6, 7] // Kolonları belirle
                     }
                 },
                 {
@@ -275,8 +275,7 @@
                     className: 'btn btn-warning',
                     text: '<i class="fa fa-print"></i> Yazdır',
                     exportOptions: {
-                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 8,
-                            9, 10, 11, 12, 13] // Sadece istediğiniz kolonları seçin
+                        columns: [0, 1, 2, 3, 4, 5, 6, 7] // Sadece istediğiniz kolonları seçin
                     }
                 }
                 ]

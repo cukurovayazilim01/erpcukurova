@@ -53,7 +53,7 @@
 
         <div class="table-responsive" style="border-radius: 5px">
 
-            <table class="table table-bordered table-hover" id="example2" role="grid" aria-describedby="example_info"
+            <table class="table table-bordered table-striped" id="example2" role="grid" aria-describedby="example_info"
                 style="width:100%; cursor: pointer; ">
                 <thead >
                     <tr>

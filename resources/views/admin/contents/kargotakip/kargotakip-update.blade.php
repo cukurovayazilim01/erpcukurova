@@ -20,8 +20,8 @@
 
                             <div class="col-md-6">
                                 <label for="gonderen_ad">Gönderen Firma/Kurum</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-building"></i>
                                     </span>
                                     <input type="text" name="gonderen_ad" id="gonderen_ad"
@@ -30,8 +30,8 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="gonderi_tipi">Gönderi Tipi</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-check"></i>
                                     </span>
                                     <select name="gonderi_tipi" id="gonderi_tipi"
@@ -44,8 +44,8 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="kargo_takip_no">Kargo Takip No</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-check"></i>
                                     </span>
                                     <input type="text" name="kargo_takip_no" id="kargo_takip_no"
@@ -54,8 +54,8 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="gonderi_tarihi">Gönderi Tarihi</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-calendar"></i>
                                     </span>
                                     <input type="date" name="gonderi_tarihi" id="gonderi_tarihi"
@@ -64,8 +64,8 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="hangi_kargo">Hangi Kargo</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-check"></i>
                                     </span>
                                     <select name="hangi_kargo" id="hangi_kargo"
@@ -88,8 +88,8 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="kargo_takip_no">Kargoyu Alan</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-check"></i>
                                     </span>
                                     <input type="text" name="kargoyu_alan" id="kargoyu_alan"
@@ -98,8 +98,8 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="alinan_tarih">Kargoyu Alma Tarihi</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-calendar"></i>
                                     </span>
                                     <input type="date" name="alinan_tarih" id="alinan_tarih"
@@ -108,8 +108,8 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="kargo_durum">Kargoyu Durumu</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-calendar"></i>
                                     </span>
                                     <select name="kargo_durum" id="kargo_durum"

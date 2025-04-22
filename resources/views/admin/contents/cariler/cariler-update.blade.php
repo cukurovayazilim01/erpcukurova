@@ -86,12 +86,12 @@
                         <label for="musteri_temsilcisi">Müşteri Temsilcisi</label>
                         <div class="input-group mb-2">
                             <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                            <select name="musteri_temsilcisi" id="musteri_temsilcisi"
+                            <select name="user_id" id="user_id"
                                 class="form-control form-control-sm" required>
                                 <option value="">Müşteri Temsilcisi Seçiniz</option>
                                 @foreach ($user as $usercariitem)
-                                <option value="{{ $usercariitem->ad_soyad }}"
-                                    @if (isset($cariitem) && $cariitem->musteri_temsilcisi == $usercariitem->ad_soyad) selected @endif>
+                                <option value="{{ $usercariitem->id }}"
+                                    @if (isset($cariitem) && $cariitem->user_id == $usercariitem->id) selected @endif>
                                     {{ $usercariitem->ad_soyad }}
                                 </option>
                             @endforeach
@@ -104,11 +104,11 @@
                             <span class="input-group-text"><i class="fa-regular fa-building"></i></span>
                             <select name="firma_turu" id="firma_turu" class="form-control form-control-sm">
                                 <option value="">Lütfen Seçim Yapınız</option>
-                                <option value="Şahıs" {{ $cariitem->firma_turu == 'Şahıs' ? 'selected' : '' }}>
+                                <option value="sahis" {{ $cariitem->firma_turu == 'sahis' ? 'selected' : '' }}>
                                     Şahıs
                                 </option>
-                                <option value="Tüzel"
-                                    {{ $cariitem->firma_turu == 'Tüzel' ? 'selected' : '' }}>
+                                <option value="tuzel"
+                                    {{ $cariitem->firma_turu == 'tuzel' ? 'selected' : '' }}>
                                     Tüzel
                                 </option>
                             </select>
@@ -270,7 +270,7 @@
                     style="display: flex; padding: 10px 0; gap:20px; text-align: center; justify-content: end">
 
                     <button type="button" class="btn btn-outline-warning btn-sm py-6 w-25" data-bs-dismiss="modal">Vazgeç</button>
-                    <button type="submit" class="btn btn-outline-dark btn-sm py-6 w-75">Kaydet</button>
+                    <button type="submit" id="submit-form" class="btn btn-outline-dark btn-sm py-6 w-75">Kaydet</button>
 
                 </div>
             </div>

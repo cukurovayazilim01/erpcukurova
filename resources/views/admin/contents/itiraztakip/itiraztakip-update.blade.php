@@ -19,7 +19,7 @@
                     <div class="row">
                         <div class="col-md-4 select2-sm">
                             <label for="markatakip_id">Başvuru No</label>
-                            <input type="text" name="markatakip_id" id="markatakip_id"
+                            <input type="text"
                                 class="form-control form-control-sm" value="{{ $marka->basvuru_no }}" readonly>
                             <input type="hidden" name="markatakip_id" value="{{ $marka->id }}">
 
@@ -27,8 +27,8 @@
 
                         <div class="col-md-4">
                             <label for="marka_adi">Marka Adı</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa fa-building"></i>
                                 </span>
                                 <input type="text" name="marka_adi" id="marka_adi"
@@ -39,8 +39,8 @@
 
                         <div class="col-md-4">
                             <label for="firma_adi">Firma Adı</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa fa-building"></i>
                                 </span>
                                 <input type="text" name="firma_adi" id="firma_adi"
@@ -50,8 +50,8 @@
                         </div>
                         <div class="col-md-4">
                             <label for="referans_no">Referans No</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa fa-building"></i>
                                 </span>
                                 <input type="text" name="referans_no" id="referans_no"
@@ -61,8 +61,8 @@
                         </div>
                         <div class="col-md-4">
                             <label for="musteri_temsilcisi">Müşteri Temsilcisi</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa fa-building"></i>
                                 </span>
                                 <input type="text" name="musteri_temsilcisi" id="musteri_temsilcisi"
@@ -72,8 +72,8 @@
                         </div>
                         <div class="col-md-4">
                             <label for="satis_temsilcisi">Satış Temsilcisi</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa fa-building"></i>
                                 </span>
                                 <input type="text" name="satis_temsilcisi" id="satis_temsilcisi"
@@ -83,8 +83,8 @@
                         </div>
                         <div class="col-md-3">
                             <label for="teblig_tarihi">Tebliğ Tarihi</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa fa-calendar"></i>
                                 </span>
                                 <input type="date" name="teblig_tarihi" id="teblig_tarihi"
@@ -95,11 +95,11 @@
 
                         <div class="col-md-3">
                             <label for="bakanlik_karari">Bakanlık Kararı</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa fa-building"></i>
                                 </span>
-                                <select name="bakanlik_karari" id="bakanlik_karari" class="form-select form-select-sm"
+                                <select name="bakanlik_karari" id="bakanlik_karari" class="form-control form-control-sm"
                                     required>
                                     <option value="Başvuru Noksan"
                                         {{ $itiraztakip->bakanlik_karari == 'Başvuru Noksan' ? 'selected' : '' }}>
@@ -152,21 +152,21 @@
                         </div>
                         <div class="col-md-3">
                             <label for="itiraz_islem">İşlem Adı</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa fa-building"></i>
                                 </span>
 
-                                    <input type="text" id="islem_adi" name="itiraz_islem" class="form-control" value="{{$itiraztakip->itiraz_islem}}" readonly>
+                                    <input type="text" id="islem_adi" name="itiraz_islem" class="form-control form-control-sm" value="{{$itiraztakip->itiraz_islem}}" readonly>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <label for="itiraz_durum">İtiraz Durum</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa fa-building"></i>
                                 </span>
-                                <select name="itiraz_durum" id="itiraz_durum" class="form-select form-select-sm"
+                                <select name="itiraz_durum" id="itiraz_durum" class="form-control form-control-sm"
                                     required>
                                     <option value="Yapıldı"
                                         {{ $itiraztakip->itiraz_durum == 'Yapıldı' ? 'selected' : '' }}>Yapıldı
@@ -184,8 +184,8 @@
                         </div>
                         <div class="col-md-3">
                             <label for="teblig_bitis_tarihi">Tebliğ Bitiş Tarihi</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa fa-calendar"></i>
                                 </span>
                                 <input type="date" name="teblig_bitis_tarihi" id="teblig_bitis_tarihi"
@@ -196,8 +196,8 @@
 
                         <div class="col-md-3">
                             <label for="ucret">Ücret</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa fa-money-bill"></i>
                                 </span>
                                 <input type="number" name="ucret" id="ucret"
@@ -207,8 +207,8 @@
 
                         <div class="col-md-6">
                             <label for="itiraz_dosya">İtiraz Dosya</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa fa-check"></i>
                                 </span>
                                 <input type="file" name="itiraz_dosya" id="itiraz_dosya"
@@ -223,15 +223,18 @@
 
                         <div class="col-md-12">
                             <label for="itiraz_aciklama">İtiraz Açıklama</label>
+                            <div class="input-group mb-2">
+                                <span class="input-group-text"><i class="fa-solid fa-comments"></i></span>
                             <textarea name="itiraz_aciklama" id="itiraz_aciklama" cols="20" rows="2"
                                 class="form-control form-control-sm">{{ $itiraztakip->itiraz_aciklama }}</textarea>
                         </div>
-                        <div class="col-md-12 mt-2 mr-15">
-                            <button type="submit" id="submit-form" class="btn btn-sm btn-outline-success"
-                                style="float: right; margin-left: 2px;">
-                                İtirazı Güncelle</button>
-                            <a href="{{ route('itiraztakipp.index') }}" class="btn btn-sm btn-outline-secondary"
-                                style="float: right"> Vazgeç</a>
+                    </div>
+                    <div style="display: flex; padding: 10px; gap:20px; text-align: center; justify-content: end">
+
+                        <a href="{{route('itiraztakipp.index')}}" class="btn btn-outline-warning btn-sm py-6 w-25"> Vazgeç</a>
+                            <button type="submit" id="submit-form" class="btn btn-outline-dark btn-sm py-6 w-75"
+                               >
+                                Güncelle</button>
                         </div>
                     </div>
                 </div>

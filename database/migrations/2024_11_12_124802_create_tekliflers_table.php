@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('islem_yapan')->nullable();
             $table->foreign('islem_yapan')->references('id')->on('users')->onDelete('cascade');
             $table->date('islem_tarihi')->nullable();
-            $table->date('teklif_tarihi')->nullable();
+            $table->dateTime('teklif_tarihi')->nullable();
             $table->integer('teklif_kodu')->nullable();
             $table->longText('teklif_kodu_text')->nullable();
 
@@ -43,10 +43,7 @@ return new class extends Migration
 
 
 
-            $table->longText('teklif_kdv_oran')->nullable();
-            $table->double('teklif_kdvsiz_fiyat', 15, 2)->nullable();
-            $table->double('teklif_iskonto', 15, 2)->nullable();
-            $table->double('teklif_toplam_fiyat', 15, 2)->nullable();
+
 
             $table->double('teklif_iskonto_toplam', 15, 2)->nullable();
             $table->double('teklif_kdv_toplam', 15, 2)->nullable();

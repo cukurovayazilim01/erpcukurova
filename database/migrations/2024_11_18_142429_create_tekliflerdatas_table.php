@@ -13,9 +13,6 @@ return new class extends Migration
     {
         Schema::create('tekliflerdatas', function (Blueprint $table) {
             $table->id();
-            $table->longText('islem_tarihi')->nullable();
-            $table->unsignedBigInteger('islem_yapan')->nullable();
-            $table->foreign('islem_yapan')->references('id')->on('users')->onDelete('cascade');
 
             $table->unsignedBigInteger('teklif_id')->nullable();
             $table->foreign('teklif_id')->references('id')->on('tekliflers')->onDelete('cascade');
@@ -30,8 +27,7 @@ return new class extends Migration
             $table->longText('teklif_hizmet_miktar')->nullable();
             $table->longText('teklif_hizmet_birim')->nullable();
 
-            $table->double('hizmet_maliyet', 15, 2)->nullable();
-            $table->double('maliyet_toplam_fiyat', 15, 2)->nullable();
+
 
 
             $table->double('teklif_fiyat', 15, 2)->nullable();

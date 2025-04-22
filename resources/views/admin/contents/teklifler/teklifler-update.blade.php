@@ -53,7 +53,7 @@
                                 <span class="input-group-text">
                                     <i class="fa fa-calendar"></i>
                                 </span>
-                                <input type="date" name="teklif_tarihi" id="teklif_tarihi"
+                                <input type="datetime-local" name="teklif_tarihi" id="teklif_tarihi"
                                     class="form-control form-control-sm" required
                                     value="{{ $teklifler->teklif_tarihi }}">
                             </div>
@@ -74,7 +74,7 @@
                                 <span class="input-group-text">
                                     <i class="fa fa-money-bill"></i>
                                 </span>
-                                <select name="odemeplan_durum" id="odemeplan_durum" class="form-control form-control-sm" required>
+                                <select name="odemeplan_durum" id="odemeplan_durum" class="form-control form-control-sm" >
                                     <option value="">Lütfen Seçim Yapınız</option>
                                     <option value="Var" {{ $teklifler->odemeplan_durum == 'Var' ? 'selected' : '' }}>Var</option>
                                     <option value="Yok" {{ $teklifler->odemeplan_durum == 'Yok' ? 'selected' : '' }}>Yok</option>
@@ -132,7 +132,7 @@
                     <i class="fa fa-plus"></i> <span>Hizmet Ekle</span>
                 </button>
                 <div class="table-responsive" style="border-radius: 5px">
-                    <table id="example3" class="table table-bordered table-hover"
+                    <table id="example3" class="table table-bordered table-striped"
                     style="width:100% ">
 
                         <thead>
@@ -317,7 +317,7 @@
                                 style="width: 100%; text-align: center;">
                                 <i class="fa fa-plus"></i> Taksit Ekle
                             </button>
-                            <table id="odeme_table" class="table table-bordered table-hover"
+                            <table id="odeme_table" class="table table-bordered table-striped"
                                 style="width:100%; cursor: pointer; border-radius: 5px">
 
                                 <thead style="border-radius: 5px">
@@ -363,10 +363,10 @@
                                 </tbody>
                             </table>
                         </div>
-                        <label for="aciklama" style="display: block; margin-bottom: 5px">Açıklama Ekle</label>
+                        <label for="teklif_aciklama" style="display: block; margin-bottom: 5px">Açıklama Ekle</label>
                         <div class="input-group mb-2">
                             <span class="input-group-text"><i class="fa-solid fa-comments"></i></span>
-                            <textarea name="aciklama" id="aciklama" class="form-control" aria-label="With textarea">{{$teklifler->aciklama}}</textarea>
+                            <textarea name="teklif_aciklama" id="teklif_aciklama" class="form-control" aria-label="With textarea">{{$teklifler->teklif_aciklama}}</textarea>
                         </div>
 
                     </div>

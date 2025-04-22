@@ -44,8 +44,8 @@ Yıllık İzin Hakları
                         <div class="row">
                             <div class="col-md-12">
                                 <label for="personel_id">Personel Adı</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-user"></i>
                                     </span>
                                     <select name="personel_id" id="personel_id"
@@ -62,8 +62,8 @@ Yıllık İzin Hakları
 
                             <div class="col-md-6">
                                 <label for="yillik_izin_hakki">Yıllık İzin Hakkı</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-check"></i>
                                     </span>
                                     <input type="number" name="yillik_izin_hakki" id="yillik_izin_hakki"
@@ -72,8 +72,8 @@ Yıllık İzin Hakları
                             </div>
                             <div class="col-md-6">
                                 <label for="bitis_tarihi">Kalan İzin Hakkı</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-check"></i>
                                     </span>
                                     <input type="number" name="kalan_izin_hakki" id="kalan_izin_hakki"
@@ -83,8 +83,8 @@ Yıllık İzin Hakları
                             </div>
                             <div class="col-md-6">
                                 <label for="yili">Yılı</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-check"></i>
                                     </span>
                                     <select name="yili" id="yili" class="form-select form-select-sm"
@@ -101,8 +101,8 @@ Yıllık İzin Hakları
                             </div>
                             <div class="col-md-6">
                                 <label for="hangi_ay">Durum</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-check"></i>
                                     </span>
                                     <select name="durum" id="durum" class="form-select form-select-sm"

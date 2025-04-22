@@ -1,4 +1,4 @@
-<table class="table table-bordered table-hover" style="width:100%;" id="example2">
+<table class="table table-bordered table-striped" style="width:100%;" id="example2">
 
     <tbody>
         @foreach ($tahsilat as $tahsilatitem)

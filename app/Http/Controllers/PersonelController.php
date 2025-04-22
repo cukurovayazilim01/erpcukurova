@@ -92,17 +92,16 @@ class PersonelController extends Controller
         $personelozluksearch = $request->input('personelozluksearch');
 
         // Eğer arama yapılmışsa filtre uygula, yoksa tüm verileri çek
-        $personel = Personel::orderByDesc('id')
-            ->when(!empty($personelozluksearch), function ($query) use ($personelozluksearch) {
+        $personel = Personel::when(!empty($personelozluksearch), function ($query) use ($personelozluksearch) {
                 $query->where('ad_soyad', 'like', '%' . $personelozluksearch . '%')->orwhere('meslegi', 'like', '%' . $personelozluksearch . '%')->orwhere('ev_adresi', 'like', '%' . $personelozluksearch . '%')
                 ->orwhere('beden', 'like', '%' . $personelozluksearch . '%')->orwhere('ayak_no', 'like', '%' . $personelozluksearch . '%')->orwhere('kan_grubu', 'like', '%' . $personelozluksearch . '%')->orwhere('gorevi', 'like', '%' . $personelozluksearch . '%')
                 ->orwhere('mezuniyet', 'like', '%' . $personelozluksearch . '%');
             })
-            ->paginate(50);
+            ->paginate(15);
 
         // Sayfa numarasını hesapla
         $page = $request->query('page', 1);
-        $perPage = 50;
+        $perPage = 15;
         $startNumber = $personel->total() - (($page - 1) * $perPage);
 
 
@@ -120,17 +119,17 @@ class PersonelController extends Controller
         $personelsearch = $request->input('personelsearch');
 
         // Eğer arama yapılmışsa filtre uygula, yoksa tüm verileri çek
-        $personel = Personel::orderByDesc('id')
+        $personel = Personel::orderBy('id')
             ->when(!empty($personelsearch), function ($query) use ($personelsearch) {
                 $query->where('ad_soyad', 'like', '%' . $personelsearch . '%')->orwhere('meslegi', 'like', '%' . $personelsearch . '%')->orwhere('ev_adresi', 'like', '%' . $personelsearch . '%')
                 ->orwhere('beden', 'like', '%' . $personelsearch . '%')->orwhere('ayak_no', 'like', '%' . $personelsearch . '%')->orwhere('kan_grubu', 'like', '%' . $personelsearch . '%')->orwhere('gorevi', 'like', '%' . $personelsearch . '%')
                 ->orwhere('mezuniyet', 'like', '%' . $personelsearch . '%');
             })
-            ->paginate(50);
+            ->paginate(15);
 
         // Sayfa numarasını hesapla
         $page = $request->query('page', 1);
-        $perPage = 50;
+        $perPage = 15;
         $startNumber = $personel->total() - (($page - 1) * $perPage);
 
 

@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 @section('title')
-    SATIŞ FATURASI GÜNCELLE
+{{ $satislar->firmaadi->firma_unvan }}   SATIŞ FATURASI GÜNCELLE
 @endsection
 @section('contents')
 @section('topheader')
@@ -107,7 +107,7 @@
                     <i class="fa fa-plus"></i> <span>Hizmet Ekle</span>
                 </button>
                 <div class="table-responsive" style="border-radius: 5px">
-                    <table id="example3" class="table table-bordered table-hover"
+                    <table id="example3" class="table table-bordered table-striped"
                     style="width:100% ">
 
                         <thead>

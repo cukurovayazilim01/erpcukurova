@@ -14,8 +14,8 @@
             <div class="row" style="padding: 1%; ">
                     <div class="col-md-3">
                         <label for="kullanici_no">Kullanıcı No<code>*</code></label>
-                        <div class="form-group input-with-icon">
-                            <span class="icon">
+                        <div class="input-group mb-2">
+                            <span class="input-group-text">
                                 <i class="fa-solid fa-check"></i>
                             </span>
                             <input type="text" name="kullanici_no" id="kullanici_no"  value="{{$smsapi->kullanici_no}}"
@@ -24,8 +24,8 @@
                     </div>
                     <div class="col-md-3">
                         <label for="kullanici_adi">Kullanıcı Adı<code>*</code></label>
-                        <div class="form-group input-with-icon">
-                            <span class="icon">
+                        <div class="input-group mb-2">
+                            <span class="input-group-text">
                                 <i class="fa-solid fa-check"></i>
                             </span>
                             <input type="text" name="kullanici_adi" id="kullanici_adi" value="{{$smsapi->kullanici_adi}}"
@@ -34,8 +34,8 @@
                     </div>
                     <div class="col-md-3">
                         <label for="sifre">Şifre<code>*</code></label>
-                        <div class="form-group input-with-icon">
-                            <span class="icon">
+                        <div class="input-group mb-2">
+                            <span class="input-group-text">
                                 <i class="fa-solid fa-check"></i>
                             </span>
                             <input type="text" name="sifre" id="sifre" value="{{$smsapi->sifre}}"
@@ -44,8 +44,8 @@
                     </div>
                     <div class="col-md-3">
                         <label for="orginator">SMS Başlığı (Orginator)<code>*</code></label>
-                        <div class="form-group input-with-icon">
-                            <span class="icon">
+                        <div class="input-group mb-2">
+                            <span class="input-group-text">
                                 <i class="fa-solid fa-check"></i>
                             </span>
                             <input type="text" name="orginator" id="orginator" value="{{$smsapi->orginator}}"

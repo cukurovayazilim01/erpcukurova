@@ -33,5 +33,9 @@ class Markatakip extends Model
     {
         return $this->hasMany(Itiraztakip::class,'markatakip_id');
     }
+    public function tescil()
+    {
+        return $this->hasMany(Tescilnoksan::class,'markatakip_id');
+    }
 
 }

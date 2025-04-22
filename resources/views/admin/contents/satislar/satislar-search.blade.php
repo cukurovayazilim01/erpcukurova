@@ -1,4 +1,4 @@
-<table class="table table-bordered table-hover" id="example2">
+<table class="table table-bordered table-striped" id="example2">
 
     <tbody>
         @foreach ($satislar as $satislaritem)

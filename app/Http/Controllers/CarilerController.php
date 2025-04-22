@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class CarilerController extends Controller
 {
@@ -32,9 +33,9 @@ class CarilerController extends Controller
         $response = Http::withHeaders([
             'Content-Type' => 'application/json',
         ])->post('https://api.mimsoft.com.tr/v1.0/account/auth', [
-                    'username' => $efaturaApi->rf_kullanici_adi,
-                    'password' => $efaturaApi->rf_sifre,
-                ]);
+            'username' => $efaturaApi->rf_kullanici_adi,
+            'password' => $efaturaApi->rf_sifre,
+        ]);
 
 
         return $response->json();
@@ -98,30 +99,47 @@ class CarilerController extends Controller
     public function carilersearch(Request $request)
     {
         $carilersearch = $request->input('carilersearch');
-
-        // Eğer arama yapılmışsa filtre uygula, yoksa tüm verileri çek
-        $cariler = Cariler::orderByDesc('id')
-            ->when(!empty($carilersearch), function ($query) use ($carilersearch) {
-                $query->where('firma_unvan', 'like', '%' . $carilersearch . '%')->orwhere('yetkili_kisi', 'like', '%' . $carilersearch . '%')->orwhere('firma_sektor', 'like', '%' . $carilersearch . '%');
-            })
-            ->paginate(50);
-
-        // Sayfa numarasını hesapla
+        $perPage = 15;
         $page = $request->query('page', 1);
-        $perPage = 50;
-        $startNumber = $cariler->total() - (($page - 1) * $perPage);
 
-        $user = User::all();
-        $aramalar = Aramalar::all();
+        try {
+            $query = Cariler::query()
+                ->leftJoin('users', 'carilers.user_id', '=', 'users.id') // ilişkiyi bağla
+                ->select('carilers.*') // sadece carilers kolonlarını çek
+                ->with('user')
+                ->orderByDesc('carilers.created_at');
 
-        // AJAX isteği ise sadece arama sonuçlarını döndür
-        if ($request->ajax()) {
-            return view('admin.contents.cariler.cariler-search', compact('cariler', 'startNumber', 'user', 'aramalar'));
+            if (!empty($carilersearch) && mb_strlen($carilersearch, 'UTF-8') >= 2) {
+                $loweredSearch = mb_strtolower($carilersearch, 'UTF-8');
+
+                $query->where(function ($q) use ($loweredSearch) {
+                    $q->whereRaw('LOWER(carilers.firma_unvan) LIKE ?', ["%{$loweredSearch}%"])
+                        ->orWhereRaw('LOWER(carilers.yetkili_kisi) LIKE ?', ["%{$loweredSearch}%"])
+                        ->orWhereRaw('LOWER(carilers.firma_sektor) LIKE ?', ["%{$loweredSearch}%"])
+                        ->orWhereRaw('LOWER(carilers.is_tel) LIKE ?', ["%{$loweredSearch}%"])
+                        ->orWhereRaw('LOWER(users.ad_soyad) LIKE ?', ["%{$loweredSearch}%"]);
+                });
+            }
+
+            $cariler = $query->paginate($perPage);
+            $startNumber = $cariler->total() - (($page - 1) * $perPage);
+
+            $user = User::all();
+            $aramalar = Aramalar::all();
+
+            if ($request->ajax()) {
+                return view('admin.contents.cariler.cariler-search', compact('cariler', 'startNumber', 'user', 'aramalar'));
+            }
+
+            return view('admin.contents.cariler.cariler', compact('cariler', 'startNumber', 'user', 'aramalar'));
+        } catch (\Exception $e) {
+            Log::error('carilersearch error: ' . $e->getMessage());
+            return response()->json(['error' => 'Bir hata oluştu.'], 500);
         }
-
-        // Normal sayfa için tüm veriyi döndür
-        return view('admin.contents.cariler.cariler', compact('cariler', 'startNumber', 'user', 'aramalar'));
     }
+
+
+
 
 
     public function aramaEkle(Request $request)
@@ -156,12 +174,11 @@ class CarilerController extends Controller
 
         $aramalar->delete();
         return redirect()->route('cariler.show', ['cariler' => $aramalar->cari_id])->with('success', 'Silme Başarılı');
-
     }
     public function tedarikciler(Request $request)
     {
         // Kullanıcının seçtiği kayıt sayısını al veya varsayılan 20 olarak ayarla
-        $perPage = $request->input('entries', 20);
+        $perPage = $request->input('entries', 15);
 
         // cariler tablosundaki verileri sıralayarak, seçilen sayıya göre sayfalama işlemi
         $cariler = Cariler::orderByDesc('id')->where('firma_tipi', 'Tedarikçi')->paginate($perPage);
@@ -179,10 +196,10 @@ class CarilerController extends Controller
     public function index(Request $request)
     {
         // Kullanıcının seçtiği kayıt sayısını al veya varsayılan 20 olarak ayarla
-        $perPage = $request->input('entries', 20);
+        $perPage = $request->input('entries', 15);
 
         // cariler tablosundaki verileri sıralayarak, seçilen sayıya göre sayfalama işlemi
-        $cariler = Cariler::orderByDesc('id')->where('firma_tipi', 'Müşteri')->paginate($perPage);
+        $cariler = Cariler::orderByDesc('created_at')->whereIn('firma_tipi', ['Müşteri', 'Potansiyel'])->paginate($perPage);
 
         // Sayfalama için başlangıç numarasını hesaplama
         $page = $cariler->currentPage();
@@ -388,11 +405,7 @@ class CarilerController extends Controller
             return redirect('cariler')->with('error', 'Cari bulunamadı.');
         }
 
-        $log = new Aktiflog();
-        $log->islem_tarihi = Carbon::now();
-        $log->islemiyapan_id = Auth::user()->id;
-        $log->islem = $cariler->firma_unvan . ' ' . 'Carisi Silindi';
-        $log->save();
+
 
         if ($cariler->teklifler()->count() > 0) {
             return redirect('cariler')->with('error', 'Bu cariye ait teklif olduğu için silinemez.');
@@ -423,6 +436,11 @@ class CarilerController extends Controller
         }
 
         $cariler->delete();
+        $log = new Aktiflog();
+        $log->islem_tarihi = Carbon::now();
+        $log->islemiyapan_id = Auth::user()->id;
+        $log->islem = $cariler->firma_unvan . ' ' . 'Carisi Silindi';
+        $log->save();
         return redirect('cariler')->with('success', 'Silme Başarılı');
     }
 }

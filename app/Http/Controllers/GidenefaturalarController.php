@@ -109,7 +109,6 @@ class GidenefaturalarController extends Controller
         $efaturalar->vergidairesi = $request->vergi_dairesi;
         $efaturalar->il = $request->il;
         $efaturalar->ilce = $request->ilce;
-        $efaturalar->efatura_tipi = $request->efatura_tipi;
         $efaturalar->kdv_toplam = $request->toplam_kdv_tutar;
         $efaturalar->ara_toplam = $request->toplam_ara_toplam;
         $efaturalar->iskonto_toplam = $request->toplam_iskonto;
@@ -125,13 +124,11 @@ class GidenefaturalarController extends Controller
             $efaturalardata = new Efaturalardata();
             $efaturalardata->efatura_id = $efaturalar->id;
             $efaturalardata->hizmet_adi = $input['hizmet_adi'];
-            $efaturalardata->aciklama = $input['aciklama'];
             $efaturalardata->miktar = floatval($input['miktar']);
             $efaturalardata->birim = $input['birim'];
             $efaturalardata->fiyat = floatval($input['birim_fiyat']);
             $efaturalardata->kdv_oran = floatval($input['kdv_oran']);
             $efaturalardata->kdv_tutar = $input['kdv_tutar'];
-            $efaturalardata->kdvsiztutar = $input['kdvsiztutar'];
             $efaturalardata->iskonto = $input['iskonto'];
             $efaturalardata->toplam_fiyat = $input['tutar'];
             $efaturalardata->save();
@@ -147,37 +144,33 @@ class GidenefaturalarController extends Controller
                 "Allowance" => [
                     "Price" => floatval($efaturalardata->iskonto)
                 ],
-                "AdditionalNames" => [
-                    "Description" => $efaturalardata->aciklama
-                ]
             ];
         }
 
         $taxNumber = $request->vergi_no ?: $request->tc_kimlik;
 
         $body = [
-            "draft" => "true",
-            "integrator" => "mimsoft",
+            "draft" => true,
             "document" => [
                 "External" => [
-                    "ID" => $efaturalar->id,
-                    "RefNo" => $efaturalar->fatura_no
+                    "ID" => (string) $efaturalar->id,
+                    "RefNo" => (string) $efaturalar->fatura_no,
+                    "Type" => 'Cukurova Entegre'
                 ],
                 "IssueDateTime" => now()->format('Y-m-d\TH:i:s'),
-                "Type" => $efaturalar->efatura_tipi,
+                "Type" => $request->efatura_tipi, // örn: "SATIS" gibi
                 "TaxExemptions" => [
                     "KDV" => 350
                 ],
-                "Notes" => new \stdClass(),
+                "Notes" => [], // ← boş array olmalı
                 "Customer" => [
                     "TaxNumber" => $taxNumber,
                     "TaxOffice" => $request->vergi_dairesi,
                     "Name" => $request->firma_unvan,
-                    "Address" => $request->ilce . ' ' . $request->il . ' ' . $request->adres,
+                    "Address" => trim($request->ilce . ' ' . $request->il . ' ' . $request->adres),
                     "District" => $request->ilce,
                     "City" => $request->il,
                     "Country" => "TÜRKİYE",
-                    "PostalCode" => "",
                     "Phone" => $request->is_tel,
                     "Mail" => $request->eposta
                 ],
@@ -189,7 +182,7 @@ class GidenefaturalarController extends Controller
             $response = Http::withHeaders([
                 'api-key' => $efaturaApi->rf_token,
                 'Content-Type' => 'application/json',
-            ])->post('https://apidemo.rahatsistem.com.tr/v2/documents/invoice.create', $body);
+            ])->post('https://api.rahatsistem.com.tr/v2/documents/invoice.create', $body);
 
             if ($response->successful()) {
                 return back()->with('success', 'Fatura başarıyla kesildi!');

@@ -174,7 +174,6 @@ Invoice Area
                                 </div>
                             </div>
                         </div>
-
                         @php
                         $personel_satislar = [];
                         $tum_personeller = [];
@@ -215,6 +214,7 @@ Invoice Area
                             ->get();
 
                         foreach ($tum_personeller as $personel => $dummy) {
+
                             $user = DB::table('users')->where('ad_soyad', $personel)->first();
 
                             if ($user) {

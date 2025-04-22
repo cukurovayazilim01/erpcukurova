@@ -139,7 +139,7 @@
     <div class="card-body" style="border-radius: 5px">
         <div class="table-responsive" style="border-radius: 5px">
 
-                <table id="example2" class="table table-bordered table-hover">
+                <table id="example2" class="table table-bordered table-striped">
                     <thead>
                         <tr>
                             <th scope="col">#</th>

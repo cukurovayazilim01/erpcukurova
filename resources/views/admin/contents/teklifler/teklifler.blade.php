@@ -71,7 +71,7 @@
 
     <div class="card-body" style="border-radius: 5px">
         <div class="table-responsive" style="border-radius: 5px">
-            <table id="example2" class="table table-bordered table-hover" style="width:100%;  ">
+            <table id="example2" class="table table-bordered table-striped" style="width:100%;  ">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -98,7 +98,7 @@
                                 {{ $teklifleritem->teklif_kodu_text }}-{{ $teklifleritem->teklif_kodu }}</th>
                             @endif
 
-                            <td>{{ $teklifleritem->islem_tarihi }}</td>
+                            <td>{{ $teklifleritem->teklif_tarihi }}</td>
                             <td>{{ $teklifleritem->firmaadi->firma_unvan }}</td>
                             <td>{{ $teklifleritem->teklif_konu }}</td>
                             <td>{{ number_format($teklifleritem->teklif_iskonto_toplam, 2, ',', '.') }} ₺</td>

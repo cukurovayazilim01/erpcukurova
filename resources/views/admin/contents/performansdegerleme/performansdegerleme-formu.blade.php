@@ -51,8 +51,8 @@
 
                             <div class="col-md-2">
                                 <label for="tescil_tl">Personel Adı Soyadı</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-check"></i>
                                     </span>
                                     <input type="text" name="" id="" readonly
@@ -61,8 +61,8 @@
                             </div>
                             <div class="col-md-2">
                                 <label for="tescil_tl">Sicil No</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-check"></i>
                                     </span>
                                     <input type="text" name="" id="" readonly
@@ -71,8 +71,8 @@
                             </div>
                             <div class="col-md-2">
                                 <label for="tescil_tl">Görevi</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-check"></i>
                                     </span>
                                     <input type="text" name="" id="" readonly
@@ -81,8 +81,8 @@
                             </div>
                             <div class="col-md-2">
                                 <label for="tescil_tl">Departman</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-check"></i>
                                     </span>
                                     <input type="text" name="" id="" readonly
@@ -91,8 +91,8 @@
                             </div>
                             <div class="col-md-2">
                                 <label for="tescil_tl">Değerlendirmeyi Yapan</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-check"></i>
                                     </span>
                                     <input type="text" name="" id="" readonly
@@ -102,8 +102,8 @@
                             </div>
                             <div class="col-md-2">
                                 <label for="tescil_tl">Değerlendirme Tarihi</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-check"></i>
                                     </span>
                                     <input type="text" name="" id="" readonly

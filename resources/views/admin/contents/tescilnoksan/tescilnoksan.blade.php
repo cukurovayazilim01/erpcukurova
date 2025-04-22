@@ -6,58 +6,49 @@
 @section('topheader')
     Tescil Noksan
 @endsection
-<style>
-    .error {
-        border: 2px solid red;
-    }
-
-    .success {
-        border: 2px solid green;
-    }
-
-    .error-message {
-        color: red;
-        font-size: 12px;
-    }
-</style>
 <div class="card radius-10">
     <div class="card-header bg-transparent">
         <div class="row g-3 align-items-center">
-            <div class="col-lg-1 col-1 col-md-1">
+            <div class="d-flex align-items-center justify-content-between gap-1 mobile-erp">
+                <div class=" col-md-4 mr-4  d-flex gap-2">
+                    <a href="{{ route('pdf.download', ['type' => 'tescilnoksan']) }}" class="btn btn-outline-dark"><i
+                            class="fa-solid fa-file-pdf"></i> </a>
+                    <button data-bs-toggle="modal" data-bs-target="#tescilnoksanfilexcelmodal"
+                        class="btn btn-outline-dark"><i class="fa-solid fa-file-excel"></i> </button>
+                    <a href="javascript:;" onclick="customPrint()" class="btn btn-outline-dark"><i
+                            class="fa fa-print"></i> </a>
+                            <form method="GET" action="{{ route('tescilnoksan.index') }}" id="entriesForm">
+                                <select class="form-select form-select-sm" name="entries"
+                                    onchange="document.getElementById('entriesForm').submit();">
+                                    <option value="15" {{ $perPage == 15 ? 'selected' : '' }}>15</option>
+                                    <option value="25" {{ $perPage == 25 ? 'selected' : '' }}>25</option>
+                                    <option value="50" {{ $perPage == 50 ? 'selected' : '' }}>50</option>
+                                    <option value="100" {{ $perPage == 100 ? 'selected' : '' }}>100</option>
+                                </select>
+                            </form>
+                </div>
+                <div class="col-lg-4 d-flex align-items-center mobile-erp2 justify-content-center">
+                    <form id="searchForm" action="{{ route('tescilnoksansearch') }}" method="GET">
+                        <div class="ms-auto position-relative">
+                            <div class="position-absolute top-50 translate-middle-y search-icon px-3"><i
+                                    class="bi bi-search"></i></div>
+                            <input class="form-control ps-5" id="searchInput" type="text" placeholder="Genel Arama">
+                        </div>
+                    </form>
 
-                <form method="GET" action="{{ route('tescilnoksan.index') }}" id="entriesForm">
-                    <select class="form-select form-select-sm" name="entries"
-                        onchange="document.getElementById('entriesForm').submit();">
-                        <option value="10" {{ $perPage == 10 ? 'selected' : '' }}>10</option>
-                        <option value="25" {{ $perPage == 25 ? 'selected' : '' }}>25</option>
-                        <option value="50" {{ $perPage == 50 ? 'selected' : '' }}>50</option>
-                        <option value="100" {{ $perPage == 100 ? 'selected' : '' }}>100</option>
-                    </select>
-                </form>
+                </div>
+                <div class="col-lg-4 ms-auto mobile-erp3 text-end">
+                    <!-- Filtrele Button -->
+                     <button type="button" class="btn btn-warning btn-sm mx-0 mx-lg-2" data-bs-toggle="modal"
+                         data-bs-target="#tescilnoksanfilmodal" style="border-radius: 3px;">
+                         <i class="fa-solid fa-filter"></i>  Filtrele
+                     </button>
+                     <button type="button" class="btn btn-outline-dark btn-sm mx-0 mx-lg-2" data-bs-toggle="modal"
+                         data-bs-target="#tescilnoksanmodal"><i class="fa-solid fa-plus"></i>Yeni Ekle</button>
+                 </div>
             </div>
-            <div class="col-md-2 col-6 text-start">
 
-                <button type="button" style="border-radius: 3px" class="btn btn-sm btn-primary" data-bs-toggle="modal"
-                    data-bs-target="#tescilnoksanfilmodal">
-                    Filtrele
-                </button>
-            </div>
-            <div class="col-md-9 text-end">
 
-                <a href="{{ route('pdf.download', ['type' => 'tescilnoksan']) }}" class="btn btn-sm btn-danger"><i
-                        class="fa-solid fa-file-pdf" style="font-size: 18px"></i></a>
-                <button type="button" data-bs-toggle="modal" data-bs-target="#tescilnoksanfilexcelmodal"
-                    class="btn btn-sm btn-success">
-                    <i class="fa-solid fa-file-excel" style="font-size: 18px"></i>
-                </button>
-                <a href="javascript:;" onclick="customPrint()" class="btn btn-sm btn-secondary"><i
-                        class="bi bi-printer-fill" style="font-size: 15px"></i></a>
-
-                <button type="button" class="btn btn-sm btn-outline-primary px-5" style="margin-left: 10px"
-                    data-bs-toggle="modal" data-bs-target="#tescilnoksanmodal">
-                    <i class="fa-solid fa-plus"></i> Yeni Ekle
-                </button>
-            </div>
         </div>
     </div>
 
@@ -87,8 +78,8 @@
                                 </div>
                                 <div class="col-md-12">
                                     <label for="satis_temsilcisi">Satış Temsilcisi</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-user"></i>
                                         </span>
                                         <select name="satis_temsilcisi" id=""
@@ -105,8 +96,8 @@
 
                                 <div class="col-md-6">
                                     <label for="ilk_tarih">Tebliğ Bitiş İlk Tarih</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-calendar-days"></i>
                                         </span>
                                         <input type="date" name="ilk_tarih" id="ilk_tarih"
@@ -115,8 +106,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="son_tarih">Tebliğ Bitiş Son Tarih</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-calendar-days"></i>
                                         </span>
                                         <input type="date" name="son_tarih" id="son_tarih"
@@ -138,7 +129,7 @@
             </form>
         </div>
     </div>
-    <!--İTİRAZTAKİP FİLTRELEME Modal -->
+    <!--TESCİLNOKSAN FİLTRELEME Modal -->
     <div class="modal fade" id="tescilnoksanfilmodal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <form id="add-form" action="{{ route('tescilnoksanfiltre.index') }}" method="GET">
@@ -164,8 +155,8 @@
                                 </div>
                                 <div class="col-md-12">
                                     <label for="satis_temsilcisi">Satış Temsilcisi</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-user"></i>
                                         </span>
                                         <select name="satis_temsilcisi" id=""
@@ -182,8 +173,8 @@
 
                                 <div class="col-md-6">
                                     <label for="ilk_tarih">Tebliğ Bitiş İlk Tarih</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-calendar-days"></i>
                                         </span>
                                         <input type="date" name="ilk_tarih" id="ilk_tarih"
@@ -192,8 +183,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="son_tarih">Tebliğ Bitiş Son Tarih</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-calendar-days"></i>
                                         </span>
                                         <input type="date" name="son_tarih" id="son_tarih"
@@ -244,8 +235,8 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label for="marka_adi">Marka Adı</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-building"></i>
                                         </span>
                                         <input type="text" name="marka_adi" id="marka_adi"
@@ -254,8 +245,8 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label for="firma_adi">Firma Ünvanı</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-building"></i>
                                         </span>
                                         <input type="text" name="firma_adi" id="firma_adi"
@@ -264,8 +255,8 @@
                                 </div>
                                 <div class="col-md-3">
                                     <label for="referans_no">Referans No</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-building"></i>
                                         </span>
                                         <input type="text" name="referans_no" id="referans_no"
@@ -274,8 +265,8 @@
                                 </div>
                                 <div class="col-md-3">
                                     <label for="musteri_temsilcisi">Müşteri Temsilcisi</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-building"></i>
                                         </span>
                                         <input type="text" name="musteri_temsilcisi" id="musteri_temsilcisi"
@@ -284,8 +275,8 @@
                                 </div>
                                 <div class="col-md-3">
                                     <label for="satis_temsilcisi">Satış Temsilcisi</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-building"></i>
                                         </span>
                                         <input type="text" name="satis_temsilcisi" id="satis_temsilcisi"
@@ -294,8 +285,8 @@
                                 </div>
                                 <div class="col-md-3">
                                     <label for="tn_durum">İtiraz Durum</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-building"></i>
                                         </span>
                                         <select name="tn_durum" id="tn_durum" class="form-select form-select-sm"
@@ -309,8 +300,8 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label for="teblig_tarihi">Tebliğ Tarihi</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-calendar"></i>
                                         </span>
                                         <input type="date" name="teblig_tarihi" id="teblig_tarihi"
@@ -319,8 +310,8 @@
                                 </div>
                                 {{-- <div class="col-md-3">
                                         <label for="bakanlik_karari">Bakanlık Kararı</label>
-                                        <div class="form-group input-with-icon">
-                                            <span class="icon">
+                                        <div class="input-group mb-2">
+                                            <span class="input-group-text">
                                                 <i class="fa fa-building"></i>
                                             </span>
                                             <select name="bakanlik_karari" id="bakanlik_karari"
@@ -344,8 +335,8 @@
                                     </div>
                                     <div class="col-md-3">
                                         <label for="itiraz_islem">İşlem Adı</label>
-                                        <div class="form-group input-with-icon">
-                                            <span class="icon">
+                                        <div class="input-group mb-2">
+                                            <span class="input-group-text">
                                                 <i class="fa fa-building"></i>
                                             </span>
                                             <select name="itiraz_islem" id="itiraz_islem"
@@ -364,8 +355,8 @@
                                     </div> --}}
                                 <div class="col-md-4">
                                     <label for="teblig_bitis_tarihi">Tebliğ Bitiş Tarihi</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-calendar"></i>
                                         </span>
                                         <input type="date" name="teblig_bitis_tarihi" id="teblig_bitis_tarihi"
@@ -376,8 +367,8 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label for="itiraz_dosya">İtiraz Dosya</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-check"></i>
                                         </span>
                                         <input type="file" name="itiraz_dosya" id="itiraz_dosya"
@@ -408,31 +399,12 @@
     </div>
 
     <div class="card-body">
-        <div class="table-responsive">
+        <div class="table-responsive" style="border-radius: 5px">
             <div id="example_wrapper" class="dataTables_wrapper dt-bootstrap5">
-                <div class="row">
 
-
-                    <form id="searchForm" action="{{ route('tescilnoksansearch') }}" method="GET">
-                        @csrf
-                        <div class="ms-auto position-relative" style="margin-bottom: 10px">
-                            <!-- Arama ikonu -->
-                            <div class="position-absolute top-50 translate-middle-y search-icon fs-5 px-3"
-                                style="color: blue;">
-                                <i class="bi bi-search"></i>
-                            </div>
-                            <!-- Arama inputu -->
-                            <input type="text" id="searchInput" class="form-control ps-5"
-                                style="border: 1px solid blue; height: 38px;"
-                                placeholder="Lütfen Arama Terimi Giriniz">
-                        </div>
-                    </form>
-
-
-                </div>
-                <table class="table align-middle mb-0 dataTable" id="example2" role="grid"
+                <table class="table table-striped table-bordered dataTable" id="example2" role="grid"
                     aria-describedby="example_info">
-                    <thead class="table-light">
+                    <thead >
                         <tr>
                             <th scope="col">#</th>
                             <th>Başvuru No</th>
@@ -455,8 +427,8 @@
                                 <th scope="row">{{ $startNumber - $loop->index }}</th>
                                 <td>{{ $tescilnoksanitem->referansno->basvuru_no }}</td>
                                 <td>{{ $tescilnoksanitem->referans_no }}</td>
-                                <td>{{ $tescilnoksanitem->marka_adi }}</td>
-                                <td>{{ $tescilnoksanitem->firma_adi }}</td>
+                                <td class="text-wrap" style="max-width:170px">{{ $tescilnoksanitem->marka_adi }}</td>
+                                <td class="text-wrap" style="max-width:170px">{{Str::limit( $tescilnoksanitem->firma_adi,35) }}</td>
                                 <td>{{ $tescilnoksanitem->musteri_temsilcisi }}</td>
                                 <td>{{ $tescilnoksanitem->satis_temsilcisi }}</td>
                                 <td>{{ $tescilnoksanitem->teblig_tarihi }}</td>
@@ -500,13 +472,13 @@
 
                                 <td class="text-right">
                                     <div class="databutton">
-                                        <div class="d-flex align-items-center fs-6">
+                                        <div class="d-flex align-items-center fs-6" style="justify-content: space-evenly; ">
 
 
 
                                             <a href="{{ route('tescilnoksan.edit', ['tescilnoksan' => $tescilnoksanitem->id]) }}"
                                                 class="text-warning btn btn-link p-0 m-0 ">
-                                                <i class="bi bi-pencil-fill"></i>
+                                                <i style="color:#293445" class="fa-solid fa-pen-to-square fs-6"></i>
                                             </a>
                                             <form
                                                 action="{{ route('tescilnoksan.destroy', ['tescilnoksan' => $tescilnoksanitem->id]) }}"
@@ -515,7 +487,8 @@
                                                 @method('DELETE')
                                                 <button type="submit"
                                                     class="btn btn-link text-danger p-0 m-0 show_confirm">
-                                                    <i class="bi bi-trash-fill"></i>
+                                                    <i style="color: rgb(180, 68, 34)"
+                                                    class="fa-solid fa-trash-can fs-6"></i>
                                                 </button>
                                             </form>
                                         </div>

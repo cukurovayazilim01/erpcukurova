@@ -1,15 +1,15 @@
-<table class="table table-bordered table-hover" style="width:100%; cursor: pointer; ">
- 
+<table class="table table-bordered table-striped" style="width:100%; ">
+
     <tbody>
         @foreach ($cariler as $cariitem)
             <tr>
-                <th scope="row">{{ $startNumber - $loop->index }}</th>
+
                 <td><a style="color:inherit" href="{{ route('cariler.show', ['cariler' => $cariitem->id]) }}">{{ $cariitem->firma_unvan }} </a> </td>
                 <td style="text-align: center">{{ $cariitem->firma_sektor }}</td>
                 <td style="text-align: center">{{ $cariitem->yetkili_kisi }}</td>
                 <td style="text-align: center">{{ $cariitem->yetkili_kisi_tel }}</td>
                 <td style="text-align: center">{{ $cariitem->eposta }}</td>
-                <td style="text-align: center">{{ $cariitem->musteri_temsilcisi }}</td>
+                <td style="text-align: center">{{ $cariitem->user->ad_soyad }}</td>
 
                 <td class="text-right">
                     <div class="databutton ">
