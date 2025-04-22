@@ -1,4 +1,4 @@
-<table class="table table-bordered table-hover"  role="grid" aria-describedby="example_info"
+<table class="table table-bordered table-striped"  role="grid" aria-describedby="example_info"
                 style="width:100%; cursor: pointer; ">
 
                 <tbody>

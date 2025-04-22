@@ -55,7 +55,7 @@ GELEN E-FATURALAR
 
         <div class="card-body" style="border-radius: 5px">
             <div class="table-responsive" style="border-radius: 5px">
-                <table class="table table-bordered table-hover" style="width:100%;  " id="example2" role="grid"
+                <table class="table table-bordered table-striped" style="width:100%;  " id="example2" role="grid"
                     aria-describedby="example_info">
                     <thead>
                         <tr>

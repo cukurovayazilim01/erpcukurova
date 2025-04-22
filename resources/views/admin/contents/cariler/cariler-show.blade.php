@@ -123,7 +123,7 @@
                                 </li>
                                 <li class="list-group-item d-flex align-items-center">
                                     <i class="fa-solid fa-user-tie me-2" style="color:#293445;"></i> <span>Müşteri Temsilcisi:</span>
-                                    <span class="ms-auto">{{ $cariler->musteri_temsilcisi }}</span>
+                                    <span class="ms-auto">{{ $cariler->user->ad_soyad }}</span>
                                 </li>
                                 <li class="list-group-item d-flex align-items-center">
                                     <i class="fa-solid fa-file-invoice-dollar me-2" style="color:#293445;"></i> <span>Vergi No:</span>
@@ -211,8 +211,8 @@
                                                     <div class="row">
                                                         <div class="col-md-12" style="display: none">
                                                             <label for="hatirlat_tarihi">url</label>
-                                                            <div class="form-group input-with-icon">
-                                                                <span class="icon">
+                                                            <div class="input-group mb-2">
+                                                                <span class="input-group-text">
                                                                     <i class="fa-solid fa-location-dot"></i>
                                                                 </span>
                                                                 <input type="text" name="url" id="url"
@@ -222,8 +222,8 @@
                                                         </div>
                                                         <div class="col-md-12" style="display: none">
                                                             <label for="hatirlat_tarihi">Cariid</label>
-                                                            <div class="form-group input-with-icon">
-                                                                <span class="icon">
+                                                            <div class="input-group mb-2">
+                                                                <span class="input-group-text">
                                                                     <i class="fa-solid fa-location-dot"></i>
                                                                 </span>
                                                                 <input type="text" name="cari_id" id="cari_id"
@@ -233,8 +233,8 @@
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="hizmet_turu">Hizmet Türü<code>*</code></label>
-                                                            <div class="form-group input-with-icon">
-                                                                <span class="icon">
+                                                            <div class="input-group mb-2">
+                                                                <span class="input-group-text">
                                                                     <i class="fa-solid fa-phone"></i>
                                                                 </span>
                                                                 <select name="hizmet_turu" id="hizmet_turu"
@@ -252,8 +252,8 @@
 
                                                         <div class="col-md-6">
                                                             <label for="arama_tipi">Arama Tipi</label>
-                                                            <div class="form-group input-with-icon">
-                                                                <span class="icon">
+                                                            <div class="input-group mb-2">
+                                                                <span class="input-group-text">
                                                                     <i class="fa-solid fa-phone"></i>
                                                                 </span>
                                                                 <select name="arama_tipi" id="arama_tipi"
@@ -270,8 +270,8 @@
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="hatirlat_durumu">Hatırlatma Durumu</label>
-                                                            <div class="form-group input-with-icon">
-                                                                <span class="icon">
+                                                            <div class="input-group mb-2">
+                                                                <span class="input-group-text">
                                                                     <i class="fa fa-check"></i>
                                                                 </span>
                                                                 <select name="hatirlat_durumu" id="hatirlat_durumu"
@@ -292,8 +292,8 @@
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="hatirlat_tarihi">Hatırlatma Tarihi</label>
-                                                            <div class="form-group input-with-icon">
-                                                                <span class="icon">
+                                                            <div class="input-group mb-2">
+                                                                <span class="input-group-text">
                                                                     <i class="fa-solid fa-calendar-days"></i>
                                                                 </span>
                                                                 <input type="date" name="hatirlat_tarihi"
@@ -493,8 +493,8 @@
                                                                                         <label
                                                                                             for="hatirlat_tarihi">url</label>
                                                                                         <div
-                                                                                            class="form-group input-with-icon">
-                                                                                            <span class="icon">
+                                                                                            class="input-group mb-2">
+                                                                                            <span class="input-group-text">
                                                                                                 <i
                                                                                                     class="fa-solid fa-location-dot"></i>
                                                                                             </span>
@@ -511,8 +511,8 @@
                                                                                         <label
                                                                                             for="hatirlat_tarihi">Cariid</label>
                                                                                         <div
-                                                                                            class="form-group input-with-icon">
-                                                                                            <span class="icon">
+                                                                                            class="input-group mb-2">
+                                                                                            <span class="input-group-text">
                                                                                                 <i
                                                                                                     class="fa-solid fa-location-dot"></i>
                                                                                             </span>
@@ -531,8 +531,8 @@
                                                                                             Kişi
                                                                                             İsim</label>
                                                                                         <div
-                                                                                            class="form-group input-with-icon">
-                                                                                            <span class="icon">
+                                                                                            class="input-group mb-2">
+                                                                                            <span class="input-group-text">
                                                                                                 <i
                                                                                                     class="fa-solid fa-user"></i>
                                                                                             </span>
@@ -549,8 +549,8 @@
                                                                                             style="color: #333">Yetkili
                                                                                             Kişi Telefon</label>
                                                                                         <div
-                                                                                            class="form-group input-with-icon">
-                                                                                            <span class="icon">
+                                                                                            class="input-group mb-2">
+                                                                                            <span class="input-group-text">
                                                                                                 <i
                                                                                                     class="fa-solid fa-phone"></i>
                                                                                             </span>
@@ -567,8 +567,8 @@
                                                                                             style="color: #333">Yetkili
                                                                                             Kişi E-Posta</label>
                                                                                         <div
-                                                                                            class="form-group input-with-icon">
-                                                                                            <span class="icon">
+                                                                                            class="input-group mb-2">
+                                                                                            <span class="input-group-text">
                                                                                                 <i
                                                                                                     class="fa-solid fa-envelope"></i>
                                                                                             </span>
@@ -640,8 +640,8 @@
                                                     <div class="row">
                                                         <div class="col-md-12" style="display: none">
                                                             <label for="hatirlat_tarihi">url</label>
-                                                            <div class="form-group input-with-icon">
-                                                                <span class="icon">
+                                                            <div class="input-group mb-2">
+                                                                <span class="input-group-text">
                                                                     <i class="fa-solid fa-location-dot"></i>
                                                                 </span>
                                                                 <input type="text" name="url" id="url"
@@ -651,8 +651,8 @@
                                                         </div>
                                                         <div class="col-md-12" style="display: none">
                                                             <label for="hatirlat_tarihi">Cariid</label>
-                                                            <div class="form-group input-with-icon">
-                                                                <span class="icon">
+                                                            <div class="input-group mb-2">
+                                                                <span class="input-group-text">
                                                                     <i class="fa-solid fa-location-dot"></i>
                                                                 </span>
                                                                 <input type="text" name="cari_id" id="cari_id"
@@ -663,8 +663,8 @@
 
                                                         <div class="col-md-12">
                                                             <label for="yetkili_isim">Yetkili Kişi İsim</label>
-                                                            <div class="form-group input-with-icon">
-                                                                <span class="icon">
+                                                            <div class="input-group mb-2">
+                                                                <span class="input-group-text">
                                                                     <i class="fa-solid fa-user"></i>
                                                                 </span>
                                                                 <input type="text" name="yetkili_isim"
@@ -675,8 +675,8 @@
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="telefon">Yetkili Kişi Telefon</label>
-                                                            <div class="form-group input-with-icon">
-                                                                <span class="icon">
+                                                            <div class="input-group mb-2">
+                                                                <span class="input-group-text">
                                                                     <i class="fa-solid fa-phone"></i>
                                                                 </span>
                                                                 <input type="number" name="telefon" id="telefon"
@@ -686,8 +686,8 @@
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="telefon">Yetkili Kişi E-Posta</label>
-                                                            <div class="form-group input-with-icon">
-                                                                <span class="icon">
+                                                            <div class="input-group mb-2">
+                                                                <span class="input-group-text">
                                                                     <i class="fa-solid fa-envelope"></i>
                                                                 </span>
                                                                 <input type="email" name="eposta" id="eposta"
@@ -731,7 +731,7 @@
                             </div>
                             <div class="card-body" style="border-radius: 5px">
                                 <div class="table-responsive" style="border-radius: 5px">
-                                <table class="table table-bordered table-hover" id="example2" role="grid"
+                                <table class="table table-bordered table-striped" id="example2" role="grid"
                                     aria-describedby="example_info" style="border-radius: 5px">
                                     <thead>
                                         <tr>
@@ -822,8 +822,8 @@
                                                     <div class="row">
                                                         <div class="col-md-12" style="display: none">
                                                             <label for="hatirlat_tarihi">Cariid</label>
-                                                            <div class="form-group input-with-icon">
-                                                                <span class="icon">
+                                                            <div class="input-group mb-2">
+                                                                <span class="input-group-text">
                                                                     <i class="fa-solid fa-location-dot"></i>
                                                                 </span>
                                                                 <input type="text" name="cari_id" id="cari_id"
@@ -833,8 +833,8 @@
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="dosya_adi">Doküman Adı</label>
-                                                            <div class="form-group input-with-icon">
-                                                                <span class="icon">
+                                                            <div class="input-group mb-2">
+                                                                <span class="input-group-text">
                                                                     <i class="fa-solid fa-file"></i>
                                                                 </span>
                                                                 <input type="text" name="dosya_adi" id="dosya_adi"
@@ -844,8 +844,8 @@
 
                                                         <div class="col-md-6">
                                                             <label for="dosya_yolu">Doküman</label>
-                                                            <div class="form-group input-with-icon">
-                                                                <span class="icon">
+                                                            <div class="input-group mb-2">
+                                                                <span class="input-group-text">
                                                                     <i class="fa-solid fa-file"></i>
                                                                 </span>
                                                                 <input type="file" name="dosya_yolu"
@@ -1019,7 +1019,7 @@
 
                                 <div class="card-body" style="border-radius: 5px">
                                     <div class="table-responsive" style="border-radius: 5px">
-                                    <table class="table table-bordered table-hover" id="example2" role="grid"
+                                    <table class="table table-bordered table-striped" id="example2" role="grid"
                                         aria-describedby="example_info" style="border-radius: 5px">
                                             <thead>
                                                 <tr>
@@ -1043,7 +1043,7 @@
                                                             {{ $teklifleritem->teklif_kodu_text }}-{{ $teklifleritem->teklif_kodu }}
                                                         </th>
                                                         <td>{{ $teklifleritem->firmaadi->firma_unvan }}</td>
-                                                        <td>{{ $teklifleritem->islem_tarihi }}</td>
+                                                        <td>{{ $teklifleritem->teklif_tarihi }}</td>
                                                         <td>{{ number_format($teklifleritem->teklif_iskonto_toplam, 2, ',', '.') }}₺
                                                         </td>
                                                         <td>{{ number_format($teklifleritem->teklif_kdv_toplam, 2, ',', '.') }}₺
@@ -1058,6 +1058,8 @@
                                                             <td>Onaylanan Teklif</td>
                                                         @elseif ($teklifleritem->durum === '2')
                                                             <td>Reddedilen Teklif</td>
+                                                            @else
+                                                            <td>-</td>
                                                         @endif
 
 
@@ -1237,7 +1239,7 @@
 
                                     <div class="card-body" style="border-radius: 5px">
                                         <div class="table-responsive" style="border-radius: 5px">
-                                        <table class="table table-bordered table-hover" id="example2" role="grid"
+                                        <table class="table table-bordered table-striped" id="example2" role="grid"
                                             aria-describedby="example_info" style="border-radius: 5px">
                                             <thead>
                                                 <tr>
@@ -1422,7 +1424,7 @@
 
                                     <div class="card-body" style="border-radius: 5px">
                                         <div class="table-responsive" style="border-radius: 5px">
-                                        <table class="table table-bordered table-hover" id="example2" role="grid"
+                                        <table class="table table-bordered table-striped" id="example2" role="grid"
                                             aria-describedby="example_info" style="border-radius: 5px">
                                             <thead>
                                                 <tr>
@@ -1598,7 +1600,7 @@
 
                                     <div class="card-body" style="border-radius: 5px">
                                         <div class="table-responsive" style="border-radius: 5px">
-                                        <table class="table table-bordered table-hover" id="example2" role="grid"
+                                        <table class="table table-bordered table-striped" id="example2" role="grid"
                                             aria-describedby="example_info" style="border-radius: 5px">
                                             <thead>
                                                 <tr>
@@ -1781,7 +1783,7 @@
 
                                    <div class="card-body" style="border-radius: 5px">
                                 <div class="table-responsive" style="border-radius: 5px">
-                                <table class="table table-bordered table-hover" id="example2" role="grid"
+                                <table class="table table-bordered table-striped" id="example2" role="grid"
                                     aria-describedby="example_info" style="border-radius: 5px">
                                     <thead>
                                                 <tr>

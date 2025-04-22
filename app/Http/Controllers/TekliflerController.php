@@ -50,15 +50,15 @@ class TekliflerController extends Controller
         $perPage = 50;
         $startNumber = $teklifler->total() - (($page - 1) * $perPage);
 
-        $user = User::all();
+
 
         // Eğer AJAX isteği ise arama sonucunu döndür
         if ($request->ajax()) {
-            return view('admin.contents.teklifler.teklifler-search', compact('teklifler', 'startNumber', 'user'));
+            return view('admin.contents.teklifler.teklifler-search', compact('teklifler', 'startNumber'));
         }
 
         // Normal sayfa için arama sonucu döndür
-        return view('admin.contents.teklifler.teklifler', compact('cariler', 'startNumber', 'user'));
+        return view('admin.contents.teklifler.teklifler', compact('cariler', 'startNumber'));
 
     }
     public function satisafisineaktar($id)

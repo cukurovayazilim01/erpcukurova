@@ -97,8 +97,8 @@ KARGO TAKİP
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="gonderen_ad">Gönderen Firma/Kurum</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-building"></i>
                                         </span>
                                         <input type="text" name="gonderen_ad" id="gonderen_ad"
@@ -107,8 +107,8 @@ KARGO TAKİP
                                 </div>
                                 <div class="col-md-6">
                                     <label for="gonderi_tipi">Gönderi Tipi</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-check"></i>
                                         </span>
                                         <select name="gonderi_tipi" id="gonderi_tipi"
@@ -121,8 +121,8 @@ KARGO TAKİP
                                 </div>
                                 <div class="col-md-4">
                                     <label for="kargo_takip_no">Kargo Takip No</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-check"></i>
                                         </span>
                                         <input type="text" name="kargo_takip_no" id="kargo_takip_no"
@@ -131,8 +131,8 @@ KARGO TAKİP
                                 </div>
                                 <div class="col-md-4">
                                     <label for="gonderi_tarihi">Gönderi Tarihi</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-calendar"></i>
                                         </span>
                                         <input type="date" name="gonderi_tarihi" id="gonderi_tarihi"
@@ -141,8 +141,8 @@ KARGO TAKİP
                                 </div>
                                 <div class="col-md-4">
                                     <label for="hangi_kargo">Hangi Kargo</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-check"></i>
                                         </span>
                                         <select name="hangi_kargo" id="hangi_kargo"

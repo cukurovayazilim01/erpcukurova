@@ -46,7 +46,7 @@ class StarterSeeder extends Seeder
         }
 
 
-        $user = [
+       /*  $user = [
             [
                 'username' => 'bekir',
                 'email' => 'superadmin@superadmin.com',
@@ -141,7 +141,7 @@ class StarterSeeder extends Seeder
             DB::table('carilers')->insert([
                 'islem_yapan' => 1,
                 'islem_tarihi' => now(),
-                'son_guncelleyen' => 1,
+
                 'firma_unvan' => $faker->company,
                 'ticari_unvan' => $faker->companySuffix,
                 'firma_sektor' => 'Bilişim',
@@ -245,5 +245,6 @@ class StarterSeeder extends Seeder
         DB::table('personels')->insert($personels);
 
 
-    }
+    } */
+}
 }

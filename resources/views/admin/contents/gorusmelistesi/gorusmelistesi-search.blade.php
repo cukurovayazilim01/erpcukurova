@@ -1,12 +1,12 @@
-<table class="table table-bordered table-hover"  role="grid"
-                        aria-describedby="example_info" style="width:100%; cursor: pointer; ">
+<table class="table table-bordered table-striped" id="example2" role="grid"
+                        aria-describedby="example_info" style="width:100%;  ">
 
                         <tbody>
                             @foreach ($aramalar as $aramalaritem)
                                 <tr>
                                     <th scope="row">{{ $startNumber - $loop->index }}</th>
                                     <td>{{ $aramalaritem->islem_tarihi }}</td>
-                                    <td>{{ $aramalaritem->adsoyad->ad_soyad }}</td>
+                                    <td>{{ $aramalaritem->adsoyad->ad_soyad ?? '-' }}</td>
                                     <td>{{ $aramalaritem->cariler->firma_unvan }}</td>
                                     <td>{{ $aramalaritem->arama_tipi }}</td>
                                     <td>{{ $aramalaritem->hizmet_turu }}</td>

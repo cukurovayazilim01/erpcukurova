@@ -1,5 +1,4 @@
-<table class="table align-middle mb-0 display " >
-
+<table class="table dataTable table-striped table-bordered " id="example2">
     <tbody>
         @foreach ($zimmet as $sn => $zimmetitem)
             <tr>
@@ -16,7 +15,7 @@
                 </td>
                 <td>
                     <a href="{{ route('zimmet.edit', ['zimmet' => $zimmetitem->id]) }}"
-                        class="btn btn-sm  btn-success"><i class="fa fa-refresh"></i> Teslim Alma
+                        class="btn btn-sm  "><i style="color:#293445" class="fa-solid fa-pen-to-square fs-6"></i> Teslim Alma
                     </a>
                 </td>
                 <td class="text-right">
@@ -29,7 +28,8 @@
                             @csrf
                             @method('DELETE')
                             <button type="submit" class=" text-danger show_confirm">
-                                <i class="bi bi-trash-fill"></i>
+                                <i style="color: rgb(180, 68, 34)"
+                                        class="fa-solid fa-trash-can fs-6"></i>
                             </button>
                         </form>
                     </div>

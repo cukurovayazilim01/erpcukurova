@@ -47,7 +47,7 @@
 
                     <!-- Tablo Alanı -->
                     <div class="table-responsive">
-                        <table class="table table-bordered table-hover" id="example2">
+                        <table class="table table-bordered table-striped" id="example2">
                             <thead >
                                 <tr>
                                     <th>#</th>

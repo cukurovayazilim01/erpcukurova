@@ -34,8 +34,8 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="marka_adi">Marka Adı</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-building"></i>
                                     </span>
                                     <input type="text" name="marka_adi" id="marka_adi"
@@ -44,8 +44,8 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="firma_adi">Firma Adı</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-building"></i>
                                     </span>
                                     <input type="text" name="firma_adi" id="firma_adi"
@@ -54,8 +54,8 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="referans_no">Referans No</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-building"></i>
                                     </span>
                                     <input type="text" name="referans_no" id="referans_no"
@@ -64,8 +64,8 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="musteri_temsilcisi">Müşteri Temsilcisi</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-building"></i>
                                     </span>
                                     <input type="text" name="musteri_temsilcisi" id="musteri_temsilcisi"
@@ -74,8 +74,8 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="satis_temsilcisi">Satış Temsilcisi</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-building"></i>
                                     </span>
                                     <input type="text" name="satis_temsilcisi" id="satis_temsilcisi"
@@ -84,8 +84,8 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="tn_durum">İtiraz Durum</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-building"></i>
                                     </span>
                                     <select name="tn_durum" id="tn_durum"
@@ -103,8 +103,8 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="teblig_tarihi">Tebliğ Tarihi</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-calendar"></i>
                                     </span>
                                     <input type="date" name="teblig_tarihi" id="teblig_tarihi"
@@ -114,8 +114,8 @@
 
                             <div class="col-md-4">
                                 <label for="teblig_bitis_tarihi">Tebliğ Bitiş Tarihi</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-calendar"></i>
                                     </span>
                                     <input type="date" name="teblig_bitis_tarihi" id="teblig_bitis_tarihi"
@@ -124,8 +124,8 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="itiraz_dosya">İtiraz Dosya</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-check"></i>
                                     </span>
                                     <input type="file" name="itiraz_dosya" id="itiraz_dosya"

@@ -6,23 +6,21 @@
 @section('topheader')
     Personel Özlük Dosyası
 @endsection
-<div class="card radius-5">
+<div class="card radius-10">
     <div class="card-header bg-transparent">
-        <div class="row">
+        <div class="row g-3 align-items-center">
             <div class="d-flex align-items-center justify-content-between gap-1 mobile-erp">
-                <div class="col-lg-10 d-flex align-items-center mobile-erp2 justify-content-lg-start">
-                    <form class="position-relative" id="searchForm" action="{{ route('personelozluksearch') }}"
-                        method="GET">
-                        <div class="position-absolute top-50 translate-middle-y search-icon px-3 "><i
-                                class="bi bi-search"></i></div>
-                        <input style="height: 27px;  border-radius: 5px; border-color:#293445 " id="searchInput"
-                            class="form-control ps-5" type="text" placeholder="Ara">
-                    </form>
+                <div class="col-lg-4 d-flex align-items-center mobile-erp2 justify-content-start">
+                    <form id="searchForm" action="{{ route('personelozluksearch') }}"  method="GET">
+                        <div class="ms-auto position-relative">
+                            <div class="position-absolute top-50 translate-middle-y search-icon px-3"><i class="bi bi-search"></i></div>
+                            <input class="form-control ps-5" id="searchInput" type="text" placeholder="Genel Arama">
+                          </div>
+                        </form>
                 </div>
-                <div class="col-lg-2 ms-auto mobile-erp3 text-end">
-                    <button type="button" class="btn btn-outline-dark btn-sm " data-bs-toggle="modal"
-                        data-bs-target="#personelmodal"> <i class="fa-solid fa-plus"></i> Yeni Ekle</button>
-
+                <div class="col-lg-4 ms-auto mobile-erp3 text-end">
+                    <button type="button" class="btn btn-outline-dark btn-sm mx-0 mx-lg-2"  data-bs-toggle="modal"
+                    data-bs-target="#personelmodal"><i class="fa-solid fa-plus"></i>Yeni Ekle</button>
                 </div>
 
             </div>
@@ -364,7 +362,7 @@
 
     <div class="card-body" style="border-radius: 5px">
         <div class="table-responsive" style="border-radius: 5px">
-            <table class="table table-bordered table-hover" style="width: 100%" id="example2">
+            <table class="table table-bordered table-striped" style="width: 100%" id="example2">
                 <thead >
                     <tr>
                         <th scope="col">#</th>

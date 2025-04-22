@@ -20,8 +20,8 @@
 
                             <div class="col-md-3">
                                 <label for="ad_soyad">Ad Soyad</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa-solid fa-layer-group"></i>
                                     </span>
                                     <input type="text" name="ad_soyad" id="ad_soyad"
@@ -30,8 +30,8 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="tc">TC Kimlik No</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa-solid fa-layer-group"></i>
                                     </span>
                                     <input type="number" name="tc" id="tc"
@@ -40,8 +40,8 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="sigorta_sicil_no">Sigorta Sicil No</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa-solid fa-layer-group"></i>
                                     </span>
                                     <input type="number" name="sigorta_sicil_no" id="sigorta_sicil_no"
@@ -50,8 +50,8 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="sigorta_giris_tarihi">Sigorta Giriş Tarihi</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa-solid fa-calendar-days"></i>
                                     </span>
                                     <input type="date" name="sigorta_giris_tarihi" id="sigorta_giris_tarihi"
@@ -60,8 +60,8 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="meslek_kodu">Meslek Kodu</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa-solid fa-layer-group"></i>
                                     </span>
                                     <input type="number" name="meslek_kodu" id="meslek_kodu"
@@ -70,8 +70,8 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="okul">Okulu</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa-solid fa-layer-group"></i>
                                     </span>
                                     <input type="text" name="okul" id="okul"
@@ -80,8 +80,8 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="mezuniyet">Mezuniyet</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa-solid fa-layer-group"></i>
                                     </span>
                                     <select name="mezuniyet" id="mezuniyet" class="form-select form-select-sm">
@@ -95,8 +95,8 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="meslegi">Mesleği</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa-solid fa-layer-group"></i>
                                     </span>
                                     <input type="text" name="meslegi" id="meslegi"
@@ -105,8 +105,8 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="departman">Departman</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa-solid fa-layer-group"></i>
                                     </span>
                                     <input type="text" name="departman" id="departman"
@@ -115,8 +115,8 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="dogum_yeri">Doğum Yeri</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa-solid fa-layer-group"></i>
                                     </span>
                                     <input type="text" name="dogum_yeri" id="dogum_yeri"
@@ -125,8 +125,8 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="dogum_tarihi">Doğum Tarihi</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa-solid fa-calendar"></i>
                                     </span>
                                     <input type="date" name="dogum_tarihi" id="dogum_tarihi"
@@ -135,8 +135,8 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="gsm">Cep Telefonu</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa-solid fa-phone"></i>
                                     </span>
                                     <input type="number" name="gsm" id="gsm"
@@ -145,8 +145,8 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="mail">E-Posta</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-envelope"></i>
                                     </span>
                                     <input type="email" name="mail" id="mail"
@@ -156,8 +156,8 @@
 
                             <div class="col-md-3">
                                 <label for="gorevi">Görevi</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa-solid fa-layer-group"></i>
                                     </span>
                                     <input type="text" name="gorevi" id="gorevi"
@@ -166,8 +166,8 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="kidem_yili">Kıdem Yılı</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa-solid fa-layer-group"></i>
                                     </span>
                                     <input type="number" name="kidem_yili" id="kidem_yili"
@@ -176,8 +176,8 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="medeni_hali">Medeni Hali</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa-solid fa-layer-group"></i>
                                     </span>
                                     <select name="medeni_hali" id="medeni_hali" class="form-select form-select-sm">
@@ -188,8 +188,8 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="kan_grubu">Kan Grubu</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa-solid fa-layer-group"></i>
                                     </span>
                                     <input type="text" name="kan_grubu" id="kan_grubu"
@@ -198,8 +198,8 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="askerlik_durumu">Askerlik Durumu</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa-solid fa-check"></i>
                                     </span>
                                     <select name="askerlik_durumu" id="askerlik_durumu" class="form-select form-select-sm">
@@ -211,8 +211,8 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="personel_resim">Personel Resmi</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa-solid fa-layer-group"></i>
                                     </span>
                                     <!-- Mevcut resmi göster -->
@@ -225,8 +225,8 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="ehliyet_sinif">Ehliyet Sınfı</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa-solid fa-layer-group"></i>
                                     </span>
                                     <input type="text" name="ehliyet_sinif" id="ehliyet_sinif"
@@ -235,8 +235,8 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="ehliyet_tarihi">Ehliyet Tarihi</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa-solid fa-layer-group"></i>
                                     </span>
                                     <input type="date" name="ehliyet_tarihi" id="ehliyet_tarihi"
@@ -245,8 +245,8 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="baba_adi">Baba Adı</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa-solid fa-layer-group"></i>
                                     </span>
                                     <input type="text" name="baba_adi" id="baba_adi"
@@ -255,8 +255,8 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="baba_meslegi">Baba Mesleği</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa-solid fa-layer-group"></i>
                                     </span>
                                     <input type="text" name="baba_meslegi" id="baba_meslegi"
@@ -265,8 +265,8 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="ayak_no">Ayak No</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa-solid fa-layer-group"></i>
                                     </span>
                                     <input type="number" name="ayak_no" id="ayak_no"
@@ -275,8 +275,8 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="beden">Beden</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa-solid fa-layer-group"></i>
                                     </span>
                                     <input type="number" name="beden" id="beden"
@@ -285,8 +285,8 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="ev_gsm">Ev Telefonu</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa-solid fa-layer-group"></i>
                                     </span>
                                     <input type="number" name="ev_gsm" id="ev_gsm"
@@ -295,8 +295,8 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="ise_giris_tarihi">İşe Giriş Tarihi</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-calendar"></i>
                                     </span>
                                     <input type="date" name="ise_giris_tarihi" id="ise_giris_tarihi"
@@ -305,8 +305,8 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="isten_cikis_tarihi">İşten Çıkış Tarihi</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-calendar"></i>
                                     </span>
                                     <input type="date" name="isten_cikis_tarihi" id="isten_cikis_tarihi"

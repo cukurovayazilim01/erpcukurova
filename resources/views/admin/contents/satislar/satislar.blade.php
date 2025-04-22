@@ -15,7 +15,7 @@
                         <form method="GET" action="{{ route('satislar.index') }}" id="entriesForm">
                             <select class="form-select form-select-sm" name="entries"
                                 onchange="document.getElementById('entriesForm').submit();">
-                                <option value="10" {{ $perPage == 10 ? 'selected' : '' }}>10</option>
+                                <option value="15" {{ $perPage == 15 ? 'selected' : '' }}>15</option>
                                 <option value="25" {{ $perPage == 25 ? 'selected' : '' }}>25</option>
                                 <option value="50" {{ $perPage == 50 ? 'selected' : '' }}>50</option>
                                 <option value="100" {{ $perPage == 100 ? 'selected' : '' }}>100</option>
@@ -53,7 +53,7 @@
             <div class="card-body" style="border-radius: 5px">
                 <div class="table-responsive" style="border-radius: 5px">
 
-                    <table class="table table-bordered table-hover" id="example2">
+                    <table class="table table-bordered table-striped" id="example2">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
@@ -122,6 +122,9 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <div class="col-sm-4 col-md-5 " style=" float: right; margin-top: 20px; ">
+                        {{ $satislar->appends(['entries' => $perPage])->links() }}
+                    </div>
                 </div>
             </div>
         </div>

@@ -13,8 +13,8 @@ STMP MAIL ENTEGRASYON
             <div class="row" style="padding: 1%; ">
                     <div class="col-md-3">
                         <label for="mail_host">Giden Mail Sunucusu<code>*</code></label>
-                        <div class="form-group input-with-icon">
-                            <span class="icon">
+                        <div class="input-group mb-2">
+                            <span class="input-group-text">
                                 <i class="fa-solid fa-check"></i>
                             </span>
                             <input type="text" name="mail_host" id="mail_host"
@@ -23,8 +23,8 @@ STMP MAIL ENTEGRASYON
                     </div>
                     <div class="col-md-3">
                         <label for="mail_port">Giden Mail Port<code>*</code></label>
-                        <div class="form-group input-with-icon">
-                            <span class="icon">
+                        <div class="input-group mb-2">
+                            <span class="input-group-text">
                                 <i class="fa-solid fa-check"></i>
                             </span>
                             <input type="text" name="mail_port" id="mail_port"
@@ -33,8 +33,8 @@ STMP MAIL ENTEGRASYON
                     </div>
                     <div class="col-md-3">
                         <label for="mail_username">Email Adres<code>*</code></label>
-                        <div class="form-group input-with-icon">
-                            <span class="icon">
+                        <div class="input-group mb-2">
+                            <span class="input-group-text">
                                 <i class="fa-solid fa-check"></i>
                             </span>
                             <input type="text" name="mail_username" id="mail_username"
@@ -43,8 +43,8 @@ STMP MAIL ENTEGRASYON
                     </div>
                     <div class="col-md-3">
                         <label for="mail_password">Email Şifre<code>*</code></label>
-                        <div class="form-group input-with-icon">
-                            <span class="icon">
+                        <div class="input-group mb-2">
+                            <span class="input-group-text">
                                 <i class="fa-solid fa-check"></i>
                             </span>
                             <input type="text" name="mail_password" id="mail_password"
@@ -53,8 +53,8 @@ STMP MAIL ENTEGRASYON
                     </div>
                     <div class="col-md-4">
                         <label for="mail_encryption">SSL/TLS<code>*</code></label>
-                        <div class="form-group input-with-icon">
-                            <span class="icon">
+                        <div class="input-group mb-2">
+                            <span class="input-group-text">
                                 <i class="fa-solid fa-check"></i>
                             </span>
                             <select name="mail_encryption" id="mail_encryption"
@@ -66,8 +66,8 @@ STMP MAIL ENTEGRASYON
                     </div>
                     <div class="col-md-4">
                         <label for="mail_from_address">Gönderen Mail Adres<code>*</code></label>
-                        <div class="form-group input-with-icon">
-                            <span class="icon">
+                        <div class="input-group mb-2">
+                            <span class="input-group-text">
                                 <i class="fa-solid fa-check"></i>
                             </span>
                             <input type="text" name="mail_from_address" id="mail_from_address"
@@ -76,8 +76,8 @@ STMP MAIL ENTEGRASYON
                     </div>
                     <div class="col-md-4">
                         <label for="mail_from_name">Gönderen Başlık<code>*</code></label>
-                        <div class="form-group input-with-icon">
-                            <span class="icon">
+                        <div class="input-group mb-2">
+                            <span class="input-group-text">
                                 <i class="fa-solid fa-check"></i>
                             </span>
                             <input type="text" name="mail_from_name" id="mail_from_name"

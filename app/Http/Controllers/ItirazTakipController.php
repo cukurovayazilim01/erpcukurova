@@ -65,35 +65,40 @@ class ItirazTakipController extends Controller
     }
 
     public function itiraztakipsearch(Request $request)
-    {
-        $itiraztakipsearch = $request->input('itiraztakipsearch');
+{
+    $itiraztakipsearch = $request->input('itiraztakipsearch');
+    $perPage = 15;
+    $page = $request->query('page', 1);
 
-        // Eğer arama yapılmışsa
-        if ($itiraztakipsearch) {
-            $itiraztakip = Itiraztakip::orderByDesc('id')
-            ->where('firma_adi', 'like', '%' . $itiraztakipsearch . '%')
-            ->paginate(50);
+    // Ana sorgu
+    $query = Itiraztakip::orderByDesc('id');
 
+    // Arama yapılmışsa filtre uygula
+    if (!empty($itiraztakipsearch) && mb_strlen($itiraztakipsearch, 'UTF-8') >= 2) {
+        $loweredSearch = mb_strtolower($itiraztakipsearch, 'UTF-8');
 
-            // Sayfa numarasını hesapla
-            $page = $request->query('page', 1);
-            $perPage = 50;
-            $startNumber = $itiraztakip->total() - (($page - 1) * $perPage);
-
-            $user = User::all();
-
-            // Arama sonucu varsa ve AJAX isteği ise arama sonucunu döndür
-            if ($request->ajax()) {
-                return view('admin.contents.itiraztakip.itiraztakip-search', compact('itiraztakip', 'startNumber', 'user'));
-            }
-
-            // Normal sayfa için arama sonucu döndür
-            return view('admin.contents.itiraztakip.itiraztakip', compact('itiraztakip', 'startNumber', 'user'));
-        }
-
-        // Arama yapılmamışsa ana sayfayı döndür
-        return view('admin.contents.itiraztakip.itiraztakip');
+        $query->where(function ($q) use ($loweredSearch) {
+            $q->whereRaw('LOWER(firma_adi) LIKE ?', ["%{$loweredSearch}%"])
+              ->orWhereRaw('LOWER(marka_adi) LIKE ?', ["%{$loweredSearch}%"])
+              ->orWhereRaw('LOWER(satis_temsilcisi) LIKE ?', ["%{$loweredSearch}%"])
+              ->orWhereRaw('LOWER(bakanlik_karari) LIKE ?', ["%{$loweredSearch}%"])
+              ->orWhereRaw('LOWER(itiraz_islem) LIKE ?', ["%{$loweredSearch}%"]);
+        });
     }
+
+    $itiraztakip = $query->paginate($perPage);
+    $startNumber = $itiraztakip->total() - (($page - 1) * $perPage);
+
+
+    // AJAX isteği ise özel view döndür
+    if ($request->ajax()) {
+        return view('admin.contents.itiraztakip.itiraztakip-search', compact('itiraztakip', 'startNumber'));
+    }
+
+    // Normal sayfa için view döndür
+    return view('admin.contents.itiraztakip.itiraztakip', compact('itiraztakip', 'startNumber'));
+}
+
     public function getMarkabilgi($markaId)
     {
         $marka = Markatakip::find($markaId);
@@ -113,7 +118,7 @@ class ItirazTakipController extends Controller
     }
     public function index(Request $request)
     {
-        $perPage = $request->input('entries', 20);
+        $perPage = $request->input('entries', 15);
 
         $itiraztakip = Itiraztakip::orderByDesc('id')->paginate($perPage);
 

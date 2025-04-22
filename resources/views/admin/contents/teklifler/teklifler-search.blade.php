@@ -1,4 +1,4 @@
-<table  class="table table-bordered table-hover" style="width:100%;  ">
+<table  class="table table-bordered table-striped" style="width:100%;  ">
 
     <tbody>
         @foreach ($teklifler as $teklifleritem)
@@ -12,7 +12,7 @@
                     {{ $teklifleritem->teklif_kodu_text }}-{{ $teklifleritem->teklif_kodu }}</th>
                 @endif
 
-                <td>{{ $teklifleritem->islem_tarihi }}</td>
+                <td>{{ $teklifleritem->teklif_tarihi }}</td>
                 <td>{{ $teklifleritem->firmaadi->firma_unvan }}</td>
                 <td>{{ $teklifleritem->teklif_konu }}</td>
                 <td>{{ number_format($teklifleritem->teklif_iskonto_toplam, 2, ',', '.') }} ₺</td>

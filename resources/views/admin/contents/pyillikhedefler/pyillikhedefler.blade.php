@@ -33,9 +33,9 @@ Personel Yıllık Hedefleri
     <div class="card-body">
         <div class="row">
             <div class="col-md-12">
-                <table class="table align-middle mb-0 dataTable" id="example2" role="grid"
+                <table class="table table-bordered table-striped" id="example2" role="grid"
                     aria-describedby="example_info">
-                    <thead class="table-light">
+                    <thead >
                         <tr>
                             <th scope="col">#</th>
                             <th>Hedef Sorumlu Personel Adı</th>
@@ -117,8 +117,8 @@ Personel Yıllık Hedefleri
         newRow.innerHTML = `
              <div class="col-md-6">
                                     <label for="hizmet_adi">Kriter</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-cogs"></i>
                                         </span>
                                         <input type="text" name="inputs[${rowIndex}][kriter]"
@@ -128,8 +128,8 @@ Personel Yıllık Hedefleri
                                 </div>
                                    <div class="col-md-6">
                                     <label for="durum">Durum</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-check"></i>
                                         </span>
                                         <select name="inputs[${rowIndex}][durum]" id="inputs[${rowIndex}][durum]" class="form-select form-select-sm">

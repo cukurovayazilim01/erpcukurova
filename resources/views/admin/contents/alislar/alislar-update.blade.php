@@ -18,8 +18,8 @@
                     <div class="row">
                         <div class="col-md-3">
                             <label for="cari_id">Firma</label>
-                            <div class="form-group input-with-icon" style="display: flex; align-items: center;">
-                                <span class="icon">
+                            <div class="input-group mb-2" style="display: flex; align-items: center;">
+                                <span class="input-group-text">
                                     <i class="fa fa-building"></i>
                                 </span>
                                 <input type="text" name="cari_unvan" id="cari_unvan"
@@ -30,8 +30,8 @@
 
                         <div class="col-md-3">
                             <label for="fis_tarihi">Fiş Tarihi</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa fa-calendar"></i>
                                 </span>
                                 <input type="date" name="fis_tarihi" id="fis_tarihi"
@@ -40,8 +40,8 @@
                         </div>
                         <div class="col-md-3">
                             <label for="fis_no">Fatura/Fiş No</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa fa-check"></i>
                                 </span>
                                 <input type="text" name="fis_no" id="fis_no" class="form-control form-control-sm"
@@ -50,8 +50,8 @@
                         </div>
                         <div class="col-md-3">
                             <label for="doviz">Para Birimi</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa fa-building"></i>
                                 </span>
                                 <select name="doviz" id="doviz" class="form-select form-select-sm" required>

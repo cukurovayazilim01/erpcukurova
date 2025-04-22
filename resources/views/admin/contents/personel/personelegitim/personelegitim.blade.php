@@ -18,36 +18,36 @@
                  <div class="row ">
                      <div class="col-md-4">
                          <label for="egitim_yili">Eğitim Tarihi</label>
-                         <div class="form-group input-with-icon">
-                             <span class="icon"><i class="fa-solid fa-layer-group"></i></span>
+                         <div class="input-group mb-2">
+                             <span class="input-group-text"><i class="fa-solid fa-layer-group"></i></span>
                              <input type="date" name="egitim_yili" id="egitim_yili" class="form-control form-control-sm" required>
                          </div>
                      </div>
                      <div class="col-md-4">
                          <label for="egitim_adi">Eğitim Adı</label>
-                         <div class="form-group input-with-icon">
-                             <span class="icon"><i class="fa-solid fa-layer-group"></i></span>
+                         <div class="input-group mb-2">
+                             <span class="input-group-text"><i class="fa-solid fa-layer-group"></i></span>
                              <input type="text" name="egitim_adi" id="egitim_adi" class="form-control form-control-sm" required>
                          </div>
                      </div>
                      <div class="col-md-4">
                          <label for="egitim_suresi">Eğitim Süresi</label>
-                         <div class="form-group input-with-icon">
-                             <span class="icon"><i class="fa-solid fa-layer-group"></i></span>
+                         <div class="input-group mb-2">
+                             <span class="input-group-text"><i class="fa-solid fa-layer-group"></i></span>
                              <input type="text" name="egitim_suresi" id="egitim_suresi" class="form-control form-control-sm" required>
                          </div>
                      </div>
                      <div class="col-md-4">
                         <label for="egitim_yeri">Eğitim Yeri</label>
-                        <div class="form-group input-with-icon">
-                            <span class="icon"><i class="fa-solid fa-layer-group"></i></span>
+                        <div class="input-group mb-2">
+                            <span class="input-group-text"><i class="fa-solid fa-layer-group"></i></span>
                             <input type="text" name="egitim_yeri" id="egitim_yeri" class="form-control form-control-sm" required>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <label for="egitim_dosya">Eğitim Dosyası</label>
-                        <div class="form-group input-with-icon">
-                            <span class="icon"><i class="fa-solid fa-layer-group"></i></span>
+                        <div class="input-group mb-2">
+                            <span class="input-group-text"><i class="fa-solid fa-layer-group"></i></span>
                             <input type="file" name="egitim_dosya" id="egitim_dosya" class="form-control form-control-sm" required>
                         </div>
                     </div>
@@ -62,7 +62,7 @@
 
                  <!-- Tablo Alanı -->
                  <div class="table-responsive">
-                     <table class="table table-bordered table-hover" id="example2">
+                     <table class="table table-bordered table-striped" id="example2">
                          <thead>
                              <tr>
                                  <th>#</th>

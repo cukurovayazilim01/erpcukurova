@@ -12,30 +12,31 @@
 
                 <td><button class=" text-success open-modal-btn" data-bs-toggle="modal"
                     data-bs-target="#perseonelegitimModal-{{ $personelitem->id }}">
-                    <i class="fa-solid fa-award"></i>
+                    <i style="color:#293445;  "
+                                class="fa-solid fa-award fs-6"></i>
                     </button>
 
 {{--    @include('admin.contents.personel.personelegitim.personelegitim')  --}}
                 </td>
                  <td><button class="text-purple open-modal-btn" data-bs-toggle="modal"
                     data-bs-target="#perseoneldokumanModal-{{ $personelitem->id }}">
-                    <i class="fa-solid fa-file"></i>
+                    <i style="color:#293445;  " class="fa-solid fa-file fs-6"></i>
                     </button>
                     {{-- @include('admin.contents.personel.personeldokuman.personeldokuman') --}}
                 </td>
 
                 <td class="text-right">
                     <div class="databutton">
-                        <div class="d-flex align-items-center fs-6">
+                        <div class="d-flex align-items-center fs-6" style="justify-content: space-evenly; ">
 
-                            <button class="text-warning" data-bs-toggle="modal"
-                                data-bs-target="#personelupdateModal-{{ $personelitem->id }}"><i
-                                    class="bi bi-pencil-fill"></i></button>
+                            <button data-bs-toggle="modal"
+                                data-bs-target="#personelupdateModal-{{ $personelitem->id }}"> <i style="color:#293445" class="fa-solid fa-pen-to-square fs-6"></i></button>
                             @include('admin.contents.personel.personel-update')
                             <a href="{{ route('personell.show', ['personell' => $personelitem
                             ->id]) }}"
-                                class="text-primary btn btn-link p-0 m-0 ">
-                                <i class="bi bi-eye-fill"></i>
+                                class=" btn btn-link p-0 m-0 ">
+                                <i style="color:#293445;  "
+                                class="fa-solid fa-wand-magic-sparkles fs-6"></i>
                             </a>
                             <form
                                 action="{{ route('personell.destroy', ['personell' => $personelitem->id]) }}"
@@ -43,8 +44,9 @@
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit"
-                                    class="btn btn-link text-danger p-0 m-0 show_confirm">
-                                    <i class="bi bi-trash-fill"></i>
+                                    class="btn  p-0 m-0 show_confirm">
+                                    <i style="color: rgb(180, 68, 34)"
+                                        class="fa-solid fa-trash-can fs-6"></i>
                                 </button>
                             </form>
                         </div>

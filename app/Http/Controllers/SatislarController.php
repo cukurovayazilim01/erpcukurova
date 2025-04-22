@@ -60,11 +60,11 @@ public function cariSearchsatislar(Request $request)
                 ->whereHas('firmaadi',function($query) use ($satislarsearch) {
                     $query->where('firma_unvan', 'like', '%' . $satislarsearch . '%');
                 })
-                ->paginate(50);
+                ->paginate(15);
 
             // Sayfa numarasını hesapla
             $page = $request->query('page', 1);
-            $perPage = 50;
+            $perPage = 15;
             $startNumber = $satislar->total() - (($page - 1) * $perPage);
 
             $user = User::all();
@@ -83,7 +83,7 @@ public function cariSearchsatislar(Request $request)
     }
     public function index(Request $request)
     {
-        $perPage = $request->input('entries', 20);
+        $perPage = $request->input('entries', 15);
 
         // $cariler = Cariler::all();
         $satislar = Satislar::orderBy('created_at', 'desc')->paginate($perPage);

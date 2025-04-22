@@ -69,7 +69,7 @@ GİDER OLUŞTUR
                 <i class="fa fa-plus"></i> <span>Satır Ekle</span>
             </button>
             <div class="table-responsive" style="border-radius: 5px">
-                <table id="example3" class="table table-bordered table-hover" style="width: 100%;">
+                <table id="example3" class="table table-bordered table-striped" style="width: 100%;">
 
                     <thead>
                         <tr>

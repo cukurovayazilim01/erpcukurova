@@ -142,7 +142,7 @@
                         <i class="fa fa-plus"></i> <span>Hizmet Ekle</span>
                     </button>
                     <div class="table-responsive" style="border-radius: 5px">
-                        <table id="table" class="table table-bordered table-hover"
+                        <table id="table" class="table table-bordered table-striped"
                             style="width:100% ">
 
                             <thead>
@@ -302,7 +302,7 @@
                                 style="width: 100%; text-align: center;">
                                 <i class="fa fa-plus"></i> Taksit Ekle
                             </button>
-                            <table id="odeme_table" class="table table-bordered table-hover"
+                            <table id="odeme_table" class="table table-bordered table-striped"
                                 style="width:100%; cursor: pointer; border-radius: 5px">
 
                                 <thead style="border-radius: 5px">
@@ -347,24 +347,14 @@
                         <label for="aciklama" style="display: block; margin-bottom: 5px">Açıklama Ekle</label>
                         <div class="input-group mb-2">
                             <span class="input-group-text"><i class="fa-solid fa-comments"></i></span>
-                            <textarea name="aciklama" id="aciklama" class="form-control" aria-label="With textarea"></textarea>
+                            <textarea name="teklif_aciklama" id="teklif_aciklama" class="form-control" aria-label="With textarea"></textarea>
                         </div>
 
                     </div>
 
                     <!-- Diğer Kısımlar -->
                     <div class="col-md-6 col-sm-12" style=" padding: 10px;">
-                        <div class="row" style="display: none;">
-                            <div class="col-md-12">
-                                <label for="exampleInputEmail1">TOPLAM MALİYET<span
-                                        style="color: red">*</span></label>
-                                <div class="input-group m-b-sm">
-                                    <span class="input-group-addon"></span>
-                                    <input type="number" name="maliyet_kdvli_tutar" id="maliyet_kdvli_tutar"
-                                        class="form-control form-control-sm" readonly>
-                                </div>
-                            </div>
-                        </div>
+
 
                         <div class="row">
                             <div class="col-md-12 ">

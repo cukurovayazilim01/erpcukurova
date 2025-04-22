@@ -6,27 +6,20 @@
             @method('put')
             <div class="modal-content">
                 <!-- Modal Header -->
-                <div class="modal-header bg-primary text-white">
+                <div class="modal-header ">
                     <h5 class="modal-title">Marka Güncelleme Ekranı</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
                 <!-- Modal Body -->
-                <div class="modal-body" style="display: flex">
-                    <!-- Left Side -->
-                    <div class="col-md-12" style=" padding: 1%; ">
-                        <div class="row" >
-                            {{-- <div class="col-md-12 select2-sm">
-                                <label for="cari_id" >Firma</label>
+                <div class="modal-body"
+                style="padding: 20px; background-position:center; background-repeat: no-repeat; background-size: cover;  background-image: url('{{ asset('resim/modal7.png') }}') ">
 
-                                  <select name="cari_id" id="cari_id" required style="border: none; width: 100%; height: 10px; outline: none; appearance: none; background-color: transparent; padding: 2px 0;">
-                                    <!-- Dinamik veriler buraya yüklenecek -->
-                                  </select>
-                              </div> --}}
+                <div class="row ">
                               <div class="col-md-6">
                                 <label for="cari_id">Firma</label>
-                                <div class="form-group input-with-icon" style="display: flex; align-items: center;">
-                                    <span class="icon" >
+                                <div class="input-group mb-2" style="display: flex; align-items: center;">
+                                    <span class="input-group-text" >
                                         <i class="fa fa-building"></i>
                                     </span>
                                     <input type="text" name="cari_unvan" id="cari_unvan" class="form-control form-control-sm"
@@ -36,8 +29,8 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="musteri_temsilcisi">Müşteri Temsilcisi</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-building"></i>
                                     </span>
                                     <input type="text" name="musteri_temsilcisi" id="musteri_temsilcisi"
@@ -46,12 +39,12 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="satis_temsilcisi">Satış Temsilcisi</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-user"></i>
                                     </span>
                                     <select name="satis_temsilcisi" id="satis_temsilcisi"
-                                        class="form-select form-select-sm" required>
+                                        class="form-control form-control-sm" required>
                                         <option value="">Satış Temsilcisi Seçiniz</option>
                                         @foreach ($user as $useritem)
                                             <option value="{{ $useritem->id }}"
@@ -64,8 +57,8 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="tc">TC</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-file"></i>
                                     </span>
                                     <input type="text" name="tc" id="tc"
@@ -74,8 +67,8 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="vkn">VKN</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-file"></i>
                                     </span>
                                     <input type="text" name="vkn" id="vkn"
@@ -84,8 +77,8 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="sehir">Şehir</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-city"></i>
                                     </span>
                                     <input type="text" name="sehir" id="sehir"
@@ -94,8 +87,8 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="basvuru_no">Başvuru No</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-check"></i>
                                     </span>
                                     <input type="text" name="basvuru_no" id="basvuru_no"
@@ -104,8 +97,8 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="referans_no">Referans No</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-check"></i>
                                     </span>
                                     <input type="text" name="referans_no" id="referans_no"
@@ -114,8 +107,8 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="marka_adi">Marka Adı</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-check"></i>
                                     </span>
                                     <input type="text" name="marka_adi" id="marka_adi"
@@ -125,8 +118,8 @@
 
                             <div class="col-md-3">
                                 <label for="marka_sinif">Marka Sınıfı</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-check"></i>
                                     </span>
                                     <input type="text" name="marka_sinif" id="marka_sinif"
@@ -135,26 +128,111 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="hizmet_turu">Marka Hizmet</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-building"></i>
                                     </span>
-                                    <select name="hizmet_turu" id="hizmet_turu" class="form-select form-select-sm" required>
+                                    <select name="hizmet_turu" id="hizmet_turu" class="form-control form-control-sm"
+                                        required>
                                         <option value="">Lütfen Seçim Yapınız</option>
-                                        @foreach ($hizmetler as $hizmetleritem)
-                                            <option value="{{ $hizmetleritem->id }}"
-                                                {{ old('hizmet_turu', $markatakipitem->hizmet_turu) == $hizmetleritem->id ? 'selected' : '' }}>
-                                                {{ $hizmetleritem->hizmet_ad }}
-                                            </option>
-                                        @endforeach
+                                        <option value="1" {{ $markatakipitem->hizmet_turu == '1' ? 'selected' : '' }}>
+                                            Marka Tescil İşlemleri 1 Sınıflı</option>
+                                        <option value="2" {{ $markatakipitem->hizmet_turu == '2' ? 'selected' : '' }}>
+                                            Marka Tescil İşlemleri 2 Sınıflı</option>
+                                        <option value="3" {{ $markatakipitem->hizmet_turu == '3' ? 'selected' : '' }}>
+                                            Marka Tescil İşlemleri 3 Sınıflı</option>
+                                        <option value="4" {{ $markatakipitem->hizmet_turu == '4' ? 'selected' : '' }}>
+                                            Marka Tescil İşlemleri 4 Sınıflı</option>
+                                        <option value="5" {{ $markatakipitem->hizmet_turu == '5' ? 'selected' : '' }}>
+                                            Marka Tescil İşlemleri 5 Sınıflı</option>
+                                        <option value="6" {{ $markatakipitem->hizmet_turu == '6' ? 'selected' : '' }}>
+                                            Marka Tescil İşlemleri 6 Sınıflı</option>
+                                        <option value="7" {{ $markatakipitem->hizmet_turu == '7' ? 'selected' : '' }}>
+                                            Marka Tescil İşlemleri 7 Sınıflı</option>
+                                        <option value="8" {{ $markatakipitem->hizmet_turu == '8' ? 'selected' : '' }}>
+                                            Marka Tescil İşlemleri 8 Sınıflı</option>
+                                        <option value="9" {{ $markatakipitem->hizmet_turu == '9' ? 'selected' : '' }}>
+                                            Marka Tescil İşlemleri 9 Sınıflı</option>
+                                        <option value="10" {{ $markatakipitem->hizmet_turu == '10' ? 'selected' : '' }}>
+                                            Marka Tescil İşlemleri 10 Sınıflı</option>
+                                        <option value="11" {{ $markatakipitem->hizmet_turu == '11' ? 'selected' : '' }}>
+                                            Marka Tescil İşlemleri 11 Sınıflı</option>
+                                        <option value="12" {{ $markatakipitem->hizmet_turu == '12' ? 'selected' : '' }}>
+                                            Marka Tescil İşlemleri 12 Sınıflı</option>
+                                        <option value="13" {{ $markatakipitem->hizmet_turu == '13' ? 'selected' : '' }}>
+                                            Marka Tescil İşlemleri 13 Sınıflı</option>
+                                        <option value="14" {{ $markatakipitem->hizmet_turu == '14' ? 'selected' : '' }}>
+                                            Marka Tescil İşlemleri 14 Sınıflı</option>
+                                        <option value="15" {{ $markatakipitem->hizmet_turu == '15' ? 'selected' : '' }}>
+                                            Marka Tescil İşlemleri 15 Sınıflı</option>
+                                        <option value="16" {{ $markatakipitem->hizmet_turu == '16' ? 'selected' : '' }}>
+                                            Marka Tescil İşlemleri 16 Sınıflı</option>
+                                        <option value="17" {{ $markatakipitem->hizmet_turu == '17' ? 'selected' : '' }}>
+                                            Marka Tescil İşlemleri 18 Sınıflı</option>
+                                        <option value="18" {{ $markatakipitem->hizmet_turu == '18' ? 'selected' : '' }}>
+                                            Marka Tescil İşlemleri 19 Sınıflı</option>
+                                        <option value="19" {{ $markatakipitem->hizmet_turu == '19' ? 'selected' : '' }}>
+                                            Marka Tescil İşlemleri 20 Sınıflı</option>
+                                        <option value="20" {{ $markatakipitem->hizmet_turu == '20' ? 'selected' : '' }}>
+                                            Marka Tescil İşlemleri 21 Sınıflı</option>
+                                        <option value="21" {{ $markatakipitem->hizmet_turu == '21' ? 'selected' : '' }}>
+                                            Marka Tescil İşlemleri 22 Sınıflı</option>
+                                        <option value="22" {{ $markatakipitem->hizmet_turu == '22' ? 'selected' : '' }}>
+                                            Marka Tescil İşlemleri 23 Sınıflı</option>
+                                        <option value="23" {{ $markatakipitem->hizmet_turu == '23' ? 'selected' : '' }}>
+                                            Marka Tescil İşlemleri 24 Sınıflı</option>
+                                        <option value="24" {{ $markatakipitem->hizmet_turu == '24' ? 'selected' : '' }}>
+                                            Marka Tescil İşlemleri 25 Sınıflı</option>
+                                        <option value="25" {{ $markatakipitem->hizmet_turu == '25' ? 'selected' : '' }}>
+                                            Marka Tescil İşlemleri 26 Sınıflı</option>
+                                        <option value="26" {{ $markatakipitem->hizmet_turu == '26' ? 'selected' : '' }}>
+                                            Marka Tescil İşlemleri 27 Sınıflı</option>
+                                        <option value="27" {{ $markatakipitem->hizmet_turu == '27' ? 'selected' : '' }}>
+                                            Marka Tescil İşlemleri 28 Sınıflı</option>
+                                        <option value="28" {{ $markatakipitem->hizmet_turu == '28' ? 'selected' : '' }}>
+                                            Marka Tescil İşlemleri 29 Sınıflı</option>
+                                        <option value="29" {{ $markatakipitem->hizmet_turu == '29' ? 'selected' : '' }}>
+                                            Marka Tescil İşlemleri 30 Sınıflı</option>
+                                        <option value="30" {{ $markatakipitem->hizmet_turu == '30' ? 'selected' : '' }}>
+                                            Marka Tescil İşlemleri 31 Sınıflı</option>
+                                        <option value="31" {{ $markatakipitem->hizmet_turu == '31' ? 'selected' : '' }}>
+                                            Marka Tescil İşlemleri 32 Sınıflı</option>
+                                        <option value="32" {{ $markatakipitem->hizmet_turu == '32' ? 'selected' : '' }}>
+                                            Marka Tescil İşlemleri 33 Sınıflı</option>
+                                        <option value="33" {{ $markatakipitem->hizmet_turu == '33' ? 'selected' : '' }}>
+                                            Marka Tescil İşlemleri 34 Sınıflı</option>
+                                        <option value="34" {{ $markatakipitem->hizmet_turu == '34' ? 'selected' : '' }}>
+                                            Marka Tescil İşlemleri 35 Sınıflı</option>
+                                        <option value="35" {{ $markatakipitem->hizmet_turu == '35' ? 'selected' : '' }}>
+                                            Marka Tescil İşlemleri 36 Sınıflı</option>
+                                        <option value="36" {{ $markatakipitem->hizmet_turu == '36' ? 'selected' : '' }}>
+                                            Marka Tescil İşlemleri 37 Sınıflı</option>
+                                        <option value="37" {{ $markatakipitem->hizmet_turu == '37' ? 'selected' : '' }}>
+                                            Marka Tescil İşlemleri 38 Sınıflı</option>
+                                        <option value="38" {{ $markatakipitem->hizmet_turu == '38' ? 'selected' : '' }}>
+                                            Marka Tescil İşlemleri 39 Sınıflı</option>
+                                        <option value="39" {{ $markatakipitem->hizmet_turu == '39' ? 'selected' : '' }}>
+                                            Marka Tescil İşlemleri 40 Sınıflı</option>
+                                        <option value="40" {{ $markatakipitem->hizmet_turu == '40' ? 'selected' : '' }}>
+                                            Marka Tescil İşlemleri 41 Sınıflı</option>
+                                        <option value="41" {{ $markatakipitem->hizmet_turu == '41' ? 'selected' : '' }}>
+                                            Marka Tescil İşlemleri 42 Sınıflı</option>
+                                        <option value="42" {{ $markatakipitem->hizmet_turu == '42' ? 'selected' : '' }}>
+                                            Marka Tescil İşlemleri 43 Sınıflı</option>
+                                        <option value="43" {{ $markatakipitem->hizmet_turu == '43' ? 'selected' : '' }}>
+                                            Marka Tescil İşlemleri 44 Sınıflı</option>
+                                        <option value="44" {{ $markatakipitem->hizmet_turu == '44' ? 'selected' : '' }}>
+                                            Marka Tescil İşlemleri 45 Sınıflı</option>
+                                        <option value="269" {{ $markatakipitem->hizmet_turu == '269' ? 'selected' : '' }}>
+                                            Yurtdışı Marka Başvurusu (AB Ülkeleri)</option>
                                     </select>
                                 </div>
                             </div>
 
                             <div class="col-md-3">
                                 <label for="basvuru_tarihi">Başvuru Tarihi</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-calendar"></i>
                                     </span>
                                     <input type="date" name="basvuru_tarihi" id="basvuru_tarihi"
@@ -164,12 +242,12 @@
 
                             <div class="col-md-3">
                                 <label for="marka_islem">Marka İşlem</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-check"></i>
                                     </span>
                                     <select name="marka_islem" id="marka_islem"
-                                        class="form-select form-select-sm" required>
+                                        class="form-control form-control-sm" required>
                                         <option value="Yapıldı"
                                         {{$markatakipitem->marka_islem == 'Yapıldı' ? 'selected' : ''}}>Yapıldı</option>
                                         <option value="Yapılmadı"
@@ -179,12 +257,12 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="marka_durum">Marka Durum</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-check"></i>
                                     </span>
                                     <select name="marka_durum" id="marka_durum"
-                                        class="form-select form-select-sm" required>
+                                        class="form-control form-control-sm" required>
                                         <option value="Süreç Devam Ediyor"
                                         {{$markatakipitem->marka_durum == 'Süreç Devam Ediyor' ? 'selected' : ''}}>Süreç Devam Ediyor</option>
                                         <option value="Tescil Edildi"
@@ -196,16 +274,16 @@
                             </div>
 
                         </div>
-                    </div>
-                </div>
-                <!-- Modal Footer -->
-                <div class="modal-footer bg-light">
-                    <button type="button" class="btn btn-sm btn-outline-secondary"
-                        data-bs-dismiss="modal">Vazgeç</button>
-                    <button type="submit"  id="submit-form" class="btn btn-outline-primary btn-sm ">Kaydet</button>
+                        <div
+                            style="display: flex; padding: 10px 0; gap:20px; text-align: center; justify-content: end">
 
-                </div>
+                            <button type="button" class="btn btn-outline-warning btn-sm py-6 w-25" data-bs-dismiss="modal">Vazgeç</button>
+                            <button type="submit" id="submit-form" class="btn btn-outline-dark btn-sm py-6 w-75">Kaydet</button>
+
+                        </div>
+                    </div>
+
+                    </div>
+                </form>
             </div>
-        </form>
-    </div>
-</div>
+        </div>

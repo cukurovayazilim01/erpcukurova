@@ -7,85 +7,39 @@ ZİMMET
 ZİMMET
 @endsection
 
-<style>
-    .error {
-        border: 2px solid red;
-    }
 
-    .success {
-        border: 2px solid green;
-    }
-
-    .error-message {
-        color: red;
-        font-size: 12px;
-    }
-</style>
 <div class="card radius-10">
     <div class="card-header bg-transparent">
-        <div class="row align-items-center g-3">
-
-            <!-- CSS: Butonlar için stil -->
-            <style>
-                .table-buttons {
-                    text-align: center;
-                }
-
-                .table-buttons button {
-                    font-size: 11px;
-                    border-radius: 5px;
-                }
-
-                /* İkon ve butonları hizalama */
-                .table-buttons i {
-                    margin-right: 8px;
-                }
-            </style>
-
-            <!-- Yeni Ekle and Action Buttons -->
-            <div class="col-md-12 text-end" style="display: flex; justify-content: flex-end  ">
-                <form id="searchForm" action="{{ route('zimmetsearch') }}"  method="GET">
-                    <div class="ms-auto position-relative">
-                        <div class="position-absolute top-50 translate-middle-y search-icon fs-5 px-3"><i class="bi bi-search"></i></div>
-                        <input class="form-control ps-5" id="searchInput" type="text" placeholder="Genel Arama">
-                      </div>
-                    </form>
-                <div class="table-buttons">
-                    <button class="btn btn-primary" id="copyBtn"><i class="fa fa-copy"></i> </button>
-                    <button class="btn btn-success" id="excelBtn"><i class="fa fa-file-excel"></i> </button>
-                    <button class="btn btn-danger" id="pdfBtn"><i class="fa fa-file-pdf"></i> </button>
-                    <button class="btn btn-warning" id="printBtn"><i class="fa fa-print"></i> </button>
-                    <!-- Yeni Ekle Button -->
+        <div class="row g-3 align-items-center">
+            <div class="d-flex align-items-center justify-content-between gap-1 mobile-erp">
+                <div class=" col-md-4 mr-4  d-flex gap-2">
+                        <button class="btn btn-outline-dark" id="copyBtn"><i class="fa-solid fa-clone"></i> </button>
+                        <button class="btn btn-outline-dark" id="excelBtn"><i class="fa-solid fa-file-excel"></i> </button>
+                        <button class="btn btn-outline-dark" id="pdfBtn"><i class="fa-solid fa-file-pdf"></i> </button>
+                        <button class="btn btn-outline-dark" id="printBtn"><i class="fa fa-print"></i> </button>
+                        <!-- Yeni Ekle Button -->
                 </div>
-                <button type="button" class="btn btn-sm btn-outline-primary px-5 ms-2" style="margin-left: 10px"
-                    data-bs-toggle="modal" data-bs-target="#zimmetmodal">
-                    <i class="fa-solid fa-plus"></i> Yeni Ekle
-                </button>
+                <div class="col-lg-4 d-flex align-items-center mobile-erp2 justify-content-center">
+                    <form id="searchForm" action="{{ route('zimmetsearch') }}"  method="GET">
+                        <div class="ms-auto position-relative">
+                            <div class="position-absolute top-50 translate-middle-y search-input-group-text px-3"><i class="bi bi-search"></i></div>
+                            <input class="form-control ps-5" id="searchInput" type="text" placeholder="Genel Arama">
+                          </div>
+                        </form>
+                </div>
+                <div class="col-lg-4 ms-auto mobile-erp3 text-end">
+                    <button type="button" class="btn btn-outline-dark btn-sm mx-0 mx-lg-2"  data-bs-toggle="modal"
+                    data-bs-target="#zimmetmodal"><i class="fa-solid fa-plus"></i>Yeni Ekle</button>
+                </div>
 
-            </div>
 
-            <style>
-                .table-buttons {
-                    justify-content: flex-end;
-                    /* Butonları sağa yaslar */
-                    gap: 10px;
-                    /* Butonlar arasında boşluk bırakır */
-                    align-items: center;
-                    /* Yükseklik hizalaması için */
-                }
-
-                .table-buttons button {
-                    font-size: 11px;
-                    /* Buton yazı boyutunu ayarlama */
-                }
-            </style>
-
+        </div>
         </div>
     </div>
 
     <!-- Modal -->
     <div class="modal fade" id="zimmetmodal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-xl">
             <form id="add-form" action="{{ route('zimmet.store') }}" method="POST" id="add-form" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-content">
@@ -103,11 +57,11 @@ ZİMMET
                             <div class="row">
                                 <div class="col-md-12">
                                     <label for="personel_id">Personel Adı</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-user"></i>
                                         </span>
-                                        <select name="personel_id" id="personel_id" class="form-select form-select-sm" required>
+                                        <select name="personel_id" id="personel_id" class="form-control form-control-sm" required>
                                             <option value="">Lütfen Seçiniz</option>
                                             @foreach ($personel as $personelitem)
                                                 <option value="{{ $personelitem->id }}">{{ $personelitem->ad_soyad }}</option>
@@ -116,18 +70,12 @@ ZİMMET
                                     </div>
                                 </div>
                                 <div class="col-md-12" style="padding-top: 5px">
+                                    <button type="button" id="addzimmet" class="btn btn-sm btn-primary btn-block mb-1"
+                                    style="width: 100%; text-align: center;">
+                                    <i class="fa fa-plus"></i> <span>Hizmet Ekle</span>
+                                </button>
+                                <table id="odeme_table" class="table table-responsive table-bordered table-striped" style="width: 100%; ">
 
-                                <table id="odeme_table" class="table table-responsive" style="width: 100%; cellspacing: 0; margin-bottom: 0">
-                                    <thead>
-                                        <tr>
-                                            <th colspan="100%">
-                                                <button type="button" id="addzimmet" class="btn btn-sm btn-primary btn-block"
-                                                    style="width: 100%; text-align: center;">
-                                                    <i class="fa fa-plus"></i> Zimmet Ekle
-                                                </button>
-                                            </th>
-                                        </tr>
-                                    </thead>
                                     <thead>
                                         <tr>
                                             <th><b>#</b></th>
@@ -224,8 +172,8 @@ ZİMMET
         <div class="table-responsive">
             <div id="example_wrapper" class="dataTables_wrapper dt-bootstrap5">
 
-                <table class="table align-middle mb-0 display " id="example2">
-                    <thead class="table-light">
+                <table class="table dataTable table-striped table-bordered " id="example2">
+                    <thead >
                         <tr>
                             <th>#</th>
                             <th>İşlem Tarihi</th>
@@ -254,7 +202,7 @@ ZİMMET
                                 </td>
                                 <td>
                                     <a href="{{ route('zimmet.edit', ['zimmet' => $zimmetitem->id]) }}"
-                                        class="btn btn-sm  btn-success"><i class="fa fa-refresh"></i> Teslim Alma
+                                        class="btn btn-sm  "><i style="color:#293445" class="fa-solid fa-pen-to-square fs-6"></i> Teslim Alma
                                     </a>
                                 </td>
                                 <td class="text-right">
@@ -267,7 +215,8 @@ ZİMMET
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class=" text-danger show_confirm">
-                                                <i class="bi bi-trash-fill"></i>
+                                                <i style="color: rgb(180, 68, 34)"
+                                                        class="fa-solid fa-trash-can fs-6"></i>
                                             </button>
                                         </form>
                                     </div>

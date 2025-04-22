@@ -80,11 +80,11 @@ class AramalarController extends Controller
         }
 
         // Sorguyu tamamla ve sayfala
-        $aramalar = $aramalarQuery->paginate(50);
+        $aramalar = $aramalarQuery->paginate(15);
 
         // Sayfa numarasını hesapla
         $page = $request->query('page', 1);
-        $perPage = 50;
+        $perPage = 15;
         $startNumber = $aramalar->total() - (($page - 1) * $perPage);
 
         $user = User::all();
@@ -103,7 +103,7 @@ class AramalarController extends Controller
     public function index(Request $request)
     {
         // Kullanıcının seçtiği kayıt sayısını al veya varsayılan 20 olarak ayarla
-        $perPage = $request->input('entries', 20);
+        $perPage = $request->input('entries', 15);
 
         // cariler tablosundaki verileri sıralayarak, seçilen sayıya göre sayfalama işlemi
         $aramalar = Aramalar::orderByDesc('id')->paginate($perPage);

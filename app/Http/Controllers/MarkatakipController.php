@@ -145,43 +145,45 @@ class MarkatakipController extends Controller
 }
 
 
-    public function markatakipsearch(Request $request)
-    {
-        $markatakipsearch = $request->input('markatakipsearch');
+public function markatakipsearch(Request $request)
+{
+    $markatakipsearch = $request->input('markatakipsearch');
+    $perPage = 15;
+    $page = $request->query('page', 1);
 
-        // Eğer arama yapılmışsa
-        if ($markatakipsearch) {
-            $markatakip = Markatakip::orderByDesc('id')
-                ->whereHas('firmaadi',function($query) use ($markatakipsearch) {
-                    $query->where('firma_unvan', 'like', '%' . $markatakipsearch . '%');
-                })
-                ->paginate(50);
+    $query = Markatakip::orderByDesc('id')
+        ->with(['firmaadi', 'satistemsilcisi']);
 
-            // Sayfa numarasını hesapla
-            $page = $request->query('page', 1);
-            $perPage = 50;
-            $startNumber = $markatakip->total() - (($page - 1) * $perPage);
-
-            $user = User::all();
-
-            // Arama sonucu varsa ve AJAX isteği ise arama sonucunu döndür
-            if ($request->ajax()) {
-                return view('admin.contents.markatakip.markatakip-search', compact('markatakip', 'startNumber', 'user'));
-            }
-
-            // Normal sayfa için arama sonucu döndür
-            return view('admin.contents.markatakip.markatakip', compact('markatakip', 'startNumber', 'user'));
-        }
-
-        // Arama yapılmamışsa ana sayfayı döndür
-        return view('admin.contents.markatakip.markatakip');
+    if (!empty($markatakipsearch) && mb_strlen($markatakipsearch, 'UTF-8') >= 2) {
+        $query->where(function ($q) use ($markatakipsearch) {
+            $q->whereHas('firmaadi', function ($subQ) use ($markatakipsearch) {
+                $subQ->where('firma_unvan', 'like', '%' . $markatakipsearch . '%');
+            })
+            ->orWhereHas('satistemsilcisi', function ($subQ) use ($markatakipsearch) {
+                $subQ->where('ad_soyad', 'like', '%' . $markatakipsearch . '%');
+            })
+            ->orWhere('sehir', 'like', '%' . $markatakipsearch . '%');
+        });
     }
+
+    $markatakip = $query->paginate($perPage);
+    $startNumber = $markatakip->total() - (($page - 1) * $perPage);
+    $user = User::all();
+
+    if ($request->ajax()) {
+        return view('admin.contents.markatakip.markatakip-search', compact('markatakip', 'startNumber', 'user'));
+    }
+
+    return view('admin.contents.markatakip.markatakip', compact('markatakip', 'startNumber', 'user'));
+}
+
+
     public function getMusteriTemsilcisi($cariId)
     {
         $cari = Cariler::find($cariId);
 
         return response()->json([
-            'musteri_temsilcisi' => $cari->musteri_temsilcisi,
+            'musteri_temsilcisi' => $cari->user->ad_soyad,
             'tc' => $cari->tc_kimlik,
             'vkn' => $cari->vergi_no,
             'sehir' => $cari->il,
@@ -197,16 +199,14 @@ class MarkatakipController extends Controller
     }
     public function index(Request $request)
     {
-        $perPage = $request->input('entries', 5);
+        $perPage = $request->input('entries', 15);
 
         $markatakip = Markatakip::orderByDesc('id')->paginate($perPage);
         $page = $markatakip->currentPage();
         $startNumber = $markatakip->total() - (($page - 1) * $perPage);
-        $cariler = Cariler::all();
         $user = User::all();
-        $hizmetler = Hizmetler::all();
 
-        return view('admin.contents.markatakip.markatakip',compact('markatakip', 'startNumber', 'user','cariler', 'perPage','hizmetler'));
+        return view('admin.contents.markatakip.markatakip',compact('markatakip', 'startNumber', 'user', 'perPage'));
     }
 
     /**
@@ -298,6 +298,9 @@ class MarkatakipController extends Controller
 
         if ($markatakip->itiraz()->count() > 0) {
             return redirect('markatakip')->with('error', 'Bu markaya ait itiraz olduğu için silinemez.');
+        }
+        if ($markatakip->tescil()->count() > 0) {
+            return redirect('markatakip')->with('error', 'Bu markaya ait tescil olduğu için silinemez.');
         }
         $markatakip->delete();
         return redirect('markatakip')->with('success','Silme Başarılı');

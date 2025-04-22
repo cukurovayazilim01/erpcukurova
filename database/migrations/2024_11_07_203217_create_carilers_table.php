@@ -16,8 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('islem_yapan')->nullable();
             $table->foreign('islem_yapan')->references('id')->on('users')->onDelete('cascade');
             $table->date('islem_tarihi')->nullable();
-            $table->unsignedBigInteger('son_guncelleyen')->nullable();
-            $table->foreign('son_guncelleyen')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('firma_no')->nullable();
+            $table->string('firma_no_text')->nullable();
             $table->longText('firma_unvan')->nullable();
             $table->longText('ticari_unvan')->nullable();
             $table->longText('firma_sektor')->nullable();
@@ -34,7 +34,8 @@ return new class extends Migration
             $table->longText('tc_kimlik')->nullable();
             $table->longText('adres')->nullable();
             $table->longText('aciklama')->nullable();
-            $table->longText('musteri_temsilcisi')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->longText('firma_tipi')->nullable();
             $table->longText('firma_durumu')->nullable();
             $table->softDeletes();

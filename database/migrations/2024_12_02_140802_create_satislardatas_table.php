@@ -28,8 +28,7 @@ return new class extends Migration
             $table->longText('satis_hizmet_miktar')->nullable();
             $table->longText('satis_hizmet_birim')->nullable();
 
-            $table->double('hizmet_maliyet', 15, 2)->nullable();
-            $table->double('maliyet_toplam_fiyat', 15, 2)->nullable();
+
             $table->double('satis_fiyat', 15, 2)->nullable();
             $table->longText('satis_kdv_oran')->nullable();
             $table->double('satis_kdv_tutar', 15, 2)->nullable();

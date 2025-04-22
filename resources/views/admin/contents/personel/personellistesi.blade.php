@@ -20,7 +20,7 @@ Personel Listesi
                 <div class="col-lg-4 d-flex align-items-center mobile-erp2 justify-content-center">
                     <form id="searchForm" action="{{ route('personelsearch') }}"  method="GET">
                         <div class="ms-auto position-relative">
-                            <div class="position-absolute top-50 translate-middle-y search-icon px-3"><i class="bi bi-search"></i></div>
+                            <div class="position-absolute top-50 translate-middle-y search-input-group-text px-3"><i class="bi bi-search"></i></div>
                             <input class="form-control ps-5" id="searchInput" type="text" placeholder="Genel Arama">
                           </div>
                         </form>
@@ -41,21 +41,21 @@ Personel Listesi
                 @csrf
                 <div class="modal-content">
                     <!-- Modal Header -->
-                    <div class="modal-header bg-primary text-white">
+                    <div class="modal-header ">
                         <h5 class="modal-title">Personel Özlük Dosyası</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
                     <!-- Modal Body -->
-                    <div class="modal-body" style="display: flex">
-                        <!-- Left Side -->
-                        <div class="col-md-12" style="padding: 2%;">
-                            <div class="row">
+                    <div class="modal-body"
+                        style="padding: 20px; background-position:center; background-repeat: no-repeat; background-size: cover;  background-image: url('{{ asset('resim/modal7.png') }}') ">
+
+                        <div class="row ">
 
                                 <div class="col-md-3">
                                     <label for="ad_soyad">Ad Soyad</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-layer-group"></i>
                                         </span>
                                         <input type="text" name="ad_soyad" id="ad_soyad"
@@ -64,8 +64,8 @@ Personel Listesi
                                 </div>
                                 <div class="col-md-3">
                                     <label for="tc">TC Kimlik No</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-layer-group"></i>
                                         </span>
                                         <input type="number" name="tc" id="tc"
@@ -74,8 +74,8 @@ Personel Listesi
                                 </div>
                                 <div class="col-md-3">
                                     <label for="sigorta_sicil_no">Sigorta Sicil No</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-layer-group"></i>
                                         </span>
                                         <input type="number" name="sigorta_sicil_no" id="sigorta_sicil_no"
@@ -84,8 +84,8 @@ Personel Listesi
                                 </div>
                                 <div class="col-md-3">
                                     <label for="sigorta_giris_tarihi">Sigorta Giriş Tarihi</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-calendar-days"></i>
                                         </span>
                                         <input type="date" name="sigorta_giris_tarihi" id="sigorta_giris_tarihi"
@@ -94,8 +94,8 @@ Personel Listesi
                                 </div>
                                 <div class="col-md-3">
                                     <label for="meslek_kodu">Meslek Kodu</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-layer-group"></i>
                                         </span>
                                         <input type="number" name="meslek_kodu" id="meslek_kodu"
@@ -104,8 +104,8 @@ Personel Listesi
                                 </div>
                                 <div class="col-md-3">
                                     <label for="okul">Okulu</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-layer-group"></i>
                                         </span>
                                         <input type="text" name="okul" id="okul"
@@ -114,11 +114,11 @@ Personel Listesi
                                 </div>
                                 <div class="col-md-3">
                                     <label for="mezuniyet">Mezuniyet</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-layer-group"></i>
                                         </span>
-                                        <select name="mezuniyet" id="mezuniyet" class="form-select form-select-sm">
+                                        <select name="mezuniyet" id="mezuniyet" class="form-control form-control-sm">
                                             <option value="Lisans">Lisans</option>
                                             <option value="Yüksek Lisans">Yüksek Lisans</option>
                                             <option value="Ön Lisans">Ön Lisans</option>
@@ -129,8 +129,8 @@ Personel Listesi
                                 </div>
                                 <div class="col-md-3">
                                     <label for="meslegi">Mesleği</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-layer-group"></i>
                                         </span>
                                         <input type="text" name="meslegi" id="meslegi"
@@ -139,8 +139,8 @@ Personel Listesi
                                 </div>
                                 <div class="col-md-3">
                                     <label for="departman">Departman</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-layer-group"></i>
                                         </span>
                                         <input type="text" name="departman" id="departman"
@@ -149,8 +149,8 @@ Personel Listesi
                                 </div>
                                 <div class="col-md-3">
                                     <label for="dogum_yeri">Doğum Yeri</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-layer-group"></i>
                                         </span>
                                         <input type="text" name="dogum_yeri" id="dogum_yeri"
@@ -159,8 +159,8 @@ Personel Listesi
                                 </div>
                                 <div class="col-md-3">
                                     <label for="dogum_tarihi">Doğum Tarihi</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-calendar"></i>
                                         </span>
                                         <input type="date" name="dogum_tarihi" id="dogum_tarihi"
@@ -169,8 +169,8 @@ Personel Listesi
                                 </div>
                                 <div class="col-md-3">
                                     <label for="gsm">Cep Telefonu</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-phone"></i>
                                         </span>
                                         <input type="number" name="gsm" id="gsm"
@@ -179,8 +179,8 @@ Personel Listesi
                                 </div>
                                 <div class="col-md-3">
                                     <label for="mail">E-Posta</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-envelope"></i>
                                         </span>
                                         <input type="email" name="mail" id="mail"
@@ -189,8 +189,8 @@ Personel Listesi
                                 </div>
                                 <div class="col-md-3">
                                     <label for="ise_giris_tarihi">İşe Giriş Tarihi</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-calendar"></i>
                                         </span>
                                         <input type="date" name="ise_giris_tarihi" id="ise_giris_tarihi"
@@ -199,8 +199,8 @@ Personel Listesi
                                 </div>
                                 <div class="col-md-3">
                                     <label for="gorevi">Görevi</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-layer-group"></i>
                                         </span>
                                         <input type="text" name="gorevi" id="gorevi"
@@ -209,8 +209,8 @@ Personel Listesi
                                 </div>
                                 <div class="col-md-3">
                                     <label for="kidem_yili">Kıdem Yılı</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-layer-group"></i>
                                         </span>
                                         <input type="number" name="kidem_yili" id="kidem_yili"
@@ -219,11 +219,11 @@ Personel Listesi
                                 </div>
                                 <div class="col-md-3">
                                     <label for="medeni_hali">Medeni Hali</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-layer-group"></i>
                                         </span>
-                                        <select name="medeni_hali" id="medeni_hali" class="form-select form-select-sm">
+                                        <select name="medeni_hali" id="medeni_hali" class="form-control form-control-sm">
                                             <option value="Evli">Evli</option>
                                             <option value="Bekar">Bekâr</option>
                                         </select>
@@ -231,8 +231,8 @@ Personel Listesi
                                 </div>
                                 <div class="col-md-3">
                                     <label for="kan_grubu">Kan Grubu</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-layer-group"></i>
                                         </span>
                                         <input type="text" name="kan_grubu" id="kan_grubu"
@@ -241,11 +241,11 @@ Personel Listesi
                                 </div>
                                 <div class="col-md-3">
                                     <label for="askerlik_durumu">Askerlik Durumu</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-check"></i>
                                         </span>
-                                        <select name="askerlik_durumu" id="askerlik_durumu" class="form-select form-select-sm">
+                                        <select name="askerlik_durumu" id="askerlik_durumu" class="form-control form-control-sm">
                                             <option value="Yapıldı">Yapıldı</option>
                                             <option value="Yapılmadı">Yapılmadı</option>
                                             <option value="Tecilli">Tecilli</option>
@@ -254,8 +254,8 @@ Personel Listesi
                                 </div>
                                 <div class="col-md-3">
                                     <label for="personel_resim">Personel Resmi</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-layer-group"></i>
                                         </span>
                                         <input type="file" name="personel_resim" id="personel_resim"
@@ -264,8 +264,8 @@ Personel Listesi
                                 </div>
                                 <div class="col-md-3">
                                     <label for="ehliyet_sinif">Ehliyet Sınfı</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-layer-group"></i>
                                         </span>
                                         <input type="text" name="ehliyet_sinif" id="ehliyet_sinif"
@@ -274,8 +274,8 @@ Personel Listesi
                                 </div>
                                 <div class="col-md-3">
                                     <label for="ehliyet_tarihi">Ehliyet Tarihi</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-layer-group"></i>
                                         </span>
                                         <input type="date" name="ehliyet_tarihi" id="ehliyet_tarihi"
@@ -284,8 +284,8 @@ Personel Listesi
                                 </div>
                                 <div class="col-md-3">
                                     <label for="baba_adi">Baba Adı</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-layer-group"></i>
                                         </span>
                                         <input type="text" name="baba_adi" id="baba_adi"
@@ -294,8 +294,8 @@ Personel Listesi
                                 </div>
                                 <div class="col-md-3">
                                     <label for="baba_meslegi">Baba Mesleği</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-layer-group"></i>
                                         </span>
                                         <input type="text" name="baba_meslegi" id="baba_meslegi"
@@ -304,8 +304,8 @@ Personel Listesi
                                 </div>
                                 <div class="col-md-4">
                                     <label for="ayak_no">Ayak No</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-layer-group"></i>
                                         </span>
                                         <input type="number" name="ayak_no" id="ayak_no"
@@ -314,8 +314,8 @@ Personel Listesi
                                 </div>
                                 <div class="col-md-4">
                                     <label for="beden">Beden</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-layer-group"></i>
                                         </span>
                                         <input type="number" name="beden" id="beden"
@@ -324,8 +324,8 @@ Personel Listesi
                                 </div>
                                 <div class="col-md-4">
                                     <label for="ev_gsm">Ev Telefonu</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-layer-group"></i>
                                         </span>
                                         <input type="number" name="ev_gsm" id="ev_gsm"
@@ -342,7 +342,6 @@ Personel Listesi
                                     <textarea name="acil_durum_kisi" id="acil_durum_kisi" cols="20" rows="2"
                                         class="form-control form-control-sm "></textarea>
                                 </div>
-                            </div>
                         </div>
                     </div>
                     <!-- Modal Footer -->
@@ -359,7 +358,7 @@ Personel Listesi
 
     <div class="card-body">
         <div class="table-responsive" style="border-radius: 5px">
-            <table id="example2" class="table table-bordered table-hover" style="width:100%; cursor: pointer; ">
+            <table id="example2" class="table table-bordered table-striped" style="width:100%;  ">
                 <thead >
                     <tr>
                         <th scope="col">#</th>
@@ -392,7 +391,7 @@ Personel Listesi
                             <td>{{ $personelitem->ise_giris_tarihi }} </td>
                             <td>{{ $personelitem->beden }} </td>
                             <td>{{ $personelitem->ayak_no }} </td>
-                            <td>{{ $personelitem->acil_durum_kisi }} </td>
+                            <td class="text-wrap" style="max-width:170px">{{ $personelitem->acil_durum_kisi }} </td>
                             <td>{{ $personelitem->ev_adresi }} </td>
                             <td>{{ $personelitem->gsm }} </td>
                             <td>{{ $personelitem->kan_grubu }} </td>

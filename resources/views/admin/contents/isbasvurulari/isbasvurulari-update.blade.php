@@ -22,8 +22,8 @@
                     <div class="row">
                         <div class="col-md-2">
                             <label for="tarih">Başvuru Tarihi</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa-solid fa-layer-group"></i>
                                 </span>
                                 <input type="date" name="tarih" id="tarih" class="form-control form-control-sm"
@@ -33,8 +33,8 @@
 
                         <div class="col-md-2">
                             <label for="ad_soyad">Ad Soyadı</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa-solid fa-layer-group"></i>
                                 </span>
                                 <input type="text" name="ad_soyad" id="ad_soyad" class="form-control form-control-sm"
@@ -43,8 +43,8 @@
                         </div>
                         <div class="col-md-2">
                             <label for="dogum_yeri">Doğum Yeri</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa-solid fa-city"></i>
                                 </span>
                                 <select name="dogum_yeri" id="firma_il" class="form-select form-select-sm" required
@@ -56,8 +56,8 @@
                         </div>
                         <div class="col-md-2">
                             <label for="dogum_tarihi">Doğum Tarihi</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa-solid fa-layer-group"></i>
                                 </span>
                                 <input type="date" name="dogum_tarihi" id="dogum_tarihi"
@@ -66,8 +66,8 @@
                         </div>
                         <div class="col-md-2">
                             <label for="basvuru_pozisyon">Başvurduğu Pozisyon</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa-solid fa-layer-group"></i>
                                 </span>
                                 <input type="text" name="basvuru_pozisyon" id="basvuru_pozisyon"
@@ -76,8 +76,8 @@
                         </div>
                         <div class="col-md-2">
                             <label for="telefon">Telefon</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa-solid fa-calendar-days"></i>
                                 </span>
                                 <input type="number" name="telefon" id="telefon"
@@ -86,8 +86,8 @@
                         </div>
                         <div class="col-md-2">
                             <label for="ev_telefon">Ev Telefon</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa-solid fa-calendar-days"></i>
                                 </span>
                                 <input type="number" name="ev_telefon" id="ev_telefon"
@@ -97,8 +97,8 @@
                         </div>
                         <div class="col-md-2">
                             <label for="meslek_kodu">Eposta</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa-solid fa-layer-group"></i>
                                 </span>
                                 <input type="email" name="email" id="email" class="form-control form-control-sm"
@@ -107,8 +107,8 @@
                         </div>
                         <div class="col-md-2">
                             <label for="meslegi">Meslek</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa-solid fa-layer-group"></i>
                                 </span>
                                 <input type="text" name="meslegi" id="meslegi" class="form-control form-control-sm"
@@ -117,8 +117,8 @@
                         </div>
                         <div class="col-md-2">
                             <label for="mezuniyet">Mezuniyet</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa-solid fa-layer-group"></i>
                                 </span>
                                 <select name="mezuniyet" id="mezuniyet" class="form-select form-select-sm">
@@ -135,8 +135,8 @@
                         </div>
                         <div class="col-md-2">
                             <label for="durum">Medeni Hal</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa-solid fa-layer-group"></i>
                                 </span>
                                 <select name="medeni_hal" id="medeni_hal" class="form-select form-select-sm">
@@ -149,8 +149,8 @@
                         </div>
                         <div class="col-md-2">
                             <label for="cocuk_yasi">Çocuk Sayınız ve Yaşları</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa-solid fa-layer-group"></i>
                                 </span>
                                 <input type="text" name="cocuk_yasi" id="cocuk_yasi" class="form-control form-control-sm"
@@ -159,8 +159,8 @@
                         </div>
                         <div class="col-md-2">
                             <label for="askerlik_durumu">Askerlik Durumu</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa-solid fa-check"></i>
                                 </span>
                                 <select name="askerlik_durumu" id="askerlik_durumu" class="form-select form-select-sm">
@@ -174,8 +174,8 @@
                         </div>
                         <div class="col-md-2">
                             <label for="ehliyet_sinif">Ehliyet Sınfı</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa-solid fa-layer-group"></i>
                                 </span>
                                 <input type="text" name="ehliyet_sinif" id="ehliyet_sinif"
@@ -184,8 +184,8 @@
                         </div>
                         <div class="col-md-2">
                             <label for="ehliyet_tarihi">Ehliyet Tarihi</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa-solid fa-layer-group"></i>
                                 </span>
                                 <input type="date" name="ehliyet_tarihi" id="ehliyet_tarihi"
@@ -194,8 +194,8 @@
                         </div>
                         <div class="col-md-2">
                             <label for="kan_grubu">Kan Grubu</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa-solid fa-layer-group"></i>
                                 </span>
                                 <input type="text" name="kan_grubu" id="kan_grubu" class="form-control form-control-sm"
@@ -204,8 +204,8 @@
                         </div>
                         <div class="col-md-2">
                             <label for="sorusturma">Hakkınızda Soruşturma Açıldı Mı?</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa-solid fa-layer-group"></i>
                                 </span>
                                 <select name="sorusturma" id="sorusturma" class="form-select form-select-sm">
@@ -218,8 +218,8 @@
                         </div>
                         <div class="col-md-2">
                             <label for="sigara">Sigara Kullanıyor Musunuz?</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa-solid fa-layer-group"></i>
                                 </span>
                                 <select name="sigara" id="sigara" class="form-select form-select-sm">
@@ -230,8 +230,8 @@
                         </div>
                         <div class="col-md-2">
                             <label for="ameliyat">Hastalık, Ameliyat Geçirdiniz Mi?</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa-solid fa-layer-group"></i>
                                 </span>
                                 <select name="ameliyat" id="ameliyat" class="form-select form-select-sm">
@@ -243,8 +243,8 @@
                         </div>
                         <div class="col-md-2">
                             <label for="dosya">Dosya</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa-solid fa-layer-group"></i>
                                 </span>
                                 <input type="file" name="dosya" id="dosya" class="form-control form-control-sm"
@@ -253,8 +253,8 @@
                         </div>
                         <div class="col-md-2">
                             <label for="resim">Resim</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa-solid fa-layer-group"></i>
                                 </span>
                                 <input type="file" name="resim" id="resim" class="form-control form-control-sm"
@@ -263,8 +263,8 @@
                         </div>
                         <div class="col-md-2">
                             <label for="kalite_firma">Kalite Sistemi Olan Bir Firmada Çalıştınız Mı?</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa-solid fa-layer-group"></i>
                                 </span>
                                 <select name="kalite_firma" id="kalite_firma" class="form-select form-select-sm">
@@ -277,8 +277,8 @@
                         </div>
                         <div class="col-md-2">
                             <label for="aylik_ucret">İstediğiniz Aylık Net Ücret</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa-solid fa-layer-group"></i>
                                 </span>
                                 <input type="text" name="aylik_ucret" id="aylik_ucret" class="form-control form-control-sm"
@@ -287,8 +287,8 @@
                         </div>
                         <div class="col-md-2">
                             <label for="aylik_ucret">Ne Zaman İşe Başlayabilirsiniz</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa-solid fa-layer-group"></i>
                                 </span>
                                 <input type="text" name="ise_baslama" id="ise_baslama" class="form-control form-control-sm"

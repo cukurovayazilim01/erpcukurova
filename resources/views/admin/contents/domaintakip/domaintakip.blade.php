@@ -93,8 +93,8 @@
                             </div>
                             <div class="col-md-12">
                                 <label for="satis_temsilcisi">Satış Temsilcisi</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-user"></i>
                                     </span>
                                     <select name="satis_temsilcisi" id="satis_temsilcisi" class="form-select form-select-sm" >
@@ -108,8 +108,8 @@
                             </div>
                             <div class="col-md-12">
                                 <label for="sehir">Şehir</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-city"></i>
                                     </span>
                                     <input type="text" name="sehir" id=""
@@ -119,8 +119,8 @@
 
                             <div class="col-md-6">
                                 <label for="ilk_tarih">Başvuru İlk Tarih</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa-solid fa-calendar-days"></i>
                                     </span>
                                     <input type="date" name="ilk_tarih" id="ilk_tarih"
@@ -129,8 +129,8 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="son_tarih">Başvuru Son Tarih</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa-solid fa-calendar-days"></i>
                                     </span>
                                     <input type="date" name="son_tarih" id="son_tarih"
@@ -179,8 +179,8 @@
                             </div>
                             <div class="col-md-12">
                                 <label for="satis_temsilcisi">Satış Temsilcisi</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-user"></i>
                                     </span>
                                     <select name="satis_temsilcisi" id="satis_temsilcisi" class="form-select form-select-sm" >
@@ -194,8 +194,8 @@
                             </div>
                             <div class="col-md-12">
                                 <label for="sehir">Şehir</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa fa-city"></i>
                                     </span>
                                     <input type="text" name="sehir" id=""
@@ -205,8 +205,8 @@
 
                             <div class="col-md-6">
                                 <label for="ilk_tarih">Başvuru İlk Tarih</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa-solid fa-calendar-days"></i>
                                     </span>
                                     <input type="date" name="ilk_tarih" id="ilk_tarih"
@@ -215,8 +215,8 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="son_tarih">Başvuru Son Tarih</label>
-                                <div class="form-group input-with-icon">
-                                    <span class="icon">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">
                                         <i class="fa-solid fa-calendar-days"></i>
                                     </span>
                                     <input type="date" name="son_tarih" id="son_tarih"
@@ -264,8 +264,8 @@
                                 </div>
                                 <div class="col-md-3">
                                     <label for="musteri_temsilcisi">Müşteri Temsilcisi</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-building"></i>
                                         </span>
                                         <input type="text" name="musteri_temsilcisi" id="musteri_temsilcisi"
@@ -274,8 +274,8 @@
                                 </div>
                                 <div class="col-md-3">
                                     <label for="satis_temsilcisi">Satış Temsilcisi</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-user"></i>
                                         </span>
                                         <select name="satis_temsilcisi" id="satis_temsilcisi"
@@ -290,8 +290,8 @@
                                 </div>
                                 <div class="col-md-3">
                                     <label for="vkn">Telefon No</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-file"></i>
                                         </span>
                                         <input type="text" name="telefon_no" id="telefon_no"
@@ -301,8 +301,8 @@
 
                                 <div class="col-md-3">
                                     <label for="domain_adi">Domain Adı</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-check"></i>
                                         </span>
                                         <input type="text" name="domain_adi" id="domain_adi"
@@ -311,8 +311,8 @@
                                 </div>
                                 <div class="col-md-3">
                                     <label for="domain_tutar">Domain Tutarı</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-check"></i>
                                         </span>
                                         <input type="text" name="domain_tutar" id="domain_tutar"
@@ -321,8 +321,8 @@
                                 </div>
                                 {{-- <div class="col-md-3">
                                     <label for="basvuru_tarihi">Tarih</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-calendar"></i>
                                         </span>
                                         <input type="date" name="tarih" id="tarih"
@@ -331,8 +331,8 @@
                                 </div>
                                 <div class="col-md-3">
                                     <label for="hizmet_turu">Hizmet Türü</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-check"></i>
                                         </span>
                                         <select name="hizmet_turu" id="hizmet_turu"
@@ -346,8 +346,8 @@
                                 </div>
                                 <div class="col-md-3">
                                     <label for="resim">Resim</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-inbox"></i>
                                         </span>
                                         <input type="file" name="resim" id="resim"
@@ -356,8 +356,8 @@
                                 </div>
                                 <div class="col-md-3">
                                     <label for="tutar">Tutar</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-money-bill"></i>
                                         </span>
                                         <input type="text" name="tutar" id="tutar"
@@ -368,8 +368,8 @@
                                 <!-- Mail Adet Input -->
                                 <div class="col-md-3" id="mail_adet_div" style="display: none;">
                                     <label for="mail_adet">Mail Adet</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-envelope"></i>
                                         </span>
                                         <input type="number" name="mail_adet" id="mail_adet" class="form-control">
@@ -378,8 +378,8 @@
                                  <!-- Mail Adet Input -->
                                  <div class="col-md-3" id="mail_platform_div" style="display: none;">
                                     <label for="mail_adet">Mail Platform</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-envelope"></i>
                                         </span>
                                         <select name="mail_platform" id="mail_platform" class="form-select form-select-sm">
@@ -393,8 +393,8 @@
                                 <!-- Sunucu Bizde mi? Select -->
                                 <div class="col-md-3" id="sunucu_div" style="display: none;">
                                     <label for="sunucu">Sunucu Bizde mi?</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-check"></i>
                                         </span>
                                     <select name="sunucu" id="sunucu" class="form-select form-select-sm">
@@ -409,8 +409,8 @@
                                 <!-- VDS Seçimi -->
                                 <div class="col-md-3" id="vds_div" style="display: none;">
                                     <label for="vds">VDS Seçimi</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-check"></i>
                                         </span>
                                     <select name="hosting_platform" id="vds" class="form-select form-select-sm">
@@ -424,8 +424,8 @@
                                 <!-- Platform Input -->
                                 <div class="col-md-3" id="platform_div" style="display: none;">
                                     <label for="platform">Platform</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-server"></i>
                                         </span>
                                         <input type="text" name="hosting_platform" id="platform" class="form-control">

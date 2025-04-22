@@ -13,6 +13,11 @@ class Cariler extends Model
 
     protected $guarded = [];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
     public function teklifler()
     {
         return $this->hasMany(Teklifler::class, 'cari_id');

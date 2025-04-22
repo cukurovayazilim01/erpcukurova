@@ -226,8 +226,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="ilk_tarih">İlk Tarih</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-calendar-days"></i>
                                         </span>
                                         <input type="date" name="ilk_tarih" id="ilk_tarih"
@@ -236,8 +236,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="son_tarih">Son Tarih</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-calendar-days"></i>
                                         </span>
                                         <input type="date" name="son_tarih" id="son_tarih"
@@ -286,8 +286,8 @@
                                 </div>
                                 <div class="col-md-12">
                                     <label for="islem_yapan">Satış Temsilcisi</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-user"></i>
                                         </span>
                                         <select name="islem_yapan" id="islem_yapan" class="form-select form-select-sm" >
@@ -301,8 +301,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="ilk_tarih">İlk Tarih</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-calendar-days"></i>
                                         </span>
                                         <input type="date" name="ilk_tarih" id="ilk_tarih"
@@ -311,8 +311,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="son_tarih">Son Tarih</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-calendar-days"></i>
                                         </span>
                                         <input type="date" name="son_tarih" id="son_tarih"
@@ -361,8 +361,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="ilk_tarih">İlk Tarih</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-calendar-days"></i>
                                         </span>
                                         <input type="date" name="ilk_tarih" id="ilk_tarih"
@@ -371,8 +371,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="son_tarih">Son Tarih</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-calendar-days"></i>
                                         </span>
                                         <input type="date" name="son_tarih" id="son_tarih"
@@ -421,8 +421,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="ilk_tarih">İlk Tarih</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-calendar-days"></i>
                                         </span>
                                         <input type="date" name="ilk_tarih" id="ilk_tarih"
@@ -431,8 +431,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="son_tarih">Son Tarih</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-calendar-days"></i>
                                         </span>
                                         <input type="date" name="son_tarih" id="son_tarih"
@@ -481,8 +481,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="ilk_tarih">İlk Tarih</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-calendar-days"></i>
                                         </span>
                                         <input type="date" name="ilk_tarih" id="ilk_tarih"
@@ -491,8 +491,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="son_tarih">Son Tarih</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-calendar-days"></i>
                                         </span>
                                         <input type="date" name="son_tarih" id="son_tarih"
@@ -541,8 +541,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="ilk_tarih">İlk Tarih</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-calendar-days"></i>
                                         </span>
                                         <input type="date" name="ilk_tarih" id="ilk_tarih"
@@ -551,8 +551,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="son_tarih">Son Tarih</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-calendar-days"></i>
                                         </span>
                                         <input type="date" name="son_tarih" id="son_tarih"
@@ -594,8 +594,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <label for="kasa_id">Kasalar</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-money-bill-wave"></i>
                                         </span>
                                         <select class="form-select form-select-sm" name="kasa_id" id="kasa_id">
@@ -609,8 +609,8 @@
 
                                 <div class="col-md-6">
                                     <label for="ilk_tarih">İlk Tarih</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-calendar-days"></i>
                                         </span>
                                         <input type="date" name="ilk_tarih" id="ilk_tarih"
@@ -619,8 +619,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="son_tarih">Son Tarih</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-calendar-days"></i>
                                         </span>
                                         <input type="date" name="son_tarih" id="son_tarih"
@@ -662,8 +662,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <label for="kasa_id">Bankalar</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-money-bill-wave"></i>
                                         </span>
                                         <select class="form-select form-select-sm" name="banka_id" id="banka_id">
@@ -677,8 +677,8 @@
 
                                 <div class="col-md-6">
                                     <label for="ilk_tarih">İlk Tarih</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-calendar-days"></i>
                                         </span>
                                         <input type="date" name="ilk_tarih" id="ilk_tarih"
@@ -687,8 +687,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="son_tarih">Son Tarih</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-calendar-days"></i>
                                         </span>
                                         <input type="date" name="son_tarih" id="son_tarih"
@@ -737,8 +737,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="ilk_tarih">İlk Tarih</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-calendar-days"></i>
                                         </span>
                                         <input type="date" name="ilk_tarih" id="ilk_tarih"
@@ -747,8 +747,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="son_tarih">Son Tarih</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-calendar-days"></i>
                                         </span>
                                         <input type="date" name="son_tarih" id="son_tarih"
@@ -797,8 +797,8 @@
                                 </div>
                                 <div class="col-md-12">
                                     <label for="islem_yapan">Satış Temsilcisi</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-user"></i>
                                         </span>
                                         <select name="islem_yapan" id="islem_yapan" class="form-select form-select-sm" >
@@ -812,8 +812,8 @@
                                 </div>
                                 <div class="col-md-12">
                                     <label for="satis_temsilcisi">Hizmet Türü</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-check-circle"></i>
                                         </span>
                                         <select name="hizmet_kategori" id="hizmet_kategori" class="form-select form-select-sm hizmetlerkategori-select" >
@@ -827,8 +827,8 @@
                                 </div>
                                 <div class="col-md-12">
                                     <label for="satis_temsilcisi">Hizmet Adı</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-check-circle"></i>
                                         </span>
                                         <select name="hizmet_adi" id="hizmet_adi" class="form-select form-select-sm hizmet_id-select" >
@@ -839,8 +839,8 @@
                                 </div>
                                 <div class="col-md-12">
                                     <label for="il">İl</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-city"></i>
                                         </span>
                                         <select name="il" id="il" class="form-select form-select-sm"
@@ -854,8 +854,8 @@
 
                                 <div class="col-md-6">
                                     <label for="ilk_tarih">İlk Tarih</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-calendar-days"></i>
                                         </span>
                                         <input type="date" name="ilk_tarih" id="ilk_tarih"
@@ -864,8 +864,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="son_tarih">Son Tarih</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-calendar-days"></i>
                                         </span>
                                         <input type="date" name="son_tarih" id="son_tarih"
@@ -914,8 +914,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="ilk_tarih">İlk Tarih</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-calendar-days"></i>
                                         </span>
                                         <input type="date" name="ilk_tarih" id="ilk_tarih"
@@ -924,8 +924,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="son_tarih">Son Tarih</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-calendar-days"></i>
                                         </span>
                                         <input type="date" name="son_tarih" id="son_tarih"
@@ -967,8 +967,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <label for="arama_tipi">Arama Tipi<code>*</code></label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-phone"></i>
                                         </span>
                                         <select name="arama_tipi" id="arama_tipi" class="form-select form-select-sm" >
@@ -982,8 +982,8 @@
                                 </div>
                                 <div class="col-md-12">
                                     <label for="islem_yapan">Arama Yapan</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-user"></i>
                                         </span>
                                         <select name="islem_yapan" id="islem_yapan" class="form-select form-select-sm" >
@@ -997,8 +997,8 @@
                                 </div>
                                 <div class="col-md-12">
                                     <label for="il">İl</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-city"></i>
                                         </span>
                                         <select name="il" id="firma_il" class="form-select form-select-sm"
@@ -1010,8 +1010,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="ilk_tarih">İlk Tarih</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-calendar-days"></i>
                                         </span>
                                         <input type="date" name="ilk_tarih" id="ilk_tarih"
@@ -1020,8 +1020,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="son_tarih">Son Tarih</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-calendar-days"></i>
                                         </span>
                                         <input type="date" name="son_tarih" id="son_tarih"
@@ -1064,8 +1064,8 @@
 
                                 <div class="col-md-12">
                                     <label for="islem_yapan">Satış Temsilcisi</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa fa-user"></i>
                                         </span>
                                         <select name="islem_yapan" id="islem_yapan" class="form-select form-select-sm" >
@@ -1079,8 +1079,8 @@
                                 </div>
                                 {{-- <div class="col-md-6">
                                     <label for="ilk_tarih">İlk Tarih</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-calendar-days"></i>
                                         </span>
                                         <input type="date" name="ilk_tarih" id="ilk_tarih"
@@ -1089,8 +1089,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="son_tarih">Son Tarih</label>
-                                    <div class="form-group input-with-icon">
-                                        <span class="icon">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">
                                             <i class="fa-solid fa-calendar-days"></i>
                                         </span>
                                         <input type="date" name="son_tarih" id="son_tarih"

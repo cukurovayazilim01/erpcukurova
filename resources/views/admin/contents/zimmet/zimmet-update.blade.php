@@ -17,8 +17,8 @@
                     <div class="row">
                         <div class="col-md-12">
                             <label for="personel_id">Personel Adı</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa fa-user"></i>
                                 </span>
                                 <input style="border: none" type="text" name="personel_id" id="personel_id" readonly

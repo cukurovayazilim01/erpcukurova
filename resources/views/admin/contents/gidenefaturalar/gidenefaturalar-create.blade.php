@@ -25,8 +25,8 @@
                         </div>
                         <div class="col-md-3">
                             <label for="firma_unvan">Firma Ünvanı</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa fa-building"></i>
                                 </span>
                                 <input type="text" name="firma_unvan" id="firma_unvan"
@@ -40,8 +40,8 @@
                             <button type="button" onclick="vknSorgula()" class="btn btn-danger btn-sm p-0 m-0"
                                 style="display: inline-block; margin-left: 10px;"><b style="font-size: 10px">Firma
                                     Bilgisi Getir</b></button>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa fa-check"></i>
                                 </span>
                                 <input type="text" name="vergi_no" id="vkn" required
@@ -51,8 +51,8 @@
                         </div>
                         <div class="col-md-2">
                             <label for="tc_kimlik">T.C Kimlik No</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa fa-check"></i>
                                 </span>
                                 <input type="text" name="tc_kimlik" id="tc"
@@ -62,8 +62,8 @@
                         </div>
                         <div class="col-md-2">
                             <label for="fatura_tarihi">Fatura Tarihi</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa fa-calendar"></i>
                                 </span>
                                 <input type="datetime-local" name="fatura_tarihi" id="fatura_tarihi"
@@ -72,8 +72,8 @@
                         </div>
                         <div class="col-md-2">
                             <label for="vergi_no">Vergi Dairesi</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa fa-folder-minus"></i>
                                 </span>
                                 <input type="text" name="vergi_dairesi" id="vergi_dairesi"
@@ -85,8 +85,8 @@
 
                         <div class="col-md-2">
                             <label for="il">İl</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa-solid fa-city"></i>
                                 </span>
 
@@ -96,8 +96,8 @@
                         </div>
                         <div class="col-md-2">
                             <label for="ilce">İlçe</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa-sharp fa-solid fa-city"></i>
                                 </span>
                                 <input type="text" name="ilce" id="ilce" class="form-control form-control-sm"
@@ -106,8 +106,8 @@
                         </div>
                         <div class="col-md-2">
                             <label for="is_tel">Telefon</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa fa-phone"></i>
                                 </span>
                                 <input type="number" name="is_tel" id="is_tel"
@@ -116,8 +116,8 @@
                         </div>
                         <div class="col-md-2">
                             <label for="eposta">E-Posta</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa fa-envelope"></i>
                                 </span>
                                 <input type="email" name="eposta" id="eposta"
@@ -128,8 +128,8 @@
 
                         <div class="col-md-2">
                             <label for="firma_turu">Fatura Senaryosu</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa fa-folder"></i>
                                 </span>
                                 <select name="fatura_turu" id="fatura_turu" class="form-select form-select-sm">
@@ -143,8 +143,8 @@
                         </div>
                         <div class="col-md-2">
                             <label for="firma_turu">Fatura Tipi</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa fa-folder"></i>
                                 </span>
                                 <select name="efatura_tipi" id="efatura_tipi" class="form-select form-select-sm">

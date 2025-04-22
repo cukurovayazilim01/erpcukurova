@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('personels', function (Blueprint $table) {
             $table->id();
+            $table->string('form_no_text')->nullable();
+            $table->integer('form_no')->nullable();
             $table->unsignedBigInteger('islem_yapan')->nullable();
             $table->foreign('islem_yapan')->references('id')->on('users')->onDelete('cascade');
             $table->date('islem_tarihi')->nullable();

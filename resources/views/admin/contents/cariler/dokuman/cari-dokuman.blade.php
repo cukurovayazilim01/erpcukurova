@@ -15,8 +15,8 @@
                     <div class="row ">
                         <div class="col-md-12" style="display: none">
                             <label for="hatirlat_tarihi">Cariid</label>
-                            <div class="form-group input-with-icon">
-                                <span class="icon">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">
                                     <i class="fa-solid fa-location-dot"></i>
                                 </span>
                                 <input type="text" name="cari_id" id="cari_id" class="form-control form-control-sm"
