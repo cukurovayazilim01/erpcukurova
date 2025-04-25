@@ -104,20 +104,18 @@ class CarilerController extends Controller
 
         try {
             $query = Cariler::query()
-                ->leftJoin('users', 'carilers.user_id', '=', 'users.id') // ilişkiyi bağla
-                ->select('carilers.*') // sadece carilers kolonlarını çek
+                ->leftJoin('users', 'carilers.user_id', '=', 'users.id')
+                ->select('carilers.*')
                 ->with('user')
                 ->orderByDesc('carilers.created_at');
 
             if (!empty($carilersearch) && mb_strlen($carilersearch, 'UTF-8') >= 2) {
-                $loweredSearch = mb_strtolower($carilersearch, 'UTF-8');
-
-                $query->where(function ($q) use ($loweredSearch) {
-                    $q->whereRaw('LOWER(carilers.firma_unvan) LIKE ?', ["%{$loweredSearch}%"])
-                        ->orWhereRaw('LOWER(carilers.yetkili_kisi) LIKE ?', ["%{$loweredSearch}%"])
-                        ->orWhereRaw('LOWER(carilers.firma_sektor) LIKE ?', ["%{$loweredSearch}%"])
-                        ->orWhereRaw('LOWER(carilers.is_tel) LIKE ?', ["%{$loweredSearch}%"])
-                        ->orWhereRaw('LOWER(users.ad_soyad) LIKE ?', ["%{$loweredSearch}%"]);
+                $query->where(function ($q) use ($carilersearch) {
+                    $q->where('carilers.firma_unvan', 'LIKE', "%{$carilersearch}%")
+                        ->orWhere('carilers.yetkili_kisi', 'LIKE', "%{$carilersearch}%")
+                        ->orWhere('carilers.firma_sektor', 'LIKE', "%{$carilersearch}%")
+                        ->orWhere('carilers.is_tel', 'LIKE', "%{$carilersearch}%")
+                        ->orWhere('users.ad_soyad', 'LIKE', "%{$carilersearch}%");
                 });
             }
 
@@ -132,11 +130,13 @@ class CarilerController extends Controller
             }
 
             return view('admin.contents.cariler.cariler', compact('cariler', 'startNumber', 'user', 'aramalar'));
+
         } catch (\Exception $e) {
             Log::error('carilersearch error: ' . $e->getMessage());
             return response()->json(['error' => 'Bir hata oluştu.'], 500);
         }
     }
+
 
 
 
@@ -181,7 +181,7 @@ class CarilerController extends Controller
         $perPage = $request->input('entries', 15);
 
         // cariler tablosundaki verileri sıralayarak, seçilen sayıya göre sayfalama işlemi
-        $cariler = Cariler::orderByDesc('id')->where('firma_tipi', 'Tedarikçi')->paginate($perPage);
+        $cariler = Cariler::orderByDesc('created_at')->where('firma_tipi', 'Tedarikçi')->paginate($perPage);
 
         // Sayfalama için başlangıç numarasını hesaplama
         $page = $cariler->currentPage();
@@ -227,7 +227,6 @@ class CarilerController extends Controller
         $cariler = new Cariler();
         $cariler->islem_yapan = Auth::user()->id;
         $cariler->islem_tarihi = Carbon::now();
-        $cariler->son_guncelleyen = Auth::user()->id;
         $cariler->firma_unvan = $request->firma_unvan;
         $cariler->ticari_unvan = $request->ticari_unvan;
         $cariler->firma_sektor = $request->firma_sektor;
@@ -244,7 +243,7 @@ class CarilerController extends Controller
         $cariler->tc_kimlik = $request->tc_kimlik;
         $cariler->adres = $request->adres;
         $cariler->aciklama = $request->aciklama;
-        $cariler->musteri_temsilcisi = $request->musteri_temsilcisi;
+        $cariler->user_id = $request->user_id;
         $cariler->firma_tipi = $request->firma_tipi;
         $cariler->firma_durumu = $request->firma_durumu;
         $cariler->save();
@@ -347,7 +346,6 @@ class CarilerController extends Controller
 
         $cariler->islem_yapan = Auth::user()->id;
         $cariler->islem_tarihi = Carbon::now();
-        $cariler->son_guncelleyen = Auth::user()->id;
         $cariler->firma_unvan = $request->firma_unvan;
         $cariler->ticari_unvan = $request->ticari_unvan;
         $cariler->firma_sektor = $request->firma_sektor;
@@ -364,7 +362,7 @@ class CarilerController extends Controller
         $cariler->tc_kimlik = $request->tc_kimlik;
         $cariler->adres = $request->adres;
         $cariler->aciklama = $request->aciklama;
-        $cariler->musteri_temsilcisi = $request->musteri_temsilcisi;
+        $cariler->user_id = $request->user_id;
         $cariler->firma_tipi = $request->firma_tipi;
         $cariler->firma_durumu = $request->firma_durumu;
         $cariler->save();

@@ -19,7 +19,7 @@ class DomaintakipController extends Controller
     public function index(Request $request)
     {
 
-        $perPage = $request->input('entries', 5);
+        $perPage = $request->input('entries', 15);
         $domaintakip = Domaintakip::orderByDesc('id')->paginate($perPage);
         $page = $domaintakip->currentPage();
         $startNumber = $domaintakip->total() - (($page - 1) * $perPage);

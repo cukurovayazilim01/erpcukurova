@@ -3,6 +3,148 @@
 Anasayfa
 @endsection
 @section('contents')
+
+<div class="row g-4">
+    <!-- Günlük Tahsilat -->
+    <div class="col-md-3">
+        <div class="card shadow-lg h-100">
+            <div class="card-header bg-success text-white text-center">
+                <h5 class="mb-0">Günlük Tahsilat</h5>
+            </div>
+            <div class="card-body text-center" style="position: relative; height: 320px;">
+                <canvas id="tahsilatChart" style="width: 100%; height: 100%;"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Satış & Alış Grafiği -->
+    <div class="col-md-9">
+        <div class="card shadow-lg h-100">
+            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Satış & Alış Grafiği</h5>
+                <form method="GET" action="{{ route('anasayfa') }}">
+                    <input type="hidden" name="yil_personel" value="{{ $yil_personel }}">
+                    <input type="hidden" name="yil_kategori" value="{{ $yil_kategori }}">
+                    <input type="hidden" name="yil_hedef" value="{{ $yil_hedef }}">
+                    <input type="hidden" name="yil_izin" value="{{ $yil_izin }}">
+                    <select name="yil_satinalis" class="form-select form-select-sm" onchange="this.form.submit()" style="width: 100px;">
+                        @for ($i = now()->year; $i >= 2020; $i--)
+                            <option value="{{ $i }}" {{ $yil_satinalis == $i ? 'selected' : '' }}>{{ $i }}</option>
+                        @endfor
+                    </select>
+                </form>
+            </div>
+            <div class="card-body" style="position: relative; height: 320px;">
+                <canvas id="areaChart" style="width: 100%; height: 100%;"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Günlük Ödeme -->
+    <div class="col-md-3">
+        <div class="card shadow-lg h-100">
+            <div class="card-header bg-danger text-white text-center">
+                <h5 class="mb-0">Günlük Ödeme</h5>
+            </div>
+            <div class="card-body text-center" style="position: relative; height: 320px;">
+                <canvas id="odemeChart" style="width: 100%; height: 100%;"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Personel Bazlı Satış Grafiği -->
+    <div class="col-md-9">
+        <div class="card shadow-lg h-100">
+            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Personel Bazlı Satış Grafiği</h5>
+                <form method="GET" action="{{ route('anasayfa') }}">
+                    <input type="hidden" name="yil_satinalis" value="{{ $yil_satinalis }}">
+                    <input type="hidden" name="yil_kategori" value="{{ $yil_kategori }}">
+                    <input type="hidden" name="yil_hedef" value="{{ $yil_hedef }}">
+                    <input type="hidden" name="yil_izin" value="{{ $yil_izin }}">
+                    <select name="yil_personel" class="form-select form-select-sm" onchange="this.form.submit()" style="width: 100px;">
+                        @for ($i = now()->year; $i >= 2020; $i--)
+                            <option value="{{ $i }}" {{ $yil_personel == $i ? 'selected' : '' }}>{{ $i }}</option>
+                        @endfor
+                    </select>
+                </form>
+            </div>
+            <div class="card-body" style="position: relative; height: 320px;">
+                <canvas id="personelbazlisatisgrafigi" style="width: 100%; height: 100%;"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hizmet Türü Bazlı Satış Grafiği -->
+    <div class="col-md-12">
+        <div class="card shadow-lg h-100">
+            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Aylara Göre Hizmet Türü Satış Grafiği</h5>
+                <form method="GET" action="{{ route('anasayfa') }}">
+                    <input type="hidden" name="yil_satinalis" value="{{ $yil_satinalis }}">
+                    <input type="hidden" name="yil_personel" value="{{ $yil_personel }}">
+                    <input type="hidden" name="yil_hedef" value="{{ $yil_hedef }}">
+                    <input type="hidden" name="yil_izin" value="{{ $yil_izin }}">
+                    <select name="yil_kategori" class="form-select form-select-sm" onchange="this.form.submit()" style="width: 100px;">
+                        @for ($i = now()->year; $i >= 2020; $i--)
+                            <option value="{{ $i }}" {{ $yil_kategori == $i ? 'selected' : '' }}>{{ $i }}</option>
+                        @endfor
+                    </select>
+                </form>
+            </div>
+            <div class="card-body" style="position: relative; height: 640px;">
+                <canvas id="salesChart" style="width: 100%; height: 100%;"></canvas>
+            </div>
+        </div>
+    </div>
+     <!-- Yıllık İzin Grafiği -->
+     <div class="col-md-3">
+        <div class="card shadow-lg h-100">
+            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Yıllık İzin Grafiği</h5>
+                <form method="GET" action="{{ route('anasayfa') }}">
+                    <input type="hidden" name="yil_satinalis" value="{{ $yil_satinalis }}">
+                    <input type="hidden" name="yil_personel" value="{{ $yil_personel }}">
+                    <input type="hidden" name="yil_kategori" value="{{ $yil_kategori }}">
+                    <input type="hidden" name="yil_hedef" value="{{ $yil_hedef }}">
+                    <select name="yil_izin" class="form-select form-select-sm" onchange="this.form.submit()" style="width: 100px;">
+                        @for ($i = now()->year; $i >= 2020; $i--)
+                            <option value="{{ $i }}" {{ $yil_izin == $i ? 'selected' : '' }}>{{ $i }}</option>
+                        @endfor
+                    </select>
+                </form>
+            </div>
+            <div class="card-body" style="position: relative; height: 320px;">
+                <canvas id="yillikizingrafigi" style="width: 100%; height: 100%;"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Personel Hedef Grafiği -->
+    <div class="col-md-9">
+        <div class="card shadow-lg h-100">
+            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Personel Hedef Grafiği</h5>
+                <form method="GET" action="{{ route('anasayfa') }}">
+                    <input type="hidden" name="yil_satinalis" value="{{ $yil_satinalis }}">
+                    <input type="hidden" name="yil_personel" value="{{ $yil_personel }}">
+                    <input type="hidden" name="yil_kategori" value="{{ $yil_kategori }}">
+                    <input type="hidden" name="yil_izin" value="{{ $yil_izin }}">
+                    <select name="yil_hedef" class="form-select form-select-sm" onchange="this.form.submit()" style="width: 100px;">
+                        @for ($i = now()->year; $i >= 2020; $i--)
+                            <option value="{{ $i }}" {{ $yil_hedef == $i ? 'selected' : '' }}>{{ $i }}</option>
+                        @endfor
+                    </select>
+                </form>
+            </div>
+            <div class="card-body" style="position: relative; height: 320px;">
+                <canvas id="personelhedefgrafigi" style="width: 100%; height: 100%;"></canvas>
+            </div>
+        </div>
+    </div>
+
+
+</div>
 @php
     $salesData = [];
     $purchaseData = [];
@@ -44,7 +186,7 @@ Anasayfa
 @endphp
 
 
-
+{{-- SATIŞ ALIŞ GRAFİĞİ --}}
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -166,84 +308,15 @@ Anasayfa
     $colors = ['#36A2EB', '#FF6384', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'];
 @endphp
 
-<div class="row">
-    <!-- Günlük Tahsilat -->
-    <div class="col-md-3">
-        <div class="card shadow-lg">
-            <div class="card-header bg-success text-white text-center">
-                <h5 class="mb-0">Günlük Tahsilat</h5>
-            </div>
-            <div class="card-body text-center">
-                <canvas id="tahsilatChart"></canvas>
-            </div>
-        </div>
-    </div>
-    <!-- Günlük Ödeme -->
-    <div class="col-md-3">
-        <div class="card shadow-lg">
-            <div class="card-header bg-danger text-white text-center">
-                <h5 class="mb-0">Günlük Ödeme</h5>
-            </div>
-            <div class="card-body text-center">
-                <canvas id="odemeChart"></canvas>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="card shadow-lg">
-            <div class="card-header bg-primary text-white text-center">
-                <h5 class="mb-0">Satış & Alış Grafiği</h5>
-            </div>
-            <div class="card-body">
 
 
-                <canvas id="areaChart" style="height: 300px;"></canvas>
 
 
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="card shadow-lg">
-            <div class="card-header bg-primary text-white text-center">
-                <h5 class="mb-0">Personel Bazlı Satış Grafiği</h5>
-            </div>
-            <div class="card-body">
 
 
-                <canvas id="personelbazlisatisgrafigi" style="height: 150px;"></canvas>
 
 
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="card shadow-lg">
-            <div class="card-header bg-primary text-white text-center">
-                <h5 class="mb-0">Aylara Göre Hizmet Türü Satış Grafiği</h5>
-            </div>
-            <div class="card-body">
 
-
-                <canvas id="salesChart" style="height: 150px;"></canvas>
-
-
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="card shadow-lg">
-            <div class="card-header bg-primary text-white text-center">
-                <h5 class="mb-0">Personel Hedef Grafiği</h5>
-            </div>
-            <div class="card-body">
-
-
-                <canvas id="personelhedefgrafigi" height="400"></canvas>
-
-            </div>
-        </div>
-    </div>
     @php
     use App\Models\Yillikizinhakki;
 
@@ -275,20 +348,7 @@ Anasayfa
     $totalIzin = json_encode($totalIzinHakki);
 @endphp
 
-<div class="col-md-6">
-    <div class="card shadow-lg">
-        <div class="card-header bg-primary text-white text-center">
-            <h5 class="mb-0">Yıllık İzin Grafiği</h5>
-        </div>
-        <div class="card-body">
-            <canvas id="yillikizingrafigi" height="400"></canvas>
-            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
-                <span style="font-size: 20px; font-weight: bold; color: green;">Toplam</span><br>
-                <span style="font-size: 18px; color: gray;">{!! $totalIzin !!}</span>
-            </div>
-        </div>
-    </div>
-</div>
+
 
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -330,19 +390,6 @@ Anasayfa
         });
     });
 </script>
-
-
-</div>
-<style>
-    .chart-container {
-    position: relative;
-    height: 350px; /* Sabit yükseklik */
-    padding: 15px;
-    background: rgba(255,255,255,0.1);
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-}
-</style>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
@@ -482,7 +529,7 @@ Anasayfa
     $monthlySales = [];
     $monthlyRevenue = [];
 
-    foreach ($ayliksatisgrafigi as $rapor) {
+    foreach ($ayliksatisgrafigikategori as $rapor) {
         if ($rapor->satis) {
             foreach ($rapor->satis->satislardata as $satisData) {
                 $month = date('n', strtotime($rapor->satis->satis_tarihi)); // 1-12 formatında ay
@@ -610,7 +657,7 @@ Anasayfa
     $monthlyRevenueByPerson = [];
     $personnel = [];
 
-    foreach ($ayliksatisgrafigi as $rapor) {
+    foreach ($ayliksatisgrafigipersonel as $rapor) {
         if ($rapor->satis) {
             foreach ($rapor->satis->satislardata as $satisData) {
                 $month = date('n', strtotime($rapor->satis->satis_tarihi)); // 1-12 formatında ay

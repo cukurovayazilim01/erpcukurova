@@ -12,10 +12,10 @@
 
             <div class="d-flex align-items-center justify-content-between gap-1 mobile-erp">
                 <div class=" col-md-4 mr-4 mobile-erp1 d-flex gap-2">
-                    <form action="{{ route('firmahrktaktarodeme') }}" method="POST">
+                    {{-- <form action="{{ route('firmahrktaktarodeme') }}" method="POST">
                         @csrf
                         <button type="submit" class="btn btn-sm btn-success ">Firma Hareketlerine Aktar</button>
-                    </form>
+                    </form> --}}
                 </div>
 
                 <div class="col-lg-4 d-flex align-items-center mobile-erp2 justify-content-center">

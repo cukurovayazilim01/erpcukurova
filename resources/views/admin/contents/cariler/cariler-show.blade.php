@@ -396,7 +396,7 @@
                                                                     style="color: #555; font-size: 11px; font-weight: 500;">
                                                                     <i class="fa fa-user mr-2" aria-hidden="true"
                                                                         style="font-size: 11px; color: #293445;"></i>
-                                                                    {{ $aramaitem->adsoyad->ad_soyad }}
+                                                                    {{ $aramaitem->adsoyad->ad_soyad ?? '-'}}
                                                                 </p>
                                                             </div>
                                                             <div class="col-12">
@@ -1264,7 +1264,7 @@
                                                             {{ $satislaritem->satis->satis_kodu_text }}-{{ $satislaritem->satis->satis_kodu }}
                                                         </th>
                                                         <td>{{ $satislaritem->firmaadi->firma_unvan }}</td>
-                                                        <td>{{ $satislaritem->satis->islem_tarihi }}</td>
+                                                        <td>{{ $satislaritem->satis->satis_tarihi }}</td>
                                                         <td>{{ number_format($satislaritem->satis->satis_iskonto_toplam, 2, ',', '.') }}₺
                                                         </td>
                                                         <td>{{ number_format($satislaritem->satis->satis_kdv_toplam, 2, ',', '.') }}₺
@@ -1445,7 +1445,7 @@
                                                             {{ $tahsilatitem->tahsilat->tahsilat_kodu_text }}-{{ $tahsilatitem->tahsilat->tahsilat_kodu }}
                                                         </th>
                                                         <td>{{ $tahsilatitem->firmaadi->firma_unvan }}</td>
-                                                        <td>{{ $tahsilatitem->tahsilat->islem_tarihi }}</td>
+                                                        <td>{{ $tahsilatitem->tahsilat->tarih }}</td>
                                                         <td>{{ $tahsilatitem->tahsilat->odeme_turu }}</td>
 
                                                         <td>{{ number_format($tahsilatitem->tahsilat->tahsilat_tutar, 2, ',', '.') }}
@@ -1625,7 +1625,7 @@
                                                             {{ $alislaritem->alis->alis_kodu_text }}-{{ $alislaritem->alis->alis_kodu }}
                                                         </th>
                                                         <td>{{ $alislaritem->firmaadi->firma_unvan }}</td>
-                                                        <td>{{ $alislaritem->alis->islem_tarihi }}</td>
+                                                        <td>{{ $alislaritem->alis->fis_tarihi }}</td>
                                                         <td>{{ number_format($alislaritem->alis->toplam_iskonto, 2, ',', '.') }}₺
                                                         </td>
                                                         <td>{{ number_format($alislaritem->alis->toplam_kdv_tutar, 2, ',', '.') }}₺
@@ -1803,8 +1803,8 @@
                                                         <th scope="row">
                                                             {{ $odemeitem->odeme->odeme_kodu_text }}-{{ $odemeitem->odeme->odeme_kodu }}
                                                         </th>
+                                                        <td class="text-wrap" style="max-width: 70px">{{ $odemeitem->odeme->tarih }}</td>
                                                         <td>{{ $odemeitem->firmaadi->firma_unvan }}</td>
-                                                        <td>{{ $odemeitem->odeme->islem_tarihi }}</td>
                                                         <td>{{ $odemeitem->odeme->odeme_turu }}</td>
 
                                                         <td>{{ number_format($odemeitem->odeme->odeme_tutar, 2, ',', '.') }}

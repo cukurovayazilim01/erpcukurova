@@ -21,10 +21,14 @@
                             <option value="100" {{ $perPage == 100 ? 'selected' : '' }}>100</option>
                         </select>
                     </form>
-                    <form action="{{ route('firmahrktaktaralislar') }}" method="POST">
+                    {{-- <form action="{{ route('firmahrktaktaralislar') }}" method="POST">
                         @csrf
                         <button type="submit" class="btn btn-sm btn-success ">Firma Hareketlerine Aktar</button>
                     </form>
+                    <form action="{{ route('odemeyeaktar') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-sm btn-warning ">Ödemelere Aktar</button>
+                    </form> --}}
 
                 </div>
             </div>
@@ -70,9 +74,9 @@
                             <th scope="row">{{ $alislaritem->alis_kodu_text }}-{{ $alislaritem->alis_kodu }}</th>
                             <td scope="row">{{ $alislaritem->fis_tarihi }}</td>
                             <td>{{ $alislaritem->fis_no }}</td>
-                            <td>{{ $alislaritem->firmaadi->firma_unvan }}</td>
+                            <td class="text-wrap" style="max-width:370px">{{ $alislaritem->firmaadi->firma_unvan ?? '-' }}</td>
                             <td>{{ number_format($alislaritem->toplam_tutar, 2, ',', '.') }} ₺</td>
-                            <td>{{ $alislaritem->aciklama }} </td>
+                            <td class="text-wrap" style="max-width:370px">{{ $alislaritem->aciklama }} </td>
                             <td class="text-right">
                                 <div class="databutton">
                                     <div class="d-flex align-items-center fs-6" style="justify-content: space-evenly; ">
@@ -103,6 +107,11 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="row">
+                <div class="col-md-12 d-flex justify-content-end" style="margin-top: 20px;">
+                    {{ $alislar->appends(['entries' => $perPage])->links() }}
+                </div>
+            </div>
         </div>
     </div>
 </div>

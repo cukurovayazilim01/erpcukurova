@@ -14,18 +14,43 @@ use App\Models\Giderkategori;
 use App\Models\Kasahrkt;
 use App\Models\Kasalar;
 use App\Models\Odemeler;
-use File;
 use Illuminate\Http\Request;
-use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class GelenefaturalarController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+    public function gelenfaturalarsearch(Request $request)
+    {
+        $search = $request->input('gelenfaturalarsearch');
+
+        $query = Gelenefaturalar::orderByDesc('issue_date');
+
+        if ($search) {
+            $query->where(function ($q) use ($search) {
+                $q->where('sender_name', 'like', '%' . $search . '%')
+                    ->orWhere('fatura_no', 'like', '%' . $search . '%');
+            });
+        }
+
+        $perPage = 30;
+        $page = $request->query('page', 1);
+
+        $gelenefatura = $query->paginate($perPage);
+        $startNumber = $gelenefatura->total() - (($page - 1) * $perPage);
+
+        if ($request->ajax()) {
+            return view('admin.contents.gelenefaturalar.gelenefaturalar-search', compact('gelenefatura', 'startNumber'));
+        }
+
+        return view('admin.contents.gelenefaturalar.gelenefaturalar', compact('gelenefatura', 'startNumber'));
+    }
+
 
     public function mimsoftlogin()
     {
@@ -38,27 +63,31 @@ class GelenefaturalarController extends Controller
         $response = Http::withHeaders([
             'Content-Type' => 'application/json',
         ])->post('https://api.mimsoft.com.tr/v1.0/account/auth', [
-                    'username' => $efaturaApi->rf_kullanici_adi,
-                    'password' => $efaturaApi->rf_sifre,
-                ]);
+            'username' => $efaturaApi->rf_kullanici_adi,
+            'password' => $efaturaApi->rf_sifre,
+        ]);
 
 
         return $response->json();
     }
     public function getEinvoice(Request $request)
     {
-
         // Mimsoft API'ye giriş yap ve access token al
         $login = $this->mimsoftlogin();
 
         if (!isset($login['access_token'])) {
-            return response()->json(['error' => 'Mimsoft login başarısız'], 401);
+            Log::error('Mimsoft login başarısız', ['login_response' => $login]);
+            return null;
         }
 
         $mimsoft_access_token = $login['access_token'];
 
-        // API'den veri çekilecek URL
-        $url = 'https://api.mimsoft.com.tr/v1.0/einvoice?direction=in&start_date=2025-02-01&end_date=2025-03-17&limit=100&type=json&include_erp=true';
+        // Doğru tarih formatı oluştur
+        $start_date = now()->subMonth()->format('Y-m-d');
+        $end_date = now()->format('Y-m-d');
+
+        // API URL’si
+        $url = "https://api.mimsoft.com.tr/v1.0/einvoice?direction=in&start_date={$start_date}&end_date={$end_date}&limit=100&type=json&include_erp=true";
 
         // API isteğini yap
         $response = Http::withHeaders([
@@ -66,30 +95,18 @@ class GelenefaturalarController extends Controller
         ])->get($url);
 
         if ($response->successful()) {
-            // API yanıtını al
-            $data = $response->json();
-            // Sayfalama parametrelerini belirle
-            $currentPage = LengthAwarePaginator::resolveCurrentPage();
-            $perPage = 20; // Sayfa başına 20 öğe
-            $items = $data['items']; // Verilen öğeler
-            $total = count($items); // Burada 'total' yerine item sayısını kullanıyoruz
-            // LengthAwarePaginator ile sayfalama nesnesini oluştur
-            $gelenefatura = new LengthAwarePaginator(
-                $items,
-                $total,
-                $perPage,
-                $currentPage,
-                ['path' => LengthAwarePaginator::resolveCurrentPath()] // Sayfalama için path ayarı
-            );
-
-            return $gelenefatura;
-        } else {
-            return response()->json([
-                'error' => 'API isteği başarısız',
-                'message' => $response->body()
-            ], $response->status());
+            return $response->json()['items'];
         }
+
+        Log::error('Mimsoft API isteği başarısız', [
+            'status' => $response->status(),
+            'body' => $response->body(),
+        ]);
+
+        return null;
     }
+
+
     public function getInvoicePdf($invoiceUuid)
     {
         // Mimsoft API'ye giriş yap ve access token al
@@ -145,7 +162,6 @@ class GelenefaturalarController extends Controller
         $kasalar = Kasalar::all();
         $bankalar = Bankalar::all();
         return view('admin.contents.gelenefaturalar.gelenefatura-alisaaktar', compact('bankalar', 'kasalar', 'gelenefatura', 'giderkategori'));
-
     }
     public function gelenfaturayialisaktarPOST(Request $request, string $id)
     {
@@ -299,7 +315,7 @@ class GelenefaturalarController extends Controller
         $log = new Aktiflog();
         $log->islem_tarihi = Carbon::now();
         $log->islemiyapan_id = Auth::user()->id;
-        $log->islem = $gelenefatura->fatura_no . ' ' . 'Nolu Fatura Alışlara Aktarıldı' ;
+        $log->islem = $gelenefatura->fatura_no . ' ' . 'Nolu Fatura Alışlara Aktarıldı';
         $log->save();
 
         return redirect('gelenefaturalar')->with('success', 'Aktarma Başarılı');

@@ -217,8 +217,13 @@
                             @endif
                         </td>
                         <td>
-                            {{ number_format($json_data->allowance, 2, ',', '.') }} {{ $json_data->allowance_currency }}
+                            @if(isset($json_data->allowance))
+                                {{ number_format($json_data->allowance, 2, ',', '.') }} {{ $json_data->allowance_currency ?? 'TRY' }}
+                            @else
+                                0,00 TRY
+                            @endif
                         </td>
+
 
                             <td>
                                 {{ number_format($linesitem->extension_amount, 2, ',', '.') }} {{ $linesitem->extension_amount_currency }}
@@ -263,7 +268,7 @@
                             <label for="exampleInputEmail1">Toplam İskonto Tutar<span style="color: red">*</span></label>
                             <div class="input-group m-b-sm">
                                 <span class="input-group-addon"></span>
-                                <input type="text" name="toplam_iskonto" id="toplam_iskonto" value="{{$json_data->allowance}}"
+                                <input type="text" name="toplam_iskonto" id="toplam_iskonto" value="{{ isset($json->allowance) ? number_format($json->allowance, 2, '.', '') : '0.00' }}"
                                     class="form-control form-control-sm" readonly>
                             </div>
                         </div>

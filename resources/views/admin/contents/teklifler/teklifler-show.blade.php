@@ -148,7 +148,7 @@ Invoice Area
                                 <div class="invoice-right">
                                     <b>Müşteri:</b>
                                     <address>
-                                        {{ $teklifler->firmaadi->firma_unvan }} <br>
+                                        {{Str::limit($teklifler->firmaadi->firma_unvan,55)  }} <br>
                                         {{ $teklifler->firmaadi->yetkili_kisi }} <br>
                                         {{ $teklifler->firmaadi->yetkili_kisi_tel }} <br>
                                         {{ $teklifler->firmaadi->eposta }}

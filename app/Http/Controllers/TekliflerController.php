@@ -332,8 +332,6 @@ class TekliflerController extends Controller
             $tekliflerdata->teklif_hizmet_birim = $input['teklif_hizmet_birim'];
             $tekliflerdata->satir_aciklama = $input['satir_aciklama'];
 
-            $tekliflerdata->hizmet_maliyet = $input['hizmet_maliyet'];
-            $tekliflerdata->maliyet_toplam_fiyat = $input['maliyet_toplam_fiyat'];
             $tekliflerdata->teklif_fiyat = $input['teklif_fiyat'];
             $tekliflerdata->teklif_kdv_oran = $input['teklif_kdv_oran'];
             $tekliflerdata->teklif_kdv_tutar = $input['teklif_kdv_tutar'];
@@ -497,8 +495,6 @@ class TekliflerController extends Controller
             $tekliflerdata->satir_aciklama = $input['satir_aciklama'];
             $tekliflerdata->teklif_hizmet_miktar = $input['teklif_hizmet_miktar'];
             $tekliflerdata->teklif_hizmet_birim = $input['teklif_hizmet_birim'];
-            $tekliflerdata->hizmet_maliyet = $input['hizmet_maliyet'];
-            $tekliflerdata->maliyet_toplam_fiyat = $input['maliyet_toplam_fiyat'];
             $tekliflerdata->teklif_fiyat = $input['teklif_fiyat'];
             $tekliflerdata->teklif_kdv_oran = $input['teklif_kdv_oran'];
             $tekliflerdata->teklif_kdv_tutar = $input['teklif_kdv_tutar'];
