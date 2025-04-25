@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Http\Controllers\GidenefaturalarController;
+use App\Models\Commandslog;
 use App\Models\Gidenefaturadata;
 use App\Models\Gidenefaturalar;
 use Illuminate\Console\Command;
@@ -26,19 +27,27 @@ class Gidenefaturakayitetme extends Command
     /**
      * Execute the console command.
      */
+
     public function handle()
     {
         try {
             $controller = new GidenefaturalarController();
             $response = $controller->getEinvoicegiden(request());
-            if (!$response) {
+
+            if (!$response || !is_array($response)) {
+                $this->error('Giden faturalar alınamadı.');
+                Commandslog::create([
+                    'command_name' => 'gidenefatura:kayit',
+                    'status' => 'error',
+                    'message' => 'Giden faturalar alınamadı',
+                    'context' => json_encode([]),
+                    'logged_at' => now(),
+                ]);
                 return;
             }
 
-
             foreach ($response as $invoice) {
                 try {
-                    // Note ve Notes için uzunluk kontrolü
                     $note = isset($invoice['note']) && strlen($invoice['note']) <= 255 ? $invoice['note'] : null;
                     $notesJson = json_encode($invoice['notes'] ?? []);
                     $notes = strlen($notesJson) <= 65535 ? $notesJson : null;
@@ -83,7 +92,6 @@ class Gidenefaturakayitetme extends Command
                             'tax_amount_currency' => $invoice['tax']['amount_currency'] ?? 'TRY',
                             'tax_subtotals' => json_encode($invoice['tax']['subtotals'] ?? []),
                             'tax_totals' => json_encode($invoice['tax_totals'] ?? []),
-
                             'json_data' => json_encode($invoice),
                         ]
                     );
@@ -114,17 +122,50 @@ class Gidenefaturakayitetme extends Command
                                 ]
                             );
                         } catch (\Exception $e) {
-                            continue; // Satır kaydedilemezse atla
+                            Commandslog::create([
+                                'command_name' => 'gidenefatura:kayit',
+                                'status' => 'line_error',
+                                'message' => $e->getMessage(),
+                                'context' => json_encode([
+                                    'fatura_uuid' => $invoice['uuid'] ?? null,
+                                    'satir' => $item['name'] ?? null,
+                                ]),
+                                'logged_at' => now(),
+                            ]);
+                            continue;
                         }
                     }
                 } catch (\Exception $e) {
-                    continue; // Fatura kaydedilemezse atla
+                    Commandslog::create([
+                        'command_name' => 'gidenefatura:kayit',
+                        'status' => 'invoice_error',
+                        'message' => $e->getMessage(),
+                        'context' => json_encode([
+                            'fatura_uuid' => $invoice['uuid'] ?? null,
+                        ]),
+                        'logged_at' => now(),
+                    ]);
+                    continue;
                 }
             }
 
-            $this->info('Faturalar başarıyla kaydedildi.');
+            $this->info('Giden faturalar başarıyla kaydedildi.');
+
+            Commandslog::create([
+                'command_name' => 'gidenefatura:kayit',
+                'status' => 'success',
+                'message' => 'Giden faturalar başarıyla kaydedildi.',
+                'logged_at' => now(),
+            ]);
         } catch (\Exception $e) {
-            return;
+            $this->error('Giden işlem sırasında hata oluştu.');
+            Commandslog::create([
+                'command_name' => 'gidenefatura:kayit',
+                'status' => 'fatal_error',
+                'message' => $e->getMessage(),
+                'context' => json_encode([]),
+                'logged_at' => now(),
+            ]);
         }
     }
 }

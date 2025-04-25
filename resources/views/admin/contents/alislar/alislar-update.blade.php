@@ -1,10 +1,10 @@
 @extends('admin.layouts.app')
 @section('title')
-{{ $alislar->firmaadi->firma_unvan }} SATIŞ FATURASI GÜNCELLE
+{{ $alislar->firmaadi->firma_unvan ?? '-' }} ALIŞ FATURASI GÜNCELLE
 @endsection
 @section('contents')
 @section('topheader')
-    {{ $alislar->firmaadi->firma_unvan }} SATIŞ FATURASI GÜNCELLE
+    {{ $alislar->firmaadi->firma_unvan ?? '-' }} ALIŞ FATURASI GÜNCELLE
 @endsection
 
 
@@ -23,8 +23,8 @@
                                     <i class="fa fa-building"></i>
                                 </span>
                                 <input type="text" name="cari_unvan" id="cari_unvan"
-                                    class="form-control form-control-sm" value="{{ $cariler->firma_unvan }}" readonly>
-                                <input type="hidden" name="cari_id" value="{{ $cariler->id }}">
+                                    class="form-control form-control-sm" value="{{ $cariler->firma_unvan ?? '-' }}" readonly>
+                                <input type="hidden" name="cari_id" value="{{ $cariler->id ?? '-' }}">
                             </div>
                         </div>
 
@@ -45,7 +45,7 @@
                                     <i class="fa fa-check"></i>
                                 </span>
                                 <input type="text" name="fis_no" id="fis_no" class="form-control form-control-sm"
-                                    required value="{{ $alislar->fis_no }}">
+                                     value="{{ $alislar->fis_no }}">
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -54,7 +54,7 @@
                                 <span class="input-group-text">
                                     <i class="fa fa-building"></i>
                                 </span>
-                                <select name="doviz" id="doviz" class="form-select form-select-sm" required>
+                                <select name="doviz" id="doviz" class="form-control form-control-sm" >
                                     <option value="TL"
                                     {{ $alislar->doviz == 'TL' ? 'selected' : '' }}>TL</option>
                                     <option value="DOLAR" {{ $alislar->doviz == 'DOLAR' ? 'selected' : '' }}>DOLAR</option>
@@ -117,7 +117,7 @@
                                             @foreach ($alislardata as $item)
                                                 <option value="{{ $item->gider_id }}"
                                                     {{ $alislardataitem->gider_id == $item->gider_id ? 'selected' : '' }}>
-                                                     {{ $item->gider->gider_adi }}
+                                                    {{ $item->gider->gider_adi ?? 'Bilinmiyor' }}
                                                 </option>
                                             @endforeach
                                         </select>

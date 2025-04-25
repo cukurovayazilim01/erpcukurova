@@ -6,241 +6,48 @@
 @section('topheader')
     DOMAİN TAKİP
 @endsection
-
-<style>
-    .error {
-        border: 2px solid red;
-    }
-
-    .success {
-        border: 2px solid green;
-    }
-
-    .error-message {
-        color: red;
-        font-size: 12px;
-    }
-</style>
 <div class="card radius-10">
     <div class="card-header bg-transparent">
-        <div class="row align-items-center g-3">
-            <!-- Entries Dropdown -->
-            <div class="col-md-1 col-1 col-lg-1">
-                <form method="GET" action="{{ route('domaintakip.index') }}" id="entriesForm">
-                    <select class="form-select form-select-sm" name="entries"
-                        onchange="document.getElementById('entriesForm').submit();">
-                        <option value="10" {{ $perPage == 10 ? 'selected' : '' }}>10</option>
-                        <option value="25" {{ $perPage == 25 ? 'selected' : '' }}>25</option>
-                        <option value="50" {{ $perPage == 50 ? 'selected' : '' }}>50</option>
-                        <option value="100" {{ $perPage == 100 ? 'selected' : '' }}>100</option>
-                    </select>
-                </form>
-            </div>
+        <div class="row g-3 align-items-center">
+            <div class="d-flex align-items-center justify-content-between gap-1 mobile-erp">
+                <div class=" col-md-4 mr-4  d-flex gap-2">
+                        <button class="btn btn-outline-dark" id="copyBtn"><i class="fa-solid fa-clone"></i> </button>
+                        <button class="btn btn-outline-dark" id="excelBtn"><i class="fa-solid fa-file-excel"></i> </button>
+                        <button class="btn btn-outline-dark" id="pdfBtn"><i class="fa-solid fa-file-pdf"></i> </button>
+                        <button class="btn btn-outline-dark" id="printBtn"><i class="fa fa-print"></i> </button>
 
-            <!-- Filtrele Button -->
-            <div class="col-md-2 col-6 text-start">
-                <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
-                    data-bs-target="#domaintakipfilmodal" style="border-radius: 3px;">
-                    Filtrele
-                </button>
-            </div>
+                        <form method="GET" action="{{ route('domaintakip.index') }}" id="entriesForm">
+                            <select class="form-select form-select-sm" name="entries"
+                                onchange="document.getElementById('entriesForm').submit();">
+                                <option value="10" {{ $perPage == 10 ? 'selected' : '' }}>10</option>
+                                <option value="25" {{ $perPage == 25 ? 'selected' : '' }}>25</option>
+                                <option value="50" {{ $perPage == 50 ? 'selected' : '' }}>50</option>
+                                <option value="100" {{ $perPage == 100 ? 'selected' : '' }}>100</option>
+                            </select>
+                        </form>
+                </div>
+                <div class="col-lg-4 d-flex align-items-center mobile-erp2 justify-content-center">
+                    <form id="searchForm" action="{{ route('personelsearch') }}"  method="GET">
+                        <div class="ms-auto position-relative">
+                            <div class="position-absolute top-50 translate-middle-y search-input-group-text px-3"><i class="bi bi-search"></i></div>
+                            <input class="form-control ps-5" id="searchInput" type="text" placeholder="Genel Arama">
+                          </div>
+                        </form>
+                </div>
+                <div class="col-lg-4 ms-auto mobile-erp3 text-end">
 
-            <!-- Yeni Ekle and Action Buttons -->
-            <div class="col-md-9 text-end">
-                <!-- Action Buttons -->
-                <a href="{{ route('pdf.download', ['type' => 'marka']) }}" class="btn btn-sm btn-danger">
-                    <i class="fa-solid fa-file-pdf" style="font-size: 18px"></i>
-                </a>
-                <button type="button" data-bs-toggle="modal" data-bs-target="#domaintakipfilexcelmodal"
-                    class="btn btn-sm btn-success">
-                    <i class="fa-solid fa-file-excel" style="font-size: 18px"></i>
-                </button>
-                <a href="javascript:;" onclick="customPrint()" class="btn btn-sm btn-secondary">
-                    <i class="bi bi-printer-fill" style="font-size: 15px"></i>
-                </a>
-                <!-- Yeni Ekle Button -->
-                <button type="button" class="btn btn-sm btn-outline-primary px-5" style="margin-left: 10px"
-                    data-bs-toggle="modal" data-bs-target="#domaintakipmodal">
-                    <i class="fa-solid fa-plus"></i> Yeni Ekle
-                </button>
+                    <button type="button" class="btn btn-outline-dark btn-sm mx-0 mx-lg-2"  data-bs-toggle="modal"
+                    data-bs-target="#domaintakipmodal"><i class="fa-solid fa-plus"></i>Yeni Ekle</button>
+                </div>
             </div>
         </div>
     </div>
 
-    <!--FİLTRELEMEEXCELL Modal -->
-    {{-- <div class="modal fade" id="domaintakipfilexcelmodal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
-        <form id="add-form" action="{{ route('excel.export', ['type' => 'marka']) }}" method="GET">
-            @csrf
-            <div class="modal-content">
-                <!-- Modal Header -->
-                <div class="modal-header bg-success text-white">
-                    <h5 class="modal-title">Marka Excel İndirme Ekranı</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
 
-                <!-- Modal Body -->
-                <div class="modal-body" style="display: flex">
-                    <!-- Left Side -->
-                    <div class="col-md-12" style=" padding: 3%; ">
-                        <div class="row">
-                            <div class="col-md-12 select2-sm">
-                                <label for="cari_id_3">Firma</label>
-                                <select name="cari_id_3" id="cari_id_3_2"
-                                    style="border: none; width: 100%; height: 10px; outline: none; appearance: none; background-color: transparent; padding: 2px 0;">
-                                    <!-- Dinamik veriler buraya yüklenecek -->
-                                </select>
-                            </div>
-                            <div class="col-md-12">
-                                <label for="satis_temsilcisi">Satış Temsilcisi</label>
-                                <div class="input-group mb-2">
-                                    <span class="input-group-text">
-                                        <i class="fa fa-user"></i>
-                                    </span>
-                                    <select name="satis_temsilcisi" id="satis_temsilcisi" class="form-select form-select-sm" >
-                                        <option value="">Lütfen Seçim Yapınız</option>
-                                        @foreach ($user as $useritem)
-                                            <option value="{{ $useritem->id }}">{{ $useritem->ad_soyad }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <label for="sehir">Şehir</label>
-                                <div class="input-group mb-2">
-                                    <span class="input-group-text">
-                                        <i class="fa fa-city"></i>
-                                    </span>
-                                    <input type="text" name="sehir" id=""
-                                        class="form-control form-control-sm">
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <label for="ilk_tarih">Başvuru İlk Tarih</label>
-                                <div class="input-group mb-2">
-                                    <span class="input-group-text">
-                                        <i class="fa-solid fa-calendar-days"></i>
-                                    </span>
-                                    <input type="date" name="ilk_tarih" id="ilk_tarih"
-                                        class="form-control form-control-sm">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="son_tarih">Başvuru Son Tarih</label>
-                                <div class="input-group mb-2">
-                                    <span class="input-group-text">
-                                        <i class="fa-solid fa-calendar-days"></i>
-                                    </span>
-                                    <input type="date" name="son_tarih" id="son_tarih"
-                                        class="form-control form-control-sm">
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <!-- Modal Footer -->
-                <div class="modal-footer bg-light">
-                    <button type="button" class="btn btn-sm btn-outline-secondary"
-                        data-bs-dismiss="modal">Kapat</button>
-                    <button type="submit" id="submit-form" class="btn btn-outline-success btn-sm ">İndir</button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
-
-
-        <!--FİLTRELEME Modal -->
-<div class="modal fade" id="domaintakipfilmodal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
-        <form id="add-form" action="{{ route('domaintakipfiltre.index') }}" method="GET">
-            @csrf
-            <div class="modal-content">
-                <!-- Modal Header -->
-                <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title">Marka Filtreleme Ekranı</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-
-                <!-- Modal Body -->
-                <div class="modal-body" style="display: flex">
-                    <!-- Left Side -->
-                    <div class="col-md-12" style=" padding: 3%; ">
-                        <div class="row">
-                            <div class="col-md-12 select2-sm">
-                                <label for="cari_id_3">Firma</label>
-                                <select name="cari_id_3" id="cari_id_3_1"
-                                    style="border: none; width: 100%; height: 10px; outline: none; appearance: none; background-color: transparent; padding: 2px 0;">
-                                    <!-- Dinamik veriler buraya yüklenecek -->
-                                </select>
-                            </div>
-                            <div class="col-md-12">
-                                <label for="satis_temsilcisi">Satış Temsilcisi</label>
-                                <div class="input-group mb-2">
-                                    <span class="input-group-text">
-                                        <i class="fa fa-user"></i>
-                                    </span>
-                                    <select name="satis_temsilcisi" id="satis_temsilcisi" class="form-select form-select-sm" >
-                                        <option value="">Lütfen Seçim Yapınız</option>
-                                        @foreach ($user as $useritem)
-                                            <option value="{{ $useritem->id }}">{{ $useritem->ad_soyad }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <label for="sehir">Şehir</label>
-                                <div class="input-group mb-2">
-                                    <span class="input-group-text">
-                                        <i class="fa fa-city"></i>
-                                    </span>
-                                    <input type="text" name="sehir" id=""
-                                        class="form-control form-control-sm">
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <label for="ilk_tarih">Başvuru İlk Tarih</label>
-                                <div class="input-group mb-2">
-                                    <span class="input-group-text">
-                                        <i class="fa-solid fa-calendar-days"></i>
-                                    </span>
-                                    <input type="date" name="ilk_tarih" id="ilk_tarih"
-                                        class="form-control form-control-sm">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="son_tarih">Başvuru Son Tarih</label>
-                                <div class="input-group mb-2">
-                                    <span class="input-group-text">
-                                        <i class="fa-solid fa-calendar-days"></i>
-                                    </span>
-                                    <input type="date" name="son_tarih" id="son_tarih"
-                                        class="form-control form-control-sm">
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <!-- Modal Footer -->
-                <div class="modal-footer bg-light">
-                    <button type="button" class="btn btn-sm btn-outline-secondary"
-                        data-bs-dismiss="modal">Kapat</button>
-                    <button type="submit" id="submit-form" class="btn btn-outline-primary btn-sm ">Sorgula</button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div> --}}
     <!-- Modal -->
     <div class="modal fade" id="domaintakipmodal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-xl">
-            <form id="add-form" action="{{ route('domaintakip.store') }}" method="POST" id="add-form">
+            <form id="add-form" action="{{ route('domaintakip.store') }}" method="POST" >
                 @csrf
                 <div class="modal-content">
                     <!-- Modal Header -->
@@ -250,10 +57,10 @@
                     </div>
 
                     <!-- Modal Body -->
-                    <div class="modal-body" style="display: flex">
-                        <!-- Left Side -->
-                        <div class="col-md-12" style=" padding: 1%; ">
-                            <div class="row">
+                    <div class="modal-body"
+                        style="padding: 20px; background-position:center; background-repeat: no-repeat; background-size: cover;  background-image: url('{{ asset('resim/modal7.png') }}') ">
+
+                        <div class="row ">
                                 <div class="col-md-6 select2-sm">
                                     <label for="cari_id_3">Firma</label>
 
@@ -279,7 +86,7 @@
                                             <i class="fa fa-user"></i>
                                         </span>
                                         <select name="satis_temsilcisi" id="satis_temsilcisi"
-                                            class="form-select form-select-sm" required>
+                                            class="form-control form-control-sm" required>
                                             <option value="">Satış Temsilcisi Seçiniz</option>
                                             @foreach ($user as $useritem)
                                                 <option value="{{ $useritem->ad_soyad }}">{{ $useritem->ad_soyad }}
@@ -319,144 +126,24 @@
                                             class="form-control form-control-sm" required>
                                     </div>
                                 </div>
-                                {{-- <div class="col-md-3">
-                                    <label for="basvuru_tarihi">Tarih</label>
-                                    <div class="input-group mb-2">
-                                        <span class="input-group-text">
-                                            <i class="fa fa-calendar"></i>
-                                        </span>
-                                        <input type="date" name="tarih" id="tarih"
-                                            class="form-control form-control-sm" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <label for="hizmet_turu">Hizmet Türü</label>
-                                    <div class="input-group mb-2">
-                                        <span class="input-group-text">
-                                            <i class="fa fa-check"></i>
-                                        </span>
-                                        <select name="hizmet_turu" id="hizmet_turu"
-                                            class="form-select form-select-sm" required>
-                                            <option value="Domain">Domain</option>
-                                            <option value="Domain,Mail">Domain,Mail</option>
-                                            <option value="Domain,Hosting">Domain,Hosting</option>
-                                            <option value="Domain,Hosting,Mail">Domain,Hosting,Mail</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <label for="resim">Resim</label>
-                                    <div class="input-group mb-2">
-                                        <span class="input-group-text">
-                                            <i class="fa-solid fa-inbox"></i>
-                                        </span>
-                                        <input type="file" name="resim" id="resim"
-                                            class="form-control form-control-sm" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <label for="tutar">Tutar</label>
-                                    <div class="input-group mb-2">
-                                        <span class="input-group-text">
-                                            <i class="fa fa-money-bill"></i>
-                                        </span>
-                                        <input type="text" name="tutar" id="tutar"
-                                            class="form-control form-control-sm input-mask" required>
-                                    </div>
-                                </div>
 
-                                <!-- Mail Adet Input -->
-                                <div class="col-md-3" id="mail_adet_div" style="display: none;">
-                                    <label for="mail_adet">Mail Adet</label>
-                                    <div class="input-group mb-2">
-                                        <span class="input-group-text">
-                                            <i class="fa fa-envelope"></i>
-                                        </span>
-                                        <input type="number" name="mail_adet" id="mail_adet" class="form-control">
-                                    </div>
-                                </div>
-                                 <!-- Mail Adet Input -->
-                                 <div class="col-md-3" id="mail_platform_div" style="display: none;">
-                                    <label for="mail_adet">Mail Platform</label>
-                                    <div class="input-group mb-2">
-                                        <span class="input-group-text">
-                                            <i class="fa fa-envelope"></i>
-                                        </span>
-                                        <select name="mail_platform" id="mail_platform" class="form-select form-select-sm">
-                                            <option value="">Seçiniz</option>
-                                            <option value="Yandex">Yandex</option>
-                                            <option value="Sunucu">Sunucu</option>
-                                        </select>
-                                    </div>
-                                </div>
 
-                                <!-- Sunucu Bizde mi? Select -->
-                                <div class="col-md-3" id="sunucu_div" style="display: none;">
-                                    <label for="sunucu">Sunucu Bizde mi?</label>
-                                    <div class="input-group mb-2">
-                                        <span class="input-group-text">
-                                            <i class="fa fa-check"></i>
-                                        </span>
-                                    <select name="sunucu" id="sunucu" class="form-select form-select-sm">
-                                        <option value="">Seçiniz</option>
-                                        <option value="Evet">Evet</option>
-                                        <option value="Hayır">Hayır</option>
-                                    </select>
-                                </div>
 
-                                </div>
 
-                                <!-- VDS Seçimi -->
-                                <div class="col-md-3" id="vds_div" style="display: none;">
-                                    <label for="vds">VDS Seçimi</label>
-                                    <div class="input-group mb-2">
-                                        <span class="input-group-text">
-                                            <i class="fa fa-check"></i>
-                                        </span>
-                                    <select name="hosting_platform" id="vds" class="form-select form-select-sm">
-                                        <option value="">Seçiniz</option>
-                                        <option value="VDS4">VDS4</option>
-                                        <option value="VDS6">VDS6</option>
-                                    </select>
-                                </div>
+
                             </div>
+                            <div class="mobile-footer"
+                                style="display: flex;  gap:20px; text-align: center; justify-content: end; ">
 
-                                <!-- Platform Input -->
-                                <div class="col-md-3" id="platform_div" style="display: none;">
-                                    <label for="platform">Platform</label>
-                                    <div class="input-group mb-2">
-                                        <span class="input-group-text">
-                                            <i class="fa fa-server"></i>
-                                        </span>
-                                        <input type="text" name="hosting_platform" id="platform" class="form-control">
-                                    </div>
-                                </div>
-
-
-                                <div class="col-md-12">
-                                    <label for="aciklama">Açıklama</label>
-                                    <textarea name="aciklama" id="aciklama" cols="20" rows="2" class="form-control form-control-sm "></textarea>
-                                </div> --}}
-
-
-
-
+                                <button type="button" class="btn btn-outline-warning btn-sm py-6 w-25" data-bs-dismiss="modal">Vazgeç</button>
+                                <button type="submit" id="submit-form" class="btn btn-outline-dark btn-sm py-6 w-75">Kaydet</button>
 
                             </div>
                         </div>
                     </div>
-                    <!-- Modal Footer -->
-                    <div class="modal-footer bg-light">
-                        <button type="button" class="btn btn-sm btn-outline-secondary"
-                            data-bs-dismiss="modal">Vazgeç</button>
-                        <button type="submit" id="submit-form"
-                            class="btn btn-outline-primary btn-sm ">Kaydet</button>
-
-                    </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
-    </div>
 
 
 
@@ -464,33 +151,18 @@
     <div class="card-body">
         <div class="table-responsive">
             <div id="example_wrapper" class="dataTables_wrapper dt-bootstrap5">
-                <div class="row">
 
-
-                    {{-- <form id="searchForm" action="{{ route('domaintakipsearch') }}" method="GET">
-                            @csrf
-                            <div class="ms-auto position-relative" style="margin-bottom: 10px">
-                                <!-- Arama ikonu -->
-                                <div class="position-absolute top-50 translate-middle-y search-icon fs-5 px-3" style="color: blue;">
-                                    <i class="bi bi-search"></i>
-                                </div>
-                                <!-- Arama inputu -->
-                                <input type="text" id="searchInput" class="form-control ps-5" style="border: 1px solid blue; height: 38px;" placeholder="Lütfen Arama Terimi Giriniz">
-                            </div>
-                        </form> --}}
-
-
-                </div>
-                <table class="table align-middle mb-0 dataTable" id="example2" role="grid"
+                <table class="table dataTable table-striped table-bordered" id="example2" role="grid"
                     aria-describedby="example_info">
-                    <thead class="table-light">
+                    <thead >
                         <tr>
                             <th scope="col">#</th>
                             <th>Domain Adı</th>
                             <th>Bitiş Tarihi</th>
                             <th>Firma Adı</th>
-                            <th>Müşteri Temsilcisi</th>
+                            <th>Yetkili Kişi</th>
                             <th>Telefon</th>
+                            <th>Müşteri Temsilcisi</th>
                             <th>Tutar</th>
                             <th>Hizmet</th>
                             <th>Açıklama</th>
@@ -504,13 +176,22 @@
                                 <th scope="row">{{ $startNumber - $loop->index }}</th>
                                 {{-- <td>{{ $domaintakipitem->islem_tarihi }}</td> --}}
                                 <td>{{ $domaintakipitem->domain_adi }}</td>
-                                <td>{{ $domaintakipitem->bitis_tarihi }}</td>
-                                <td>{{ $domaintakipitem->firmaadi->firma_unvan }}</td>
-                                <td>{{ $domaintakipitem->firmaadi->yetkili_kisi }}</td>
-                                <td>{{ $domaintakipitem->firmaadi->yetkili_kisi_tel }}</td>
+                                <td>
+                                    {{ $domaintakipitem->domaindata->pluck('bitis_tarihi')->implode(', ') }}
+                                </td>
+                                <td>{{ $domaintakipitem->firmaadi->firma_unvan ?? '-'}}</td>
+                                <td>{{ $domaintakipitem->firmaadi->yetkili_kisi ?? '-'}}</td>
+                                <td>{{ $domaintakipitem->firmaadi->yetkili_kisi_tel?? '-' }}</td>
+                                <td>{{ $domaintakipitem->firmaadi->user->ad_soyad?? '-' }}</td>
                                 {{-- <td>{{ $domaintakipitem->user->ad_soyad }}</td> --}}
-                                <td>{{ $domaintakipitem->tutar }}</td>
-                                <td>{{ $domaintakipitem->marka_sinif }}</td>
+                                <td>
+                                    {{ $domaintakipitem->domaindata->pluck('tutar')->implode(', ') }} + KDV
+                                </td>
+                                    @php
+                                    $hizmetler = $domaintakipitem->domaindata->pluck('hizmet_turu')->filter()->implode(', ');
+                                @endphp
+
+                                <td>{{ $hizmetler ?: 'Domain' }}</td>
                                 <td>{{ $domaintakipitem->basvuru_no }}</td>
                                 {{-- <td class="text-wrap" style="max-width:100px">
                                     {{ $domaintakipitem->hizmet->hizmet_ad }}</td>
@@ -546,12 +227,12 @@
                                 </td>
                                 <td class="text-right">
                                     <div class="databutton">
-                                        <div class="d-flex align-items-center fs-6">
+                                        <div class="d-flex align-items-center fs-6" style="justify-content: space-evenly; ">
 
 
                                             <button class="text-warning" data-bs-toggle="modal"
                                                 data-bs-target="#domaintakipupdateModal-{{ $domaintakipitem->id }}">
-                                                <i class="bi bi-pencil-fill"></i>
+                                                <i style="color:#293445" class="fa-solid fa-pen-to-square fs-6"></i>
                                             </button>
                                             {{-- @include('admin.contents.domaintakip.domaintakip-update') --}}
 
@@ -562,7 +243,8 @@
                                                 @method('DELETE')
                                                 <button type="submit"
                                                     class="btn btn-link text-danger p-0 m-0 show_confirm">
-                                                    <i class="bi bi-trash-fill"></i>
+                                                    <i style="color: rgb(180, 68, 34)"
+                                                    class="fa-solid fa-trash-can fs-6"></i>
                                                 </button>
                                             </form>
                                         </div>
@@ -586,53 +268,7 @@
     </div>
 </div>
 
-{{-- <div id="printArea" style="display: none;">
-    <h1 style="text-align: center;">Marka Takip Raporu</h1>
-    <table class="table table-bordered" style="width: 100%; border-collapse: collapse;">
-        <thead>
-            <tr style="background-color: #f8f9fa; text-align: left;">
-                <th>#</th>
-                <th>İşlem Tarihi</th>
-                <th>Başvuru Tarihi</th>
-                <th>Yenileme Tarihi</th>
-                <th>Referans No</th>
-                <th>Firma Adı</th>
-                <th>Firma GSM</th>
-                <th>Marka Adı</th>
-                <th>Marka Sınıf</th>
-                <th>Başvuru No</th>
-                <th>Hizmet Türü</th>
-                <th>VKN</th>
-                <th>TC</th>
-                <th>Şehir</th>
-                <th>Marka İşlem</th>
-                <th>Marka Durum</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($domaintakip as $domaintakipitem)
-                <tr>
-                    <td>{{ $startNumber - $loop->index }}</td>
-                    <td>{{ $domaintakipitem->islem_tarihi }}</td>
-                    <td>{{ $domaintakipitem->basvuru_tarihi }}</td>
-                    <td>{{ $domaintakipitem->yenileme_tarih }}</td>
-                    <td>{{ $domaintakipitem->referans_no }}</td>
-                    <td>{{ $domaintakipitem->firmaadi->firma_unvan }}</td>
-                    <td>{{ $domaintakipitem->firmaadi->yetkili_kisi_tel }}</td>
-                    <td>{{ $domaintakipitem->marka_adi }}</td>
-                    <td>{{ $domaintakipitem->marka_sinif }}</td>
-                    <td>{{ $domaintakipitem->basvuru_no }}</td>
-                    <td>{{ $domaintakipitem->hizmet->hizmet_ad }}</td>
-                    <td>{{ $domaintakipitem->vkn }}</td>
-                    <td>{{ $domaintakipitem->tc }}</td>
-                    <td>{{ $domaintakipitem->sehir }}</td>
-                    <td>{{ $domaintakipitem->marka_islem }}</td>
-                    <td>{{ $domaintakipitem->marka_durum }}</td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-</div> --}}
+
 
 {{-- SEARCHHHH  --}}
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -902,6 +538,115 @@
 
         hizmetTuruSelect.addEventListener("change", handleHizmetTuruChange);
         sunucuSelect.addEventListener("change", handleSunucuChange);
+    });
+</script>
+<!-- JavaScript: DataTable Yapılandırma -->
+<script>
+    $(document).ready(function() {
+        var table = $("#example2").DataTable({
+            responsive: true,
+            lengthChange: false, // Sayfa uzunluğu değişikliğini kaldır
+            autoWidth: false, // Otomatik genişlik ayarlamasını kaldır
+            pageLength: 10000, // Sayfa başına gösterilecek kayıt sayısını artır (örneğin 10000)
+            dom: 'frtip', // Sadece butonları gösterecek
+            language: {
+                url: "{{ asset('vendor/tr.json') }}" // Dil dosyasını ekleyin
+            },
+            ordering: false, // Sıralamayı devre dışı bırak
+            buttons: [{
+                    extend: 'copyHtml5',
+                    className: 'btn btn-primary',
+                    text: '<i class="fa fa-copy"></i> Kopyala',
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 8,
+                            9,10,11,12,13] // Sadece istediğiniz kolonları seçin
+                    }
+                },
+                {
+                    extend: 'excelHtml5',
+                    className: 'btn btn-success',
+                    text: '<i class="fa fa-file-excel"></i> Excel',
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 8,
+                            9,10,11,12,13] // Sadece istediğiniz kolonları seçin
+                    }
+                },
+                {
+                    extend: 'pdfHtml5',
+                    className: 'btn btn-danger',
+                    text: '<i class="fa fa-file-pdf"></i> PDF',
+                    orientation: 'landscape', // Yatay mod
+                    pageSize: 'A4', // Sayfa boyutu
+                    customize: function(doc) {
+                        // Yazı tipi ekleme
+                        doc.defaultStyle.fontSize = 10;
+                        doc.styles.tableHeader.fontSize = 12;
+                        doc.styles.tableHeader.fillColor = '#343a40'; // Başlık arka plan rengi
+                        doc.styles.tableHeader.color = 'white'; // Başlık yazı rengi
+                        doc.styles.title.fontSize = 14;
+                        doc.styles.title.alignment = 'center';
+
+                        // Sayfa başlığı ekleme
+                        doc.content.splice(0, 0, {
+                            text: 'PERSONEL LİSTESİ',
+                            fontSize: 16,
+                            bold: true,
+                            margin: [0, 0, 0, 10],
+                            alignment: 'center'
+                        });
+
+                        // Sayfa numarası ve tarih ekleme
+                        doc.footer = function(currentPage, pageCount) {
+                            return {
+                                text: "Sayfa " + currentPage + " / " + pageCount,
+                                alignment: 'center',
+                                fontSize: 9,
+                                margin: [0, 10, 0, 0]
+                            };
+                        };
+
+                        // Otomatik sütun genişliği ayarlama
+                        var objLayout = {};
+                        objLayout['hLineWidth'] = function() { return 0.5; };
+                        objLayout['vLineWidth'] = function() { return 0.5; };
+                        objLayout['hLineColor'] = function() { return '#aaa'; };
+                        objLayout['vLineColor'] = function() { return '#aaa'; };
+                        objLayout['paddingLeft'] = function() { return 8; };
+                        objLayout['paddingRight'] = function() { return 8; };
+                        doc.content[1].layout = objLayout;
+                    },
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] // Kolonları belirle
+                    }
+                },
+                {
+                    extend: 'print',
+                    className: 'btn btn-warning',
+                    text: '<i class="fa fa-print"></i> Yazdır',
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 8,
+                            9,10,11,12,13] // Sadece istediğiniz kolonları seçin
+                    }
+                }
+            ]
+        });
+
+        // Butonları tıklamak yerine DataTable'ın kendi butonlarını kullanacağız
+        $("#copyBtn").click(function() {
+            table.button('.buttons-copy').trigger();
+        });
+
+        $("#excelBtn").click(function() {
+            table.button('.buttons-excel').trigger();
+        });
+
+        $("#pdfBtn").click(function() {
+            table.button('.buttons-pdf').trigger();
+        });
+
+        $("#printBtn").click(function() {
+            table.button('.buttons-print').trigger();
+        });
     });
 </script>
 @include('session.session')

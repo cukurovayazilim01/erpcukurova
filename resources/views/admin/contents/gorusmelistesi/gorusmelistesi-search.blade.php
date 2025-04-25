@@ -7,12 +7,12 @@
                                     <th scope="row">{{ $startNumber - $loop->index }}</th>
                                     <td>{{ $aramalaritem->islem_tarihi }}</td>
                                     <td>{{ $aramalaritem->adsoyad->ad_soyad ?? '-' }}</td>
-                                    <td>{{ $aramalaritem->cariler->firma_unvan }}</td>
+                                    <td class="text-wrap" style="max-width: 400px">{{ $aramalaritem->cariler->firma_unvan }}</td>
                                     <td>{{ $aramalaritem->arama_tipi }}</td>
                                     <td>{{ $aramalaritem->hizmet_turu }}</td>
-                                    <td class="text-wrap" style="max-width: 400px">{{ $aramalaritem->not }}
+                                    <td class="text-wrap" style="max-width: 700px">{{ $aramalaritem->not }}
                                     </td>
-                                    <td>{{ $aramalaritem->hatirlat_durumu }}</td>
+                                    <td >{{ $aramalaritem->hatirlat_durumu }}</td>
                                     <td>{{ $aramalaritem->hatirlat_tarihi }}</td>
                                     <td class="text-right">
                                         <div class="databutton">

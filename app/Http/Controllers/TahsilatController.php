@@ -23,24 +23,27 @@ class TahsilatController extends Controller
     public function firmahrktaktartahsilat()
 {
     try {
-        $tahsilatlar = Tahsilat::all(); // Tüm tahsilatları al
+        // İlişkileri önceden yüklüyoruz
+        $tahsilatlar = Tahsilat::with(['bankaadi', 'kasaadi'])->get();
 
         if ($tahsilatlar->isEmpty()) {
             return redirect('tahsilat')->with('warning', 'Aktarılacak Tahsilat Kaydı Bulunamadı!');
         }
 
-        $firmaHareketleri = []; // Firma hareketleri için dizi
+        $firmaHareketleri = [];
 
         foreach ($tahsilatlar as $tahsilat) {
             $kasahareket_id = null;
             $bankahareket_id = null;
 
-            if ($tahsilat->odeme_tipi == 'Banka') {
+            if ($tahsilat->odeme_tipi === 'Banka') {
                 $sonHareket = Bankahrkt::where('banka_id', $tahsilat->banka_id)
                     ->orderBy('id', 'desc')
                     ->first();
 
-                $oncekiBakiye = $sonHareket ? $sonHareket->guncel_bakiye : $tahsilat->bankaadi->bakiye;
+                $oncekiBakiye = $sonHareket
+                    ? $sonHareket->guncel_bakiye
+                    : optional($tahsilat->bankaadi)->bakiye ?? 0;
 
                 $bankahrkt = Bankahrkt::create([
                     'tahsilat_id'    => $tahsilat->id,
@@ -61,7 +64,9 @@ class TahsilatController extends Controller
                     ->orderBy('id', 'desc')
                     ->first();
 
-                $oncekiBakiye = $sonHareket ? $sonHareket->guncel_bakiye : $tahsilat->kasaadi->bakiye;
+                $oncekiBakiye = $sonHareket
+                    ? $sonHareket->guncel_bakiye
+                    : optional($tahsilat->kasaadi)->bakiye ?? 0;
 
                 $kasahrkt = Kasahrkt::create([
                     'tahsilat_id'    => $tahsilat->id,
@@ -100,6 +105,7 @@ class TahsilatController extends Controller
         return redirect('tahsilat')->with('error', 'Aktarım sırasında bir hata oluştu: ' . $e->getMessage());
     }
 }
+
     public function tahsilatsearch(Request $request)
     {
         $tahsilatsearch = $request->input('tahsilatsearch');

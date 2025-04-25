@@ -149,7 +149,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/alislarsearch',[AlislarController::class,'alislarsearch'])->name('alislarsearch');
     Route::post('/firmahrktaktaralislar', [AlislarController::class, 'firmahrktaktaralislar'])->name('firmahrktaktaralislar');
     Route::get('/cari-search-alislar',[AlislarController::class,'cariSearchalislar']);
-
+    Route::post('/odemeyeaktar', [AlislarController::class, 'odemeyeaktar'])->name('odemeyeaktar');
     //TAHSİLAT
     Route::resource('tahsilat',TahsilatController::class);
     Route::get('/tahsilatsearch',[TahsilatController::class,'tahsilatsearch'])->name('tahsilatsearch');
@@ -184,7 +184,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/invoices/{invoiceUuid}/pdf', [GelenefaturalarController::class, 'getInvoicePdf'])->name('invoices.pdf');
     Route::get('/gelenfaturayialisaktar/{id}',[GelenefaturalarController::class,'gelenfaturayialisaktar'])->name('gelenfaturayialisaktar');
     Route::post('/gelenfaturayialisaktarPOST/{id}',[GelenefaturalarController::class,'gelenfaturayialisaktarPOST'])->name('gelenfaturayialisaktarPOST');
-
+    Route::get('/gelenfaturalarsearch',[GelenefaturalarController::class,'gelenfaturalarsearch'])->name('gelenfaturalarsearch');
 
     //GIDEN E FATURALAR
     Route::resource('gidenefaturalar',GidenefaturalarController::class);

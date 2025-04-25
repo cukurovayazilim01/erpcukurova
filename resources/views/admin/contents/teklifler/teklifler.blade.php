@@ -99,7 +99,7 @@
                             @endif
 
                             <td>{{ $teklifleritem->teklif_tarihi }}</td>
-                            <td>{{ $teklifleritem->firmaadi->firma_unvan }}</td>
+                            <td class="text-wrap" style="max-width:270px">{{ $teklifleritem->firmaadi->firma_unvan }}</td>
                             <td>{{ $teklifleritem->teklif_konu }}</td>
                             <td>{{ number_format($teklifleritem->teklif_iskonto_toplam, 2, ',', '.') }} ₺</td>
                             <td>{{ number_format($teklifleritem->teklif_kdv_toplam, 2, ',', '.') }} ₺</td>

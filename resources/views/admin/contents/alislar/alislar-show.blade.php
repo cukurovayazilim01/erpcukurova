@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>{{$alislar->alis_kodu_text}}-{{$alislar->alis_kodu}}-{{$alislar->firmaadi->firma_unvan}} Alış Faturası</title>
+    <title>{{$alislar->alis_kodu_text ?? '-'}}-{{$alislar->alis_kodu ?? '-'}}-{{$alislar->firmaadi->firma_unvan ?? '-'}} Alış Faturası</title>
     <meta name="robots" content="INDEX,FOLLOW">
 
     <!-- Mobile Specific Metas -->
@@ -128,10 +128,10 @@ Invoice Area
                                 <div class="invoice-right">
                                     <b>Müşteri:</b>
                                     <address>
-                                        {{ $alislar->firmaadi->firma_unvan }} <br>
-                                        {{ $alislar->firmaadi->yetkili_kisi }} <br>
-                                        {{ $alislar->firmaadi->yetkili_kisi_tel }} <br>
-                                        {{ $alislar->firmaadi->eposta }}
+                                        {{ $alislar->firmaadi->firma_unvan ?? '-' }} <br>
+                                        {{ $alislar->firmaadi->yetkili_kisi ?? '-' }} <br>
+                                        {{ $alislar->firmaadi->yetkili_kisi_tel ?? '-' }} <br>
+                                        {{ $alislar->firmaadi->eposta ?? '-' }}
                                     </address>
                                 </div>
                             </div>
@@ -158,7 +158,7 @@ Invoice Area
                                     <tr>
                                         <td><strong>{{ $sn + 1 }}</strong></td>
                                         <td style=" text-align: center;">
-                                            {{ $alislardataitem->gider->gider_adi }}</td>
+                                            {{ $alislardataitem->gider->gider_adi  ?? 'Bilinmiyor'}}</td>
                                         <td style=" text-align: center;">
                                             {{ $alislardataitem->gider_adi }}</td>
                                             @if ($alislardataitem->birim == 'NIU')
@@ -317,7 +317,7 @@ Invoice Area
             canvasImageHeight
           );
         }
-        var pdfUrl = '{{$alislar->alis_kodu_text}}-{{$alislar->alis_kodu}}-{{$alislar->firmaadi->firma_unvan}} Alış Faturası.pdf';
+        var pdfUrl = '{{$alislar->alis_kodu_text ?? '-'}}-{{$alislar->alis_kodu ?? '-'}}-{{$alislar->firmaadi->firma_unvan ?? '-'}} Alış Faturası.pdf';
         pdf.save(pdfUrl);
       });
     });

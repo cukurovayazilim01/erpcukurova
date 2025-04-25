@@ -39,7 +39,7 @@ GELEN E-FATURALAR
                     </div>
 
                     <div class="col-lg-4 d-flex align-items-center mobile-erp2 justify-content-center">
-                        <form class="position-relative" id="searchForm" action="{{ route('carilersearch') }}"
+                        <form class="position-relative" id="searchForm" action="{{ route('gelenfaturalarsearch') }}"
                             method="GET">
                             <div class="position-absolute top-50 translate-middle-y search-icon px-3 "><i
                                     class="bi bi-search"></i></div>
@@ -192,10 +192,10 @@ GELEN E-FATURALAR
             if (searchValue.trim() === '') {
                 // Eğer input boşsa, tüm veriyi yükle
                 $.ajax({
-                    url: '{{ route('carilersearch') }}',
+                    url: '{{ route('gelenfaturalarsearch') }}',
                     method: 'GET',
                     data: {
-                        carilersearch: ''
+                        gelenfaturalarsearch: ''
                     }, // Arama değeri boş olduğunda tüm veriyi yükle
                     success: function(response) {
                         // Tüm veriyi (tbody) güncelle
@@ -204,10 +204,10 @@ GELEN E-FATURALAR
                 });
             } else {
                 $.ajax({
-                    url: '{{ route('carilersearch') }}',
+                    url: '{{ route('gelenfaturalarsearch') }}',
                     method: 'GET',
                     data: {
-                        carilersearch: searchValue
+                        gelenfaturalarsearch: searchValue
                     }, // Arama değeri
                     success: function(response) {
                         // Sadece tbody kısmını güncelle

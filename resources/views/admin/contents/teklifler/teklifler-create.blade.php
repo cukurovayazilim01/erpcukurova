@@ -358,6 +358,14 @@
 
                         <div class="row">
                             <div class="col-md-12 ">
+                                <label for="exampleInputEmail1">ARA TOPLAM<span style="color: red">*</span></label>
+                                <div class="input-group m-b-sm">
+                                    <span class="input-group-addon"></span>
+                                    <input type="number" name="teklif_ara_toplam" id="teklif_ara_toplam"
+                                        class="form-control form-control-sm" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-12 ">
                                 <label for="exampleInputEmail1">TOPLAM İSKONTO<span
                                         style="color: red">*</span></label>
                                 <div class="input-group m-b-sm">
@@ -374,14 +382,7 @@
                                         class="form-control form-control-sm" readonly>
                                 </div>
                             </div>
-                            <div class="col-md-12 ">
-                                <label for="exampleInputEmail1">ARA TOPLAM<span style="color: red">*</span></label>
-                                <div class="input-group m-b-sm">
-                                    <span class="input-group-addon"></span>
-                                    <input type="number" name="teklif_ara_toplam" id="teklif_ara_toplam"
-                                        class="form-control form-control-sm" readonly>
-                                </div>
-                            </div>
+
                             <div class="col-md-12">
                                 <label for="exampleInputEmail1">TOPLAM TUTAR<span style="color: red">*</span></label>
                                 <div class="input-group m-b-sm">

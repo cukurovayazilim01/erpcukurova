@@ -692,7 +692,7 @@
             <table id="example2" class="table table-bordered table-striped" style="width:100%;  ">
                 <thead>
                     <tr>
-
+                        <th style="color: white">Firma No</th>
                         <th style="color: white">Firma Ünvan</th>
                         <th style="color: white; text-align: center">Sektör</th>
                         <th style="color: white; text-align: center">Yetkili Kişi</th>
@@ -705,7 +705,7 @@
                 <tbody>
                     @foreach ($cariler as $cariitem)
                         <tr>
-
+                            <th>{{$cariitem->firma_no_text}}-{{$cariitem->firma_no}}</th>
                             <td><a style="color:inherit"
                                     href="{{ route('cariler.show', ['cariler' => $cariitem->id]) }}">{{ $cariitem->firma_unvan }}
                                 </a> </td>
@@ -759,7 +759,7 @@
                 </tbody>
 
             </table>
-            <div class="col-sm-4 col-md-5 " style=" float: right; margin-top: 20px; ">
+            <div class="d-flex justify-content-end" style="float: right; margin-top: 20px; ">
                 {{ $cariler->appends(['entries' => $perPage])->links() }}
             </div>
         </div>

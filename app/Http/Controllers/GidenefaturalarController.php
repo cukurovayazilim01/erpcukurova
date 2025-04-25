@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class GidenefaturalarController extends Controller
 {
@@ -39,48 +40,36 @@ class GidenefaturalarController extends Controller
     }
     public function getEinvoicegiden(Request $request)
     {
-        // Mimsoft API'ye giriş yap ve access token al
         $login = $this->mimsoftlogin();
 
         if (!isset($login['access_token'])) {
-            return response()->json(['error' => 'Mimsoft login başarısız'], 401);
+            Log::error('Mimsoft login başarısız (giden)', ['login_response' => $login]);
+            return null;
         }
 
         $mimsoft_access_token = $login['access_token'];
 
-        // API'den veri çekilecek URL
-        $url = 'https://api.mimsoft.com.tr/v1.0/einvoice?direction=out&start_date=2025-02-01&end_date=2025-03-17&limit=100&type=json&include_erp=true';
+        $start_date = now()->subMonth()->format('Y-m-d');
+        $end_date = now()->format('Y-m-d');
 
-        // API isteğini yap
+        $url = "https://api.mimsoft.com.tr/v1.0/einvoice?direction=out&start_date={$start_date}&end_date={$end_date}&limit=100&type=json&include_erp=true";
+
         $response = Http::withHeaders([
             'Authorization' => "Bearer $mimsoft_access_token"
         ])->get($url);
 
         if ($response->successful()) {
-            // API yanıtını al
-            $data = $response->json();
-            // Sayfalama parametrelerini belirle
-            $currentPage = LengthAwarePaginator::resolveCurrentPage();
-            $perPage = 20; // Sayfa başına 20 öğe
-            $items = $data['items']; // Verilen öğeler
-            $total = count($items); // Burada 'total' yerine item sayısını kullanıyoruz
-            // LengthAwarePaginator ile sayfalama nesnesini oluştur
-            $gelenefatura = new LengthAwarePaginator(
-                $items,
-                $total,
-                $perPage,
-                $currentPage,
-                ['path' => LengthAwarePaginator::resolveCurrentPath()] // Sayfalama için path ayarı
-            );
-
-            return $gelenefatura;
-        } else {
-            return response()->json([
-                'error' => 'API isteği başarısız',
-                'message' => $response->body()
-            ], $response->status());
+            return $response->json()['items'];
         }
+
+        Log::error('Giden Mimsoft API isteği başarısız', [
+            'status' => $response->status(),
+            'body' => $response->body(),
+        ]);
+
+        return null;
     }
+
 
 
 

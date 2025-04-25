@@ -20,4 +20,8 @@ class Domaintakip extends Model
     {
         return $this->belongsTo(User::class,'satis_temsilcisi');
     }
+    public function domaindata()
+    {
+        return $this->hasMany(Domaintakipdata::class,'domaintakip_id');
+    }
 }

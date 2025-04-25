@@ -9,6 +9,7 @@ use App\Models\Cariler;
 use App\Models\Firmahrkt;
 use App\Models\Gider;
 use App\Models\Giderkategori;
+use App\Models\Odemeler;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -16,6 +17,47 @@ use Illuminate\Support\Facades\Auth;
 
 class AlislarController extends Controller
 {
+    public function odemeyeaktar()
+    {
+        try {
+            $alislar = Alislar::all();
+
+            if ($alislar->isEmpty()) {
+                return redirect()->route('alislar.index')->with('warning', 'Aktarılacak alış kaydı bulunamadı.');
+            }
+
+            $odemelerListesi = [];
+
+            foreach ($alislar as $alis) {
+                // toplam_tutar boşsa atla
+                if (is_null($alis->toplam_tutar)) continue;
+
+                $odemelerListesi[] = [
+                    'tarih'          => $alis->fis_tarihi,
+                    'odeme_kodu'     => $alis->alis_kodu,
+                    'odeme_kodu_text'=> 'OF',
+                    'odeme_turu'     => 'EFT',
+                    'odeme_tipi'     => 'Banka',
+                    'cari_id'        => $alis->cari_id,
+                    'odemeyapan_id'  => Auth::id(),
+                    'banka_id'       => 1,
+                    'odeme_tutar'    => $alis->toplam_tutar,
+                    'created_at'     => now(),
+                    'updated_at'     => now(),
+                ];
+            }
+
+            if (!empty($odemelerListesi)) {
+                Odemeler::insert($odemelerListesi);
+            }
+
+            return redirect()->route('alislar.index')->with('success', 'Tüm alışlar ödemelere başarıyla aktarıldı.');
+
+        } catch (\Exception $e) {
+            return redirect()->route('alislar.index')->with('error', 'Aktarım sırasında hata oluştu: ' . $e->getMessage());
+        }
+    }
+
 
     public function firmahrktaktaralislar()
     {
@@ -52,7 +94,7 @@ class AlislarController extends Controller
 
         // Eğer arama yapılmışsa
         if ($alislarsearch) {
-            $alislar = Alislar::orderByDesc('id')
+            $alislar = Alislar::orderByDesc('fis_tarihi')
                 ->whereHas('firmaadi', function ($query) use ($alislarsearch) {
                     $query->where('firma_unvan', 'like', '%' . $alislarsearch . '%');
                 })
@@ -91,7 +133,7 @@ class AlislarController extends Controller
         $perPage = $request->input('entries', 20);
 
         // $cariler = Cariler::all();
-        $alislar = Alislar::orderBy('created_at', 'desc')->paginate($perPage);
+        $alislar = Alislar::orderBy('fis_tarihi', 'desc')->paginate($perPage);
         $page = $alislar->currentPage();
         $startNumber = $alislar->total() - (($page - 1) * $perPage);
         $user = User::all();

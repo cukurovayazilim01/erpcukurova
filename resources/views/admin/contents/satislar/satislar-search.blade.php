@@ -12,7 +12,7 @@
                     <th><b style="color: red">Direkt Satış</b></th>
                 @endif
                 <th scope="row">{{ $satislaritem->satis_kodu_text }}-{{ $satislaritem->satis_kodu }}</th>
-                <td>{{ $satislaritem->firmaadi->firma_unvan }}</td>
+                <td class="text-wrap" style="max-width:230px">{{ $satislaritem->firmaadi->firma_unvan }}</td>
                 <td>{{ $satislaritem->satis_konu }}</td>
 
                 <td>{{ $satislaritem->satis_tarihi }}</td>
